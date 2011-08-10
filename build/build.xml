@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Phing Documentation" default="build" basedir="..">
+<project name="Phing Documentation" default="build">
+
+    <property name="source.directory" value="${project.basedir}/../xml" />
+    <property name="dist.directory" value="${project.basedir}/dist" />
+    <property name="stage.directory" value="${project.basedir}/stage" />
+
+
+    <property file="build.properties" override="true" />
+    
 
     <target name="build">
-
         <echo msg="Hello, World!" />
 
+        
+
     </target>
+
+
+
+    <target name="prepare">
+        <mkdir dir="${dist.directory}" />
+
+        <echo msg="Staging" />
+        <foreach list="${languages}" param="lang" target="stage.lang" />
+
+    </target>
+
+
+    <target name="stage.lang">
+        <echo msg="Staging '${lang}'" />
+        <mkdir dir="${stage.directory}/${lang}" />
+
+        <copy todir="${stage.directory}/${lang}" overwrite="true">
+            <fileset dir="${source.directory}/${lang}">
+            </fileset>
+        </copy>
+        
+    </target>
+
+
+
+
+    <target name="clean">
+        <delete dir="${dist.directory}" />
+        <delete dir="${stage.directory}" />
+    </target>
+
 
 </project>
