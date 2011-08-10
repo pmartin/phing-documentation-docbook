@@ -5,6 +5,8 @@
     <property name="dist.directory" value="${project.basedir}/dist" />
     <property name="stage.directory" value="${project.basedir}/stage" />
 
+    <!-- Default values -->
+    <property name="lang" value="fr" />
 
     <property file="build.properties" override="true" />
     
@@ -12,7 +14,10 @@
     <target name="build">
         <echo msg="Hello, World!" />
 
-        
+        <phingcall target="prepare" />
+
+        <phingcall target="build.html" />
+
 
     </target>
 
@@ -31,6 +36,7 @@
         <echo msg="Staging '${lang}'" />
         <mkdir dir="${stage.directory}/${lang}" />
 
+        <echo msg="Staging from '${source.directory}/${lang}/' to '${stage.directory}/${lang}/'" />
         <copy todir="${stage.directory}/${lang}" overwrite="true">
             <fileset dir="${source.directory}/${lang}">
             </fileset>
@@ -40,11 +46,59 @@
 
 
 
+    <target name="build.html">
+        <echo msg="Build HTML documentation" />
+
+        <echo msg="Staging" />
+        <foreach list="${languages}" param="lang" target="build.html.lang" />
+
+    </target>
+
+
+    <target name="build.html.lang">
+        <echo msg="Build HTML documentation : '${lang}'" />
+
+        <reflexive>
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="DOCBOOK_XSL" value="${docbook.xsl.htmlchunked}" />
+                    <token key="DOCBOOK_DTD" value="${docbook.dtd.url}" />
+                </replacetokens>
+            </filterchain>
+            <fileset dir="${stage.directory}/${lang}">
+                <include name="manual.xml" />
+                <include name="html.xsl" />
+            </fileset>
+        </reflexive>
+
+        <copy todir="${dist.directory}/${lang}">
+            <filterchain>
+                <xincludefilter basedir="${stage.directory}/${lang}"/>
+                <xsltfilter style="${stage.directory}/${lang}/html.xsl">
+                    <param name="base.dir" expression="${dist.directory}/${lang}/"/>
+                </xsltfilter>
+            </filterchain>
+            <fileset dir="${stage.directory}/${lang}">
+                <include name="manual.xml"/>
+            </fileset>
+        </copy>
+
+
+        <!--<phpdocbookhighlighter dir="${stage.directory}/${lang}" />-->
+
+    </target>
+
+
+
 
     <target name="clean">
         <delete dir="${dist.directory}" />
         <delete dir="${stage.directory}" />
+        <delete file="HTML.manifest" />
     </target>
 
 
+
+    <taskdef classname="tasks.PhpDocbookHighlighterTask" name="phpdocbookhighlighter" />
+    
 </project>
