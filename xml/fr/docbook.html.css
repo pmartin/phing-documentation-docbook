@@ -146,3 +146,297 @@ ul.code li code {
 .code .default { color: #44c; }
 .code .keyword { color: #373; }
 .code .string { color: #c30; }
+
+
+
+
+
+
+
+/* Syntax Highlight for code */
+
+/**
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ */
+
+.bash .de1, .bash .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.bash  {font-family:monospace;}
+.bash .imp {font-weight: bold; color: red;}
+.bash li, .bash .li1 {font-weight: normal; vertical-align:top;}
+.bash .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.bash .li2 {font-weight: bold; vertical-align:top;}
+.bash .kw1 {color: #000000; font-weight: bold;}
+.bash .kw2 {color: #c20cb9; font-weight: bold;}
+.bash .kw3 {color: #7a0874; font-weight: bold;}
+.bash .co0 {color: #666666; font-style: italic;}
+.bash .co1 {color: #800000;}
+.bash .co2 {color: #cc0000; font-style: italic;}
+.bash .co3 {color: #000000; font-weight: bold;}
+.bash .co4 {color: #666666;}
+.bash .es1 {color: #000099; font-weight: bold;}
+.bash .es2 {color: #007800;}
+.bash .es3 {color: #007800;}
+.bash .es4 {color: #007800;}
+.bash .es5 {color: #780078;}
+.bash .es_h {color: #000099; font-weight: bold;}
+.bash .br0 {color: #7a0874; font-weight: bold;}
+.bash .sy0 {color: #000000; font-weight: bold;}
+.bash .st0 {color: #ff0000;}
+.bash .st_h {color: #ff0000;}
+.bash .nu0 {color: #000000;}
+.bash .re0 {color: #007800;}
+.bash .re1 {color: #007800;}
+.bash .re2 {color: #007800;}
+.bash .re4 {color: #007800;}
+.bash .re5 {color: #660033;}
+.bash .ln-xtra, .bash li.ln-xtra, .bash div.ln-xtra {background-color: #ffc;}
+.bash span.xtra { display:block; }
+
+.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.html4strict  {font-family:monospace;}
+.html4strict .imp {font-weight: bold; color: red;}
+.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+.html4strict .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.html4strict .li2 {font-weight: bold; vertical-align:top;}
+.html4strict .kw2 {color: #000000; font-weight: bold;}
+.html4strict .kw3 {color: #000066;}
+.html4strict .es0 {color: #000099; font-weight: bold;}
+.html4strict .br0 {color: #66cc66;}
+.html4strict .sy0 {color: #66cc66;}
+.html4strict .st0 {color: #ff0000;}
+.html4strict .nu0 {color: #cc66cc;}
+.html4strict .sc-2 {color: #404040;}
+.html4strict .sc-1 {color: #808080; font-style: italic;}
+.html4strict .sc0 {color: #00bbdd;}
+.html4strict .sc1 {color: #ddbb00;}
+.html4strict .sc2 {color: #009900;}
+.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+.html4strict span.xtra { display:block; }
+
+.html5 .de1, .html5 .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.html5  {font-family:monospace;}
+.html5 .imp {font-weight: bold; color: red;}
+.html5 li, .html5 .li1 {font-weight: normal; vertical-align:top;}
+.html5 .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.html5 .li2 {font-weight: bold; vertical-align:top;}
+.html5 .kw2 {color: #000000; font-weight: bold;}
+.html5 .kw3 {color: #000066;}
+.html5 .es0 {color: #000099; font-weight: bold;}
+.html5 .br0 {color: #66cc66;}
+.html5 .sy0 {color: #66cc66;}
+.html5 .st0 {color: #ff0000;}
+.html5 .nu0 {color: #cc66cc;}
+.html5 .sc-2 {color: #404040;}
+.html5 .sc-1 {color: #808080; font-style: italic;}
+.html5 .sc0 {color: #00bbdd;}
+.html5 .sc1 {color: #ddbb00;}
+.html5 .sc2 {color: #009900;}
+.html5 .ln-xtra, .html5 li.ln-xtra, .html5 div.ln-xtra {background-color: #ffc;}
+.html5 span.xtra { display:block; }
+
+.javascript .de1, .javascript .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.javascript  {font-family:monospace;}
+.javascript .imp {font-weight: bold; color: red;}
+.javascript li, .javascript .li1 {font-weight: normal; vertical-align:top;}
+.javascript .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.javascript .li2 {font-weight: bold; vertical-align:top;}
+.javascript .kw1 {color: #000066; font-weight: bold;}
+.javascript .kw2 {color: #003366; font-weight: bold;}
+.javascript .kw3 {color: #000066;}
+.javascript .co1 {color: #006600; font-style: italic;}
+.javascript .co2 {color: #009966; font-style: italic;}
+.javascript .coMULTI {color: #006600; font-style: italic;}
+.javascript .es0 {color: #000099; font-weight: bold;}
+.javascript .br0 {color: #009900;}
+.javascript .sy0 {color: #339933;}
+.javascript .st0 {color: #3366CC;}
+.javascript .nu0 {color: #CC0000;}
+.javascript .me1 {color: #660066;}
+.javascript .ln-xtra, .javascript li.ln-xtra, .javascript div.ln-xtra {background-color: #ffc;}
+.javascript span.xtra { display:block; }
+
+.mysql .de1, .mysql .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.mysql  {font-family:monospace;}
+.mysql .imp {font-weight: bold; color: red;}
+.mysql li, .mysql .li1 {font-weight: normal; vertical-align:top;}
+.mysql .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.mysql .li2 {font-weight: bold; vertical-align:top;}
+.mysql .kw1 {color: #990099; font-weight: bold;}
+.mysql .kw2 {color: #990099; font-weight: bold;}
+.mysql .kw3 {color: #9900FF; font-weight: bold;}
+.mysql .kw4 {color: #999900; font-weight: bold;}
+.mysql .kw5 {color: #999900; font-weight: bold;}
+.mysql .kw6 {color: #FF9900; font-weight: bold;}
+.mysql .kw7 {color: #FF9900; font-weight: bold;}
+.mysql .kw8 {color: #9900FF; font-weight: bold;}
+.mysql .kw9 {color: #9900FF; font-weight: bold;}
+.mysql .kw10 {color: #CC0099; font-weight: bold;}
+.mysql .kw11 {color: #CC0099; font-weight: bold;}
+.mysql .kw12 {color: #009900;}
+.mysql .kw13 {color: #000099;}
+.mysql .kw14 {color: #000099;}
+.mysql .kw15 {color: #000099;}
+.mysql .kw16 {color: #000099;}
+.mysql .kw17 {color: #000099;}
+.mysql .kw18 {color: #000099;}
+.mysql .kw19 {color: #000099;}
+.mysql .kw20 {color: #000099;}
+.mysql .kw21 {color: #000099;}
+.mysql .kw22 {color: #000099;}
+.mysql .kw23 {color: #000099;}
+.mysql .kw24 {color: #000099;}
+.mysql .kw25 {color: #000099;}
+.mysql .kw26 {color: #000099;}
+.mysql .kw27 {color: #00CC00;}
+.mysql .coMULTI {color: #808000; font-style: italic;}
+.mysql .co1 {color: #808080; font-style: italic;}
+.mysql .co2 {color: #808080; font-style: italic;}
+.mysql .es0 {color: #004000; font-weight: bold;}
+.mysql .es1 {color: #008080; font-weight: bold;}
+.mysql .br0 {color: #FF00FF;}
+.mysql .sy1 {color: #CC0099;}
+.mysql .sy2 {color: #000033;}
+.mysql .st0 {color: #008000;}
+.mysql .nu0 {color: #008080;}
+.mysql .ln-xtra, .mysql li.ln-xtra, .mysql div.ln-xtra {background-color: #ffc;}
+.mysql span.xtra { display:block; }
+
+.php .de1, .php .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.php  {font-family:monospace;}
+.php .imp {font-weight: bold; color: red;}
+.php li, .php .li1 {font-weight: normal; vertical-align:top;}
+.php .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.php .li2 {font-weight: bold; vertical-align:top;}
+.php .kw1 {color: #b1b100;}
+.php .kw2 {color: #000000; font-weight: bold;}
+.php .kw3 {color: #990000;}
+.php .kw4 {color: #009900; font-weight: bold;}
+.php .co1 {color: #666666; font-style: italic;}
+.php .co2 {color: #666666; font-style: italic;}
+.php .co3 {color: #0000cc; font-style: italic;}
+.php .co4 {color: #009933; font-style: italic;}
+.php .coMULTI {color: #666666; font-style: italic;}
+.php .es0 {color: #000099; font-weight: bold;}
+.php .es1 {color: #000099; font-weight: bold;}
+.php .es2 {color: #660099; font-weight: bold;}
+.php .es3 {color: #660099; font-weight: bold;}
+.php .es4 {color: #006699; font-weight: bold;}
+.php .es5 {color: #006699; font-weight: bold; font-style: italic;}
+.php .es6 {color: #009933; font-weight: bold;}
+.php .es_h {color: #000099; font-weight: bold;}
+.php .br0 {color: #009900;}
+.php .sy0 {color: #339933;}
+.php .sy1 {color: #000000; font-weight: bold;}
+.php .st0 {color: #0000ff;}
+.php .st_h {color: #0000ff;}
+.php .nu0 {color: #cc66cc;}
+.php .nu8 {color: #208080;}
+.php .nu12 {color: #208080;}
+.php .nu19 {color:#800080;}
+.php .me1 {color: #004000;}
+.php .me2 {color: #004000;}
+.php .re0 {color: #000088;}
+.php .ln-xtra, .php li.ln-xtra, .php div.ln-xtra {background-color: #ffc;}
+.php span.xtra { display:block; }
+
+.sql .de1, .sql .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.sql  {font-family:monospace;}
+.sql .imp {font-weight: bold; color: red;}
+.sql li, .sql .li1 {font-weight: normal; vertical-align:top;}
+.sql .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.sql .li2 {font-weight: bold; vertical-align:top;}
+.sql .kw1 {color: #993333; font-weight: bold;}
+.sql .co1 {color: #808080; font-style: italic;}
+.sql .coMULTI {color: #808080; font-style: italic;}
+.sql .es0 {color: #000099; font-weight: bold;}
+.sql .br0 {color: #66cc66;}
+.sql .sy0 {color: #66cc66;}
+.sql .st0 {color: #ff0000;}
+.sql .nu0 {color: #cc66cc;}
+.sql .ln-xtra, .sql li.ln-xtra, .sql div.ln-xtra {background-color: #ffc;}
+.sql span.xtra { display:block; }
+
+.text .de1, .text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text  {font-family:monospace;}
+.text .imp {font-weight: bold; color: red;}
+.text li, .text .li1 {font-weight: normal; vertical-align:top;}
+.text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text .li2 {font-weight: bold; vertical-align:top;}
+.text .ln-xtra, .text li.ln-xtra, .text div.ln-xtra {background-color: #ffc;}
+.text span.xtra { display:block; }
+
+.vim .de1, .vim .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.vim  {font-family:monospace;}
+.vim .imp {font-weight: bold; color: red;}
+.vim li, .vim .li1 {font-weight: normal; vertical-align:top;}
+.vim .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.vim .li2 {font-weight: bold; vertical-align:top;}
+.vim .kw1 {color: #804040;}
+.vim .kw2 {color: #668080;}
+.vim .kw3 {color: #25BB4D;}
+.vim .co1 {color: #adadad; font-style: italic;}
+.vim .br0 {color: #000000;}
+.vim .sy0 {color: #000000;}
+.vim .st0 {color: #C5A22D;}
+.vim .nu0 {color: #000000; font-weight:bold;}
+.vim .me0 {color: #000000;}
+.vim .ln-xtra, .vim li.ln-xtra, .vim div.ln-xtra {background-color: #ffc;}
+.vim span.xtra { display:block; }
+
+.xml .de1, .xml .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.xml  {font-family:monospace;}
+.xml .imp {font-weight: bold; color: red;}
+.xml li, .xml .li1 {font-weight: normal; vertical-align:top;}
+.xml .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.xml .li2 {font-weight: bold; vertical-align:top;}
+.xml .es0 {color: #000099; font-weight: bold;}
+.xml .br0 {color: #66cc66;}
+.xml .sy0 {color: #66cc66;}
+.xml .st0 {color: #ff0000;}
+.xml .nu0 {color: #cc66cc;}
+.xml .sc-1 {color: #808080; font-style: italic;}
+.xml .sc0 {color: #00bbdd;}
+.xml .sc1 {color: #ddbb00;}
+.xml .sc2 {color: #339933;}
+.xml .sc3 {color: #009900;}
+.xml .re0 {color: #000066;}
+.xml .re1 {color: #000000; font-weight: bold;}
+.xml .re2 {color: #000000; font-weight: bold;}
+.xml .ln-xtra, .xml li.ln-xtra, .xml div.ln-xtra {background-color: #ffc;}
+.xml span.xtra { display:block; }
+
+.yaml .de1, .yaml .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.yaml  {font-family:monospace;}
+.yaml .imp {font-weight: bold; color: red;}
+.yaml li, .yaml .li1 {font-weight: normal; vertical-align:top;}
+.yaml .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.yaml .li2 {font-weight: bold; vertical-align:top;}
+.yaml .kw1 {font-weight: bold;}
+.yaml .co0 {color: #303050;background-color: #F5F5F5}
+.yaml .co1 {color: blue;}
+.yaml .co2 {font-weight: bold; color: red;}
+.yaml .co3 {color: green;}
+.yaml .co4 {color: #007F45;}
+.yaml .co5 {color: #7f7fFF;}
+.yaml .co6 {color: #FF7000;}
+.yaml .co7 {color: #FF45C0;}
+.yaml .co8 {font-weight: bold; color: #005F5F;}
+.yaml .sy1 {color: cyan;}
+.yaml .sy2 {font-weight: bold; color: brown;}
+.yaml .st0 {color: #CF00CF;}
+.yaml .ln-xtra, .yaml li.ln-xtra, .yaml div.ln-xtra {background-color: #ffc;}
+.yaml span.xtra { display:block; }
+
+
+
+
+
+
+
+
+
+
+
+
+
