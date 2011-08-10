@@ -85,8 +85,11 @@
             </fileset>
         </copy>
 
-
-        <phpdocbookhighlighter dir="${dist.directory}/${lang}" />
+        <syntaxhighlighthtml>
+            <fileset dir="${dist.directory}/${lang}">
+                <include name="*.html"/>
+            </fileset>
+        </syntaxhighlighthtml>
 
     </target>
 
@@ -101,6 +104,6 @@
 
 
 
-    <taskdef classname="tasks.PhpDocbookHighlighterTask" name="phpdocbookhighlighter" />
+    <taskdef classname="tasks.SyntaxHighlightHtmlTask" name="syntaxhighlighthtml" />
     
 </project>
