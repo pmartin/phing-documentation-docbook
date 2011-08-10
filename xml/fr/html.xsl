@@ -22,7 +22,7 @@
 <xsl:param name="admon.graphics">1</xsl:param>
 <xsl:param name="admon.graphics.path">/images/docbook/</xsl:param>
 <xsl:param name="admon.style"></xsl:param>
-<xsl:param name="html.stylesheet">docbook.css</xsl:param>
+<xsl:param name="html.stylesheet">docbook.html.css</xsl:param>
 <xsl:param name="header.rule">0</xsl:param>
 <xsl:param name="footer.rule">0</xsl:param>
 

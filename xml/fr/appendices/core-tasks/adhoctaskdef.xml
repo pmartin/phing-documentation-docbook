@@ -21,4 +21,23 @@
     </section>
 
 
+    <section>
+        <title>Titre d'une seconde section</title>
+
+        <para>
+            Un petit paragraphe, pour la forme
+        </para>
+
+
+        <programlisting language="php"><![CDATA[<?php
+
+$who = 'World';
+echo "Hello, $who!";
+
+]]></programlisting>
+
+
+    </section>
+
+
 </chapter>
