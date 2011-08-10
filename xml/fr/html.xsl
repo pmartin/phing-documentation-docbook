@@ -26,4 +26,6 @@
 <xsl:param name="header.rule">0</xsl:param>
 <xsl:param name="footer.rule">0</xsl:param>
 
+<xsl:template match="programlisting[@language]" mode="class.value">programlisting <xsl:value-of select="@language"/></xsl:template>
+
 </xsl:stylesheet>
