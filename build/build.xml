@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Phing Documentation" default="build" basedir="..">
+
+    <target name="build">
+
+        <echo msg="Hello, World!" />
+
+    </target>
+
+</project>
