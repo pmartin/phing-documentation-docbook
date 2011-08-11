@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bibliography [
+    <!ENTITY % entities SYSTEM "../entities.ent">
+    %entities;
+]>
+<bibliography version="5.0"
+         xml:id="phing.bibliography"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+    <title>Bibliography</title>
+    
+    <bibliodiv>
+        <title>International Standards</title>
+
+
+    </bibliodiv>
+
+
+    <bibliodiv>
+        <title>Licenses</title>
+        <biblioentry id="bibliography.gnu-fdl">
+            <abbrev>gnu-fdl</abbrev>
+            <title>The Gnu FDL (Free Documentation License), the license used for this documentation</title>
+            <link xlink:href="http://www.gnu.org/licenses/fdl.html">http://www.gnu.org/licenses/fdl.html</link>
+        </biblioentry>
+        <biblioentry id="bibliography.gnu-lgpl">
+            <abbrev>gnu-lgpl</abbrev>
+            <title>The GPL (Gnu Lesser Public License)</title>
+            <link xlink:href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</link>
+        </biblioentry>
+    </bibliodiv>
+
+
+    <bibliodiv>
+        <title>Open Source Projects</title>
+
+        <biblioentry id="bibliography.ant">
+            <abbrev>ant</abbrev>
+            <title>Ant, a Java Build Tool, the main inspiration for Phing</title>
+            <link xlink:href="http://ant.apache.org/">http://ant.apache.org/</link>
+        </biblioentry>
+
+    </bibliodiv>
+
+</bibliography>

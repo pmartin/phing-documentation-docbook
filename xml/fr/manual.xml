@@ -38,8 +38,11 @@
         </legalnotice>
     </info>
 
+    <xi:include href="chapters/about-this-book.xml" />
     <xi:include href="chapters/introduction.xml" />
     
     <xi:include href="appendices/core-tasks.xml" />
+
+    <xi:include href="chapters/bibliography.xml" />
 
 </book>
