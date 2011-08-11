@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+    <!ENTITY % entities SYSTEM "../../entities.ent">
+    %entities;
+]>
 <refentry
         xml:id="phing.coretasks.delete"
         xmlns="http://docbook.org/ns/docbook">
@@ -9,7 +13,7 @@
     </refnamediv>
 
     <refsect1 role="example">
-        <title>Example</title>
+        <title>&ref.title.example;</title>
         <programlisting language="xml"><![CDATA[
 <-- Delete a specific file -->
 <delete file="/tmp/foo.bar" />
@@ -26,9 +30,8 @@
 ]]></programlisting>
     </refsect1>
 
-
     <refsect1 role="parameters">
-        <title>Attributes</title>
+        <title>&ref.title.attributes;</title>
         <table xml:id="phing.coretasks.delete.parameters">
             <thead>
                 <tr>
@@ -89,14 +92,12 @@
                     <td>false</td>
                     <td>No</td>
                 </tr>
-
             </tbody>
         </table>
     </refsect1>
 
-
     <refsect1 role="nested">
-        <title>Supported Nested Tags</title>
+        <title>&ref.title.supportedNestedTags;</title>
         <para>
             <simplelist>
                 <member>

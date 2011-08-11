@@ -1,102 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<article version="5.0"
+<!DOCTYPE refentry [
+    <!ENTITY % entities SYSTEM "../../entities.ent">
+    %entities;
+]>
+<refentry version="5.0"
          xml:id="phing.coretasks.adhoctaskdef"
          xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mml="http://www.w3.org/1998/Math/MathML"
-         xmlns:html="http://www.w3.org/1999/xhtml"
-         xmlns:db="http://docbook.org/ns/docbook">
-    <title>AdhocTaskdefTask</title>
+         >
+    
+    <refnamediv>
+        <refname>AdhocTaskdefTask</refname>
+        <refpurpose>The AdhocTaskdefTask allows you to define a task within your build file.</refpurpose>
+    </refnamediv>
 
-    <section>
-        <title>Titre première section</title>
-        <para>
-            Blah blah premier paragraphe
-        </para>
-        <para>
-            Blah blah second paragraphe
-        </para>
-    </section>
-
-
-    <table xml:id="phing.coretasks.adhoctaskdef.parameters">
-        <thead>
-            <tr>
-                <td>Name</td>
-                <td>Type</td>
-                <td>Description</td>
-                <td>Default</td>
-                <td>Required</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>destFile</td>
-                <td>File</td>
-                <td>Path of file to which text should be appended.</td>
-                <td>n/a</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>file</td>
-                <td>File</td>
-                <td>Path to file that should be appended to destFile.</td>
-                <td>n/a</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>text</td>
-                <td>String</td>
-                <td>Some literal text to append to file.</td>
-                <td>n/a</td>
-                <td>No</td>
-            </tr>
-        </tbody>
-    </table>
-
-
-    <section>
-        <title>Titre d'une seconde section</title>
-
-        <para>
-            Un premier fragment de code, PHP :
-        </para>
-
-        <programlisting language="php"><![CDATA[<?php
-
-$who = 'World';
-echo "Hello, $who!";
-
-]]></programlisting>
-
-        <para>
-            Un second bout de code, XML :
-        </para>
-
+    <refsect1 role="example">
+        <title>&ref.title.example;</title>
         <programlisting language="xml"><![CDATA[
-<append destFile="${process.outputfile}">
-  <filterchain>
-    <xsltfilter style="${process.stylesheet}">
-	     <param name="mode" expression="${process.xslt.mode}"/>
-    </xsltfilter>
-  </filterchain>
-  <filelist dir="book/" listfile="book/PhingGuide.book"/>
-</append>
-]]></programlisting>
+<target name="main"
+        description="==>test AdhocTask ">
 
+        <adhoc-task name="foo"><![CDATA[
+            class FooTest extends Task {
+                private $bar;
+
+                function setBar($bar) {
+                    $this->bar = $bar;
+                }
+
+                function main() {
+                    $this->log("In FooTest: " . $this->bar);
+                }
+            }
+        ]]]]><![CDATA[></adhoc-task>
+
+        <foo bar="B.L.I.N.G"/>
+</target>
+]]></programlisting>
         <para>
-            Et troisième portion de code, sans spécifier le language :
+            Note that you should use &lt;![CDATA[ ... ]]&gt; so that you don't have to quote entities within your &lt;adhoc-task&gt;&lt;/adhoc-task&gt; tags.
         </para>
+    </refsect1>
 
-        <programlisting><![CDATA[
-Voici un quelque chose
-qui ressemble à du code
-sans préciser le language
-]]></programlisting>
+    <refsect1 role="parameters">
+        <title>&ref.title.attributes;</title>
+        <table xml:id="phing.coretasks.adhoctaskdef.parameters">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                    <td>Default</td>
+                    <td>Required</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><parameter>name</parameter></td>
+                    <td><type>String</type></td>
+                    <td>Name of XML tag that will represent this task.</td>
+                    <td>n/a</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+    </refsect1>
 
-    </section>
-
-
-</article>
+</refentry>
