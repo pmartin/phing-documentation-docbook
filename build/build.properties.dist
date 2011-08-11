@@ -5,3 +5,7 @@ docbook.xsl.htmlchunked = files/docbook-xsl-1.76.1/xhtml/chunk.xsl
 
 docbook.dtd.url = files/docbook.dtd
 
+docbook.xsl.fo=files/docbook-xsl-1.76.1/fo/docbook.xsl
+docbook.xsl.admongraphicspath=../../../files/docbook-xsl-1.76.1/images
+
+fop_conf=
