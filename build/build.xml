@@ -18,6 +18,7 @@
 
         <phingcall target="build.html" />
 
+        <phingcall target="build.pdf" />
 
     </target>
 
@@ -86,6 +87,8 @@
             </fileset>
         </copy>
 
+        <delete file="${dist.directory}/${lang}/manual.xml" />
+
         <syntaxhighlighthtml>
             <fileset dir="${dist.directory}/${lang}">
                 <include name="*.html"/>
@@ -94,6 +97,55 @@
 
     </target>
 
+
+
+    <target name="build.pdf">
+        <echo msg="Build PDF documentation" />
+
+        <echo msg="Staging" />
+        <foreach list="${languages}" param="lang" target="build.pdf.lang" />
+
+    </target>
+
+    <target name="build.pdf.lang">
+        <echo msg="Build PDF documentation : '${lang}'" />
+
+        <reflexive>
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="DOCBOOK_XSL" value="${docbook.xsl.fo}" />
+                    <token key="DOCBOOK_XSL_ADMON_GRAPHICS_PATH" value="${docbook.xsl.admongraphicspath}" />
+                </replacetokens>
+            </filterchain>
+            <fileset dir="${stage.directory}/${lang}">
+                <include name="fo.xsl" />
+            </fileset>
+        </reflexive>
+        
+        <copy todir="${stage.directory}/${lang}/pdf">
+            <filterchain>
+                <xincludefilter basedir="${stage.directory}/${lang}"/>
+                <filterreader classname="tasks.MyXsltFilter">
+                    <param name="base.dir" value="${dist.directory}/${lang}/"/>
+                    <param name="style" value="${stage.directory}/${lang}/fo.xsl"/>
+                </filterreader>
+            </filterchain>
+            <fileset dir="${stage.directory}/${lang}">
+                <include name="manual.xml"/>
+            </fileset>
+        </copy>
+
+		<copy file="${stage.directory}/${lang}/pdf/manual.xml" tofile="${stage.directory}/${lang}/pdf/manual.fo" overwrite="true"/>
+        <echo msg="Generated .fo for '${lang}' : ${stage.directory}/${lang}/pdf/manual.fo" />
+
+        <syntaxhighlightfo file="${stage.directory}/${lang}/pdf/manual.fo" />
+		<echo msg="SyntaxHighlighted .fo for '${lang}' : ${stage.directory}/${lang}/pdf/manual.fo" />
+
+        <exec command="fop manual.fo ${fop_conf} manual.pdf" dir="${stage.directory}/${lang}/pdf" />
+
+		<copy file="${stage.directory}/${lang}/pdf/manual.pdf" tofile="${dist.directory}/${lang}/phing-documentation-${lang}.pdf" overwrite="true"/>
+        
+    </target>
 
 
 
@@ -106,5 +158,6 @@
 
 
     <taskdef classname="tasks.SyntaxHighlightHtmlTask" name="syntaxhighlighthtml" />
+    <taskdef classname="tasks.SyntaxHighlightFoTask" name="syntaxhighlightfo" />
     
 </project>
