@@ -41,29 +41,33 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>file</td>
-                    <td>String</td>
+                    <td><parameter>file</parameter></td>
+                    <td><type>String</type></td>
                     <td>The file that is to be deleted. You either have to specify this attribute, dir, or use a fileset.</td>
                     <td>n/a</td>
-                    <td>Yes (or dir)</td>
+                    <td>Yes (or
+                        <parameter>dir</parameter>
+                        )</td>
                 </tr>
                 <tr>
-                    <td>dir</td>
-                    <td>String</td>
+                    <td><parameter>dir</parameter></td>
+                    <td><type>String</type></td>
                     <td>The directory that is to be deleted. You either have to specify this attribute, file, or use a fileset.</td>
                     <td>n/a</td>
-                    <td>Yes (or file)</td>
+                    <td>Yes (or
+                        <parameter>file</parameter>
+                        )</td>
                 </tr>
                 <tr>
-                    <td>verbose</td>
-                    <td>Boolean</td>
+                    <td><parameter>verbose</parameter></td>
+                    <td><type>Boolean</type></td>
                     <td>Used to force listing of all names of deleted files.</td>
                     <td>n/a</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>quiet</td>
-                    <td>Boolean</td>
+                    <td><parameter>quiet</parameter></td>
+                    <td><type>Boolean</type></td>
                     <td>
                         <para>If the file does not exist, do not display a diagnostic message or modify the exit status to reflect an error. This means that if a file or directory cannot be deleted, then no error is reported.</para>
                         <para>This setting emulates the -f option to the Unix rm command. Default is false meaning things are verbose </para>
@@ -72,15 +76,15 @@
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>failonerror</td>
-                    <td>Boolean</td>
+                    <td><parameter>failonerror</parameter></td>
+                    <td><type>Boolean</type></td>
                     <td>If this attribute is set to true, DeleteTask will verbose on errors but the build process will not be stopped.</td>
                     <td>true</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>includeemptydirs</td>
-                    <td>Boolean</td>
+                    <td><parameter>includeemptydirs</parameter></td>
+                    <td><type>Boolean</type></td>
                     <td>Determines if empty directories are also to be deleted.</td>
                     <td>false</td>
                     <td>No</td>
