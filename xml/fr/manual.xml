@@ -14,28 +14,8 @@
     lang="fr">
 
     <info>
-        <title>Documentation Phing</title>
-        <subtitle>Blah blah sous-titre</subtitle>
-        <authorgroup>
-	        <author>
-	            <firstname>Michiel</firstname>
-	            <surname>Rook</surname>
-	        </author>
-	        <othercredit class="translator">
-                <firstname>Pascal</firstname>
-                <surname>MARTIN</surname>
-            </othercredit>
-        </authorgroup>
-        <pubdate><?dbtimestamp format="Y-m-d"?></pubdate>
-        <copyright>
-            <year>2002-<?dbtimestamp format="Y"?></year>
-            <holder>The Phing Project</holder>
-        </copyright>
-        <legalnotice>
-            <para>
-                See the GNU FDL ([gnu-fdl], which is included in this book.
-            </para>
-        </legalnotice>
+        <title>Phing 2.4 - User Guide</title>
+        <subtitle>Andreas Aderhold, Alex Black, Manuel Holtgrewe, Hans Lellelid, Michiel Rook</subtitle>
     </info>
 
     <xi:include href="chapters/about-this-book.xml" />
