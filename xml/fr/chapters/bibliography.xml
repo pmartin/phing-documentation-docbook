@@ -23,16 +23,17 @@
 
     <bibliodiv>
         <title>Licenses</title>
-        <biblioentry id="bibliography.gnu-fdl">
-            <abbrev>gnu-fdl</abbrev>
-            <title>The Gnu FDL (Free Documentation License), the license used for this documentation</title>
-            <link xlink:href="http://www.gnu.org/licenses/fdl.html">http://www.gnu.org/licenses/fdl.html</link>
-        </biblioentry>
         <biblioentry id="bibliography.gnu-lgpl">
             <abbrev>gnu-lgpl</abbrev>
             <title>The GPL (Gnu Lesser Public License)</title>
-            <link xlink:href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</link>
+            <citetitle><ulink url="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</ulink></citetitle>
         </biblioentry>
+        <biblioentry id="bibliography.gnu-fdl">
+            <abbrev>gnu-fdl</abbrev>
+            <title>The Gnu FDL (Free Documentation License), the license used for this documentation</title>
+            <citetitle><ulink url="http://www.gnu.org/licenses/fdl.html">http://www.gnu.org/licenses/fdl.html</ulink></citetitle>
+        </biblioentry>
+
     </bibliodiv>
 
 
@@ -42,7 +43,7 @@
         <biblioentry id="bibliography.ant">
             <abbrev>ant</abbrev>
             <title>Ant, a Java Build Tool, the main inspiration for Phing</title>
-            <link xlink:href="http://ant.apache.org/">http://ant.apache.org/</link>
+            <citetitle><ulink url="http://ant.apache.org/">http://ant.apache.org/</ulink></citetitle>
         </biblioentry>
 
     </bibliodiv>

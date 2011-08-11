@@ -43,15 +43,15 @@
         <para>
             Of course, XML "compilation" is only one of many ways that Binarycloud uses the Phing build system.
             The Phing build system makes it possible for you to:
-            <itemizedlist>
-                <listitem>
-                    Build multi language pages from one source tree (see binarycloud documentation and [below in this document]),
-                </listitem>
-                <listitem>
-                    Centralize metadata (e.g. your data model) in one XML file and generate several files from that XML with different XSLT.
-                </listitem>
-            </itemizedlist>
         </para>
+        <itemizedlist>
+            <listitem>
+                Build multi language pages from one source tree (see binarycloud documentation and [below in this document]),
+            </listitem>
+            <listitem>
+                Centralize metadata (e.g. your data model) in one XML file and generate several files from that XML with different XSLT.
+            </listitem>
+        </itemizedlist>
         <para>
             It the beginning, Binarycloud used the GNU make system; however, this approach had some drawbacks:
             The "space-before-tab"-problem in makefiles, the fact that it is only natively available for Unix systems etc.
@@ -98,15 +98,15 @@
         <para>
             Phing is under active development and there are many things to be done.
             To get involved, you can start by doing the following:
-            <itemizedlist>
-                <listitem>
-                    Read this manual to understand Phing ;-)
-                </listitem>
-                <listitem>
-                    Go to <link xlink:href="http://phing.tigris.org">http://phing.tigris.org</link> and subscribe to the "dev" mailing list
-                </listitem>
-            </itemizedlist>
         </para>
+        <itemizedlist>
+            <listitem>
+                Read this manual to understand Phing ;-)
+            </listitem>
+            <listitem>
+                Go to <link xlink:href="http://phing.tigris.org">http://phing.tigris.org</link> and subscribe to the "dev" mailing list
+            </listitem>
+        </itemizedlist>
     </section>
 
 </chapter>
