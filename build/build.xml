@@ -76,9 +76,10 @@
         <copy todir="${dist.directory}/${lang}">
             <filterchain>
                 <xincludefilter basedir="${stage.directory}/${lang}"/>
-                <xsltfilter style="${stage.directory}/${lang}/html.xsl">
-                    <param name="base.dir" expression="${dist.directory}/${lang}/"/>
-                </xsltfilter>
+                <filterreader classname="tasks.MyXsltFilter">
+                    <param name="base.dir" value="${dist.directory}/${lang}/"/>
+                    <param name="style" value="${stage.directory}/${lang}/html.xsl"/>
+                </filterreader>
             </filterchain>
             <fileset dir="${stage.directory}/${lang}">
                 <include name="manual.xml"/>
