@@ -21,6 +21,7 @@
     </section>
 
     <xi:include href="core-tasks/adhoctaskdef.xml" />
+    <xi:include href="core-tasks/delete.xml" />
 
 
 </chapter>
