@@ -16,9 +16,25 @@
 
         <phingcall target="prepare" />
 
-        <phingcall target="build.html" />
+        <if>
+            <equals arg1="${build.do.html}" arg2="1" />
+            <then>
+                <phingcall target="build.html" />
+            </then>
+            <else>
+                <echo msg="Building of HTML output : disabled (build.do.html = 0)" level="warning" />
+            </else>
+        </if>
 
-        <phingcall target="build.pdf" />
+        <if>
+            <equals arg1="${build.do.pdf}" arg2="1" />
+            <then>
+                <phingcall target="build.pdf" />
+            </then>
+            <else>
+                <echo msg="Building of PDF output : disabled (build.do.pdf = 0)" level="warning" />
+            </else>
+        </if>
 
     </target>
 

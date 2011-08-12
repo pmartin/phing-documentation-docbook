@@ -1,6 +1,9 @@
 
 languages=fr,en
 
+build.do.html = 1
+build.do.pdf = 1
+
 docbook.xsl.htmlchunked = files/docbook-xsl-1.76.1/xhtml/chunk.xsl
 
 docbook.dtd.url = files/docbook.dtd
