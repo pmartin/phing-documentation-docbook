@@ -18,6 +18,8 @@
         <subtitle>Andreas Aderhold, Alex Black, Manuel Holtgrewe, Hans Lellelid, Michiel Rook</subtitle>
     </info>
 
+
+
     <xi:include href="chapters/about-this-book.xml" />
     <xi:include href="chapters/introduction.xml" />
     

@@ -73,6 +73,11 @@
         </reflexive>
 
         <copy file="${stage.directory}/${lang}/docbook.html.css" todir="${dist.directory}/${lang}" />
+        <copy todir="${dist.directory}/${lang}">
+            <fileset defaultexcludes="false" expandsymboliclinks="true" dir="${stage.directory}/${lang}">
+                <include name="**/*.png"/>
+            </fileset>
+        </copy>
 
         <copy todir="${dist.directory}/${lang}">
             <filterchain>

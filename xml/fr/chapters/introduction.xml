@@ -14,6 +14,12 @@
          xmlns:db="http://docbook.org/ns/docbook">
     <title>Introduction</title>
 
+    <mediaobject>
+        <imageobject>
+            <imagedata align="center" fileref="images/logo.png"></imagedata>
+        </imageobject>
+    </mediaobject>
+
     <section>
         <title>What Phing Is</title>
         <para>

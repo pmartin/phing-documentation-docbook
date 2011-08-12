@@ -20,53 +20,28 @@ class SyntaxHighlightFoTask extends Task {
     protected function highlightFile($fullFilePath)
     {
         $this->log("Processing {$fullFilePath}", Project::MSG_VERBOSE);
-        /*
-        $html = file_get_contents($fullFilePath);
+        
         $dom = new DOMDocument();
-        $dom->loadHTML($html);
+        $dom->load($fullFilePath);
 
         $xpath = new DOMXPath($dom);
-        $listings = $xpath->query('//pre[contains(@class,"programlisting")]');
-        if ($listings->length > 0) {
-            for ($i=0 ; $i<$listings->length ; $i++) {
-                $node = $listings->item($i);
 
-                $classAttributeStr = $node->getAttribute('class');
-                $classes = array_filter(explode(' ', $classAttributeStr), function ($class) {
-                    if (strcasecmp($class, 'programlisting') === 0) {
-                        return false;
-                    }
-                    return true;
-                });
 
-                if (!empty($classes)) {
-                    $language = $classes[1];
-                    $htmlListing = $this->innerHtml($node);
-                    $sourceCode = html_entity_decode(strip_tags($htmlListing), ENT_COMPAT, 'UTF-8');
-
-                    $geshi = new GeSHi($sourceCode, $language);
-                    $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-                    $geshi->enable_classes();
-                    $geshi->set_overall_class('programlisting');
-                    $geshi->set_tab_width(4);
-                    $remadeSourceCode = $geshi->parse_code();
-
-                    $elt = $dom->createElement('pre');
-                    $elt->setAttribute('class', $classAttributeStr);
-                    $tmpDom = new DOMDocument();
-                    $result = $tmpDom->loadHTML($remadeSourceCode);
-                    if ($result) {
-                        $import = $tmpDom->getElementsByTagName('pre')->item(0);
-                        foreach ($import->childNodes as $child) {
-                            $importedNode = $elt->ownerDocument->importNode($child, true);
-                            $elt->appendChild($importedNode);
-                        }
-                    }
-                    $node->parentNode->replaceChild($elt, $node);
-                }
+        $externalGraphics = $xpath->query("//fo:external-graphic");
+        foreach ($externalGraphics as $externalGraphic) {
+            $src = $externalGraphic->getAttribute('src');
+            if (preg_match('#^url\([^/]*/?images/(.+?)\)$#', $src, $m)) {
+                $newSrc = 'url(../images/' . $m[1] . ')';
+                $externalGraphic->setAttribute('src', $newSrc);
+                $externalGraphic->removeAttribute('height');
+                $externalGraphic->setAttribute('width', '100%');
+                $externalGraphic->setAttribute('content-height', '100%');
+                $externalGraphic->setAttribute('content-width', 'scale-to-fit');
+                $externalGraphic->setAttribute('scaling', 'uniform');
             }
-            file_put_contents($fullFilePath, $dom->saveHTML());
-        }*/
+        }
+        
+        file_put_contents($fullFilePath, $dom->saveXML());
     }
 
 
