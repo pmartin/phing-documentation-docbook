@@ -37,6 +37,9 @@ Other things which are *(for now)* commited inside the project, but should not b
 And you will have to copy `build/build.properties.dist` to `build/build.properties`; and set the correct values, if needed.
 
 
+If using FOP >= 0.95 on Debian/Ubuntu, see `build/reade.markdown` for some additional informations.
+
+
 # How to build the documentation #
 
 After installing the pre-requisites, and configuring build/build.properties, building the documentation is just a matter of launching one Phing target :
