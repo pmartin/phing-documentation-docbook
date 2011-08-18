@@ -1,68 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE refentry [
-    <!ENTITY % entities SYSTEM "../../entities.ent">
-    %entities;
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
 ]>
-<refentry version="5.0"
-         xml:id="phing.coretasks.adhoctaskdef"
-         xmlns="http://docbook.org/ns/docbook"
-         >
-    
-    <refnamediv>
-        <refname>AdhocTaskdefTask</refname>
-        <refpurpose>The AdhocTaskdefTask allows you to define a task within your build file.</refpurpose>
-    </refnamediv>
+<refentry version="5.0" xml:id="phing.coretasks.adhoctaskdef"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns52="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns5="http://www.w3.org/1999/xlink"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>AdhocTaskdefTask</refname>
 
-    <refsect1 role="example">
-        <title>&ref.title.example;</title>
-        <programlisting language="xml"><![CDATA[
-<target name="main"
-        description="==>test AdhocTask ">
+    <refpurpose>The AdhocTaskdefTask allows you to define a task within your
+    build file.</refpurpose>
+  </refnamediv>
 
-        <adhoc-task name="foo"><![CDATA[
+  <refsect1 role="example">
+    <title>&ref.title.example;</title>
+
+    <programlisting language="xml">
+&lt;target name="main"
+        description="==&gt;test AdhocTask "&gt;
+
+        &lt;adhoc-task name="foo"&gt;&lt;![CDATA[
             class FooTest extends Task {
                 private $bar;
 
                 function setBar($bar) {
-                    $this->bar = $bar;
+                    $this-&gt;bar = $bar;
                 }
 
                 function main() {
-                    $this->log("In FooTest: " . $this->bar);
+                    $this-&gt;log("In FooTest: " . $this-&gt;bar);
                 }
             }
-        ]]]]><![CDATA[></adhoc-task>
+        ]]&gt;&lt;/adhoc-task&gt;
 
-        <foo bar="B.L.I.N.G"/>
-</target>
-]]></programlisting>
-        <para>
-            Note that you should use &lt;![CDATA[ ... ]]&gt; so that you don't have to quote entities within your &lt;adhoc-task&gt;&lt;/adhoc-task&gt; tags.
-        </para>
-    </refsect1>
+        &lt;foo bar="B.L.I.N.G"/&gt;
+&lt;/target&gt;
+</programlisting>
 
-    <refsect1 role="parameters">
-        <title>&ref.title.attributes;</title>
-        <table xml:id="phing.coretasks.adhoctaskdef.parameters">
-            <thead>
-                <tr>
-                    <td>Name</td>
-                    <td>Type</td>
-                    <td>Description</td>
-                    <td>Default</td>
-                    <td>Required</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><parameter>name</parameter></td>
-                    <td><type>String</type></td>
-                    <td>Name of XML tag that will represent this task.</td>
-                    <td>n/a</td>
-                    <td>Yes</td>
-                </tr>
-            </tbody>
-        </table>
-    </refsect1>
+    <para>Note that you should use <code>&lt;![CDATA[ ... ]]&gt;</code> so
+    that you don't have to quote entities within your
+    <code>&lt;adhoc-task&gt;&lt;/adhoc-task&gt;</code> tags.</para>
+  </refsect1>
 
+  <refsect1 role="parameters">
+    <title>&ref.title.attributes;</title>
+
+    <table xml:id="phing.coretasks.adhoctaskdef.parameters">
+      <tr>
+        <th>Name</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        <th>Default</th>
+
+        <th>Required</th>
+      </tr>
+
+      <tr>
+        <td>
+          <parameter>name</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>Name of XML tag that will represent this task.</td>
+
+        <td>n/a</td>
+
+        <td>Yes</td>
+      </tr>
+    </table>
+  </refsect1>
 </refentry>

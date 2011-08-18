@@ -33,16 +33,13 @@
     <refsect1 role="parameters">
         <title>&ref.title.attributes;</title>
         <table xml:id="phing.coretasks.delete.parameters">
-            <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>Type</td>
-                    <td>Description</td>
-                    <td>Default</td>
-                    <td>Required</td>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                    <th>Required</th>
                 </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td><parameter>file</parameter></td>
                     <td><type>String</type></td>
@@ -92,7 +89,6 @@
                     <td>false</td>
                     <td>No</td>
                 </tr>
-            </tbody>
         </table>
     </refsect1>
 
