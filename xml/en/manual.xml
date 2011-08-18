@@ -23,7 +23,8 @@
     <xi:include href="chapters/about-this-book.xml" />
     <xi:include href="chapters/introduction.xml" />
     <xi:include href="chapters/setting-up-phing.xml" />
-    
+
+    <xi:include href="appendices/fact-sheet.xml" />
     <xi:include href="appendices/core-tasks.xml" />
 
     <xi:include href="chapters/bibliography.xml" />
