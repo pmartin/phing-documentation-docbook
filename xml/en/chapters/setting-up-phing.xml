@@ -50,7 +50,7 @@
       <para>NB: This list is not exhaustive, please refer to individual Phing
       tasks to find out additional software requirements.</para>
 
-      <table border="1">
+      <table>
         <caption>Software Dependencies</caption>
 
         <tr>
