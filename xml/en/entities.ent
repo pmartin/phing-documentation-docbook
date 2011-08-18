@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!ENTITY ref.title.note 'Note'>
 <!ENTITY ref.title.example 'Example'>
 <!ENTITY ref.title.attributes 'Attributes'>
 <!ENTITY ref.title.supportedNestedTags 'Supported Nested Tags'>

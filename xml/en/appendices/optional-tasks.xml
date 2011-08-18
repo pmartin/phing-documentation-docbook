@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter version="5.0" xml:id="phing.coretasks"
+<chapter version="5.0" xml:id="phing.optionaltasks"
          xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7,18 +7,16 @@
          xmlns:mml="http://www.w3.org/1998/Math/MathML"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Core Tasks</title>
+  <title>Optional Tasks</title>
 
-  <para>This appendix contains a reference of all core tasks, i.e. all tasks
-  that are needed to build a basic project. If you are looking for binarycloud
-  related tasks, look in appendix ?.</para>
+  <para>This appendix contains a reference of all optional tasks, i.e. tasks
+  that are not directly needed for building projects, but can assist in
+  various aspects of development and deployment.</para>
 
   <para>This reference lists the tasks alphabetically by the name of the
   classes that implement the tasks. So if you are searching for the reference
-  to the <code>&lt;copy&gt;</code> tag, for example, you will want to look at
-  the reference of <classname>CopyTask</classname> .</para>
+  to the <code>&lt;phplint&gt;</code> tag, for example, you will want to look
+  at the reference of <classname>PhpLintTask</classname>.</para>
 
-  <xi:include href="core-tasks/adhoctaskdef.xml" />
-
-  <xi:include href="core-tasks/delete.xml" />
+  <xi:include href="optional-tasks/coveragemergertask.xml" />
 </chapter>

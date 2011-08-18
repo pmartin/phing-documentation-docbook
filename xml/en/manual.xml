@@ -26,6 +26,7 @@
 
     <xi:include href="appendices/fact-sheet.xml" />
     <xi:include href="appendices/core-tasks.xml" />
+    <xi:include href="appendices/optional-tasks.xml" />
 
     <xi:include href="chapters/bibliography.xml" />
 
