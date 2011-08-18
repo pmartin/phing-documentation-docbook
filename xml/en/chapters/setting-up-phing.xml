@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter [
+<!ENTITY % entities SYSTEM "../entities.ent">
+%entities;
+]>
+<chapter version="5.0" xml:id="phing.settingupphing"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Setting-Up Phing</title>
+
+  <para>The goal of this chapter is to help you obtain and correctly setup and
+  execute Phing on your operating system. Once you setup Phing properly you
+  shouldn't need to revisit this chapter, unless you're re-installing or
+  moving your installation to another platform.</para>
+
+  <section>
+    <title>System Requirements</title>
+
+    <para>To use Phing you must have installed PHP version 5.2 or above
+    compiled <code>--with-libxml2</code>, as well as <code>--with-xsl</code>
+    if you want to make use of advanced functionality.</para>
+
+    <para>For more information on PHP and the required modules see the PHP
+    <xref linkend="bibliography.php" /> website. For a brief list of software
+    dependencies see below.</para>
+
+    <section>
+      <title>Operating Systems</title>
+
+      <para>Designed for portability from the get go, Phing runs on all
+      platforms that run PHP. However some advanced functionality may not work
+      properly or is simply ignored on some platforms (i.e. chmod on the
+      Windows platform).</para>
+
+      <para>To get the most out of Phing, a Unix style platform is
+      recommended. Namely: Linux, FreeBSD, OpenBSD, etc.</para>
+    </section>
+
+    <section>
+      <title>Software Dependencies</title>
+
+      <para>For a detailed list of required / optional sofware and libraries,
+      refer to the following table of Software Dependencies.</para>
+
+      <para>NB: This list is not exhaustive, please refer to individual Phing
+      tasks to find out additional software requirements.</para>
+
+      <table border="1">
+        <caption>Software Dependencies</caption>
+
+        <tr>
+          <th>Software</th>
+
+          <th>Required for</th>
+
+          <th>Source</th>
+        </tr>
+
+        <tr>
+          <td>PHP 5.2+</td>
+
+          <td>Execution</td>
+
+          <td><link
+          xlink:href="http://www.php.net/">http://www.php.net/</link></td>
+        </tr>
+
+        <tr>
+          <td>PHPUnit 3.4.0+</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://www.phpunit.de">http://www.phpunit.de</link></td>
+        </tr>
+
+        <tr>
+          <td>Xdebug 2.0.0+</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://www.xdebug.org">http://www.xdebug.org</link></td>
+        </tr>
+
+        <tr>
+          <td>SimpleTest 1.0.1 beta+</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://simpletest.sourceforge.net">http://simpletest.sourceforge.net</link></td>
+        </tr>
+
+        <tr>
+          <td>Creole 1.1.0+</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://creole.phpdb.org">http://creole.phpdb.org</link></td>
+        </tr>
+
+        <tr>
+          <td>PhpDocumentor 1.4.0+ (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/PhpDocumentor">http://pear.php.net/package/PhpDocumentor</link></td>
+        </tr>
+
+        <tr>
+          <td>VersionControl_SVN (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/VersionControl_SVN">http://pear.php.net/package/VersionControl_SVN</link></td>
+        </tr>
+
+        <tr>
+          <td>VersionControl_Git (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/VersionControl_Git">http://pear.php.net/package/VersionControl_Git</link></td>
+        </tr>
+
+        <tr>
+          <td>PHP_CodeSniffer (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/PHP_CodeSniffer">http://pear.php.net/package/PHP_CodeSniffer</link></td>
+        </tr>
+
+        <tr>
+          <td>Archive_Tar (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/Archive_Tar">http://pear.php.net/package/Archive_Tar</link></td>
+        </tr>
+
+        <tr>
+          <td>Services_Amazon_S3 (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/Services_Amazon_S3">http://pear.php.net/package/Services_Amazon_S3</link></td>
+        </tr>
+
+        <tr>
+          <td>HTTP_Request2 (PEAR package)</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.php.net/package/HTTP_Request2">http://pear.php.net/package/HTTP_Request2</link></td>
+        </tr>
+
+        <tr>
+          <td>PHP Depend</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://www.pdepend.org">http://www.pdepend.org</link></td>
+        </tr>
+
+        <tr>
+          <td>PHP Mess Detector</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://www.phpmd.org">http://www.phpmd.org</link></td>
+        </tr>
+
+        <tr>
+          <td>PHP Copy/Paste Detector</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://pear.phpunit.de">http://pear.phpunit.de</link></td>
+        </tr>
+
+        <tr>
+          <td>DocBlox 0.11.0+</td>
+
+          <td>Optional; enables additional task(s)</td>
+
+          <td><link
+          xlink:href="http://www.docblox-project.org">http://www.docblox-project.org</link></td>
+        </tr>
+      </table>
+
+      <para>Phing does not work with safe mode enabled!</para>
+    </section>
+  </section>
+</chapter>
