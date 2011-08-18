@@ -26,6 +26,27 @@
 <xsl:param name="header.rule">0</xsl:param>
 <xsl:param name="footer.rule">0</xsl:param>
 
+<xsl:param name="generate.toc">
+<!-- see http://www.sagehill.net/docbookxsl/TOCcontrol.html#TOCcomponents -->
+appendix  toc,title
+article/appendix  nop
+article   toc,title
+book      toc,title,figure,example,equation
+chapter   toc,title
+part      toc,title
+preface   toc,title
+qandadiv  toc
+qandaset  toc
+reference toc,title
+sect1     toc
+sect2     toc
+sect3     toc
+sect4     toc
+sect5     toc
+section   toc
+set       toc,title
+</xsl:param>
+
 <xsl:template match="programlisting[@language]" mode="class.value">programlisting <xsl:value-of select="@language"/></xsl:template>
 
 </xsl:stylesheet>
