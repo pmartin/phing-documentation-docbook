@@ -29,16 +29,12 @@
   <refsect1 role="example">
     <title>&ref.title.usageexample;</title>
 
-    <programlisting language="xml">
-&lt;filelist dir="/etc" files="httpd/conf/httpd.conf,php.ini"/&gt;
-</programlisting>
+    <programlisting language="xml"><![CDATA[<filelist dir="/etc" files="httpd/conf/httpd.conf,php.ini"/>]]></programlisting>
 
     <para>Or you can use a listfile, which is expected to contain one filename
     per line:</para>
 
-    <programlisting language="xml">
-&lt;filelist dir="conf/" listfile="ini_files.txt"/&gt;
-</programlisting>
+    <programlisting language="xml"><![CDATA[<filelist dir="conf/" listfile="ini_files.txt"/>]]></programlisting>
 
     <para>This will grab each file as listed in ini_files.txt. This can be
     useful if one task compiles a list of files to process and another task

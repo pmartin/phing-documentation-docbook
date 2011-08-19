@@ -13,5 +13,6 @@
   in Phing.</para>
 
     <xi:include href="core-types/filelist.xml" />
+    <xi:include href="core-types/fileset.xml" />
 
 </chapter>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry xml:id="phing.coretypes.fileset"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns52="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns5="http://www.w3.org/1999/xlink"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>FileSet</refname>
+
+    <refpurpose>FileSets offer an easy and straightforward way to include
+    files.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    <title>&ref.title.note;</title>
+
+    <para>The tag supports Selectors and PatternSets. Additionally, you can
+    include/exclude files in/from a fileset using the
+    <code>&lt;include&gt;/&lt;exclude&gt;</code> tags. In patterns, one
+    asterisk (<code>*</code>) maps to a part of a file/directory name within a
+    directory level. Two asterisks (<code>**</code>) may include above the
+    "border" of the directory separator.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    <title>&ref.title.example;</title>
+
+    <itemizedlist>
+      <listitem>
+        <para><code>test*.xml</code> will include
+        <filename>test_42.xml</filename>, but it will not include
+        <filename>test/some.xml</filename>.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>test**.xml</code> fits to <filename>test_42.xml</filename>
+        as well as to <filename>test/bla.xml</filename>, for example.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>**/*.ent.xml</code> fits to all files that end with
+        <filename>ent.xml</filename> in all subdirectories of the directory
+        specified with the dir attribute of the <code>&lt;fileset&gt;</code>
+        tag. However, it will not include any files that are directly in the
+        base directory of the file set.</para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    <title>&ref.title.usageexample;</title>
+
+    <programlisting language="xml"><![CDATA[<fileset dir="/etc" >
+  <include name="httpd/**" />
+  <include name="php.ini" />
+</fileset>
+
+<fileset dir="/etc" >
+  <patternset>
+    <include name="**/*.php"/>
+    <exclude name="**/*Test*"/>
+  </patternset>
+</fileset>]]></programlisting>
+
+    <para>This will include the apache configuration and PHP configuration
+    file from <filename>/etc</filename>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    <title>&ref.title.attributes;</title>
+
+    <table xml:id="phing.coretypes.fileset.parameters">
+      <caption>Attributes for the <code>&lt;fileset&gt;</code> tag</caption>
+
+      <tr>
+        <th>Name</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        <th>Default</th>
+
+        <th>Required</th>
+      </tr>
+
+      <tr>
+        <td><parameter>dir</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>The directory, the paths given in include/exclude are relative
+        to.</td>
+
+        <td>n/a</td>
+
+        <td>Yes</td>
+      </tr>
+
+      <tr>
+        <td><parameter>defaultexcludes</parameter></td>
+
+        <td><type>Boolean</type></td>
+
+        <td>Whether default exclusions should be used or not. Default excludes
+        are:<code>*~, #*#, .#*, %*%, CVS, CVS/**, .cvsignore, SCCS, SCCS/**,
+        vssver.scc, .svn, .svn/**, ._*, .DS_Store, .darcs,
+        .darcs/**</code></td>
+
+        <td>True</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>casesensitive</parameter></td>
+
+        <td><type>Boolean</type></td>
+
+        <td>The case sensitivity of the file system.</td>
+
+        <td>True</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>expandsymboliclinks</parameter></td>
+
+        <td><type>Boolean</type></td>
+
+        <td>Whether to expand/dereference (follow) symbolic links - set to
+        'true' to emulate old Phing behavior.</td>
+
+        <td>False</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>includes</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>Comma- or space-separated list of patterns of files that must be
+        included; all files are included when omitted.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>includesfile</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>The name of a file; each line of this file is taken to be an
+        include pattern.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>excludes</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>comma- or space-separated list of patterns of files that must be
+        excluded; no files (except default excludes) are excluded when
+        omitted.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>excludesfile</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>The name of a file; each line of this file is taken to be an
+        exclude pattern.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    <title>&ref.title.supportedNestedTags;</title>
+
+    <para>The tags that are supported by Fileset are
+    <code>&lt;include&gt;</code>, <code>&lt;exclude&gt;</code> and
+    <code>&lt;patternset&gt;</code>. The <code>&lt;include&gt;</code> and the
+    <code>&lt;exclude&gt;</code> tags tags must have a name attribute that
+    contains the pattern to include/exclude.</para>
+  </refsect1>
+</refentry>

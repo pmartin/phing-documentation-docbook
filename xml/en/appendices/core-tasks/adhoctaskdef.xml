@@ -20,8 +20,7 @@
   <refsect1 role="example">
     <title>&ref.title.example;</title>
 
-    <programlisting language="xml">
-&lt;target name="main"
+    <programlisting language="xml">&lt;target name="main"
         description="==&gt;test AdhocTask "&gt;
 
         &lt;adhoc-task name="foo"&gt;&lt;![CDATA[
