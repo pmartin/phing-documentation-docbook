@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry xml:id="phing.projectcomponents.targets"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Targets</refname>
+  </refnamediv>
+
+  <refsect1 role="example">
+    <title>&ref.title.example;</title>
+
+    <programlisting language="xml"><![CDATA[<target if="lang" unless="lang.en" depends="foo1,foo2"
+       name="main" description="This is an example target" >
+
+  <!-- everything else goes here -->
+
+</target>]]></programlisting>
+
+    <para>The target defined in the example above is only executed, if the
+    property <property>${lang}</property> is set and the property
+    <property>${lang.en}</property> is not set. Additionally, it depends on
+    the targets <code>foo1</code> and <code>foo2</code>. That means, the
+    targets <code>foo1</code> and <code>foo2</code> are executed before the
+    target <code>main</code> is executed. The name of the target is
+    <code>main</code> and it also has a description. </para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    <title>&ref.title.attributes;</title>
+
+    <table xml:id="phing.projectcomponents.targets.parameters">
+      <tr>
+        <th>Name</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        <th>Default</th>
+
+        <th>Required</th>
+      </tr>
+
+      <tr>
+        <td>
+          <parameter>depends</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>One or more names of targets that have to be executed before this
+        target can be executed.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td>
+          <parameter>description</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>A free text description of the target.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td>
+          <parameter>if</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>The name of the property that is to be set if the target is to be
+        executed.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td>
+          <parameter>name</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>The name of the target</td>
+
+        <td>n/a</td>
+
+        <td>Yes</td>
+      </tr>
+
+      <tr>
+        <td>
+          <parameter>unless</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>The name of the property that is to be set if the target is not to
+        be executed.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="note">
+    <title>&ref.title.note;</title>
+
+    <important>
+      <para>the <parameter>if</parameter> and <parameter>unless</parameter>
+      attributes only enable or disable the target to which they are attached.
+      They do not control whether or not targets that a conditional target
+      depends upon get executed. In fact, they do not even get evaluated until
+      the target is about to be executed, and all its predecessors have
+      already run. </para>
+    </important>
+  </refsect1>
+</refentry>
