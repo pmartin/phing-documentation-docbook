@@ -49,16 +49,18 @@ pre.programlisting {
 	border: solid 1px #444;
 	background-color: #e0e0e0;
 	padding: 0.1in;
-	margin: 0.2in;
+	margin: auto;
 	clear: right;
+    width: 80%;
 }
 
 pre.screen {
 	border: solid 1px #777;
 	background-color: #ddd;
 	padding: 0.1in;
-	margin: 0.2in;
+	margin: auto;
 	clear: right;
+    width: 80%;
 }
 
 
