@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+    <!ENTITY % entities SYSTEM "../../entities.ent">
+    %entities;
+]>
+<refentry
+        xml:id="phing.coremappers.flatten"
+        xmlns="http://docbook.org/ns/docbook">
+
+    <refnamediv>
+        <refname>FlattenMapper</refname>
+        <refpurpose>The FlattenMapper removes the directories from a filename and solely returns the filename.</refpurpose>
+    </refnamediv>
+
+
+</refentry>

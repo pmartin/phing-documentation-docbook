@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+    <!ENTITY % entities SYSTEM "../../entities.ent">
+    %entities;
+]>
+<refentry
+        xml:id="phing.selectors.contains"
+        xmlns="http://docbook.org/ns/docbook">
+
+    <refnamediv>
+        <refname>Contains</refname>
+        <refpurpose>The &lt;contains&gt; tag selects files that contain the string specified by the text attribute.</refpurpose>
+    </refnamediv>
+
+
+</refentry>

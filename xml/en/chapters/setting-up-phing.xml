@@ -3,7 +3,7 @@
 <!ENTITY % entities SYSTEM "../entities.ent">
 %entities;
 ]>
-<chapter version="5.0" xml:id="phing.settingupphing"
+<chapter version="5.0" xml:id="phing.chapters.settingupphing"
          xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"

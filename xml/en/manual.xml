@@ -23,11 +23,17 @@
     <xi:include href="chapters/about-this-book.xml" />
     <xi:include href="chapters/introduction.xml" />
     <xi:include href="chapters/setting-up-phing.xml" />
+    <xi:include href="chapters/getting-started.xml" />
+    <xi:include href="chapters/project-components.xml" />
+    <xi:include href="chapters/extending-phing.xml" />
 
     <xi:include href="appendices/fact-sheet.xml" />
     <xi:include href="appendices/core-tasks.xml" />
     <xi:include href="appendices/optional-tasks.xml" />
     <xi:include href="appendices/core-types.xml" />
+    <xi:include href="appendices/core-filters.xml" />
+    <xi:include href="appendices/core-mappers.xml" />
+    <xi:include href="appendices/selectors.xml" />
     <xi:include href="appendices/project-components.xml" />
     <xi:include href="appendices/file-formats.xml" />
 

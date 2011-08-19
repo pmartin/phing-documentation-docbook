@@ -4,7 +4,7 @@
     %entities;
 ]>
 <bibliography version="5.0"
-         xml:id="phing.bibliography"
+         xml:id="phing.chapters.bibliography"
          xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"

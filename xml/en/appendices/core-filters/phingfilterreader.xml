@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+    <!ENTITY % entities SYSTEM "../../entities.ent">
+    %entities;
+]>
+<refentry
+        xml:id="phing.corefilters.phingfilterreader"
+        xmlns="http://docbook.org/ns/docbook">
+
+    <refnamediv>
+        <refname>PhingFilterReader</refname>
+        <refpurpose>The PhingFilterReader is used when you want to use filters that are not directly available through their own tag.</refpurpose>
+    </refnamediv>
+
+
+</refentry>
