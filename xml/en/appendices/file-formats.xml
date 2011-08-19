@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="phing.fileformats"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>File Formats</title>
+
+  <section>
+    <title>Build File Format</title>
+
+    <para>The following XML file shows a basic Phing build file skeleton that
+    can be used as a starting point for your own build files. See the
+    references in Appendix A and AppendixB for more detailed information on
+    properties and tasks.</para>
+
+    <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+  =========================================================================  
+  The root tag of each build file must be a "project" tag.
+  =========================================================================
+-->
+<project name="(projectname)" [basedir="(projectbasedir)"]
+         [default="(targetname)"] [description="(projectdescription)"]>
+
+  <!--
+    =========================================================================  
+    Inclusion of optional overall project properties. 
+    =========================================================================  
+  -->
+  <property file="(main property file)" />
+
+  <!--
+    =========================================================================  
+     Build file wide properties used in the targets below
+    =========================================================================  
+  -->
+
+  <!-- Useful to make the current buildtime available as a property -->
+  <tstamp>
+      <!-- Format is, e.g. Sat, 03 Oct 2009, 16:31 -->
+      <format property="buildtime" pattern="%a, %d %b %Y, %H:%M"/>
+  </tstamp>
+
+  <property name="(first.property1)"  value="(value1)" override="true" />
+  <property name="(second.property2)"  value="(value2)" override="true" />
+
+  <!--
+    =========================================================================  
+    Type and task calls here, i.e. filesets, patternsets,
+    CopyTask calls etc.
+    =========================================================================  
+  -->
+    <!-- Filesets  -->
+    <fileset dir="(fileset.directory)" id="(fileset.reference)">
+        <include name="(include.pattern)"/>
+    </fileset>
+
+    <!-- Custom tasks  -->
+    <taskdef classname="(task.classname)" name="task.name" />
+    
+  <!--
+    =========================================================================  
+    All target definitions ...
+    =========================================================================  
+  -->
+  <target name="(targetname)" [depends="targetname1,targetname2"]
+          [if="(ifproperty)"] [unless="(unlessproperty)"]>
+    <!--
+      ----------------------------------------------------------------------
+      Type and task calls here, i.e. filesets, patternsets,
+      CopyTask calls, etc.
+      ----------------------------------------------------------------------
+    -->
+  </target>
+
+  <!--
+    =========================================================================  
+    More targets here
+    =========================================================================  
+  -->
+  <target name="..." >
+    <!--
+      ----------------------------------------------------------------------
+      Type and task calls here, i.e. filesets, patternsets,
+      CopyTask calls, etc.
+      ----------------------------------------------------------------------
+    -->
+
+  </target>
+</project>]]></programlisting>
+
+    <note>
+      <para>By convention properties are named in dot notation in Phing build
+      files, e.g. <varname>ftp.upload</varname>,
+      <varname>temp.builddir</varname> and so on </para>
+    </note>
+  </section>
+
+  <section>
+    <title>Property File Format</title>
+
+    <para>Property Files define properties. Properties are stored in key/value
+    pairs and may only contain plain text. The suffix of these files should be
+    <filename>.properties</filename>, the default Property File for a Build
+    File is <filename>build.properties</filename></para>
+
+    <programlisting language="text"><![CDATA[# Property files contain key/value pairs
+key=value
+
+# Property keys may contain alphanumeric chars and colons, but
+# not special chars. This way you can create pseudo-namespaces
+myapp.window.hsize=300
+myapp.window.vsize=200
+myapp.window.xpos=10
+myapp.window.ypos=100
+
+# You can refer to values of other properties by enclosing their
+# keys in "${}".
+text.width=${myapp.window.hsize}
+
+# Everything behind the equal sign is the value, you do
+# not have to enclose strings:
+text=This is some text, Your OS is ${php.os}
+
+# I guess that is all there is to property files]]></programlisting>
+  </section>
+</chapter>

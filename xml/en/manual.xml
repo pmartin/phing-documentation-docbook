@@ -28,6 +28,7 @@
     <xi:include href="appendices/core-tasks.xml" />
     <xi:include href="appendices/optional-tasks.xml" />
     <xi:include href="appendices/core-types.xml" />
+    <xi:include href="appendices/file-formats.xml" />
 
     <xi:include href="chapters/bibliography.xml" />
 
