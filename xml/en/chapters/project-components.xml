@@ -43,8 +43,7 @@
     attributes are fairly self-explanatory; the <parameter>default</parameter>
     attribute specifies the default <emphasis>Target</emphasis> to execute if
     no target is specified (Targets are described below). For a complete
-    reference, see <xref linkend="phing.projectcomponents.projects" />.
-    </para>
+    reference, see <xref linkend="phing.projectcomponents.projects" />.</para>
   </section>
 
   <section>
@@ -127,8 +126,8 @@
     <classname>SmartyTask</classname> which does something similar using
     Smarty templates, or <classname>CreoleTask</classname> which executes SQL
     statements against a specified DB. See <xref
-    linkend="phing.appendices.coretasks" /> for descriptions of Phing tasks.
-    </para>
+    linkend="phing.appendices.coretasks" /> for descriptions of Phing
+    tasks.</para>
 
     <para>Tasks support parameters in the form of:</para>
 
@@ -159,7 +158,7 @@
 
     <para>However, some tasks support more complex data types as parameters.
     These are passed to the task with <emphasis>nested tags</emphasis>.
-    Consider the following example: </para>
+    Consider the following example:</para>
 
     <programlisting language="xml"><![CDATA[<copy>
   <fileset dir=".">
@@ -279,61 +278,292 @@
     <section>
       <title>not</title>
 
-      <para></para>
+      <para>The <code>&lt;not&gt;</code> element expects exactly one other
+      condition to be nested into this element, negating the result of the
+      condition. It doesn't have any attributes and accepts all nested
+      elements of the condition task as nested elements as well.</para>
     </section>
 
     <section>
       <title>and</title>
 
-      <para></para>
+      <para>The <code>&lt;and&gt;</code> element doesn't have any attributes
+      and accepts an arbitrary number of conditions as nested elements. This
+      condition is true if all of its contained conditions are, conditions
+      will be evaluated in the order they have been specified in the build
+      file.</para>
+
+      <para>The <code>&lt;and&gt;</code> condition has the same shortcut
+      semantics as the &amp;&amp; operator in some programming languages, as
+      soon as one of the nested conditions is false, no other condition will
+      be evaluated.</para>
     </section>
 
     <section>
       <title>or</title>
 
-      <para></para>
+      <para>The <code>&lt;or&gt;</code> element doesn't have any attributes
+      and accepts an arbitrary number of conditions as nested elements. This
+      condition is true if at least one of its contained conditions is,
+      conditions will be evaluated in the order they have been specified in
+      the build file.</para>
+
+      <para>The <code>&lt;or&gt;</code> condition has the same shortcut
+      semantics as the || operator in some programming languages, as soon as
+      one of the nested conditions is true, no other condition will be
+      evaluated.</para>
     </section>
 
     <section>
       <title>os</title>
 
-      <para></para>
+      <para>Test whether the current operating system is of a given
+      type.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.os.attributes">
+        <caption><code>&lt;os&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>family</parameter></td>
+
+          <td>The name of the operating system family to expect.</td>
+
+          <td>Yes</td>
+        </tr>
+      </table>
+
+      <para>Supported values for the <parameter>family</parameter> attribute
+      are:<itemizedlist>
+          <listitem>
+            <para><code>windows</code> (for all versions of Microsoft
+            Windows)</para>
+          </listitem>
+
+          <listitem>
+            <para><code>mac</code> (for all Apple Macintosh systems)</para>
+          </listitem>
+
+          <listitem>
+            <para><code>unix</code> (for all Unix and Unix-like operating
+            systems)</para>
+          </listitem>
+        </itemizedlist></para>
     </section>
 
     <section>
       <title>equals</title>
 
-      <para></para>
+      <para>Tests whether the two given Strings are identical.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.equals.attributes">
+        <caption><code>&lt;equals&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>arg1</parameter></td>
+
+          <td>First string to test.</td>
+
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td><parameter>arg2</parameter></td>
+
+          <td>Second string to test.</td>
+
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td><parameter>casesensitive</parameter></td>
+
+          <td>Perform a case sensitive comparision. Default is
+          <code>true</code>.</td>
+
+          <td>No</td>
+        </tr>
+
+        <tr>
+          <td><parameter>trim</parameter></td>
+
+          <td>Trim whitespace from arguments before comparing them. Default is
+          <code>false</code>.</td>
+
+          <td>No</td>
+        </tr>
+      </table>
     </section>
 
     <section>
       <title>isset</title>
 
-      <para></para>
+      <para>Test whether a given property has been set in this project.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.isset.attributes">
+        <caption><code>&lt;isset&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>property</parameter></td>
+
+          <td>The name of the property to test.</td>
+
+          <td>Yes</td>
+        </tr>
+      </table>
     </section>
 
     <section>
       <title>contains</title>
 
-      <para></para>
+      <para>Tests whether a string contains another one.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.contains.attributes">
+        <caption><code>&lt;contains&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>string</parameter></td>
+
+          <td>The string to search in.</td>
+
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td><parameter>substring</parameter></td>
+
+          <td>The string to search for.</td>
+
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td><parameter>casesensitive</parameter></td>
+
+          <td>Perform a case sensitive comparision. Default is
+          <code>true</code>.</td>
+
+          <td>No</td>
+        </tr>
+      </table>
     </section>
 
     <section>
       <title>istrue</title>
 
-      <para></para>
+      <para>Tests whether a string evals to true.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.istrue.attributes">
+        <caption><code>&lt;istrue&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>value</parameter></td>
+
+          <td>value to test</td>
+
+          <td>Yes</td>
+        </tr>
+      </table>
+
+      <programlisting language="xml"><![CDATA[<istrue value="${someproperty}"/>
+<istrue value="false"/>]]></programlisting>
     </section>
 
     <section>
       <title>isfalse</title>
 
-      <para></para>
+      <para>Tests whether a string evals to not true, the negation of
+      <code>&lt;istrue&gt;</code>.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.isfalse.attributes">
+        <caption><code>&lt;isfalse&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>value</parameter></td>
+
+          <td>value to test</td>
+
+          <td>Yes</td>
+        </tr>
+      </table>
+
+      <programlisting language="xml"><![CDATA[<isfalse value="${someproperty}"/>
+<isfalse value="false"/>]]></programlisting>
     </section>
 
     <section>
       <title>referenceexists</title>
 
-      <para></para>
+      <para>Tests whether a specified reference exists.</para>
+
+      <table xml:id="phing.chapters.projectcomponents.conditions.referenceexists.attributes">
+        <caption><code>&lt;referenceexists&gt;</code> attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>ref</parameter></td>
+
+          <td>reference to test for</td>
+
+          <td>Yes</td>
+        </tr>
+      </table>
+
+      <programlisting language="xml"><![CDATA[<referenceexists ref="${someid}"/>]]></programlisting>
     </section>
 
     <section>
