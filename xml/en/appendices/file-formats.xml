@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <appendix version="5.0" xml:id="phing.appendices.fileformats"
-         xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mml="http://www.w3.org/1998/Math/MathML"
-         xmlns:html="http://www.w3.org/1999/xhtml"
-         xmlns:db="http://docbook.org/ns/docbook">
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
   <title>File Formats</title>
 
   <section>
@@ -14,7 +14,9 @@
 
     <para>The following XML file shows a basic Phing build file skeleton that
     can be used as a starting point for your own build files. See the
-    references in Appendix A and AppendixB for more detailed information on
+    references in <xref
+    linkend="phing.appendices.factsheet.builtinproperties" /> and <xref
+    linkend="phing.appendices.coretasks" /> for more detailed information on
     properties and tasks.</para>
 
     <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -97,7 +99,7 @@
     <note>
       <para>By convention properties are named in dot notation in Phing build
       files, e.g. <varname>ftp.upload</varname>,
-      <varname>temp.builddir</varname> and so on </para>
+      <varname>temp.builddir</varname> and so on</para>
     </note>
   </section>
 
