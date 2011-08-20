@@ -141,37 +141,217 @@
     <section>
       <title>Project Element</title>
 
-      <para></para>
+      <para>The first element after the document prolog is the root element
+      named <code>&lt;project&gt;</code> on line 3. This element is a
+      container for all other elements and can/must have the following
+      attributes:</para>
+
+      <table xml:id="phing.chapters.gettingstarted.project.attributes">
+        <caption><code>&lt;project&gt;</code> Attributes</caption>
+
+        <tr>
+          <th>Attribute</th>
+
+          <th>Meaning</th>
+
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td><parameter>name</parameter></td>
+
+          <td>The name of the project</td>
+
+          <td>No</td>
+        </tr>
+
+        <tr>
+          <td><parameter>basedir</parameter></td>
+
+          <td>The base directory of the project, use "<code>.</code>" do
+          denote the current directory. <emphasis role="bold">Note:</emphasis>
+          if none is specified, the parent directory of the build file is
+          used!</td>
+
+          <td>No</td>
+        </tr>
+
+        <tr>
+          <td><parameter>default</parameter></td>
+
+          <td>The default target that is to be executed if no target(s) are
+          specified when calling this build file.</td>
+
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td><parameter>description</parameter></td>
+
+          <td>The description of the project.</td>
+
+          <td>No</td>
+        </tr>
+      </table>
     </section>
 
     <section>
       <title>Target Element</title>
 
-      <para></para>
-    </section>
+      <para>A target can <emphasis>depend</emphasis> on other targets. You
+      might have a target for installing the files in the build tree, for
+      example, and a target for creating a distributable tar.gz archive. You
+      can only build a distributable when you have installed the files first,
+      so the distribute target depends on the install target. Phing resolves
+      these dependencies.</para>
 
-    <section>
-      <title>Target attributes</title>
+      <para>It should be noted, however, that Phing's depends attribute only
+      specifies the order in which targets should be executed - it does not
+      affect whether the target that specifies the dependency(s) gets executed
+      if the dependent target(s) did not (need to) run.</para>
 
-      <para></para>
+      <para>Phing tries to execute the targets in the depends attribute in the
+      order they appear (from left to right). Keep in mind that it is possible
+      that a target can get executed earlier when an earlier target depends on
+      it, in this case the dependant is only executed once:</para>
+
+      <programlisting language="xml"><![CDATA[<target name="A" />
+<target name="B" depends="A" />
+<target name="C" depends="B" />
+<target name="D" depends="C,B,A" />]]></programlisting>
+
+      <para>Suppose we want to execute target D. From its depends attribute,
+      you might think that first target C, then B and then A is executed.
+      Wrong! C depends on B, and B depends on A, so first A is executed, then
+      B, then C, and finally D.</para>
+
+      <para>A target gets executed only once, even when more than one target
+      depends on it (see the previous example).</para>
+
+      <para>The optional description attribute can be used to provide a
+      one-line description of this target, which is printed by the
+      <parameter>-projecthelp</parameter> command-line option.</para>
+
+      <section>
+        <title>Target attributes</title>
+
+        <para>You can specify one or more of the following attributes within
+        the target element.</para>
+
+        <table xml:id="phing.chapters.gettingstarted.target.attributes">
+          <caption><code>&lt;target&gt;</code> Attributes</caption>
+
+          <tr>
+            <th>Attribute</th>
+
+            <th>Meaning</th>
+
+            <th>Required</th>
+          </tr>
+
+          <tr>
+            <td><parameter>name</parameter></td>
+
+            <td>The name of the target</td>
+
+            <td>Yes</td>
+          </tr>
+
+          <tr>
+            <td><parameter>depends</parameter></td>
+
+            <td>A comma-seperated list of targets this target depends on.</td>
+
+            <td>No</td>
+          </tr>
+
+          <tr>
+            <td><parameter>if</parameter></td>
+
+            <td>The name of the <emphasis>Property</emphasis> that has to be
+            set in order for this target to be executed</td>
+
+            <td>No</td>
+          </tr>
+
+          <tr>
+            <td><parameter>unless</parameter></td>
+
+            <td>The name of the <emphasis>Property</emphasis> that must not be
+            set in order for this target to be executed.</td>
+
+            <td>No</td>
+          </tr>
+        </table>
+      </section>
     </section>
 
     <section>
       <title>Task Elements</title>
 
-      <para></para>
+      <para>A <emphasis>task</emphasis> is a piece of PHP code that can be
+      executed. This code implements a particular action to perform (i.e.
+      install a file). Therefore it must be defined in the buildfile so that
+      it is actually invoked by Phing.</para>
+
+      <para>These references will be resolved before the task is
+      executed.</para>
+
+      <para>Tasks have a common structure:</para>
+
+      <programlisting language="xml"><![CDATA[<name attribute1="value1" attribute2="value2" ... />]]></programlisting>
+
+      <para>where <code>name</code> is the name of the task,
+      <parameter>attributeN</parameter> is the attribute name, and
+      <code>valueN</code> is the value for this attribute.</para>
+
+      <para>There is a set of core tasks (see <xref
+      linkend="phing.appendices.coretasks" />) along with a number of optional
+      tasks. It is also very easy to write your own tasks (see <xref
+      linkend="phing.chapters.extendingphing" />).</para>
+
+      <para>Tasks can be assigned an <parameter>id</parameter>
+      attribute:</para>
+
+      <programlisting language="xml"><![CDATA[<taskname id="taskID" ... />]]></programlisting>
+
+      <para>By doing this you can refer to specific tasks later on in the code
+      of other tasks.</para>
     </section>
 
     <section>
       <title>Property Element</title>
 
-      <para></para>
+      <para><emphasis>Properties</emphasis> are essentially variables that can
+      be used in the buildfile. These might be set in the buildfile by calling
+      the <link
+      linkend="phing.coretasks.property"><classname>PropertyTask</classname></link>,
+      or might be set outside Phing on the command line (properties set on the
+      command line always override the ones in the buildfile). A property has
+      a name and a value only. Properties may be used in the value of task
+      attributes. This is done by placing the property name between "
+      <code>${</code> " and " <code>}</code> " in the attribute value. For
+      example, if there is a <property>BC_BUILD_DIR</property> property with
+      the value <code>'build'</code>, then this could be used in an attribute
+      like this: <code>${BC_BUILD_DIR}/en</code> . This is resolved to
+      <code>build/en</code>.</para>
+
+      <para>It should be noted that if you use a property that is not defined
+      via the property task, the system environment table is searched for this
+      name. For example, if you would use the property <code>${BCHOME}</code>
+      and you did not define this prior in the buildfile or at the command
+      line, Phing uses the environment variable <envar>BCHOME</envar> if it
+      exists.</para>
     </section>
 
     <section>
       <title>Built-in Properties</title>
 
-      <para></para>
+      <para>Phing provides access to system properties as if they had been
+      defined using a <code>&lt;property&gt;</code> task. For example,
+      <code>${os.name}</code> expands to the name of the operating system. See
+      <xref linkend="phing.appendices.factsheet.builtinproperties" /> for a
+      complete list.</para>
     </section>
   </section>
 
@@ -271,7 +451,7 @@
     properties specified on the command line using the <code>-D</code> switch.
     For example to override the <code>builddir</code> in the build file above
     one could call Phing as <command>$ phing
-    -Dbuilddir=/tmp/system-test</command> </para>
+    -Dbuilddir=/tmp/system-test</command></para>
   </section>
 
   <section>
