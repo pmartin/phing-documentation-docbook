@@ -13,7 +13,7 @@
     </refnamediv>
 
     <refsect1 role="note">
-        <title>&ref.title.note;</title>
+        &ref.title.note;
         <para>
             The format of the code coverage files is expected to be identical to:
         </para>
@@ -24,7 +24,7 @@ file_put_contents('/www/live/testcases/coverage.data', serialize(xdebug_get_code
 
 
     <refsect1 role="example">
-        <title>&ref.title.example;</title>
+        &ref.title.example;
         <programlisting language="xml"><![CDATA[
 <coverage-merger>
   <fileset dir="/www/live/testcases">
@@ -36,7 +36,7 @@ file_put_contents('/www/live/testcases/coverage.data', serialize(xdebug_get_code
 
 
     <refsect1 role="nested">
-        <title>&ref.title.supportedNestedTags;</title>
+        &ref.title.supportedNestedTags;
         <para>
             <simplelist>
                 <member>

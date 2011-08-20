@@ -18,7 +18,7 @@
   </refnamediv>
 
   <refsect1 role="note">
-    <title>&ref.title.note;</title>
+    &ref.title.note;
 
     <para>Unlike <classname>FileSet</classname>s,
     <classname>FileList</classname>s may contain files that do not exist on
@@ -28,7 +28,7 @@
   </refsect1>
 
   <refsect1 role="example">
-    <title>&ref.title.usageexample;</title>
+    &ref.title.usageexample;
 
     <programlisting language="xml"><![CDATA[<filelist dir="/etc" files="httpd/conf/httpd.conf,php.ini"/>]]></programlisting>
 
@@ -44,7 +44,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.coretypes.filelist.parameters">
       <caption>Attributes for the <code>&lt;filelist&gt;</code> tag</caption>

@@ -15,7 +15,7 @@
   </refnamediv>
 
   <refsect1 role="example">
-    <title>&ref.title.example;</title>
+    &ref.title.example;
 
     <programlisting language="xml"><![CDATA[<target if="lang" unless="lang.en" depends="foo1,foo2"
        name="main" description="This is an example target" >
@@ -34,7 +34,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.projectcomponents.targets.parameters">
       <tr>
@@ -135,7 +135,7 @@
   </refsect1>
 
   <refsect1 role="note">
-    <title>&ref.title.note;</title>
+    &ref.title.note;
 
     <important>
       <para>the <parameter>if</parameter> and <parameter>unless</parameter>

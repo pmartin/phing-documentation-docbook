@@ -19,14 +19,14 @@
   </refnamediv>
 
   <refsect1 role="note">
-    <title>&ref.title.note;</title>
+    &ref.title.note;
 
     <para>Patterns can be specified by nested <code>&lt;include&gt;</code> or
     <code>&lt;exclude&gt;</code> elements.</para>
   </refsect1>
 
   <refsect1 role="example">
-    <title>&ref.title.usageexample;</title>
+    &ref.title.usageexample;
 
     <programlisting language="xml"><![CDATA[<patternset id="no.tests">
   <include name="**/*.php"/>
@@ -35,7 +35,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.coretypes.patternset.parameters">
       <caption>Attributes for <code>&lt;patternset&gt;</code> tag</caption>
@@ -108,7 +108,7 @@
   </refsect1>
 
   <refsect1 role="nested">
-    <title>&ref.title.supportedNestedTags;</title>
+    &ref.title.supportedNestedTags;
 
     <para>The <code>&lt;patternset&gt;</code> tag only supports
     <code>&lt;include&gt;</code> and <code>&lt;exclude&gt;</code>. The

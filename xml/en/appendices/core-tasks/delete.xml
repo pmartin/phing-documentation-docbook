@@ -18,7 +18,7 @@
   </refnamediv>
 
   <refsect1 role="example">
-    <title>&ref.title.example;</title>
+    &ref.title.example;
 
     <programlisting language="xml"><![CDATA[
 <-- Delete a specific file -->
@@ -37,7 +37,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.coretasks.delete.parameters">
       <tr>
@@ -162,7 +162,7 @@
   </refsect1>
 
   <refsect1 role="nested">
-    <title>&ref.title.supportedNestedTags;</title>
+    &ref.title.supportedNestedTags;
 
     <para><simplelist>
         <member><link linkend="phing.fileset">Fileset</link></member>

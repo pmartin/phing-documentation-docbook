@@ -18,7 +18,7 @@
   </refnamediv>
 
   <refsect1 role="note">
-    <title>&ref.title.note;</title>
+    &ref.title.note;
 
     <para>The <code>&lt;project&gt;</code> tag also is the root tag in build
     files. It contains the name, the directory, a short description and a
@@ -29,7 +29,7 @@
   </refsect1>
 
   <refsect1 role="example">
-    <title>&ref.title.example;</title>
+    &ref.title.example;
 
     <programlisting language="xml"><![CDATA[<?xml version="1.0" ?>
 
@@ -42,7 +42,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.projectcomponents.projects.parameters">
       <tr>

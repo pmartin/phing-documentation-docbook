@@ -18,7 +18,7 @@
   </refnamediv>
 
   <refsect1 role="example">
-    <title>&ref.title.example;</title>
+    &ref.title.example;
 
     <programlisting language="xml">&lt;target name="main"
         description="==&gt;test AdhocTask "&gt;
@@ -47,7 +47,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.coretasks.adhoctaskdef.parameters">
       <tr>

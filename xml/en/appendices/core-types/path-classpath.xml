@@ -18,7 +18,7 @@
   </refnamediv>
 
   <refsect1 role="example">
-    <title>&ref.title.usageexample;</title>
+    &ref.title.usageexample;
 
     <para>In many cases the path type will be used for nested
     <code>&lt;classpath&gt;</code> tags. E.g.</para>
@@ -36,7 +36,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.coretypes.pathclasspath.parameters">
       <caption>Attributes for <code>&lt;path&gt;</code> tag</caption>
@@ -81,7 +81,7 @@
   </refsect1>
 
   <refsect1 role="nested">
-    <title>&ref.title.supportedNestedTags;</title>
+    &ref.title.supportedNestedTags;
 
     <para>The <code>&lt;path&gt;</code> tag supports nested
     <code>&lt;fileset&gt;</code> and <code>&lt;dirset&gt;</code> tags.</para>

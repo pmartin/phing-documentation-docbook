@@ -18,7 +18,7 @@
   </refnamediv>
 
   <refsect1 role="note">
-    <title>&ref.title.note;</title>
+    &ref.title.note;
 
     <para>The tag supports <link
     linkend="phing.appendices.selectors"><classname>Selector</classname>s</link>
@@ -32,7 +32,7 @@
   </refsect1>
 
   <refsect1 role="example">
-    <title>&ref.title.example;</title>
+    &ref.title.example;
 
     <itemizedlist>
       <listitem>
@@ -57,7 +57,7 @@
   </refsect1>
 
   <refsect1 role="example">
-    <title>&ref.title.usageexample;</title>
+    &ref.title.usageexample;
 
     <programlisting language="xml"><![CDATA[<fileset dir="/etc" >
   <include name="httpd/**" />
@@ -76,7 +76,7 @@
   </refsect1>
 
   <refsect1 role="parameters">
-    <title>&ref.title.attributes;</title>
+    &ref.title.attributes;
 
     <table xml:id="phing.coretypes.fileset.parameters">
       <caption>Attributes for the <code>&lt;fileset&gt;</code> tag</caption>
@@ -202,7 +202,7 @@
   </refsect1>
 
   <refsect1 role="nested">
-    <title>&ref.title.supportedNestedTags;</title>
+    &ref.title.supportedNestedTags;
 
     <para>The tags that are supported by Fileset are
     <code>&lt;include&gt;</code>, <code>&lt;exclude&gt;</code> and

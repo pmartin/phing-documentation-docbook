@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!ENTITY ref.title.note 'Note'>
-<!ENTITY ref.title.usageexample 'Usage example'>
-<!ENTITY ref.title.example 'Example'>
-<!ENTITY ref.title.attributes 'Attributes'>
-<!ENTITY ref.title.supportedNestedTags 'Supported Nested Tags'>
+<!ENTITY ref.title.note '<title xmlns="http://docbook.org/ns/docbook">Note</title>'>
+<!ENTITY ref.title.usageexample '<title xmlns="http://docbook.org/ns/docbook">Usage example</title>'>
+<!ENTITY ref.title.example '<title xmlns="http://docbook.org/ns/docbook">Example</title>'>
+<!ENTITY ref.title.attributes '<title xmlns="http://docbook.org/ns/docbook">Attributes</title>'>
+<!ENTITY ref.title.supportedNestedTags '<title xmlns="http://docbook.org/ns/docbook">Supported Nested Tags</title>'>
+
