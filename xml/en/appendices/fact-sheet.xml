@@ -9,7 +9,7 @@
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Fact Sheet</title>
 
-  <section>
+  <section xml:id="phing.appendices.factsheet.builtinproperties">
     <title>Built-In Properties</title>
 
     <table>
@@ -155,7 +155,7 @@
     </table>
   </section>
 
-  <section>
+  <section xml:id="phing.appendices.factsheet.commandlinearguments">
     <title>Command Line Arguments</title>
 
     <para>The following table lists the command line arguments currently
@@ -250,7 +250,7 @@
     </table>
   </section>
 
-  <section>
+  <section xml:id="phing.appendices.factsheet.distributionfilelayout">
     <title>Distribution File Layout</title>
 
     <para><screen>$PHING_HOME
@@ -274,7 +274,7 @@
 	   `-- etc</screen></para>
   </section>
 
-  <section>
+  <section xml:id="phing.appendices.factsheet.programexitcodes">
     <title>Program Exit Codes</title>
 
     <para>Phing is script-safe - means that you can execute Phing and
@@ -318,7 +318,7 @@
     </table>
   </section>
 
-  <section>
+  <section xml:id="phing.appendices.factsheet.thelgpllicense">
     <title>The LGPL License</title>
 
     <para>Source <link
