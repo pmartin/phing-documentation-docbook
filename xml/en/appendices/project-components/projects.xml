@@ -13,8 +13,8 @@
   <refnamediv>
     <refname>Phing Projects</refname>
 
-    <refpurpose>Projects are the outermost container for everything in build
-    files.</refpurpose>
+    <refpurpose><classname>Project</classname>s are the outermost container
+    for everything in build files.</refpurpose>
   </refnamediv>
 
   <refsect1 role="note">
@@ -24,7 +24,8 @@
     files. It contains the name, the directory, a short description and a
     default target.</para>
 
-    <para>Project may contain task calls and targets (see below).</para>
+    <para><classname>Project</classname> may contain task calls and targets
+    (see below).</para>
   </refsect1>
 
   <refsect1 role="example">

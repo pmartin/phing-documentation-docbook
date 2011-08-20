@@ -207,7 +207,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Project Components ##
 
- - `Phing Projects` : `` - *2011-08-20*
- - `Targets` : `` - *2011-08-20*
+ - `Phing Projects` : `DONE` - *2011-08-20*
+ - `Targets` : `DONE` - *2011-08-20*
 
 
