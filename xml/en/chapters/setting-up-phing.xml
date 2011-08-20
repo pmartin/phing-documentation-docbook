@@ -228,7 +228,7 @@
 
       <para>The easiest way to obtain the distribution package is to visit the
       Phing website <xref linkend="bibliography.phing" /> and download the
-      current distribution package in the format you desire. </para>
+      current distribution package in the format you desire.</para>
 
       <para>As of version 2.0, you have the option of downloading a
       PEAR-installable package or the full phing distribution. If you wish to
@@ -258,11 +258,11 @@
       in your system's search path. However, the steps for a Windows based
       system are very similar. There is plenty additional information
       available on how to use Subversion <xref
-      linkend="bibliography.svnhowto" />.</para>
+      linkend="bibliography.svn-howto" />.</para>
 
       <para>To check out the project source repository type:</para>
 
-      <screen>$&gt; svn checkout http://svn.phing.info/trunk</screen>
+      <screen><![CDATA[$> svn checkout http://svn.phing.info/trunk]]></screen>
 
       <para>You can also browse the entire Phing source (including previous
       versions and development branches) on <link
@@ -277,8 +277,8 @@
     Provided that the package you downloaded is a the PEAR-ready package, you
     can install Phing simply from the command line (Unix or Windows):</para>
 
-    <screen>$&gt; pear channel-discover pear.phing.info
-$&gt; pear install phing/phing</screen>
+    <screen><![CDATA[$> pear channel-discover pear.phing.info
+$> pear install phing/phing]]></screen>
 
     <para>The pear installer will check any dependencies and place the phing
     script (phing or phing.bat) into your PHP script directoy (i.e. where the
@@ -357,10 +357,10 @@ $&gt; pear install phing/phing</screen>
       bash bourne shell and Phing is installed in /opt/phing . The following
       sets up the environment properly:</para>
 
-      <screen>export PHP_COMMAND=/usr/bin/php
+      <screen><![CDATA[export PHP_COMMAND=/usr/bin/php
 export PHING_HOME=/opt/phing
 export PHP_CLASSPATH=${PHING_HOME}/classes
-export PATH=${PATH}:${PHING_HOME}/bin</screen>
+export PATH=${PATH}:${PHING_HOME}/bin]]></screen>
     </section>
 
     <section>
@@ -369,10 +369,10 @@ export PATH=${PATH}:${PHING_HOME}/bin</screen>
       <para>On the Windows platfrom, assuming Phing is installed in
       c:\opt\phing. The following sets up your environment:</para>
 
-      <para><screen>set PHP_COMMAND=c:\opt\php\php.exe
+      <para><screen><![CDATA[set PHP_COMMAND=c:\opt\php\php.exe
 set PHING_HOME=c:\opt\phing
 set PHP_CLASSPATH=c:\opt\phing\classes
-set PATH=%PATH%;%PHING_HOME%\bin</screen></para>
+set PATH=%PATH%;%PHING_HOME%\bin]]></screen></para>
     </section>
 
     <section>
@@ -417,7 +417,7 @@ set PATH=%PATH%;%PHING_HOME%\bin</screen></para>
       <para>Phing execution on the command line is simple. Just change to the
       directory where your buildfile resides and type</para>
 
-      <screen>$ phing [targetname]</screen>
+      <screen><![CDATA[$ phing [targetname]]]></screen>
 
       <para>at the command line <emphasis>(where <code>[targetname]</code> is
       the target you want to be executed)</emphasis>. Optionally, you may
@@ -428,7 +428,7 @@ set PATH=%PATH%;%PHING_HOME%\bin</screen></para>
       buildscript <filename>build.xml</filename> using the default target with
       the propery <varname>ftp.upload</varname> set to true.</para>
 
-      <para><screen>$ phing -Dftp.upload=true</screen></para>
+      <para><screen><![CDATA[$ phing -Dftp.upload=true]]></screen></para>
     </section>
   </section>
 </chapter>
