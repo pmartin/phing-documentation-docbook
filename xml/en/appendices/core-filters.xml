@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <appendix version="5.0" xml:id="phing.appendices.corefilters"
-         xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mml="http://www.w3.org/1998/Math/MathML"
-         xmlns:html="http://www.w3.org/1999/xhtml"
-         xmlns:db="http://docbook.org/ns/docbook">
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
   <title>Core Filters</title>
 
-  <para>blah</para>
+  <para>Filters are a subset of Phing data types which provide for the
+  transformation of file contents during the operation of another task. For
+  example, a filter might replace tokens in a file as part of a copy
+  task.</para>
 
-    <xi:include href="core-filters/phingfilterreader.xml" />
+  <para>Filters have to be defined within a <code>&lt;filterchain&gt;</code>
+  context to work. Example:</para>
 
+  <programlisting language="xml"><![CDATA[<filterchain>
+  <expandproperties />
+</filterchain>]]></programlisting>
+
+  <para>There are two ways to use a filter: System filters (the ones shipped
+  with Phing) can be used with their own tag name, such as
+  <code>&lt;xsltfilter&gt;</code>, <code>&lt;expandpropertyfilter&gt;</code>
+  or <code>&lt;tabtospaces&gt;</code>. User-defined filters can use the way is
+  to use the <code>&lt;filterreader&gt;</code> tag.</para>
+
+  <xi:include href="core-filters/phingfilterreader.xml" />
 </appendix>

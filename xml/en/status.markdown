@@ -27,9 +27,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `core-tasks` : `DONE` - *2011-08-20*
  - `optional-tasks` : `DONE` - *2011-08-20*
  - `core-types` : `DONE` - *2011-08-20*
- - `core-filters` : `TODO` - *2011-08-20*
- - `core-mappers` : `TODO` - *2011-08-20*
- - `selectors` : `TODO` - *2011-08-20*
+ - `core-filters` : `DONE` - *2011-08-20*
+ - `core-mappers` : `DONE` - *2011-08-20*
+ - `selectors` : `DONE` - *2011-08-20*
  - `project-components` : `DONE` - *2011-08-20*
  - `file-formats` : `DONE` - *2011-08-20*
 

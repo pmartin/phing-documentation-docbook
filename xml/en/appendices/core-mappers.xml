@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix [
+<!ENTITY % entities SYSTEM "../entities.ent">
+%entities;
+]>
 <appendix version="5.0" xml:id="phing.appendices.coremappers"
-         xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mml="http://www.w3.org/1998/Math/MathML"
-         xmlns:html="http://www.w3.org/1999/xhtml"
-         xmlns:db="http://docbook.org/ns/docbook">
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
   <title>Core Mappers</title>
 
-  <para>blah</para>
+  <para>While filters are applied to the content of files, Mappers are applied
+  to the filenames. All mappers have the same API, i.e. the way you use them
+  is the same:</para>
 
-    <xi:include href="core-mappers/flattenmapper.xml" />
+  <programlisting language="xml"><![CDATA[<mapper type="mappername" from="frompattern" to="topattern" />]]></programlisting>
 
+  <table xml:id="phing.appendices.coremappers.parameters">
+    <caption>Attributes for the <code>&lt;mapper&gt;</code> tag</caption>
+
+    <tr>
+      <th>Name</th>
+
+      <th>Type</th>
+
+      <th>Description</th>
+
+      <th>Default</th>
+
+      <th>Required</th>
+    </tr>
+
+    <tr>
+      <td><parameter>type</parameter></td>
+
+      <td><type>String</type></td>
+
+      <td>Type of the mapper.</td>
+
+      <td>n/a</td>
+
+      <td rowspan="2">One of these is required.</td>
+    </tr>
+
+    <tr>
+      <td><parameter>classname</parameter></td>
+
+      <td><type>String</type></td>
+
+      <td>Dot-path to a custom mapper class to use.</td>
+
+      <td>n/a</td>
+    </tr>
+
+    <tr>
+      <td><parameter>from</parameter></td>
+
+      <td><type>String</type></td>
+
+      <td>The pattern the filename is to be matched to. The exact meaning is
+      dependent on the implementation of the mapper.</td>
+
+      <td>n/a</td>
+
+      <td>depends on the implementation of the mapper</td>
+    </tr>
+
+    <tr>
+      <td><parameter>to</parameter></td>
+
+      <td><type>String</type></td>
+
+      <td>The pattern according to which the filename is to be changed to.
+      Here, the usage is dependent on the implementation of the mapper,
+      too.</td>
+
+      <td>n/a</td>
+
+      <td>depends on the implementation of the mapper</td>
+    </tr>
+  </table>
+
+  <xi:include href="core-mappers/flattenmapper.xml" />
 </appendix>
