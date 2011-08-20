@@ -92,19 +92,20 @@
   <section>
     <title>How Phing Works</title>
 
-    <para>Phing uses XML buildfiles that contain a description of the things
-    to do. The buildfile is structured into targets that contain the actual
-    commands to perform (e.g. commands to copy a file, delete a directory,
-    perform a DB query, etc.). So, to use Phing, you would first write your
-    buildfile and then you would run phing, specifying the target in your
-    buildfile that you want to execute.</para>
+    <para>Phing uses XML <emphasis>buildfiles</emphasis> that contain a
+    description of the things to do. The buildfile is structured into targets
+    that contain the actual commands to perform (e.g. commands to copy a file,
+    delete a directory, perform a DB query, etc.). So, to use Phing, you would
+    first write your buildfile and then you would run phing, specifying the
+    target in your buildfile that you want to execute.</para>
 
     <screen><![CDATA[% phing -f mybuildfile.xml mytarget        ]]></screen>
 
-    <para>By default Phing will look for a buildfile named build.xml (so you
-    don't have to specify the buildfile name unless it is not build.xml) and
-    if no target is specified Phing will try to execute the default target, as
-    specified in the &lt;project&gt; tag.</para>
+    <para>By default Phing will look for a buildfile named
+    <filename>build.xml</filename> (so you don't have to specify the buildfile
+    name unless it is not <filename>build.xml</filename>) and if no target is
+    specified Phing will try to execute the default target, as specified in
+    the <code>&lt;project&gt;</code> tag.</para>
   </section>
 
   <section>
