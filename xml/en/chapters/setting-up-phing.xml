@@ -45,12 +45,14 @@
       <title>Software Dependencies</title>
 
       <para>For a detailed list of required / optional sofware and libraries,
-      refer to the following table of Software Dependencies.</para>
+      refer to the following <link
+      linkend="phing.chapters.introduction.table.softwaredependencies">table
+      of Software Dependencies</link>.</para>
 
       <para>NB: This list is not exhaustive, please refer to individual Phing
       tasks to find out additional software requirements.</para>
 
-      <table>
+      <table xml:id="phing.chapters.introduction.table.softwaredependencies">
         <caption>Software Dependencies</caption>
 
         <tr>
@@ -206,8 +208,9 @@
         </tr>
       </table>
 
-      <para><emphasis role="bold">Phing does not work with safe mode
-      enabled!</emphasis></para>
+      <important>
+        <para>Phing does not work with safe mode enabled!</para>
+      </important>
     </section>
   </section>
 
@@ -246,12 +249,13 @@
       features and development, obtain a Subversion copy as described in the
       following paragraphs.</para>
 
-      <para><emphasis role="bold">The SVN revisions of Phing are not
-      bullet-proof and may fail to execute properly on your machine. Only
-      obtain the development versions if you are absolutely aware of
-      limitations and constraints of such an action. Additionally you should
-      sign up to the development mailinglist to report and notice errors and
-      incompatibilities.</emphasis></para>
+      <warning>
+        <para>The SVN revisions of Phing are not bullet-proof and may fail to
+        execute properly on your machine. Only obtain the development versions
+        if you are absolutely aware of limitations and constraints of such an
+        action. Additionally you should sign up to the development mailinglist
+        to report and notice errors and incompatibilities.</para>
+      </warning>
 
       <para>We assume that you are running a Unix style operating system. So
       we expect the Subversion software is installed ant the svn executable is
@@ -281,8 +285,9 @@
 $> pear install phing/phing]]></screen>
 
     <para>The pear installer will check any dependencies and place the phing
-    script (phing or phing.bat) into your PHP script directoy (i.e. where the
-    "pear" script resides).</para>
+    script (<command>phing</command> or <command>phing.bat</command>) into
+    your PHP script directoy (i.e. where the "<code>pear</code>" script
+    resides).</para>
   </section>
 
   <section>
@@ -296,66 +301,73 @@ $> pear install phing/phing]]></screen>
     already have done this in a prior step). This directory will be known as
     PHING_HOME .</para>
 
-    <para><emphasis role="bold">On earlier Windows installations, the script
-    used to launch Phing will have problems if PHING_HOME is a long filepath.
-    This is due to limitations in the OS's handling of the "for" batch-file
-    statement. It is recommended, therefore, that Phing be installed in a
-    short path, such as C:\opt\phing.</emphasis></para>
+    <note>
+      <para>On earlier Windows installations, the script used to launch Phing
+      will have problems if <envar>PHING_HOME</envar> is a long filepath. This
+      is due to limitations in the OS's handling of the "for" batch-file
+      statement. It is recommended, therefore, that Phing be installed in a
+      short path, such as <filename>C:\opt\phing</filename>.</para>
+    </note>
 
     <para>Before you can run Phing there is some additional set up you will
     need to do perform:</para>
 
     <itemizedlist>
       <listitem>
-        <para>Add the full path to the bin/ directory to your path.</para>
+        <para>Add the full path to the <filename>bin/</filename> directory to
+        your path.</para>
       </listitem>
 
       <listitem>
-        <para>Set the PHING_HOME environment variable to the directory where
-        you installed Phing. On some operating systems the Phing wrapper
-        scripts can guess PHING_HOME (Unix dialects and Windows). However, it
-        is better to not rely on this behavior.</para>
+        <para>Set the <envar>PHING_HOME</envar> environment variable to the
+        directory where you installed Phing. On some operating systems the
+        Phing wrapper scripts can guess <envar>PHING_HOME</envar> (Unix
+        dialects and Windows). However, it is better to not rely on this
+        behavior.</para>
       </listitem>
 
       <listitem>
-        <para>Set the PHP_COMMAND environment variable to where your Php
-        binary is located (including the binary i.e.
-        PHP_COMMAND=/usr/bin/php).</para>
+        <para>Set the <envar>PHP_COMMAND</envar> environment variable to where
+        your Php binary is located (including the binary i.e.
+        <code>PHP_COMMAND=/usr/bin/php</code>).</para>
       </listitem>
 
       <listitem>
-        <para>Set the PHP_CLASSPATH environment variable (see the section
-        below). This should be set at least point to PHING_HOME/classes.
-        Alternatively, you can also just add the phing/classes directory to
-        your PHP include_path ini setting.</para>
+        <para>Set the <envar>PHP_CLASSPATH</envar> environment variable (see
+        the section below). This should be set at least point to
+        <filename>PHING_HOME/classes</filename>. Alternatively, you can also
+        just add the <filename>phing/classes</filename> directory to your PHP
+        <code>include_path</code> ini setting.</para>
       </listitem>
 
       <listitem>
-        <para>Check your php.ini file to make sure that you have the following
-        settings:</para>
+        <para>Check your <filename>php.ini</filename> file to make sure that
+        you have the following settings:</para>
 
         <itemizedlist>
           <listitem>
-            <para>max_execution_time = 0 // unlimited execution time</para>
+            <para><code>max_execution_time = 0 // unlimited execution
+            time</code></para>
           </listitem>
 
           <listitem>
-            <para>memory_limit = 32M // you may need more memory depending on
-            size of your build files</para>
+            <para><code>memory_limit = 32M // you may need more memory
+            depending on size of your build files</code></para>
           </listitem>
         </itemizedlist>
       </listitem>
     </itemizedlist>
 
     <para>If you are using Phing in conjunction with another application, you
-    may need to add additional paths to PHP_CLASSPATH.</para>
+    may need to add additional paths to <envar>PHP_CLASSPATH</envar>.</para>
 
     <section>
       <title>Unix</title>
 
       <para>Assuming you are running a Unix dialect operating system with the
-      bash bourne shell and Phing is installed in /opt/phing . The following
-      sets up the environment properly:</para>
+      <application>bash bourne shell</application> and Phing is installed in
+      <filename>/opt/phing</filename>. The following sets up the environment
+      properly:</para>
 
       <screen><![CDATA[export PHP_COMMAND=/usr/bin/php
 export PHING_HOME=/opt/phing
@@ -367,7 +379,8 @@ export PATH=${PATH}:${PHING_HOME}/bin]]></screen>
       <title>Windows</title>
 
       <para>On the Windows platfrom, assuming Phing is installed in
-      c:\opt\phing. The following sets up your environment:</para>
+      <filename>c:\opt\phing</filename>. The following sets up your
+      environment:</para>
 
       <para><screen><![CDATA[set PHP_COMMAND=c:\opt\php\php.exe
 set PHING_HOME=c:\opt\phing
@@ -384,8 +397,8 @@ set PATH=%PATH%;%PHING_HOME%\bin]]></screen></para>
       <itemizedlist>
         <listitem>
           <para>If you want Phing to be able to use other packages / classes,
-          you can either add them to the PHP_CLASSPATH or to PHP's
-          include_path.</para>
+          you can either add them to the <envar>PHP_CLASSPATH</envar> or to
+          PHP's <code>include_path</code>.</para>
         </listitem>
 
         <listitem>
@@ -422,11 +435,12 @@ set PATH=%PATH%;%PHING_HOME%\bin]]></screen></para>
       <para>at the command line <emphasis>(where <code>[targetname]</code> is
       the target you want to be executed)</emphasis>. Optionally, you may
       specify command line arguments as listed in <xref
-      linkend="phing.factheet" />.</para>
+      linkend="phing.appendices.factsheet" />.</para>
 
       <para>For example, the following command line calls the default
       buildscript <filename>build.xml</filename> using the default target with
-      the propery <varname>ftp.upload</varname> set to true.</para>
+      the propery <varname>ftp.upload</varname> set to
+      <code>true</code>.</para>
 
       <para><screen><![CDATA[$ phing -Dftp.upload=true]]></screen></para>
     </section>
