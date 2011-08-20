@@ -246,25 +246,161 @@
     <section>
       <title>FileSet</title>
 
-      <para></para>
+      <para>FileSets are groups of files. You can include or exclude specific
+      files and patterns to/from a FileSet. The use of patterns is explained
+      below. For a start, look at the following example:</para>
+
+      <programlisting language="xml"><![CDATA[<fileset dir="/tmp" id="fileset1">
+  <include name="sometemp/file.txt" />
+  <include name="othertemp/**" />
+  <exclude name="othertemp/file.txt" />
+</fileset>
+
+<fileset dir="/home" id="fileset2">
+  <include name="foo/**" />
+  <include name="bar/**/*.php" />
+  <exclude name="foo/tmp/**" />
+</fileset>]]></programlisting>
+
+      <para>The use of patterns is quite straightforward: If you simply want
+      to match a part of a filename or dirname, you use <code>*</code>. If you
+      want to include multiple directories and/or files, you use
+      <code>**</code>. This way, filesets provide an easy but powerful way to
+      include files.</para>
     </section>
 
     <section>
       <title>FileList</title>
 
-      <para></para>
+      <para>FileLists, like FileSets, are collections of files; however, a
+      FileList is an explicitly defined list of files -- and the files don't
+      necessarily have to exist on the filesystem.</para>
+
+      <para>Besides being able to refer to nonexistent files, another thing
+      that FileLists allow you to do is specify files <emphasis>in a certain
+      order</emphasis>. Files in FileSets are ordered based on the OS-level
+      directory listing functions, in some cases you may want to specify a
+      list of files to be processed in a certain order -- e.g. when
+      concatenating files using the <code>&lt;append&gt;</code> task.</para>
+
+      <programlisting language="xml"><![CDATA[<filelist dir="base/" files="file1.txt,file2.txt,file3.txt"/>
+
+<!-- OR: -->
+<filelist dir="basedir/" listfile="files_to_process.txt"/>]]></programlisting>
     </section>
 
     <section>
       <title>FilterChains and Filters</title>
 
-      <para></para>
+      <para>FilterChains can be compared to Unix pipes. Unix pipes add a great
+      deal of flexibility to command line operations; for example, if you
+      wanted to copy just those lines that contained the string
+      <code>blee</code> from the first 10 lines of a file called
+      <filename>foo</filename> to a file called <filename>bar</filename>, you
+      could do:</para>
+
+      <screen><![CDATA[cat foo | head -n10 | grep blee > bar]]></screen>
+
+      <para>Something like this is not possible with the tasks and types that
+      we have learned about thus far, and this is where the incredible
+      usefulness of <emphasis>FilterChains</emphasis> becomes apparent. They
+      emulate Unix pipes and provide a powerful dimension of file/stream
+      manipulation for the tasks that support them.</para>
+
+      <para>FilterChain usage is quite straightforward: you pass the complex
+      Phing type <emphasis>filterchain</emphasis> to a task that supports
+      FilterChains and add individual filters to the FilterChain. In the
+      course of executing the task, the filters are applied (in the order in
+      which they appear in the XML) to the contents of the files that are
+      being manipulated by your task.</para>
+
+      <programlisting language="xml"><![CDATA[<filterchain>
+  <replacetokens>
+    <token key="BC_PATH" value="${top.builddir}/"/>
+    <token key="BC_PATH_USER" value="${top.builddir}/testsite/user/${lang}/"/>
+  </replacetokens>
+
+  <filterreader classname="phing.filters.TailFilter">
+    <param name="lines" value="10"/>
+  </filterreader>
+</filterchain>]]></programlisting>
+
+      <para>The code listing above shows you some example of how to use filter
+      chains. For a complete reference see <xref
+      linkend="phing.appendices.corefilters" />. This filter chain would
+      replace all occurences of <code>BC_PATH</code> and
+      <code>BC_PATH_USER</code> with the values assigned to them in lines 4
+      and 5. Additionally, it will only return the last 10 lines of the
+      files.</para>
+
+      <para>Notice above that FilterChain filters have a "shorthand" notation
+      and a long, generic notation. Most filters can be described using both
+      of these forms:</para>
+
+      <programlisting language="xml"><![CDATA[<replacetokens>
+  <token key="BC_PATH" value="${top.builddir}/"/>
+  <token key="BC_PATH_USER" value="${top.builddir}/testsite/user/${lang}/"/>
+</replacetokens>
+
+<!-- OR: -->
+
+<filterreader classname="phing.filters.ReplaceTokens">
+  <param type="token" name="BC_PATH" value="${top.builddir}/"/>
+  <param type="token" name="BC_PATH" value="${top.builddir}/testsite/user/${lang}/"/>
+</filterreader>]]></programlisting>
+
+      <para>As the pipe concept in Unix, the filter concept is quite complex
+      but powerful. To get a better understanding of different filters and how
+      they can be used, take a look at any of the many uses of FilterChains in
+      the build files for the binarycloud <xref linkend="bibliography.bc" />
+      project. </para>
     </section>
 
     <section>
       <title>File Mappers</title>
 
-      <para></para>
+      <para>With FilterChains and filters provide a powerful tool for changing
+      <emphasis>contents</emphasis> of files, Mappers provide a powerful tool
+      for changing the <emphasis>names</emphasis> of files.</para>
+
+      <para>To use a Mapper, you must specify a pattern to match on and a
+      replacement pattern that describes how the matched pattern should be
+      transformed. The simplest form is basically no different from the DOS
+      <command>copy</command> command:</para>
+
+      <screen><![CDATA[copy *.bat *.txt]]></screen>
+
+      <para>In Phing this is the <code>glob</code> Mapper:</para>
+
+      <programlisting language="xml"><![CDATA[<mapper type="glob" from="*.bat" to="*.txt"/>]]></programlisting>
+
+      <para>Phing also provides support for more complex mapping using regular
+      expressions:</para>
+
+      <programlisting language="xml"><![CDATA[<mapper type="regexp" from="^(.*)\.conf\.xml$$" to="\1.php"/>]]></programlisting>
+
+      <para>Consider the example below to see how Mappers can be used in a
+      build file. This example includes some of the other concepts introduced
+      in this chapter, such as FilterChains and FileSets. If you don't
+      understand everything, don't worry. The important point is that Mappers
+      are types too, which can be used in tasks that support them.</para>
+
+      <programlisting language="xml"><![CDATA[<copy>
+  <fileset dir=".">
+    <include name="*.ent.xml" />
+  </fileset>
+
+  <mapper type="regexp" from="^(.*)\.ent\.xml$" to="\1.php"/>
+
+  <filterchain>
+    <filterreader classname="phing.filters.XsltFilter">
+      <param name="style" value="ent2php.xsl" />
+    </filterreader>
+  </filterchain>
+</copy>]]></programlisting>
+
+      <para>For a complete reference, see <xref
+      linkend="phing.appendices.coremappers" />.</para>
     </section>
   </section>
 
