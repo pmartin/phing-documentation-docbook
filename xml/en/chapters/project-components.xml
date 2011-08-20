@@ -13,14 +13,336 @@
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Project Components</title>
 
-  <para>
-        blah
-  </para>
+  <para>This goal of this chapter is to make you familiar with the basic
+  components of a buildfile. After reading this chapter, you should be able to
+  read and understand the basic structure of any buildfile even if you don't
+  know exactly what the individual pieces do.</para>
 
+  <para>For supplemental reference information, you should see <xref
+  linkend="phing.appendices.coretasks" />, <xref
+  linkend="phing.appendices.coretypes" /> and <xref
+  linkend="phing.appendices.projectcomponents" />.</para>
+
+  <section>
+    <title>Projects</title>
+
+    <para>In the structure of a Phing buildfile, there must be exactly one
+    Project defined; the <code>&lt;project&gt;</code> tag is the root element
+    of the buildfile, meaning that everything else in the buildfile is
+    contained within the <code>&lt;project&gt;</code> element.</para>
+
+    <programlisting language="xml"><![CDATA[<?xml version="1.0"?>
+
+<project name="test" description="Simple test build file" default="main" >
+  <!-- Everything else here -->
+<project>]]></programlisting>
+
+    <para>The listing above shows a sample <code>&lt;project&gt;</code> tag
+    that has all attributes available for Projects. The
+    <parameter>name</parameter> and <parameter>description</parameter>
+    attributes are fairly self-explanatory; the <parameter>default</parameter>
+    attribute specifies the default <emphasis>Target</emphasis> to execute if
+    no target is specified (Targets are described below). For a complete
+    reference, see <xref linkend="phing.projectcomponents.projects" />.
+    </para>
+  </section>
+
+  <section>
+    <title>Version</title>
+
+    <para>Since Phing 2.4.2 it is possible to include a
+    <parameter>phingVersion</parameter> attribute in the
+    <code>&lt;project&gt;</code> tag. This attribute allows you to define the
+    minimum Phing version required to execute a build file, in order to
+    prevent compatibility issues.</para>
+
+    <programlisting language="xml"><![CDATA[<?xml version="1.0"?>
+
+<project name="test" phingVersion="2.4.2" >
+  <!-- Everything else here -->
+<project>]]></programlisting>
+  </section>
+
+  <section>
+    <title>Project Components in General</title>
+
+    <para>Project Components are all the elements found inside a project, i.e.
+    targets, tasks, types, etc. Project components may have attributes and
+    nested tags. Attributes only contain simple values, i.e. strings, integers
+    etc. Nested elements may be complex Phing types (like FileSets) or simple
+    wrapper classes for values with custom keys (see <xref
+    linkend="phing.coretypes.fileset" /> for example).</para>
+
+    <para>Any nested elements must be supported by the class that implements
+    the project component, and because the nested tags are handled by the
+    project component class the same nested tag may have different meanings
+    (and different attributes) depending on the context. So, for example, the
+    nested tag <code>&lt;param.../&gt;</code> within the
+    <code>&lt;phingcall&gt;</code> tag is handled very differently from the
+    <code>&lt;param.../&gt;</code> tag within the
+    <code>&lt;xsltfilter&gt;</code> tag -- in the first case setting project
+    properties, in the second case setting XSLT parameters.</para>
+  </section>
+
+  <section>
+    <title>Targets</title>
+
+    <para>Targets are collections of project components (but not other
+    targets) that are assigned a unique name within their project. A target
+    generally performs a specific task -- or calls other targets that perform
+    specific tasks -- and therefore a target is a bit like a
+    <emphasis>function</emphasis> (but a target has no return value).</para>
+
+    <para>Targets may <emphasis>depend</emphasis> on other targets. For
+    example, if target A depends on a target B, then when target A is called
+    to be executed, target B will be executed first. Phing automatically
+    resolves these dependencies. You cannot have circular references like:
+    "target A depends on target B that depends on target A".</para>
+
+    <para>The following code snippet shows an example of the use of
+    targets.</para>
+
+    <programlisting language="xml"><![CDATA[<target name="othertask" depends="buildpage" description="Whatever">
+  <!-- Task calls here -->
+<target>
+
+<target name="buildpage" description="Some description">
+  <!-- Task calls here -->
+<target>]]></programlisting>
+
+    <para>When Phing is asked to execute the <code>othertask</code> target, it
+    will see the dependency and execute <code>buildpage</code> first. Notice
+    that the the dependency task can be defined after the dependent
+    task.</para>
+  </section>
+
+  <section>
+    <title>Tasks</title>
+
+    <para>Tasks are responsible for doing the work in Phing. Basically, tasks
+    are the individual actions that your buildfile can perform. For example,
+    tasks exist to copy a file, create a directory, TAR files in a directory.
+    Tasks may also be more complex such as <classname>XsltTask</classname>
+    which copies a file and transforms the file using XSLT,
+    <classname>SmartyTask</classname> which does something similar using
+    Smarty templates, or <classname>CreoleTask</classname> which executes SQL
+    statements against a specified DB. See <xref
+    linkend="phing.appendices.coretasks" /> for descriptions of Phing tasks.
+    </para>
+
+    <para>Tasks support parameters in the form of:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Simple parameters (i.e. strings) passed as XML attributes,
+        or</para>
+      </listitem>
+
+      <listitem>
+        <para>More complex parameters that are passed by nested tags</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Simple parameters are basically strings. For example, if you pass a
+    value <code>"A simple string."</code> as a parameter, it is evaluated as a
+    string and accessible as one. You can also reference properties as
+    described in <xref linkend="phing.chapters.gettingstarted" />.</para>
+
+    <note>
+      <para>There are special values that are not mapped to strings, but to
+      boolean values instead. The values <code>true</code>,
+      <code>false</code>, <code>yes</code>, <code>no</code>, <code>on</code>
+      and <code>off</code> are translated to true/false boolean values.</para>
+
+      <programlisting language="xml"><![CDATA[<property name="myprop" value="value" override="true"/>]]></programlisting>
+    </note>
+
+    <para>However, some tasks support more complex data types as parameters.
+    These are passed to the task with <emphasis>nested tags</emphasis>.
+    Consider the following example: </para>
+
+    <programlisting language="xml"><![CDATA[<copy>
+  <fileset dir=".">
+    <include name="**" />
+  </fileset>
+</copy>]]></programlisting>
+
+    <para>Here, <classname>CopyTask</classname> is passed a complex parameter,
+    a <classname>Fileset</classname>. Tasks may support multiple complex types
+    in addition to simple parameters. Note that the names of the nested tags
+    used to create the complex types depend on the task implementation. Tasks
+    may support default Phing types (see below) or may introduce other types,
+    for example to wrap key/value pairs.</para>
+
+    <para>Refer to <xref linkend="phing.appendices.coretasks" /> for a list of
+    system tasks and their parameters.</para>
+  </section>
+
+  <section>
+    <title>Types</title>
 
     <section>
-        <title>Projects</title>
-            </section>
+      <title>Basics</title>
 
+      <para>Besides the simple types (strings, integer, booleans) you can use
+      in the parameters of tasks, there are more complex Phing
+      <emphasis>Types</emphasis>. As mentioned above, they are passed to a
+      task by using nesting tags:</para>
 
+      <programlisting language="xml"><![CDATA[<task>
+  <type />
+</task>
+
+<!-- or: -->
+
+<task>
+  <type1>
+    <subtype1>
+      <!-- etc. -->
+    </subtype1>
+  </type1>
+</task>]]></programlisting>
+
+      <para>Note that types may consist of multiple nested tags -- and
+      multiple levels of nested tags, as you can see in the second task call
+      above.</para>
+    </section>
+
+    <section>
+      <title>Referencing Types</title>
+
+      <para>An additional fact about types you should notice is the
+      possibility of <emphasis>referencing</emphasis> type instances, i.e. you
+      define your type somewhere in your build file and assign an id to it.
+      Later, you can refer to that type by the id you assigned.
+      Example:</para>
+
+      <programlisting language="xml"><![CDATA[<project>
+  <fileset id="foo">
+    <include name="*.php" />
+  </fileset>
+
+  <!-- Target that uses the type -->
+  <target name="foo" >
+    <copy todir="/tmp">
+      <fileset refid="foo" />
+    </copy>
+  </target>
+</project>]]></programlisting>
+
+      <para>As you can see, the type instance is assigned an id with the
+      <parameter>id</parameter> attribute and later on called by passing a
+      plain fileset tag to <classname>CopyTask</classname> that only contains
+      the <parameter>refid</parameter> attribute.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Basic Types</title>
+
+    <para>The following section gives you a quick introduction into the basic
+    Phing types. For a complete reference see <xref
+    linkend="phing.appendices.coretypes" />.</para>
+
+    <section>
+      <title>FileSet</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>FileList</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>FilterChains and Filters</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>File Mappers</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Conditions</title>
+
+    <para>Conditions are nested elements of the <link
+    linkend="phing.coretasks.condition"><code>condition</code></link> and
+    <link linkend="phing.coretasks.if"><code>if</code></link> tasks.</para>
+
+    <section>
+      <title>not</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>and</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>or</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>os</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>equals</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>isset</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>contains</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>istrue</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>isfalse</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>referenceexists</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>available</title>
+
+      <para>This condition is identical to the <link
+      linkend="phing.coretasks.available"><code>Available</code></link> task,
+      all attributes and nested elements of that task are supported, the
+      property and value attributes are redundant and will be ignored.</para>
+    </section>
+  </section>
 </chapter>
