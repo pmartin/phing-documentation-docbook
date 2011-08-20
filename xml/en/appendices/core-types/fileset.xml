@@ -13,15 +13,18 @@
   <refnamediv>
     <refname>FileSet</refname>
 
-    <refpurpose>FileSets offer an easy and straightforward way to include
-    files.</refpurpose>
+    <refpurpose><classname>FileSets</classname> offer an easy and
+    straightforward way to include files.</refpurpose>
   </refnamediv>
 
   <refsect1 role="note">
     <title>&ref.title.note;</title>
 
-    <para>The tag supports Selectors and PatternSets. Additionally, you can
-    include/exclude files in/from a fileset using the
+    <para>The tag supports <link
+    linkend="phing.appendices.selectors"><classname>Selector</classname>s</link>
+    and <link
+    linkend="phing.coretypes.patternset"><classname>PatternSet</classname>s</link>.
+    Additionally, you can include/exclude files in/from a fileset using the
     <code>&lt;include&gt;/&lt;exclude&gt;</code> tags. In patterns, one
     asterisk (<code>*</code>) maps to a part of a file/directory name within a
     directory level. Two asterisks (<code>**</code>) may include above the

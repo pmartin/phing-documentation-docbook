@@ -13,17 +13,18 @@
   <refnamediv>
     <refname>FileList</refname>
 
-    <refpurpose>FileLists offer a way to represent a specific list of
-    files.</refpurpose>
+    <refpurpose><classname>FileLists</classname> offer a way to represent a
+    specific list of files.</refpurpose>
   </refnamediv>
 
   <refsect1 role="note">
     <title>&ref.title.note;</title>
 
-    <para>Unlike FileSets, FileLists may contain files that do not exist on
-    the filesystem. Also, FileLists can represent files in a specific order --
-    whereas FileSets represent files in whichever order they are returned by
-    the filesystem.</para>
+    <para>Unlike <classname>FileSet</classname>s,
+    <classname>FileList</classname>s may contain files that do not exist on
+    the filesystem. Also, <classname>FileList</classname>s can represent files
+    in a specific order -- whereas <classname>FileSet</classname>s represent
+    files in whichever order they are returned by the filesystem.</para>
   </refsect1>
 
   <refsect1 role="example">
@@ -36,16 +37,17 @@
 
     <programlisting language="xml"><![CDATA[<filelist dir="conf/" listfile="ini_files.txt"/>]]></programlisting>
 
-    <para>This will grab each file as listed in ini_files.txt. This can be
-    useful if one task compiles a list of files to process and another task
-    needs to read in that list and perform some action to those files.</para>
+    <para>This will grab each file as listed in
+    <filename>ini_files.txt</filename>. This can be useful if one task
+    compiles a list of files to process and another task needs to read in that
+    list and perform some action to those files.</para>
   </refsect1>
 
   <refsect1 role="parameters">
     <title>&ref.title.attributes;</title>
 
     <table xml:id="phing.coretypes.filelist.parameters">
-      <caption>Attributes for the <code>&lt;fileset&gt;</code> tag</caption>
+      <caption>Attributes for the <code>&lt;filelist&gt;</code> tag</caption>
 
       <tr>
         <th>Name</th>

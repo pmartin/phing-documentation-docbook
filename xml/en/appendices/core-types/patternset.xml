@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry xml:id="phing.coretypes.patternset"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns52="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns5="http://www.w3.org/1999/xlink"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PatternSet</refname>
+
+    <refpurpose>The <classname>PatternSet</classname> data type defines
+    patterns that can be grouped into sets and nested into <link
+    linkend="phing.coretypes.fileset"><classname>FileSet</classname>s</link>.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    <title>&ref.title.note;</title>
+
+    <para>Patterns can be specified by nested <code>&lt;include&gt;</code> or
+    <code>&lt;exclude&gt;</code> elements.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    <title>&ref.title.usageexample;</title>
+
+    <programlisting language="xml"><![CDATA[<patternset id="no.tests">
+  <include name="**/*.php"/>
+  <exclude name="**/*Test*"/>
+</patternset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    <title>&ref.title.attributes;</title>
+
+    <table xml:id="phing.coretypes.patternset.parameters">
+      <caption>Attributes for <code>&lt;patternset&gt;</code> tag</caption>
+
+      <tr>
+        <th>Name</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        <th>Default</th>
+
+        <th>Required</th>
+      </tr>
+
+      <tr>
+        <td><parameter>includes</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>Comma- or space-separated list of patterns of files that must be
+        included; all files are included when omitted.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>includesfile</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>The name of a file; each line of this file is taken to be an
+        include pattern.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>excludes</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>comma- or space-separated list of patterns of files that must be
+        excluded; no files (except default excludes) are excluded when
+        omitted.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>excludesfile</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>The name of a file; each line of this file is taken to be an
+        exclude pattern.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    <title>&ref.title.supportedNestedTags;</title>
+
+    <para>The <code>&lt;patternset&gt;</code> tag only supports
+    <code>&lt;include&gt;</code> and <code>&lt;exclude&gt;</code>. The
+    <code>&lt;include&gt;</code> and the <code>&lt;exclude&gt;</code> tags
+    tags must have a <property>name</property> attribute that contains the
+    pattern to include/exclude. </para>
+  </refsect1>
+</refentry>

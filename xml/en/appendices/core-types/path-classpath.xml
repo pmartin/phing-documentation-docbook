@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry xml:id="phing.coretypes.pathclasspath"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns52="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns5="http://www.w3.org/1999/xlink"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Path / Classpath</refname>
+
+    <refpurpose>The <classname>Path</classname> data type can be used to
+    respresent path structures.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    <title>&ref.title.usageexample;</title>
+
+    <para>In many cases the path type will be used for nested
+    <code>&lt;classpath&gt;</code> tags. E.g.</para>
+
+    <programlisting language="xml"><![CDATA[<path id="project.class.path">
+  <pathelement dir="lib/"/>
+  <pathelement dir="ext/"/>
+</path>
+
+<target name="blah">
+  <taskdef name="mytask" path="myapp.phing.tasks.MyTask">
+    <classpath refid="project.class.path"/>
+  </taskdef>
+</target>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    <title>&ref.title.attributes;</title>
+
+    <table xml:id="phing.coretypes.pathclasspath.parameters">
+      <caption>Attributes for <code>&lt;path&gt;</code> tag</caption>
+
+      <tr>
+        <th>Name</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        <th>Default</th>
+
+        <th>Required</th>
+      </tr>
+
+      <tr>
+        <td><parameter>dir</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>Specific path to directory</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+
+      <tr>
+        <td><parameter>path</parameter></td>
+
+        <td><type>String</type></td>
+
+        <td>A path (which contains multiple locations separated by
+        path.separator) to add.</td>
+
+        <td>n/a</td>
+
+        <td>No</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    <title>&ref.title.supportedNestedTags;</title>
+
+    <para>The <code>&lt;path&gt;</code> tag supports nested
+    <code>&lt;fileset&gt;</code> and <code>&lt;dirset&gt;</code> tags.</para>
+  </refsect1>
+</refentry>

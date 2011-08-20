@@ -14,5 +14,7 @@
 
     <xi:include href="core-types/filelist.xml" />
     <xi:include href="core-types/fileset.xml" />
+    <xi:include href="core-types/patternset.xml" />
+    <xi:include href="core-types/path-classpath.xml" />
 
 </appendix>

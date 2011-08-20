@@ -148,10 +148,10 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Core Types ##
 
- - `FileList` : `` - *2011-08-20*
- - `FileSet` : `` - *2011-08-20*
- - `PatternSet` : `` - *2011-08-20*
- - `Path / Classpath` : `` - *2011-08-20*
+ - `FileList` : `DONE` - *2011-08-20*
+ - `FileSet` : `DONE` - *2011-08-20*
+ - `PatternSet` : `DONE` - *2011-08-20*
+ - `Path / Classpath` : `DONE` - *2011-08-20*
 
 
 ## Core Filters ##
