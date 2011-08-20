@@ -22,17 +22,7 @@
   <table xml:id="phing.appendices.coremappers.parameters">
     <caption>Attributes for the <code>&lt;mapper&gt;</code> tag</caption>
 
-    <tr>
-      <th>Name</th>
-
-      <th>Type</th>
-
-      <th>Description</th>
-
-      <th>Default</th>
-
-      <th>Required</th>
-    </tr>
+    &taskAttributes.table.titlesLine.all;
 
     <tr>
       <td><parameter>type</parameter></td>

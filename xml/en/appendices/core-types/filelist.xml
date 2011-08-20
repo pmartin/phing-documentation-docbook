@@ -49,17 +49,7 @@
     <table xml:id="phing.coretypes.filelist.parameters">
       <caption>Attributes for the <code>&lt;filelist&gt;</code> tag</caption>
 
-      <tr>
-        <th>Name</th>
-
-        <th>Type</th>
-
-        <th>Description</th>
-
-        <th>Default</th>
-
-        <th>Required</th>
-      </tr>
+      &taskAttributes.table.titlesLine.all;
 
       <tr>
         <td><parameter>dir</parameter></td>

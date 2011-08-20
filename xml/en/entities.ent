@@ -13,3 +13,12 @@
     <th>Required</th>
 </tr>'>
 
+<!ENTITY taskAttributes.table.titlesLine.all '
+<tr xmlns="http://docbook.org/ns/docbook">
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Default</th>
+    <th>Required</th>
+</tr>'>
+

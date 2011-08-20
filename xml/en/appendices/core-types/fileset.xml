@@ -81,17 +81,7 @@
     <table xml:id="phing.coretypes.fileset.parameters">
       <caption>Attributes for the <code>&lt;fileset&gt;</code> tag</caption>
 
-      <tr>
-        <th>Name</th>
-
-        <th>Type</th>
-
-        <th>Description</th>
-
-        <th>Default</th>
-
-        <th>Required</th>
-      </tr>
+      &taskAttributes.table.titlesLine.all;
 
       <tr>
         <td><parameter>dir</parameter></td>

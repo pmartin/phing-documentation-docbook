@@ -50,17 +50,7 @@
     &ref.title.attributes;
 
     <table xml:id="phing.coretasks.adhoctaskdef.parameters">
-      <tr>
-        <th>Name</th>
-
-        <th>Type</th>
-
-        <th>Description</th>
-
-        <th>Default</th>
-
-        <th>Required</th>
-      </tr>
+      &taskAttributes.table.titlesLine.all;
 
       <tr>
         <td>

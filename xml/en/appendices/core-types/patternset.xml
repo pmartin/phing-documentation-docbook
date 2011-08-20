@@ -40,17 +40,7 @@
     <table xml:id="phing.coretypes.patternset.parameters">
       <caption>Attributes for <code>&lt;patternset&gt;</code> tag</caption>
 
-      <tr>
-        <th>Name</th>
-
-        <th>Type</th>
-
-        <th>Description</th>
-
-        <th>Default</th>
-
-        <th>Required</th>
-      </tr>
+      &taskAttributes.table.titlesLine.all;
 
       <tr>
         <td><parameter>includes</parameter></td>
