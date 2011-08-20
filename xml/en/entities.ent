@@ -6,3 +6,10 @@
 <!ENTITY ref.title.attributes '<title xmlns="http://docbook.org/ns/docbook">Attributes</title>'>
 <!ENTITY ref.title.supportedNestedTags '<title xmlns="http://docbook.org/ns/docbook">Supported Nested Tags</title>'>
 
+<!ENTITY attributes.table.titlesLine.all '
+<tr xmlns="http://docbook.org/ns/docbook">
+    <th>Attribute</th>
+    <th>Meaning</th>
+    <th>Required</th>
+</tr>'>
+

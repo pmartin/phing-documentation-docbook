@@ -149,13 +149,7 @@
       <table xml:id="phing.chapters.gettingstarted.project.attributes">
         <caption><code>&lt;project&gt;</code> Attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>name</parameter></td>
@@ -241,13 +235,7 @@
         <table xml:id="phing.chapters.gettingstarted.target.attributes">
           <caption><code>&lt;target&gt;</code> Attributes</caption>
 
-          <tr>
-            <th>Attribute</th>
-
-            <th>Meaning</th>
-
-            <th>Required</th>
-          </tr>
+          &attributes.table.titlesLine.all;
 
           <tr>
             <td><parameter>name</parameter></td>

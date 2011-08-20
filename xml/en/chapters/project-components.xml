@@ -459,13 +459,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.os.attributes">
         <caption><code>&lt;os&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>family</parameter></td>
@@ -502,13 +496,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.equals.attributes">
         <caption><code>&lt;equals&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>arg1</parameter></td>
@@ -554,13 +542,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.isset.attributes">
         <caption><code>&lt;isset&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>property</parameter></td>
@@ -580,13 +562,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.contains.attributes">
         <caption><code>&lt;contains&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>string</parameter></td>
@@ -623,13 +599,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.istrue.attributes">
         <caption><code>&lt;istrue&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>value</parameter></td>
@@ -653,13 +623,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.isfalse.attributes">
         <caption><code>&lt;isfalse&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>value</parameter></td>
@@ -682,13 +646,7 @@
       <table xml:id="phing.chapters.projectcomponents.conditions.referenceexists.attributes">
         <caption><code>&lt;referenceexists&gt;</code> attributes</caption>
 
-        <tr>
-          <th>Attribute</th>
-
-          <th>Meaning</th>
-
-          <th>Required</th>
-        </tr>
+        &attributes.table.titlesLine.all;
 
         <tr>
           <td><parameter>ref</parameter></td>
