@@ -14,7 +14,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `about-this-book` : `DONE` - *2011-08-20*
  - `introduction` : `DONE` - *2011-08-20*
  - `setting-up-phing` : `DONE` - *2011-08-20*
- - `getting-started` : `TODO` - *2011-08-20*
+ - `getting-started` : `WIP` - *2011-08-20*
  - `project-components` : `TODO` - *2011-08-20*
  - `extending-phing` : `TODO` - *2011-08-20*
  - `bibliography` : `IMPORTED` - *2011-08-20*
