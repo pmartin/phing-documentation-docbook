@@ -50,6 +50,29 @@
 
 
 
+    <target name="publish">
+        <echo msg="Publishing documentation to ${publish.server.host}" />
+
+        <foreach list="${languages}" param="lang" target="publish.lang" />
+
+    </target>
+
+    <target name="publish.lang">
+        <echo msg="Publishing documentation to ${publish.server.host} : '${lang}'" />
+
+        <scp host="${publish.server.host}"
+            username="${publish.server.username}"
+            password="${publish.server.password}"
+            todir="${publish.server.root}/${lang}/" >
+            <fileset dir="${dist.directory}/${lang}">
+                <include name="**/*"/>
+            </fileset>
+        </scp>
+
+    </target>
+
+
+
     <target name="prepare">
         <mkdir dir="${dist.directory}" />
 
