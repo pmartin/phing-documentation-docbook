@@ -63,9 +63,9 @@
 
         <td>Name of XML tag that will represent this task.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>Yes</td>
+        <td>&attributes.required.yes;</td>
       </tr>
     </table>
   </refsect1>

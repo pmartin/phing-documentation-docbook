@@ -466,7 +466,7 @@
 
           <td>The name of the operating system family to expect.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
       </table>
 
@@ -503,7 +503,7 @@
 
           <td>First string to test.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
 
         <tr>
@@ -511,7 +511,7 @@
 
           <td>Second string to test.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
 
         <tr>
@@ -520,7 +520,7 @@
           <td>Perform a case sensitive comparision. Default is
           <code>true</code>.</td>
 
-          <td>No</td>
+          <td>&attributes.required.no;</td>
         </tr>
 
         <tr>
@@ -529,7 +529,7 @@
           <td>Trim whitespace from arguments before comparing them. Default is
           <code>false</code>.</td>
 
-          <td>No</td>
+          <td>&attributes.required.no;</td>
         </tr>
       </table>
     </section>
@@ -549,7 +549,7 @@
 
           <td>The name of the property to test.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
       </table>
     </section>
@@ -569,7 +569,7 @@
 
           <td>The string to search in.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
 
         <tr>
@@ -577,7 +577,7 @@
 
           <td>The string to search for.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
 
         <tr>
@@ -586,7 +586,7 @@
           <td>Perform a case sensitive comparision. Default is
           <code>true</code>.</td>
 
-          <td>No</td>
+          <td>&attributes.required.no;</td>
         </tr>
       </table>
     </section>
@@ -606,7 +606,7 @@
 
           <td>value to test</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
       </table>
 
@@ -630,7 +630,7 @@
 
           <td>value to test</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
       </table>
 
@@ -653,7 +653,7 @@
 
           <td>reference to test for</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
       </table>
 

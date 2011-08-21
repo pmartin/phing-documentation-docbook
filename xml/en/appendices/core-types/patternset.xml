@@ -50,9 +50,9 @@
         <td>Comma- or space-separated list of patterns of files that must be
         included; all files are included when omitted.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -63,9 +63,9 @@
         <td>The name of a file; each line of this file is taken to be an
         include pattern.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -77,9 +77,9 @@
         excluded; no files (except default excludes) are excluded when
         omitted.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -90,9 +90,9 @@
         <td>The name of a file; each line of this file is taken to be an
         exclude pattern.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
     </table>
   </refsect1>

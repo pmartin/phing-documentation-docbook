@@ -59,9 +59,9 @@
         <td>The base directory of the project, i.e. the directory all paths
         are relative to.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>Yes</td>
+        <td>&attributes.required.yes;</td>
       </tr>
 
       <tr>
@@ -78,7 +78,7 @@
 
         <td>all</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -92,9 +92,9 @@
 
         <td>A free text description of the project</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -108,9 +108,9 @@
 
         <td>Name of the project</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>Yes</td>
+        <td>&attributes.required.yes;</td>
       </tr>
     </table>
   </refsect1>

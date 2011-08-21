@@ -31,7 +31,7 @@
 
       <td>Type of the mapper.</td>
 
-      <td>n/a</td>
+      <td>&attributes.defaultValue.NA;</td>
 
       <td rowspan="2">One of these is required.</td>
     </tr>
@@ -43,7 +43,7 @@
 
       <td>Dot-path to a custom mapper class to use.</td>
 
-      <td>n/a</td>
+      <td>&attributes.defaultValue.NA;</td>
     </tr>
 
     <tr>
@@ -54,7 +54,7 @@
       <td>The pattern the filename is to be matched to. The exact meaning is
       dependent on the implementation of the mapper.</td>
 
-      <td>n/a</td>
+      <td>&attributes.defaultValue.NA;</td>
 
       <td>depends on the implementation of the mapper</td>
     </tr>
@@ -68,7 +68,7 @@
       Here, the usage is dependent on the implementation of the mapper,
       too.</td>
 
-      <td>n/a</td>
+      <td>&attributes.defaultValue.NA;</td>
 
       <td>depends on the implementation of the mapper</td>
     </tr>

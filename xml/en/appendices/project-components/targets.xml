@@ -51,9 +51,9 @@
         <td>One or more names of targets that have to be executed before this
         target can be executed.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -67,9 +67,9 @@
 
         <td>A free text description of the target.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -84,9 +84,9 @@
         <td>The name of the property that is to be set if the target is to be
         executed.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -100,9 +100,9 @@
 
         <td>The name of the target</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>Yes</td>
+        <td>&attributes.required.yes;</td>
       </tr>
 
       <tr>
@@ -117,9 +117,9 @@
         <td>The name of the property that is to be set if the target is not to
         be executed.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
     </table>
   </refsect1>

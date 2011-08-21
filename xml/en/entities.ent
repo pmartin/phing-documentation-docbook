@@ -22,3 +22,6 @@
     <th>Required</th>
 </tr>'>
 
+<!ENTITY attributes.defaultValue.NA 'n/a'>
+<!ENTITY attributes.required.yes 'yes'>
+<!ENTITY attributes.required.no 'no'>

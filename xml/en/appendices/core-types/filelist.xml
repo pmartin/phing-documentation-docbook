@@ -59,9 +59,9 @@
         <td>The directory, to which the paths given in files or listfile are
         relative.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>Yes</td>
+        <td>&attributes.required.yes;</td>
       </tr>
 
       <tr>
@@ -71,7 +71,7 @@
 
         <td>Comma or space-separated list of files.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
         <td>Yes (or <parameter>listfile</parameter> )</td>
       </tr>
@@ -83,7 +83,7 @@
 
         <td>A text file with one filename per line.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
         <td>Yes (or <parameter>files</parameter> )</td>
       </tr>

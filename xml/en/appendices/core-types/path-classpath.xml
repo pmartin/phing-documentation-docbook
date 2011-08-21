@@ -50,9 +50,9 @@
 
         <td>Specific path to directory</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -63,9 +63,9 @@
         <td>A path (which contains multiple locations separated by
         path.separator) to add.</td>
 
-        <td>n/a</td>
+        <td>&attributes.defaultValue.NA;</td>
 
-        <td>No</td>
+        <td>&attributes.required.no;</td>
       </tr>
     </table>
   </refsect1>

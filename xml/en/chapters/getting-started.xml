@@ -156,7 +156,7 @@
 
           <td>The name of the project</td>
 
-          <td>No</td>
+          <td>&attributes.required.no;</td>
         </tr>
 
         <tr>
@@ -167,7 +167,7 @@
           if none is specified, the parent directory of the build file is
           used!</td>
 
-          <td>No</td>
+          <td>&attributes.required.no;</td>
         </tr>
 
         <tr>
@@ -176,7 +176,7 @@
           <td>The default target that is to be executed if no target(s) are
           specified when calling this build file.</td>
 
-          <td>Yes</td>
+          <td>&attributes.required.yes;</td>
         </tr>
 
         <tr>
@@ -184,7 +184,7 @@
 
           <td>The description of the project.</td>
 
-          <td>No</td>
+          <td>&attributes.required.no;</td>
         </tr>
       </table>
     </section>
@@ -242,7 +242,7 @@
 
             <td>The name of the target</td>
 
-            <td>Yes</td>
+            <td>&attributes.required.yes;</td>
           </tr>
 
           <tr>
@@ -250,7 +250,7 @@
 
             <td>A comma-seperated list of targets this target depends on.</td>
 
-            <td>No</td>
+            <td>&attributes.required.no;</td>
           </tr>
 
           <tr>
@@ -259,7 +259,7 @@
             <td>The name of the <emphasis>Property</emphasis> that has to be
             set in order for this target to be executed</td>
 
-            <td>No</td>
+            <td>&attributes.required.no;</td>
           </tr>
 
           <tr>
@@ -268,7 +268,7 @@
             <td>The name of the <emphasis>Property</emphasis> that must not be
             set in order for this target to be executed.</td>
 
-            <td>No</td>
+            <td>&attributes.required.no;</td>
           </tr>
         </table>
       </section>
