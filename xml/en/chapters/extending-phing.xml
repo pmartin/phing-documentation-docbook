@@ -27,24 +27,51 @@
   <section xml:id="phing.chapters.extendingphing.extensionpossibilities">
     <title>Extension Possibilities</title>
 
-    <para></para>
+    <para>There are three main areas where Phing can be extended: <link
+    linkend="phing.chapters.extendingphing.extensionpossibilities.tasks">tasks</link>,
+    <link
+    linkend="phing.chapters.extendingphing.extensionpossibilities.types">types</link>,
+    <link
+    linkend="phing.chapters.extendingphing.extensionpossibilities.mappers">mappers</link>.
+    The following sections discuss these options.</para>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.extensionpossibilities.tasks">
       <title>Tasks</title>
 
-      <para></para>
+      <para>Tasks are pieces of codes that perform an atomic action like
+      installing a file. Therefore a special worker class hast to be created
+      and stored in a specific location, that actually implements the job. The
+      worker is just the interface to Phing that must fulfill some
+      requirements discussed later in this chapter, however it can - but not
+      necessarily must - use other classes, workers and libraries that aid
+      performing the operations needed.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.extensionpossibilities.types">
       <title>Types</title>
 
-      <para></para>
+      <para>Extending types is a rare need; nevertheless, you can do it. A
+      possible type you might implement is <emphasis>urlset</emphasis>, for
+      example.</para>
+
+      <para>You may end up needing a new type for a task you write; for
+      example, if you were writing the <classname>XSLTTask</classname> you
+      might discover that you needed a special type for XSLTParams (even
+      though in that case you could probably use the generic name/value
+      Parameter type). In cases where the type is really only for a single
+      task, you may want to just define the type class in the same file as the
+      Task class, rather than creating an official stand-alone Type.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.extensionpossibilities.mappers">
       <title>Mappers</title>
 
-      <para></para>
+      <para>Creating new mappers is also a rare need, since most everything
+      can be handled by the <link
+      linkend="phing.coremappers.regexp"><classname>RegexpMapper</classname></link>.
+      The Mapper framework does provide a simple way for defining your own
+      mappers to use instead, however, and mappers implement a very simple
+      interface.</para>
     </section>
   </section>
 
@@ -54,47 +81,238 @@
     <section>
       <title>Files And Directories</title>
 
-      <para></para>
+      <para>Before you are going to start to extend Phing let's have a look at
+      the source layout. You should be comfortable with the organization of
+      files witchin the source tree of Phing before start coding. After you
+      extracted the source distribution or checked it out from CVS you should
+      see the following directory structure:</para>
+
+      <screen><![CDATA[$PHING_HOME
+  |-- bin
+  |-- classes
+  |    `-- phing
+  |         |-- filters
+  |         |    `-- util
+  |         |-- mappers
+  |         |-- parser
+  |         |-- tasks
+  |         |    |-- ext
+  |         |    |-- system
+  |         |    |    `-- condition
+  |         |    `-- user
+  |         `-- types
+  |-- docs
+  |    `-- phing_guide
+  `-- test
+       |-- classes
+           `-- etc]]></screen>
+
+      <para>The following table briefly describes the contents of the major
+      directories:</para>
+
+      <table>
+        <caption>Phing source tree directories</caption>
+
+        <tr>
+          <th>Directory</th>
+
+          <th>Contents</th>
+        </tr>
+
+        <tr>
+          <td><filename>bin</filename></td>
+
+          <td>The basic applications (phing, configure) as well as the wrapper
+          scripts for different platforms (currently Unix and Windows).</td>
+        </tr>
+
+        <tr>
+          <td><filename>classes</filename></td>
+
+          <td>Repository of all the classes used by Phing. This is the base
+          directory that should be on the PHP <varname>include_path</varname>.
+          In this directory you will find the subdirectory
+          <filename>phing/</filename> with all the Phing relevant
+          classes.</td>
+        </tr>
+
+        <tr>
+          <td><filename>docs</filename></td>
+
+          <td>Documentation files. Generated books, online manuals as well as
+          the PHPDoc generated API documentation.</td>
+        </tr>
+
+        <tr>
+          <td><filename>test</filename></td>
+
+          <td>A set of testcases for different tasks, mappers and types. If
+          you are developing in CVS you should add a testcase for each
+          implementation you check in.</td>
+        </tr>
+      </table>
+
+      <para>Currently there is no distinction between the source layout and
+      the build layout of Phing. The figure above shows the CVS tree that
+      carries some additional files like the Phing website. Later on there may
+      be a buildfile to create a clean distribution tree of Phing
+      itself.</para>
     </section>
 
     <section>
       <title>File Naming Conventions</title>
 
-      <para></para>
+      <para>There are some filenaming conventions used by Phing. Here's a
+      quick rundown on the most basic conventions. A more detailed list can be
+      found in [See Naming And Coding Standards]:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Filenames consist of no more or less than two elements:
+          <emphasis>name</emphasis> and <emphasis>extension</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Choose short descriptive filenames (must be less than 31
+          chars)</para>
+        </listitem>
+
+        <listitem>
+          <para>Names must not contain dots.</para>
+        </listitem>
+
+        <listitem>
+          <para>Files containing PHP code must end with the extension
+          <filename>.php</filename>.</para>
+        </listitem>
+
+        <listitem>
+          <para>There must be only one class per file (no procedural methods
+          allowed, use a separate file for them), with the exception of
+          "inner"-type / helper classes that can be declared in the same file
+          as the "outer" / main class.</para>
+        </listitem>
+
+        <listitem>
+          <para>The name portion of the file must be named exactly like the
+          class it contains.</para>
+        </listitem>
+
+        <listitem>
+          <para>Buildfiles and configure rulesets must end with the extension
+          <filename>.xml</filename>.</para>
+        </listitem>
+      </itemizedlist>
     </section>
 
     <section>
       <title>Coding Standards</title>
 
-      <para></para>
+      <para>We are using PEAR coding standards. We are using a less strict
+      version of these standards, but we do insist that new contributions have
+      phpdoc comments and make explicitly declarations about
+      <code>public</code>/<code>protected</code>/<code>private</code>
+      variables and methods. If you have suggestions about improvements to
+      Phing codebase, don't hesitate to let us know.</para>
     </section>
   </section>
 
   <section xml:id="phing.chapters.extendingphing.systeminitialization">
     <title>System Initialization</title>
 
-    <para></para>
+    <para>PHP installations are typically quite customized -- e.g. different
+    <varname>memory_limit</varname>, execution timeout values, etc. The first
+    thing that Phing does is modify PHP INI variables to create a standard PHP
+    environment. This is performed by the init layer of Phing that uses a
+    three-level initialization procedure. It basically consists of three
+    different files:</para>
 
-    <para></para>
+    <itemizedlist>
+      <listitem>
+        <para>Platform specific wrapper scripts in
+        <filename>bin/</filename></para>
+      </listitem>
 
-    <para></para>
+      <listitem>
+        <para>Main application in <filename>bin/</filename></para>
+      </listitem>
+
+      <listitem>
+        <para>Phing class in <filename>classes/phing/</filename></para>
+      </listitem>
+    </itemizedlist>
+
+    <para>At the first look this may seem to be unnecessary overhead. Why
+    three levels of initialization? The main reason why there are several
+    entry points is that Phing is build so that other frontends (e.g. PHP-GTK)
+    could be used in place of the command line.</para>
 
     <section>
       <title>Wrapper Scripts</title>
 
-      <para></para>
+      <para>This scripts are technical not required but provided for the ease
+      of use. Imagine you have to type every time you want to build your
+      project:</para>
+
+      <screen><![CDATA[php -qC /path/to/phing/bin/phing.php -verbose all distro snapshot]]></screen>
+
+      <para>Indeed that is not very elegant. Furthermore if you are lax in
+      setting your environment variables these script can guess the proper
+      variables for you. However you should always set them.</para>
+
+      <para>The scripts are platform dependent, so you will find shell scripts
+      for Unix like platforms (sh) as well as the batch scripts for Windows
+      platforms. If you set-up your path properly you can call Phing
+      everywhere in your system with this command-line (referring to the above
+      example):</para>
+
+      <screen><![CDATA[phing -v2 all distro]]></screen>
     </section>
 
     <section>
       <title>The Main Application (phing.php)</title>
 
-      <para></para>
+      <para>This is basically a wrapper for the <classname>Phing</classname>
+      class that actually does all the logic for you. If you look at the
+      sourcecode for <filename>phing.php</filename> you will see that all real
+      initialization is handled in the <classname>Phing</classname> class.
+      <filename>phing.php</filename> is simply the commandline entry point for
+      Phing.</para>
     </section>
 
     <section>
       <title>The Phing Class</title>
 
-      <para></para>
+      <para>Given that all the prior initialization steps passed successfully
+      the Phing is included and <methodname>Phing::startup()</methodname> is
+      invoked by the main application script. It sets-up the system
+      components, system constants ini-settings, PEAR and some other stuff.
+      The detailed start-up process is as follows:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Start Timer</para>
+        </listitem>
+
+        <listitem>
+          <para>Set System Constants</para>
+        </listitem>
+
+        <listitem>
+          <para>Set Ini-Settings</para>
+        </listitem>
+
+        <listitem>
+          <para>Set Include Paths</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>After the main application completed all operations (successfully
+      or unsuccessfully) it calls <code>Phing::shutdown(EXIT_CODE)</code> that
+      takes care of a proper destruction of all objects and a gracefully
+      termination of the program by returning an exit code for shell usage
+      (see <xref linkend="phing.appendices.factsheet.programexitcodes" /> for
+      a list of exit codes).</para>
     </section>
   </section>
 
@@ -341,7 +559,7 @@ class MyEchoTask extends Task {
       find the <emphasis>class declaration</emphasis>. This will be familiar
       to you if you are experienced with OOP in PHP (we assume here that you
       are). Furthermore there are some fine-grained rules you must obey when
-      creating the classes (see also,[naming and coding standards]): </para>
+      creating the classes (see also,[naming and coding standards]):</para>
 
       <itemizedlist>
         <listitem>
@@ -469,8 +687,8 @@ class MyEchoTask extends Task {
       message (imported by the proper setter method) is Logged to the screen
       through the system's "Logger" service (the very action this task is
       written for). The <methodname>Log()</methodname> method-call in this
-      case accepts two parameters: a event constant and the message to log.
-      </para>
+      case accepts two parameters: a event constant and the message to
+      log.</para>
     </section>
 
     <section>
