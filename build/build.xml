@@ -91,7 +91,14 @@
             <fileset dir="${source.directory}/${lang}">
             </fileset>
         </copy>
-        
+
+        <echo msg="Staging docbook images to '${stage.directory}/${lang}/images/docbook/'" />
+        <copy todir="${stage.directory}/${lang}/images/docbook" overwrite="true">
+            <fileset dir="${docbook.xsl.admongraphicspath}">
+                <include name="*.png"/>
+            </fileset>
+        </copy>
+
     </target>
 
 
@@ -245,7 +252,7 @@
             <filterchain>
                 <replacetokens begintoken="##" endtoken="##">
                     <token key="DOCBOOK_XSL" value="${docbook.xsl.fo}" />
-                    <token key="DOCBOOK_XSL_ADMON_GRAPHICS_PATH" value="${docbook.xsl.admongraphicspath}" />
+                    <token key="DOCBOOK_XSL_ADMON_GRAPHICS_PATH" value="${stage.directory}/${lang}/images/docbook" />
                 </replacetokens>
             </filterchain>
             <fileset dir="${stage.directory}/${lang}">

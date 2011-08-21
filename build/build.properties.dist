@@ -9,6 +9,9 @@ build.do.pdf = 1
 
 docbook.dtd.url = files/docbook.dtd
 
+; Common XSL config
+docbook.xsl.admongraphicspath=files/docbook-xsl-1.76.1/images
+
 ; Config for HTML
 docbook.xsl.htmlchunked = files/docbook-xsl-1.76.1/xhtml/chunk.xsl
 
@@ -17,7 +20,6 @@ docbook.xsl.htmlhelp = files/docbook-xsl-1.76.1/htmlhelp/htmlhelp.xsl
 
 ; Config for PDF
 docbook.xsl.fo=files/docbook-xsl-1.76.1/fo/docbook.xsl
-docbook.xsl.admongraphicspath=../../../files/docbook-xsl-1.76.1/images
 fop_conf=
 
 ; The executable to compile htmlhelp .html files to a .chm
