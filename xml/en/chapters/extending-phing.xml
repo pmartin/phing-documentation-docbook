@@ -13,14 +13,260 @@
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Extending Phing</title>
 
-  <para>
-        blah
-  </para>
+  <para>Phing was designed to be flexible and easily extensible. Phing's
+  existing core and optional tasks do provide a great deal of flexibility in
+  processing files, performing database actions, and even getting user
+  feedback during a build process. In some cases, however, the existing tasks
+  just won't suffice and because of Phing's open, modular architecture adding
+  exactly the functionality you need is often quite trivial.</para>
 
+  <para>In this chapter we'll look primarily at how to create your own tasks,
+  since that is probably the most useful way to extend Phing. We'll also give
+  some more information about Phing's design and inner workings.</para>
+
+  <section>
+    <title>Extension Possibilities</title>
+
+    <para></para>
 
     <section>
-        <title>Extension Possibilities</title>
-            </section>
+      <title>Tasks</title>
 
+      <para></para>
+    </section>
 
+    <section>
+      <title>Types</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Mappers</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Source Layout</title>
+
+    <section>
+      <title>Files And Directories </title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>File Naming Conventions</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Coding Standards</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>System Initialization</title>
+
+    <para></para>
+
+    <para></para>
+
+    <para></para>
+
+    <section>
+      <title>Wrapper Scripts</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>The Main Application (phing.php)</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>The Phing Class</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>System Services</title>
+
+    <section>
+      <title>The Exception system</title>
+
+      <para>Phing uses the PHP5 try/catch/throw Exception system. Phing
+      defines a number of Exception subclasses for more fine-grained handling
+      of Exceptions. Low level Exceptions that cannot be handled will be
+      wrapped in a BuildException and caught by the outer-most <code>catch()
+      {}</code> block.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Build Lifecycle</title>
+
+    <para>This section exists to explain -- or try -- how Phing "works".
+    Particularly, how Phing procedes through a build file and invokes tasks
+    and types based on the tags that it encounters.</para>
+
+    <section>
+      <title>How Phing Parses Buildfiles</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Writing Tasks</title>
+
+    <section>
+      <title>Creating A Task</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Using the Task</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Source Discussion</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Task Structure</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Includes</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Class Declaration</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Class Properties</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>The Constructor</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Setter Methods</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Creator Methods</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>init() Method</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>main() Method</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Arbitrary Methods</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Writing Types</title>
+
+    <para></para>
+
+    <para></para>
+
+    <para></para>
+
+    <section>
+      <title>Creating a DataType</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Using the DataType</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Source Discussion</title>
+
+      <para></para>
+
+      <section>
+        <title>Getters &amp; Setters</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>The getRef() Method</title>
+
+        <para></para>
+      </section>
+    </section>
+  </section>
+
+  <section>
+    <title>Writing Mappers</title>
+
+    <para></para>
+
+    <para></para>
+
+    <para></para>
+
+    <section>
+      <title>Creating a Mapper</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Using the Mapper</title>
+
+      <para></para>
+    </section>
+  </section>
 </chapter>
