@@ -16,6 +16,15 @@ So, this is my attempt to :
  - Have it available in more than one format: at least HTML and PDF
  - Plan for some translations
 
+If you want to see the generated outputs, here are some links for the english version :
+<br>*(the documentation published there is not necessarily up-to-date!)*
+
+ - [See the HTML documentation](http://phingdoc.pascal-martin.fr/en/)
+ - [Download the PDF version](http://phingdoc.pascal-martin.fr/en/phing-documentation-en.pdf)
+ - [Download the CHM version](http://phingdoc.pascal-martin.fr/en/phing-documentation-en.chm)
+ 
+**Note: those will not always be valid; you should not consider those as the real documentation, and you should not link to those pages/documents!**
+
 
 # Pre-requisites #
 
