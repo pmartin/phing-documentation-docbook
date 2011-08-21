@@ -24,7 +24,7 @@
   since that is probably the most useful way to extend Phing. We'll also give
   some more information about Phing's design and inner workings.</para>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.extensionpossibilities">
     <title>Extension Possibilities</title>
 
     <para></para>
@@ -48,11 +48,11 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.sourcelayout">
     <title>Source Layout</title>
 
     <section>
-      <title>Files And Directories </title>
+      <title>Files And Directories</title>
 
       <para></para>
     </section>
@@ -70,7 +70,7 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.systeminitialization">
     <title>System Initialization</title>
 
     <para></para>
@@ -98,7 +98,7 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.systemservices">
     <title>System Services</title>
 
     <section>
@@ -112,7 +112,7 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.buildlifecycle">
     <title>Build Lifecycle</title>
 
     <para>This section exists to explain -- or try -- how Phing "works".
@@ -122,151 +122,688 @@
     <section>
       <title>How Phing Parses Buildfiles</title>
 
-      <para></para>
+      <para>Phing uses an ExpatParser class and PHP's native expat XML
+      functions to handle the parsing of build files. The handler classes all
+      extend the <classname>phing.parser.AbstractHandler</classname> class.
+      These handler classes "handle" the tags that are found in the
+      buildfile.</para>
+
+      <para>Core tasks and datatypes are mapped to XML tag names in the
+      <filename>defaults.properties</filename> files -- specifically
+      <filename>phing/tasks/defaults.properties</filename> and
+      <filename>phing/types/defaults.properties</filename>.</para>
+
+      <para>It works roughly like this:</para>
+
+      <orderedlist>
+        <listitem>
+          <para><classname>phing.parser.RootHandler</classname> is registered
+          to handle the buildfile XML document</para>
+        </listitem>
+
+        <listitem>
+          <para><classname>RootHandler</classname> expects to find exactly one
+          element: <code>&lt;project&gt;</code>.
+          <classname>RootHandler</classname> invokes the
+          <classname>ProjectHandler</classname> with the attributes from the
+          <code>&lt;project&gt;</code> tag or throws an exception if no
+          <code>&lt;project&gt;</code> is found, or if something else is found
+          instead.</para>
+        </listitem>
+
+        <listitem>
+          <para><classname>ProjectHandler</classname> expects to find
+          <code>&lt;target&gt;</code> tags; for these
+          <classname>ProjectHandler</classname> invokes the
+          <classname>TargetHandler</classname>.
+          <classname>ProjectHandler</classname> also has exceptions for
+          handling certain tasks that can be performed at the top-level:
+          <code>&lt;resolve&gt;</code>, <code>&lt;taskdef&gt;</code>,
+          <code>&lt;typedef&gt;</code>, and <code>&lt;property&gt;</code>; for
+          these <classname>ProjectHandler</classname> invokes the
+          <classname>TaskHandler</classname> class. If a tag is presented that
+          doesn't match any expected tags, then
+          <classname>ProjectHandler</classname> assumes it is a datatype and
+          invokes the <classname>DataTypeHandler</classname>.</para>
+        </listitem>
+
+        <listitem>
+          <para><classname>TargetHandler</classname> expects all tags to be
+          either tasks or datatypes and invokes the appropriate handler (based
+          on the mappings provided in the
+          <filename>defaults.properties</filename> files).</para>
+        </listitem>
+
+        <listitem>
+          <para>Tasks and datatypes can have nested elements, but only if they
+          correspond to a <methodname>create*()</methodname> method in the
+          task or datatype class. E.g. a nested <code>&lt;param&gt;</code> tag
+          must correspond to a <methodname>createParam()</methodname> method
+          of the task or datatype.</para>
+        </listitem>
+      </orderedlist>
+
+      <para><emphasis>... More to come ...</emphasis></para>
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.writingtasks">
     <title>Writing Tasks</title>
 
     <section>
       <title>Creating A Task</title>
 
-      <para></para>
+      <para>We will start creating a rather simple task which basically does
+      nothing more than echo a message to the screen. See [below] for the
+      source code and the following [below] for the XML definition that is
+      used for this task.</para>
+
+      <programlisting language="php"><![CDATA[<?php
+
+require_once "phing/Task.php";
+
+class MyEchoTask extends Task {
+
+    /**
+     * The message passed in the buildfile.
+     */
+    private $message = null;
+
+    /**
+     * The setter for the attribute "message"
+     */
+    public function setMessage($str) {
+        $this->message = $str;
+    }
+
+    /**
+     * The init method: Do init steps.
+     */
+    public function init() {
+      // nothing to do here
+    }
+
+    /**
+     * The main entry point method.
+     */
+    public function main() {
+      print($this->message);
+    }
+}
+
+?>]]></programlisting>
+
+      <para>This code contains a rather simple, but complete Phing task. It is
+      assumed that the file is named <filename>MyEchoTask.php</filename> and
+      placed in <filename>classes/phing/tasks/my</filename> directory. We'll
+      explain the source code in detail shortly. But first we'd like to
+      discuss how we should register the task to Phing so that it can be
+      executed during the build process.</para>
     </section>
 
     <section>
       <title>Using the Task</title>
 
-      <para></para>
+      <para>The task shown [above] must somehow get called by Phing. Therefore
+      it must be made available to Phing so that the buildfile parser is aware
+      a correlating XML element and it's parameters. Have a look at the
+      minimalistic buildfile example given in [the buildfile below] that does
+      exactly this.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" ?>
+
+<project name="test" basedir="." default="test.myecho">
+    <taskdef name="myecho" classname="phing.tasks.my.MyEchoTask" />
+
+    <target name="test.myecho">
+      <myecho message="Hello World" />
+    </target>
+</project>]]></programlisting>
+
+      <para>Besides the XML document prolog and the shell elements that are
+      required to properly execute the task (project, target) you'll find the
+      <code>&lt;taskdef&gt;</code> element (line 4) that properly registers
+      your custom task to Phing. For a detailed synopsis of the
+      <code>taskdef</code> element see <xref
+      linkend="phing.coretasks.taskdef" />.</para>
+
+      <para>Now, as we have registered the task by assigning a name and the
+      worker class ([see source code above]) it is ready for usage within the
+      <code>&lt;target&gt;</code> context (line 8). You see that we pass the
+      message that our task should echo to the screen via an XML attribute
+      called "<parameter>message</parameter>".</para>
     </section>
 
     <section>
       <title>Source Discussion</title>
 
-      <para></para>
+      <para>No that you've got the knowledge to execute the task in a
+      buildfile it's time to discuss how everything works.</para>
     </section>
 
     <section>
       <title>Task Structure</title>
 
-      <para></para>
+      <para>All files containing the definition of a task class follow a
+      common well formed structure:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Include/require statements to import all required
+          classes</para>
+        </listitem>
+
+        <listitem>
+          <para>The class declaration and definition</para>
+        </listitem>
+
+        <listitem>
+          <para>The class's properties</para>
+        </listitem>
+
+        <listitem>
+          <para>The class's constructor</para>
+        </listitem>
+
+        <listitem>
+          <para>Setter methods for each XML attribute</para>
+        </listitem>
+
+        <listitem>
+          <para>The <methodname>init()</methodname> method</para>
+        </listitem>
+
+        <listitem>
+          <para>The <methodname>main()</methodname> method</para>
+        </listitem>
+
+        <listitem>
+          <para>Arbitrary <code>private</code> (or <code>protected</code>)
+          class methods</para>
+        </listitem>
+      </itemizedlist>
     </section>
 
     <section>
       <title>Includes</title>
 
-      <para></para>
+      <para>Always include/require all the classes needed for this task in
+      full written notation. Furthermore you should always include
+      <filename>phing/Task.php</filename> at the very top of your include
+      block. Then include all other required system or proprietary
+      classes.</para>
     </section>
 
     <section>
       <title>Class Declaration</title>
 
-      <para></para>
+      <para>If you look at line 5 in [the source code of the task] you will
+      find the <emphasis>class declaration</emphasis>. This will be familiar
+      to you if you are experienced with OOP in PHP (we assume here that you
+      are). Furthermore there are some fine-grained rules you must obey when
+      creating the classes (see also,[naming and coding standards]): </para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Your classname must be exactly like the taskname you are going
+          to implement plus the suffix "<code>Task</code>". In our example
+          case the classname is <classname>MyEchoTask</classname> (constructed
+          by the taskname "<code>myecho</code>" plus the suffix
+          "<code>task</code>"). The upper/lower case casing is currently only
+          for better reading. However, it is encouraged that you use it this
+          way.</para>
+        </listitem>
+
+        <listitem>
+          <para>The task class you are creating must at least extend
+          "<classname>Task</classname>" to inherit all task specific
+          methods.</para>
+        </listitem>
+      </itemizedlist>
     </section>
 
     <section>
       <title>Class Properties</title>
 
-      <para></para>
+      <para>The next lines you are coding are class properties. Most of them
+      are inherited from the <classname>Task</classname> superclass, so
+      there's not need to redeclare them. Nevertheless you should
+      <emphasis>declare</emphasis> the following ones by your own:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Taskname. Always hard code the <emphasis>taskname</emphasis>
+          property that equals the name of the XML element that your task
+          claims. Currently this information is not used - but it will be in
+          the future.</para>
+        </listitem>
+
+        <listitem>
+          <para>Your arbitrary properties that reflect the XML
+          attributes/elements which your task accepts.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>In the <classname>MyEchoTask</classname> example the coded
+      properties can be found in lines 7 to 11. Give you properties meaningful
+      descriptive names that clearly state their function within the context.
+      A couple of properties are inherited from the superclass that must not
+      be declared in the properties part of the code.</para>
+
+      <para>For a list of inherited properties (most of them are reserved, so
+      be sure not to overwrite them with your own) can be found in the "Phing
+      API Reference" in the <filename>docs/api/</filename> directory.</para>
     </section>
 
     <section>
       <title>The Constructor</title>
 
-      <para></para>
+      <para>The next block that follows is the class's constructor. It must be
+      present and call at least the constructor or the parent class. Of
+      course, you can add some initialization data here. It is recommended
+      that you <emphasis>define</emphasis> your prior declared properties
+      here.</para>
     </section>
 
     <section>
       <title>Setter Methods</title>
 
-      <para></para>
+      <para>As you can see in the XML definition of our task ([see buildfile
+      above] , line 9) there is an attribute defined with the task itself,
+      namely "<parameter>message</parameter>" with a value of the the text
+      string that our task should echo. The task must somehow become aware of
+      the attribute name and the value. Therefore the
+      <emphasis>setter</emphasis> methods exist.</para>
+
+      <para>For each attribute you want to import to the task's namespace you
+      have to define a method named exactly after the very attribute plus the
+      string "<code>set</code>" prepended. This method accepts exactly one
+      parameter that holds the value of the attribute. Now you can set the a
+      class internal property to the value that is passed via the setter
+      method.</para>
+
+      <para>In out example the setter is named
+      <methodname>setMessage</methodname> , because the XML attribute the echo
+      task accepts is "<parameter>message</parameter>".
+      <methodname>setMessage</methodname> now takes the string "<code>Hello
+      World</code>" provided by the parser and sets the value of the internal
+      class property <varname>$strMessage</varname> to "<code>Hello
+      World</code>". It is now available to the task for further
+      disposal.</para>
     </section>
 
     <section>
       <title>Creator Methods</title>
 
-      <para></para>
+      <para>Creator methods allow you to manage nested XML tags in your new
+      Phing Task.</para>
     </section>
 
     <section>
-      <title>init() Method</title>
+      <title><methodname>init()</methodname> Method</title>
 
-      <para></para>
+      <para>The <methodname>init</methodname> method gets called when the
+      <code>&lt;taskname&gt;</code> xml element closes. It must be implemented
+      even if it does nothing like in the example above. You can do init steps
+      here required to setup your task object properly. After calling the
+      Init-Method the task object remains untouched by the parser. Init should
+      not perform operations related somehow to the action the task performs.
+      An example of using init may be cleaning up the
+      <varname>$strMessage</varname> variable in our example (i.e.
+      <code>trim($strMessage)</code>) or importing additional workers needed
+      for this task.</para>
+
+      <para>The <methodname>init</methodname> method should return
+      <code>true</code> or an error object evaluated by the governing logic.
+      If you don't implement init method, phing will shout down with a fatal
+      error.</para>
     </section>
 
     <section>
-      <title>main() Method</title>
+      <title><methodname>main()</methodname> Method</title>
 
-      <para></para>
+      <para>There is exactly one entry entry point to execute the task. It is
+      called after the complete buildfile has been parsed and all targets and
+      tasks have been scheduled for execution. From this point forward the
+      very implementation of the tasks action starts. In case of our example a
+      message (imported by the proper setter method) is Logged to the screen
+      through the system's "Logger" service (the very action this task is
+      written for). The <methodname>Log()</methodname> method-call in this
+      case accepts two parameters: a event constant and the message to log.
+      </para>
     </section>
 
     <section>
       <title>Arbitrary Methods</title>
 
-      <para></para>
+      <para>For the more or less simple cases (as our example) all the logic
+      of the task is coded in the <methodname>Main()</methodname> method.
+      However for more complex tasks common sense dictates that particular
+      action should be swapped to smaller, logically contained units of code.
+      The most common way to do this is separating logic into private class
+      methods - and in even more complex tasks in separate libraries.</para>
+
+      <programlisting language="php"><![CDATA[private function myPrivateMethod() {
+    // definition
+}]]></programlisting>
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.writingtypes">
     <title>Writing Types</title>
 
-    <para></para>
+    <para>You should only create a standalone Type if the Type needs to be
+    shared by more than one Task. If the Type is only needed for a specific
+    Task -- for example to handle a special parameter or other tag needed for
+    that Task -- then the Type class should just be defined within the same
+    file as the Task. (For example,
+    <filename>phing/filters/XSLTFilter.php</filename> also includes an
+    <classname>XSLTParam</classname> class that is not used anywhere
+    else.)</para>
 
-    <para></para>
-
-    <para></para>
+    <para>For cases where you do need a more generic Type defined, you can
+    create your own Type class -- similar to the way a Task is created <xref
+    linkend="phing.chapters.extendingphing.writingtasks" />.</para>
 
     <section>
       <title>Creating a DataType</title>
 
-      <para></para>
+      <para>Type classes need to extend the abstract
+      <classname>DataType</classname> class. Besides providing a means of
+      categorizing types, the <classname>DataType</classname> class provides
+      the methods necessary to support the "<parameter>refid</parameter>"
+      attribute. (All types can be given an id, and can be referred to later
+      using that id.)</para>
+
+      <para>In this example we are creating a DSN type because we have written
+      a number of DB-related Tasks, each of which need to know how to connect
+      to the database; instead of having database parameters for each task,
+      we've created a DSN type so that we can identify the connection params
+      once and then use it in all our db Tasks.</para>
+
+      <programlisting language="php"><![CDATA[require_once "phing/types/DataType.php";
+
+/**
+ * This Type represents a DB Connection.
+ */
+class DSN extends DataType {
+
+  private $url;
+  private $username;
+  private $password;
+  private $persistent = false;
+
+  /**
+   * Sets the URL part: mysql://localhost/mydatabase
+   */
+  public function setUrl($url) {
+    $this->url = $url;
+  }
+
+  /**
+   * Sets username to use in connection.
+   */
+  public function setUsername($username) {
+    $this->username = $username;
+  }
+
+  /**
+   * Sets password to use in connection.
+   */
+  public function setPassword($password) {
+    $this->password = $password;
+  }
+
+  /**
+   * Set whether to use persistent connection.
+   * @param boolean $persist
+   */
+  public function setPersistent($persist) {
+    $this->persistent = (boolean) $persist;
+  }
+
+  public function getUrl(Project $p) {
+    if ($this->isReference()) {
+      return $this->getRef($p)->getUrl($p);
+    }
+    return $this->url;
+  }
+
+  public function getUsername(Project $p) {
+    if ($this->isReference()) {
+      return $this->getRef($p)->getUsername($p);
+    }
+    return $this->username;
+  }
+
+  public function getPassword(Project $p) {
+    if ($this->isReference()) {
+      return $this->getRef($p)->getPassword($p);
+    }
+    return $this->password;
+  }
+
+  public function getPersistent(Project $p) {
+    if ($this->isReference()) {
+      return $this->getRef($p)->getPersistent($p);
+    }
+    return $this->persistent;
+  }
+
+  /**
+   * Gets a combined hash/array for DSN as used by PEAR.
+   * @return array
+   */
+  public function getPEARDSN(Project $p) {
+    if ($this->isReference()) {
+      return $this->getRef($p)->getPEARDSN($p);
+    }
+
+    include_once 'DB.php';
+    $dsninfo = DB::parseDSN($this->url);
+    $dsninfo['username'] = $this->username;
+    $dsninfo['password'] = $this->password;
+    $dsninfo['persistent'] = $this->persistent;
+
+    return $dsninfo;
+  }
+
+  /**
+   * Your datatype must implement this function, which ensures that there
+   * are no circular references and that the reference is of the correct
+   * type (DSN in this example).
+   *
+   * @return DSN
+   */
+  public function getRef(Project $p) {
+    if ( !$this->checked ) {
+      $stk = array();
+      array_push($stk, $this);
+      $this->dieOnCircularReference($stk, $p);
+    }
+    $o = $this->ref->getReferencedObject($p);
+    if ( !($o instanceof DSN) ) {
+      throw new BuildException($this->ref->getRefId()." doesn't denote a DSN");
+    } else {
+      return $o;
+    }
+  }
+
+}]]></programlisting>
     </section>
 
     <section>
       <title>Using the DataType</title>
 
-      <para></para>
+      <para>The <classname>TypedefTask</classname> provides a way to "declare"
+      your type so that you can use it in your build file. Here is how you
+      would use this type in order to define a single DSN and use it for
+      multiple tasks. (Of course you could specify the DSN connection params
+      each time, but the premise behind needing a DSN datatype was to avoid
+      specifying the connection parameters for each task.)</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" ?>
+
+<project name="test" basedir=".">
+
+  <typedef name="dsn" classname="myapp.types.DSN" />
+
+  <dsn
+      id="maindsn"
+      url="mysql://localhost/mydatabase"
+      username="root"
+      password=""
+      persistent="false" />
+
+  <target name="main">
+
+    <my-special-db-task>
+         <dsn refid="maindsn"/>
+    </my-special-db-task>
+
+    <my-other-db-task>
+      <dsn refid="maindsn"/>
+    </my-other-db-task>
+
+  </target>
+
+</project>]]></programlisting>
     </section>
 
     <section>
       <title>Source Discussion</title>
 
-      <para></para>
-
       <section>
         <title>Getters &amp; Setters</title>
 
-        <para></para>
+        <para>You must provide a setter method for every attribute you want to
+        set from the XML build file. It is good practice to also provide a
+        getter method, but in practice you can decide how your tasks will use
+        your task. In the example above, we've provided a getter method for
+        each attribute and we've also provided an additional method:
+        <methodname>DSN::getPEARDSN()</methodname> which returns the DSN hash
+        array used by <classname>PEAR::DB</classname>,
+        <classname>PEAR::MDB</classname>, and <classname>Creole</classname>.
+        Depending on the needs of the Tasks using this DataType, we may only
+        wish to provide the <methodname>getPEARDSN()</methodname> method
+        rather than a getter for each attribute.</para>
+
+        <para>Also important to note is that the getter method needs to check
+        to see whether the current DataType is a reference to a previously
+        defined DataType -- the
+        <methodname>DataType::isReference()</methodname> exists for this
+        purpose. For this reason, the getter methods need to be called with
+        the current project, because References are stored relative to a
+        project.</para>
       </section>
 
       <section>
         <title>The getRef() Method</title>
 
-        <para></para>
+        <para>The <methodname>getRef()</methodname> task needs to be
+        implemented in your Type. This method is responsible for returning a
+        referenced object; it needs to check to make sure the referenced
+        object is of the correct type (i.e. you can't try to refer to a
+        RegularExpresson from a DSN DataType) and that the reference is not
+        circular.</para>
+
+        <para>You can probably just copy this method from an existing Type and
+        make the few changes that customize it to your Type.</para>
       </section>
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.extendingphing.writingmappers">
     <title>Writing Mappers</title>
 
-    <para></para>
-
-    <para></para>
-
-    <para></para>
+    <para>Writing your own filename mapper classes will allow you to control
+    how names are transformed in tasks like <classname>CopyTask</classname>,
+    <classname>MoveTask</classname>, <classname>XSLTTask</classname>, etc. In
+    some cases you may want to extend existing mappers (e.g. creating a
+    <classname>GlobMapper</classname> that also transforms to uppercase); in
+    other cases, you may simply want to create a very specific name
+    transformation that isn't easily accomplished with other mappers like
+    <classname>GlobMapper</classname> or
+    <classname>RegexpMapper</classname>.</para>
 
     <section>
       <title>Creating a Mapper</title>
 
-      <para></para>
+      <para>Writing filename mappers is simplified by interface support in
+      PHP5. Essentially, your custom filename mapper must implement
+      <classname>phing.mappers.FileNameMapper</classname>. Here's an example
+      of a filename mapper that creates DOS-style file names. For this
+      example, the "<parameter>to</parameter>" and
+      "<parameter>from</parameter>" attributes are not needed because all
+      files will be transformed. To see the "<parameter>to</parameter>" and
+      "<parameter>from</parameter>" attributes in action, look at
+      <classname>phing.mappers.GlobMapper</classname> or
+      <classname>phing.mappers.RegexpMapper</classname>.</para>
+
+      <programlisting language="php"><![CDATA[require_once "phing/mappers/FileNameMapper.php";
+
+/**
+ * A mapper that makes those ugly DOS filenames.
+ */
+class DOSMapper implements FileNameMapper {
+
+  /**
+   * The main() method actually performs the mapping.
+   *
+   * In this case we transform the $sourceFilename into
+   * a DOS-compatible name.  E.g.
+   * ExtendingPhing.html -> EXTENDI~.DOC
+   *
+   * @param string $sourceFilename The name to be coverted.
+   * @return array The matched filenames.
+   */
+  public function main($sourceFilename) {
+
+    $info = pathinfo($sourceFilename);
+    $ext = $info['extension'];
+    // get basename w/o extension
+    $bname = preg_replace('/\.\w+\$/', '', $info['basename']);
+
+    if (strlen($bname) > 8) {
+      $bname = substr($bname,0,7) . '~';
+    }
+
+    if (strlen($ext) > 3) {
+      $ext = substr($bname,0,3);
+    }
+
+    if (!empty($ext)) {
+      $res = $bname . '.' . $ext;
+    } else {
+      $res = $bname;
+    }
+
+    return (array) strtoupper($res);
+  }
+
+  /**
+   * The "from" attribute is not needed here, but method must exist.
+   */
+  public function setFrom($from) {}
+
+  /**
+   * The "from" attribute is not needed here, but method must exist.
+   */
+  public function setTo($to) {}
+
+}]]></programlisting>
     </section>
 
     <section>
       <title>Using the Mapper</title>
 
-      <para></para>
+      <para>Assuming that this mapper is saved to
+      <filename>myapp/mappers/DOSMapper.php</filename> (relative to a path on
+      PHP's <varname>include_path</varname> or in <envar>PHP_CLASSPATH</envar>
+      env variable), then you would refer to it like this in your build
+      file:</para>
+
+      <programlisting language="xml"><![CDATA[<mapper classname="myapp.mappers.DOSMapper"/>]]></programlisting>
     </section>
   </section>
 </chapter>
