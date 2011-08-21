@@ -23,6 +23,7 @@ In order to build the documentation, you will need :
 
  - Phing ; latest stable version is OK
  - Apache FOP -- Ubuntu, you can get it with a simple `apt-get install fop`
+ - Microsoft HTML Help Workshop, to build .chm documentation
 
 Other things which are *(for now)* commited inside the project, but should not be :
 
@@ -38,6 +39,8 @@ And you will have to copy `build/build.properties.dist` to `build/build.properti
 
 
 If using FOP >= 0.95 on Debian/Ubuntu, see `build/reade.markdown` for some additional informations.
+
+For Microsoft HTML Help Workshop on Linux, see [Microsoft HTML Help Workshop with Wine How-to](http://code.google.com/p/htmlhelp/wiki/HHW4Wine)
 
 
 # How to build the documentation #

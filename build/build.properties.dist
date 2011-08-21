@@ -1,16 +1,24 @@
 
+; Which languages to build -- sub-directories of xml/
 languages=en
 
+; Which output we should generate
 build.do.html = 1
 build.do.htmlhelp = 0
 build.do.pdf = 1
 
 docbook.dtd.url = files/docbook.dtd
 
+; Config for HTML
 docbook.xsl.htmlchunked = files/docbook-xsl-1.76.1/xhtml/chunk.xsl
 
+; Config for HTMLHELP *(will then be compiled to .chm)*
 docbook.xsl.htmlhelp = files/docbook-xsl-1.76.1/htmlhelp/htmlhelp.xsl
 
+; Config for PDF
 docbook.xsl.fo=files/docbook-xsl-1.76.1/fo/docbook.xsl
 docbook.xsl.admongraphicspath=../../../files/docbook-xsl-1.76.1/images
 fop_conf=
+
+; The executable to compile htmlhelp .html files to a .chm
+chm.compiler.executable = wine 'C:\Program Files\HTML Help Workshop\hhc.exe'

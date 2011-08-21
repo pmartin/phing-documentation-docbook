@@ -193,7 +193,7 @@
         </reflexive>
 
         <exec
-            command="wine 'C:\Program Files\HTML Help Workshop\hhc.exe' phing-documentation.hhp"
+            command="${chm.compiler.executable} phing-documentation.hhp"
             dir="${dist.directory}/${lang}/htmlhelp"
             checkreturn="false"
         />
