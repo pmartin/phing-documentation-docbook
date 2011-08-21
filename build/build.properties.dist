@@ -1,5 +1,5 @@
 
-languages=fr,en
+languages=en
 
 build.do.html = 1
 build.do.pdf = 1
