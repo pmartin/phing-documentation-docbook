@@ -2,13 +2,15 @@
 languages=en
 
 build.do.html = 1
+build.do.htmlhelp = 0
 build.do.pdf = 1
-
-docbook.xsl.htmlchunked = files/docbook-xsl-1.76.1/xhtml/chunk.xsl
 
 docbook.dtd.url = files/docbook.dtd
 
+docbook.xsl.htmlchunked = files/docbook-xsl-1.76.1/xhtml/chunk.xsl
+
+docbook.xsl.htmlhelp = files/docbook-xsl-1.76.1/htmlhelp/htmlhelp.xsl
+
 docbook.xsl.fo=files/docbook-xsl-1.76.1/fo/docbook.xsl
 docbook.xsl.admongraphicspath=../../../files/docbook-xsl-1.76.1/images
-
 fop_conf=

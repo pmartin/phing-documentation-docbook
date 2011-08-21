@@ -27,6 +27,16 @@
         </if>
 
         <if>
+            <equals arg1="${build.do.htmlhelp}" arg2="1" />
+            <then>
+                <phingcall target="build.htmlhelp" />
+            </then>
+            <else>
+                <echo msg="Building of HTML HELP output : disabled (build.do.htmlhelp = 0)" level="warning" />
+            </else>
+        </if>
+
+        <if>
             <equals arg1="${build.do.pdf}" arg2="1" />
             <then>
                 <phingcall target="build.pdf" />
@@ -117,6 +127,83 @@
         </syntaxhighlighthtml>
 
     </target>
+
+
+
+    <target name="build.htmlhelp">
+        <echo msg="Build HTML HELP documentation" />
+
+        <echo msg="Staging" />
+        <foreach list="${languages}" param="lang" target="build.htmlhelp.lang" />
+
+    </target>
+
+    <target name="build.htmlhelp.lang">
+        <echo msg="Build HTML HELP documentation : '${lang}'" />
+
+        <reflexive>
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="DOCBOOK_XSL" value="${docbook.xsl.htmlhelp}" />
+                    <token key="DOCBOOK_DTD" value="${docbook.dtd.url}" />
+                    <token key="BUILDDIR_HTMLHELP" value="${dist.directory}/${lang}/htmlhelp" />
+                </replacetokens>
+            </filterchain>
+            <fileset dir="${stage.directory}/${lang}">
+                <include name="manual.xml" />
+                <include name="htmlhelp.xsl" />
+            </fileset>
+        </reflexive>
+        
+        <copy todir="${dist.directory}/${lang}/htmlhelp">
+            <fileset defaultexcludes="false" expandsymboliclinks="true" dir="${stage.directory}/${lang}">
+                <include name="**/*.png"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${dist.directory}/${lang}/htmlhelp">
+            <filterchain>
+                <xincludefilter basedir="${stage.directory}/${lang}"/>
+                <filterreader classname="tasks.MyXsltFilter">
+                    <param name="base.dir" value="${dist.directory}/${lang}/htmlhelp/"/>
+                    <param name="style" value="${stage.directory}/${lang}/htmlhelp.xsl"/>
+                </filterreader>
+            </filterchain>
+            <fileset dir="${stage.directory}/${lang}">
+                <include name="manual.xml"/>
+            </fileset>
+        </copy>
+
+        <syntaxhighlighthtml>
+            <fileset dir="${dist.directory}/${lang}/htmlhelp">
+                <include name="*.html"/>
+            </fileset>
+        </syntaxhighlighthtml>
+
+        <reflexive>
+            <fileset dir="${dist.directory}/${lang}/htmlhelp/">
+                <include name="phing-documentation.hhc" />
+                <include name="phing-documentation.hhp" />
+            </fileset>
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="${dist.directory}/${lang}/htmlhelp/" replace="" ignoreCase="true" />
+                </replaceregexp>
+            </filterchain>
+        </reflexive>
+
+        <exec
+            command="wine 'C:\Program Files\HTML Help Workshop\hhc.exe' phing-documentation.hhp"
+            dir="${dist.directory}/${lang}/htmlhelp"
+            checkreturn="false"
+        />
+
+        <copy file="${dist.directory}/${lang}/htmlhelp/phing-documentation.chm" tofile="${dist.directory}/${lang}/phing-documentation-${lang}.chm" />
+
+        <delete dir="${dist.directory}/${lang}/htmlhelp" />
+
+    </target>
+
 
 
 
