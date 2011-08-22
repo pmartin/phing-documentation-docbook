@@ -111,6 +111,28 @@ td {
 }
 
 
+.parameters table th.name {
+    width: 10%;
+}
+
+.parameters table th.type {
+    width: 8%;
+}
+
+.parameters table th.description {
+    width: 68%;
+}
+
+.parameters table th.default {
+    width: 6%;
+}
+
+.parameters table th.required {
+    width: 8%;
+}
+
+
+
 /*
 strong.userinput {
     font-weight: normal;

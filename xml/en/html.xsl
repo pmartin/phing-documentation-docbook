@@ -49,4 +49,8 @@ set       toc,title
 
 <xsl:template match="programlisting[@language]" mode="class.value">programlisting <xsl:value-of select="@language"/></xsl:template>
 
+<!-- refsect1 elements have 'role' attribute ; which is used to style the HTML with CSS => 'role' must be transformed to 'class' -->
+<xsl:template match="refsect1[@role]" mode="class.value"><xsl:value-of select="@role"/></xsl:template>
+
+
 </xsl:stylesheet>

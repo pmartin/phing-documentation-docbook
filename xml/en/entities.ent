@@ -15,11 +15,11 @@
 
 <!ENTITY taskAttributes.table.titlesLine.all '
 <tr xmlns="http://docbook.org/ns/docbook">
-    <th>Name</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-    <th>Required</th>
+    <th class="name">Name</th>
+    <th class="type">Type</th>
+    <th class="description">Description</th>
+    <th class="default">Default</th>
+    <th class="required">Required</th>
 </tr>'>
 
 <!ENTITY attributes.defaultValue.NA 'n/a'>
