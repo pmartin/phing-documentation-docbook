@@ -3,14 +3,64 @@
     <!ENTITY % entities SYSTEM "../../entities.ent">
     %entities;
 ]>
-<refentry
-        xml:id="phing.selectors.contains"
-        xmlns="http://docbook.org/ns/docbook">
+<refentry xml:id="phing.selectors.contains"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook"
+          version="5.0">
+  <refnamediv>
+    <refname>Contains</refname>
 
-    <refnamediv>
-        <refname>Contains</refname>
-        <refpurpose>The &lt;contains&gt; tag selects files that contain the string specified by the text attribute.</refpurpose>
-    </refnamediv>
+    <refpurpose>The <code>&lt;contains&gt;</code> tag selects files that
+    contain the string specified by the <parameter>text</parameter>
+    attribute.</refpurpose>
+  </refnamediv>
 
+  <refsect1 role="example">
+    &ref.title.example;
 
+    <programlisting language="xml"><![CDATA[<fileset dir="${src}" includes="**/*.php">
+  <contains text="PHP"/>
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.contains.parameters">
+      <caption>Attributes for the <code>&lt;contains&gt;</code>
+      selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>text</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Specifies the text that every file must
+        contain</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>casesensitive</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to pay attention to case when looking
+        for the string in the text attribute.</td>
+
+        <td class="default">true</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
 </refentry>

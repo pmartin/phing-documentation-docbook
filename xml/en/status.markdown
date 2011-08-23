@@ -188,7 +188,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Selectors ##
 
- - `Contains` : `` - *2011-08-20*
+ - `Contains` : `DONE` - *2011-08-20*
  - `Date` : `` - *2011-08-20*
  - `Depend` : `` - *2011-08-20*
  - `Depth` : `` - *2011-08-20*
