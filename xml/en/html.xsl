@@ -26,6 +26,7 @@
 <xsl:param name="header.rule">0</xsl:param>
 <xsl:param name="footer.rule">0</xsl:param>
 
+<!-- we redefine the TOC, so list of tables is not generated -->
 <xsl:param name="generate.toc">
 <!-- see http://www.sagehill.net/docbookxsl/TOCcontrol.html#TOCcomponents -->
 appendix  toc,title
