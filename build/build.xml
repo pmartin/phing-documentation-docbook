@@ -188,6 +188,7 @@
         <copy todir="${dist.directory}/${lang}/htmlhelp">
             <fileset defaultexcludes="false" expandsymboliclinks="true" dir="${stage.directory}/${lang}">
                 <include name="**/*.png"/>
+                <include name="*.css"/>
             </fileset>
         </copy>
 
