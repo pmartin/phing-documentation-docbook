@@ -9,8 +9,8 @@ This file contains snippets of useful docbook tags, which are to be used as much
 
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE refentry [
-    <!ENTITY % entities SYSTEM "../../entities.ent">
-    %entities;
+        <!ENTITY % entities SYSTEM "../../entities.ent">
+        %entities;
     ]>
     <refentry xml:id="phing.coretasks."
               xmlns="http://docbook.org/ns/docbook"
@@ -18,7 +18,8 @@ This file contains snippets of useful docbook tags, which are to be used as much
               xmlns:ns5="http://www.w3.org/1998/Math/MathML"
               xmlns:ns4="http://www.w3.org/1999/xhtml"
               xmlns:ns3="http://www.w3.org/2000/svg"
-              xmlns:ns="http://docbook.org/ns/docbook">
+              xmlns:ns="http://docbook.org/ns/docbook"
+              version="5.0">
         <refnamediv>
             <refname></refname>
             <refpurpose></refpurpose>
@@ -43,18 +44,18 @@ such as `parameters`, `example`, ...
 ## Parameters, for a Task (table with 5 columns) ##
 
     <refsect1 role="parameters">
-        <title>&ref.title.attributes;</title>
+        &ref.title.attributes;
         <table xml:id=".parameters">
             <caption></caption>
             &taskAttributes.table.titlesLine.all;
             <tr>
-                <td><parameter></parameter></td>
-                <td><type></type></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="name"><parameter></parameter></td>
+                <td class="type"><type></type></td>
+                <td class="description"></td>
+                <td class="default"></td>
+                <td class="required"></td>
             </tr>
-
+            
             </table>
     </refsect1>
 
@@ -82,7 +83,7 @@ Entities that can / must be used *(especially for `default` and `required` colum
 ## Example, for a Task *(some `<para>` can be added, if necessary)* ##
 
     <refsect1 role="example">
-        <title>&ref.title.example;</title>
+        &ref.title.example;
         <programlisting language="xml"><![CDATA[]]></programlisting>
     </refsect1>
 
