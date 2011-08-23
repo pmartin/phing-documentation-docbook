@@ -14,7 +14,7 @@
          xmlns:db="http://docbook.org/ns/docbook">
     <title>About this book</title>
 
-    <section>
+    <section xml:id="phing.chapters.aboutthisbook.authors">
         <title>Authors</title>
         <info>
             <authorgroup>
@@ -62,7 +62,7 @@
         </para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.aboutthisbook.copyright">
         <title>Copyright</title>
         <info>
             <copyright>
@@ -72,7 +72,7 @@
         </info>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.aboutthisbook.license">
         <title>License</title>
         <info>
             <legalnotice>

@@ -37,7 +37,7 @@
     </listitem>
   </itemizedlist>
 
-  <section>
+  <section xml:id="phing.chapters.gettingstarted.xmlandphing">
     <title>XML And Phing</title>
 
     <para>A valid Phing buildfile has the following basic structure:</para>
@@ -66,7 +66,7 @@
     </itemizedlist>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.gettingstarted.writingasimplebuildfile">
     <title>Writing A Simple Buildfile</title>
 
     <para>The Foobar project installs some PHP files from a source location to
@@ -138,7 +138,7 @@
     arguments as described in <xref
     linkend="phing.appendices.factsheet" />.</para>
 
-    <section>
+    <section xml:id="phing.chapters.gettingstarted.writingasimplebuildfile.projectelement">
       <title>Project Element</title>
 
       <para>The first element after the document prolog is the root element
@@ -189,7 +189,7 @@
       </table>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.gettingstarted.writingasimplebuildfile.targetelement">
       <title>Target Element</title>
 
       <para>A target can <emphasis>depend</emphasis> on other targets. You
@@ -274,7 +274,7 @@
       </section>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.gettingstarted.writingasimplebuildfile.taskelements">
       <title>Task Elements</title>
 
       <para>A <emphasis>task</emphasis> is a piece of PHP code that can be
@@ -307,7 +307,7 @@
       of other tasks.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.gettingstarted.writingasimplebuildfile.propertyelement">
       <title>Property Element</title>
 
       <para><emphasis>Properties</emphasis> are essentially variables that can
@@ -332,7 +332,7 @@
       exists.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.gettingstarted.writingasimplebuildfile.builtinproperties">
       <title>Built-in Properties</title>
 
       <para>Phing provides access to system properties as if they had been
@@ -343,7 +343,7 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.gettingstarted.morecomplexbuildfile">
     <title>More Complex Buildfile</title>
 
     <programlisting language="xml"><![CDATA[<?xml version="1.0"  encoding="UTF-8" ?>
@@ -442,7 +442,7 @@
     -Dbuilddir=/tmp/system-test</command></para>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.gettingstarted.relaxnggrammar">
     <title>Relax NG Grammar</title>
 
     <para>With a little bit of experience it is not that difficult to write

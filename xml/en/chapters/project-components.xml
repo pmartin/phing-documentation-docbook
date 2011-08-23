@@ -23,7 +23,7 @@
   linkend="phing.appendices.coretypes" /> and <xref
   linkend="phing.appendices.projectcomponents" />.</para>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.projects">
     <title>Projects</title>
 
     <para>In the structure of a Phing buildfile, there must be exactly one
@@ -46,7 +46,7 @@
     reference, see <xref linkend="phing.projectcomponents.projects" />.</para>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.version">
     <title>Version</title>
 
     <para>Since Phing 2.4.2 it is possible to include a
@@ -62,7 +62,7 @@
 <project>]]></programlisting>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.projectcomponentsingeneral">
     <title>Project Components in General</title>
 
     <para>Project Components are all the elements found inside a project, i.e.
@@ -83,7 +83,7 @@
     properties, in the second case setting XSLT parameters.</para>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.targets">
     <title>Targets</title>
 
     <para>Targets are collections of project components (but not other
@@ -115,7 +115,7 @@
     task.</para>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.tasks">
     <title>Tasks</title>
 
     <para>Tasks are responsible for doing the work in Phing. Basically, tasks
@@ -177,10 +177,10 @@
     system tasks and their parameters.</para>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.types">
     <title>Types</title>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.types.basics">
       <title>Basics</title>
 
       <para>Besides the simple types (strings, integer, booleans) you can use
@@ -207,7 +207,7 @@
       above.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.types.referencingtypes">
       <title>Referencing Types</title>
 
       <para>An additional fact about types you should notice is the
@@ -236,14 +236,14 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.basictypes">
     <title>Basic Types</title>
 
     <para>The following section gives you a quick introduction into the basic
     Phing types. For a complete reference see <xref
     linkend="phing.appendices.coretypes" />.</para>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.basictypes.fileset">
       <title>FileSet</title>
 
       <para>FileSets are groups of files. You can include or exclude specific
@@ -269,7 +269,7 @@
       include files.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.basictypes.filelist">
       <title>FileList</title>
 
       <para>FileLists, like FileSets, are collections of files; however, a
@@ -289,7 +289,7 @@
 <filelist dir="basedir/" listfile="files_to_process.txt"/>]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.basictypes.filterchainsandfilters">
       <title>FilterChains and Filters</title>
 
       <para>FilterChains can be compared to Unix pipes. Unix pipes add a great
@@ -356,7 +356,7 @@
       project. </para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.basictypes.filemappers">
       <title>File Mappers</title>
 
       <para>With FilterChains and filters provide a powerful tool for changing
@@ -404,14 +404,14 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.projectcomponents.conditions">
     <title>Conditions</title>
 
     <para>Conditions are nested elements of the <link
     linkend="phing.coretasks.condition"><code>condition</code></link> and
     <link linkend="phing.coretasks.if"><code>if</code></link> tasks.</para>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.not">
       <title>not</title>
 
       <para>The <code>&lt;not&gt;</code> element expects exactly one other
@@ -420,7 +420,7 @@
       elements of the condition task as nested elements as well.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.and">
       <title>and</title>
 
       <para>The <code>&lt;and&gt;</code> element doesn't have any attributes
@@ -435,7 +435,7 @@
       be evaluated.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.or">
       <title>or</title>
 
       <para>The <code>&lt;or&gt;</code> element doesn't have any attributes
@@ -450,7 +450,7 @@
       evaluated.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.os">
       <title>os</title>
 
       <para>Test whether the current operating system is of a given
@@ -488,7 +488,7 @@
         </itemizedlist></para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.equals">
       <title>equals</title>
 
       <para>Tests whether the two given Strings are identical.</para>
@@ -534,7 +534,7 @@
       </table>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.isset">
       <title>isset</title>
 
       <para>Test whether a given property has been set in this project.</para>
@@ -554,7 +554,7 @@
       </table>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.contains">
       <title>contains</title>
 
       <para>Tests whether a string contains another one.</para>
@@ -591,7 +591,7 @@
       </table>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.istrue">
       <title>istrue</title>
 
       <para>Tests whether a string evals to true.</para>
@@ -614,7 +614,7 @@
 <istrue value="false"/>]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.isfalse">
       <title>isfalse</title>
 
       <para>Tests whether a string evals to not true, the negation of
@@ -638,7 +638,7 @@
 <isfalse value="false"/>]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.referenceexists">
       <title>referenceexists</title>
 
       <para>Tests whether a specified reference exists.</para>
@@ -660,7 +660,7 @@
       <programlisting language="xml"><![CDATA[<referenceexists ref="${someid}"/>]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.projectcomponents.conditions.available">
       <title>available</title>
 
       <para>This condition is identical to the <link

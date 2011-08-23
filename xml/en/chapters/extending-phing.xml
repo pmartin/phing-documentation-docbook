@@ -78,7 +78,7 @@
   <section xml:id="phing.chapters.extendingphing.sourcelayout">
     <title>Source Layout</title>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.sourcelayout.filesanddirectories">
       <title>Files And Directories</title>
 
       <para>Before you are going to start to extend Phing let's have a look at
@@ -159,7 +159,7 @@
       itself.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.sourcelayout.filenamingconventions">
       <title>File Naming Conventions</title>
 
       <para>There are some filenaming conventions used by Phing. Here's a
@@ -205,7 +205,7 @@
       </itemizedlist>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.sourcelayout.codingstandards">
       <title>Coding Standards</title>
 
       <para>We are using PEAR coding standards. We are using a less strict
@@ -247,7 +247,7 @@
     entry points is that Phing is build so that other frontends (e.g. PHP-GTK)
     could be used in place of the command line.</para>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.systeminitialization.wrapperscripts">
       <title>Wrapper Scripts</title>
 
       <para>This scripts are technical not required but provided for the ease
@@ -269,7 +269,7 @@
       <screen><![CDATA[phing -v2 all distro]]></screen>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.systeminitialization.themainapplication">
       <title>The Main Application (phing.php)</title>
 
       <para>This is basically a wrapper for the <classname>Phing</classname>
@@ -280,7 +280,7 @@
       Phing.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.systeminitialization.thephingclass">
       <title>The Phing Class</title>
 
       <para>Given that all the prior initialization steps passed successfully
@@ -319,7 +319,7 @@
   <section xml:id="phing.chapters.extendingphing.systemservices">
     <title>System Services</title>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.systemservices.theexceptionsystem">
       <title>The Exception system</title>
 
       <para>Phing uses the PHP5 try/catch/throw Exception system. Phing
@@ -337,7 +337,7 @@
     Particularly, how Phing procedes through a build file and invokes tasks
     and types based on the tags that it encounters.</para>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.buildlifecycle.howphingparsesbuildfiles">
       <title>How Phing Parses Buildfiles</title>
 
       <para>Phing uses an ExpatParser class and PHP's native expat XML
@@ -408,7 +408,7 @@
   <section xml:id="phing.chapters.extendingphing.writingtasks">
     <title>Writing Tasks</title>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.creatingatask">
       <title>Creating A Task</title>
 
       <para>We will start creating a rather simple task which basically does
@@ -459,7 +459,7 @@ class MyEchoTask extends Task {
       executed during the build process.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.usingthetask">
       <title>Using the Task</title>
 
       <para>The task shown [above] must somehow get called by Phing. Therefore
@@ -492,14 +492,14 @@ class MyEchoTask extends Task {
       called "<parameter>message</parameter>".</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.sourcediscussion">
       <title>Source Discussion</title>
 
       <para>No that you've got the knowledge to execute the task in a
       buildfile it's time to discuss how everything works.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.taskstructure">
       <title>Task Structure</title>
 
       <para>All files containing the definition of a task class follow a
@@ -542,7 +542,7 @@ class MyEchoTask extends Task {
       </itemizedlist>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.includes">
       <title>Includes</title>
 
       <para>Always include/require all the classes needed for this task in
@@ -552,7 +552,7 @@ class MyEchoTask extends Task {
       classes.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.classdeclaration">
       <title>Class Declaration</title>
 
       <para>If you look at line 5 in [the source code of the task] you will
@@ -580,7 +580,7 @@ class MyEchoTask extends Task {
       </itemizedlist>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.classproperties">
       <title>Class Properties</title>
 
       <para>The next lines you are coding are class properties. Most of them
@@ -613,7 +613,7 @@ class MyEchoTask extends Task {
       API Reference" in the <filename>docs/api/</filename> directory.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.theconstructor">
       <title>The Constructor</title>
 
       <para>The next block that follows is the class's constructor. It must be
@@ -623,7 +623,7 @@ class MyEchoTask extends Task {
       here.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.settermethods">
       <title>Setter Methods</title>
 
       <para>As you can see in the XML definition of our task ([see buildfile
@@ -650,14 +650,14 @@ class MyEchoTask extends Task {
       disposal.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.creatormethods">
       <title>Creator Methods</title>
 
       <para>Creator methods allow you to manage nested XML tags in your new
       Phing Task.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.initmethod">
       <title><methodname>init()</methodname> Method</title>
 
       <para>The <methodname>init</methodname> method gets called when the
@@ -677,7 +677,7 @@ class MyEchoTask extends Task {
       error.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.mainmethod">
       <title><methodname>main()</methodname> Method</title>
 
       <para>There is exactly one entry entry point to execute the task. It is
@@ -691,7 +691,7 @@ class MyEchoTask extends Task {
       log.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtasks.arbitrarymethods">
       <title>Arbitrary Methods</title>
 
       <para>For the more or less simple cases (as our example) all the logic
@@ -723,7 +723,7 @@ class MyEchoTask extends Task {
     create your own Type class -- similar to the way a Task is created <xref
     linkend="phing.chapters.extendingphing.writingtasks" />.</para>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtypes.creatingadatatype">
       <title>Creating a DataType</title>
 
       <para>Type classes need to extend the abstract
@@ -850,7 +850,7 @@ class DSN extends DataType {
 }]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtypes.usingthedatatype">
       <title>Using the DataType</title>
 
       <para>The <classname>TypedefTask</classname> provides a way to "declare"
@@ -888,10 +888,10 @@ class DSN extends DataType {
 </project>]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingtypes.sourcediscussion">
       <title>Source Discussion</title>
 
-      <section>
+      <section xml:id="phing.chapters.extendingphing.writingtypes.sourcediscussion.gettersandsetters">
         <title>Getters &amp; Setters</title>
 
         <para>You must provide a setter method for every attribute you want to
@@ -915,7 +915,7 @@ class DSN extends DataType {
         project.</para>
       </section>
 
-      <section>
+      <section xml:id="phing.chapters.extendingphing.writingtypes.sourcediscussion.thegetrefmethod">
         <title>The getRef() Method</title>
 
         <para>The <methodname>getRef()</methodname> task needs to be
@@ -944,7 +944,7 @@ class DSN extends DataType {
     <classname>GlobMapper</classname> or
     <classname>RegexpMapper</classname>.</para>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingmappers.creatingamapper">
       <title>Creating a Mapper</title>
 
       <para>Writing filename mappers is simplified by interface support in
@@ -1012,7 +1012,7 @@ class DOSMapper implements FileNameMapper {
 }]]></programlisting>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.extendingphing.writingmappers.usingthemapper">
       <title>Using the Mapper</title>
 
       <para>Assuming that this mapper is saved to

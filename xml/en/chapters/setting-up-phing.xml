@@ -18,7 +18,7 @@
   shouldn't need to revisit this chapter, unless you're re-installing or
   moving your installation to another platform.</para>
 
-  <section>
+  <section xml:id="phing.chapters.settingupphing.systemrequirements">
     <title>System Requirements</title>
 
     <para>To use Phing you must have installed PHP version 5.2 or above
@@ -29,7 +29,7 @@
     <xref linkend="bibliography.php" /> website. For a brief list of software
     dependencies see below.</para>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.systemrequirements.operatingsystems">
       <title>Operating Systems</title>
 
       <para>Designed for portability from the get go, Phing runs on all
@@ -41,7 +41,7 @@
       recommended. Namely: Linux, FreeBSD, OpenBSD, etc.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.systemrequirements.softwaredependencies">
       <title>Software Dependencies</title>
 
       <para>For a detailed list of required / optional sofware and libraries,
@@ -214,13 +214,13 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.settingupphing.obtainingphing">
     <title>Obtaining Phing</title>
 
     <para>Phing is free software distributed under the terms of the
     LGPL.</para>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.obtainingphing.distributionfiles">
       <title>Distribution Files</title>
 
       <para>There are several ways to get a Phing distribution package. If you
@@ -241,7 +241,7 @@
       install the PEAR package.</para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.obtainingphing.gettingadevelopmentcopyfromsubversion">
       <title>Getting A Development Copy From Subversion</title>
 
       <para>You are encouraged to contibute to the development of Phing. If
@@ -274,7 +274,7 @@
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.settingupphing.pearinstall">
     <title>PEAR Install</title>
 
     <para>The easiest way to install Phing is using the PEAR installer.
@@ -290,7 +290,7 @@ $> pear install phing/phing]]></screen>
     resides).</para>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.settingupphing.nonpearinstall">
     <title>Non-PEAR Install</title>
 
     <para>If you are not using the PEAR installer, you will need to setup your
@@ -361,7 +361,7 @@ $> pear install phing/phing]]></screen>
     <para>If you are using Phing in conjunction with another application, you
     may need to add additional paths to <envar>PHP_CLASSPATH</envar>.</para>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.nonpearinstall.unix">
       <title>Unix</title>
 
       <para>Assuming you are running a Unix dialect operating system with the
@@ -375,7 +375,7 @@ export PHP_CLASSPATH=${PHING_HOME}/classes
 export PATH=${PATH}:${PHING_HOME}/bin]]></screen>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.nonpearinstall.windows">
       <title>Windows</title>
 
       <para>On the Windows platfrom, assuming Phing is installed in
@@ -388,7 +388,7 @@ set PHP_CLASSPATH=c:\opt\phing\classes
 set PATH=%PATH%;%PHING_HOME%\bin]]></screen></para>
     </section>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.nonpearinstall.advanced">
       <title>Advanced</title>
 
       <para>There are lots of variants that can be used to run/prepare Phing.
@@ -417,14 +417,14 @@ set PATH=%PATH%;%PHING_HOME%\bin]]></screen></para>
     </section>
   </section>
 
-  <section>
+  <section xml:id="phing.chapters.settingupphing.callingphing">
     <title>Calling Phing</title>
 
     <para>Now you are prepared to execute Phing on the command line or via
     script files. The following section briefly describe how to properly
     execute phing.</para>
 
-    <section>
+    <section xml:id="phing.chapters.settingupphing.callingphing.commandline">
       <title>Command Line</title>
 
       <para>Phing execution on the command line is simple. Just change to the

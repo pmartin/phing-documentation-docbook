@@ -9,7 +9,7 @@
           xmlns:db="http://docbook.org/ns/docbook">
   <title>File Formats</title>
 
-  <section>
+  <section xml:id="phing.appendices.fileformats.buildfileformat">
     <title>Build File Format</title>
 
     <para>The following XML file shows a basic Phing build file skeleton that
@@ -103,7 +103,7 @@
     </note>
   </section>
 
-  <section>
+  <section xml:id="phing.appendices.fileformats.propertyfileformat">
     <title>Property File Format</title>
 
     <para>Property Files define properties. Properties are stored in key/value
