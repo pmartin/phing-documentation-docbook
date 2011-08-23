@@ -127,4 +127,6 @@
   </itemizedlist>
 
   <xi:include href="selectors/contains.xml" />
+  <xi:include href="selectors/date.xml" />
+  <xi:include href="selectors/depend.xml" />
 </appendix>

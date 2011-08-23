@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.date"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Date</refname>
+
+    <refpurpose>The <code>&lt;date&gt;</code> tag selects files whose last
+    modified date meets the date limits specified by the selector.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="${src}" includes="**/*.php">
+  <date datetime="01/01/2001 12:00 AM" when="before"/>
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.date.parameters">
+      <caption>Attributes for the <code>&lt;date&gt;</code> selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>datetime</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">Specifies the date and time to test for. It
+        should be in a format parsable by PHP's <link
+        ns6:href="http://php.net/strtotime"><code>strtotime()</code></link>
+        function.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required" rowspan="2"></td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>seconds</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The number of seconds since 1970 that should
+        be tested for.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>when</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description"><para>Indicates how to interpret the date,
+        whether the files to be selected are those whose last modified times
+        should be before, after, or equal to the specified value. Accepted
+        values are:<itemizedlist>
+            <listitem>
+              <para><code>before</code> - select files whose last modified
+              date is before the indicated date</para>
+            </listitem>
+
+            <listitem>
+              <para><code>after</code> - select files whose last modified date
+              is after the indicated date</para>
+            </listitem>
+
+            <listitem>
+              <para><code>equal</code> - select files whose last modified date
+              is this exact date</para>
+            </listitem>
+          </itemizedlist></para></td>
+
+        <td class="default"><code>equal</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>granularity</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The number of milliseconds leeway to use when
+        comparing file modification times. This is needed because not every
+        file system supports tracking the last modified time to the
+        millisecond level.</td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>checkdirs</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">Indicates whether or not to check dates on
+        directories.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

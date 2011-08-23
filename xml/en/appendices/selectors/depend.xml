@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.depend"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Depend</refname>
+
+    <refpurpose>The <code>&lt;depend&gt;</code> tag selects files whose last
+    modified date is later than another, equivalent file in another
+    location.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>The <code>&lt;depend&gt;</code> tag supports the use of a contained
+    <link linkend="phing.appendices.coremappers">Mapper</link> element to
+    define the location of the file to be compared against. If no
+    <emphasis>mapper</emphasis> element is specified, the identity type mapper
+    is used.</para>
+
+    <para>The <code>&lt;depend&gt;</code> tag is case-sensitive.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="phing-2.4.5/classes" includes="**/*.php">
+  <depend targetdir="phing-2.4.6/classes"/>
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.depend.parameters">
+      <caption>Attributes for the <code>&lt;depend&gt;</code>
+      selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>targetdir</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The base directory to look for the files to
+        compare against. The precise location depends on a combination of this
+        attribute and the <emphasis>mapper</emphasis> element, if any.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>granularity</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The number of milliseconds leeway to give
+        before deciding a file is out of date. This is needed because not
+        every file system supports tracking the last modified time to the
+        millisecond level.</td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
