@@ -154,8 +154,10 @@
   <refsect1 role="nested">
     &ref.title.supportedNestedTags;
 
-    <para><simplelist>
-        <member><link linkend="phing.fileset">Fileset</link></member>
-      </simplelist></para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="phing.coretypes.fileset" /></para>
+      </listitem>
+    </itemizedlist>
   </refsect1>
 </refentry>
