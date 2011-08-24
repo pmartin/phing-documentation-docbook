@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.selector"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Selector</refname>
+
+    <refpurpose>The <code>&lt;selector&gt;</code> tag is used to create
+    selectors that can be reused through references.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>It is the only selector which can be used outside of any target, as
+    an element of the <code>&lt;project&gt;</code> tag. It can contain only
+    one other selector, but of course that selector can be a container</para>
+  </refsect1>
+</refentry>

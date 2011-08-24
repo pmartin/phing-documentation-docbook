@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.or"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Or</refname>
+
+    <refpurpose>The <code>&lt;or&gt;</code> tag selects files that are
+    selected by any one of the elements it contains.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>It returns as soon as it finds a selector that selects the file, so
+    it is not guaranteed to check every selector.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="${src}">
+  <and>
+    <depth max="0"/>
+    <filename name="*.png"/>
+    <filename name="*.gif"/>
+    <filename name="*.jpg"/>
+  </and>
+</fileset>]]></programlisting>
+  </refsect1>
+</refentry>

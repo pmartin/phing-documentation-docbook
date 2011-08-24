@@ -188,21 +188,21 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Selectors ##
 
- - `Contains` : `DONE` - *2011-08-20*
- - `Date` : `DONE` - *2011-08-20*
- - `Depend` : `DONE` - *2011-08-20*
- - `Depth` : `DONE` - *2011-08-20*
- - `Filename` : `DONE` - *2011-08-20*
- - `Present` : `DONE` - *2011-08-20*
- - `Containsregexp` : `DONE` - *2011-08-20*
- - `Size` : `DONE` - *2011-08-20*
- - `Type` : `DONE` - *2011-08-20*
- - `And` : `` - *2011-08-20*
- - `Majority` : `` - *2011-08-20*
- - `None` : `` - *2011-08-20*
- - `Not` : `` - *2011-08-20*
- - `Or` : `` - *2011-08-20*
- - `Selector` : `` - *2011-08-20*
+ - `Contains` : `DONE` - *2011-08-23*
+ - `Date` : `DONE` - *2011-08-23*
+ - `Depend` : `DONE` - *2011-08-23*
+ - `Depth` : `DONE` - *2011-08-24*
+ - `Filename` : `DONE` - *2011-08-24*
+ - `Present` : `DONE` - *2011-08-24*
+ - `Containsregexp` : `DONE` - *2011-08-24*
+ - `Size` : `DONE` - *2011-08-24*
+ - `Type` : `DONE` - *2011-08-24*
+ - `And` : `DONE` - *2011-08-24*
+ - `Majority` : `DONE` - *2011-08-24*
+ - `None` : `DONE` - *2011-08-24*
+ - `Not` : `DONE` - *2011-08-24*
+ - `Or` : `DONE` - *2011-08-24*
+ - `Selector` : `DONE` - *2011-08-24*
 
 
 ## Project Components ##

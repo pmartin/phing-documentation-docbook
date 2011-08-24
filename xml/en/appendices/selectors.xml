@@ -135,4 +135,10 @@
     <xi:include href="selectors/containsregexp.xml" />
     <xi:include href="selectors/size.xml" />
     <xi:include href="selectors/type.xml" />
+    <xi:include href="selectors/and.xml" />
+    <xi:include href="selectors/majority.xml" />
+    <xi:include href="selectors/none.xml" />
+    <xi:include href="selectors/not.xml" />
+    <xi:include href="selectors/or.xml" />
+    <xi:include href="selectors/selector.xml" />
 </appendix>
