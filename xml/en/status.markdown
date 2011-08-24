@@ -194,9 +194,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `Depth` : `DONE` - *2011-08-20*
  - `Filename` : `DONE` - *2011-08-20*
  - `Present` : `DONE` - *2011-08-20*
- - `Containsregexp` : `` - *2011-08-20*
- - `Size` : `` - *2011-08-20*
- - `Type` : `` - *2011-08-20*
+ - `Containsregexp` : `DONE` - *2011-08-20*
+ - `Size` : `DONE` - *2011-08-20*
+ - `Type` : `DONE` - *2011-08-20*
  - `And` : `` - *2011-08-20*
  - `Majority` : `` - *2011-08-20*
  - `None` : `` - *2011-08-20*

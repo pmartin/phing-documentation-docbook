@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.size"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Size</refname>
+
+    <refpurpose>The <code>&lt;size&gt;</code> tag selects files matching a
+    specified size limit.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="${src}">
+  <size value="4" when="more"/>
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.size.parameters">
+      <caption>Attributes for the <code>&lt;size&gt;</code> selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>value</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The size of the file which should be tested
+        for.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>units</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The units that the value attribute is
+        expressed in. When using the standard single letter SI designations,
+        such as "k","M", or "G", multiples of 1000 are used. If you want to
+        use power of 2 units, use the IEC standard: "Ki" for 1024, "Mi" for
+        1048576, and so on. The default is no units, which means the value
+        attribute expresses the exact number of bytes.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>when</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description"><para>Indicates how to interpret the size,
+        whether the files to be selected should be larger, smaller, or equal
+        to that value. Accepted values are:<itemizedlist>
+            <listitem>
+              <para><code>less</code> - select files less than the indicated
+              size</para>
+            </listitem>
+
+            <listitem>
+              <para><code>more</code> - select files greater than the
+              indicated size</para>
+            </listitem>
+
+            <listitem>
+              <para><code>equal</code> - select files this exact size</para>
+            </listitem>
+          </itemizedlist></para></td>
+
+        <td class="default"><code>equal</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

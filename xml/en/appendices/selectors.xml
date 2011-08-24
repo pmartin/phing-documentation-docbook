@@ -132,4 +132,7 @@
   <xi:include href="selectors/depth.xml" />
   <xi:include href="selectors/filename.xml" />
     <xi:include href="selectors/present.xml" />
+    <xi:include href="selectors/containsregexp.xml" />
+    <xi:include href="selectors/size.xml" />
+    <xi:include href="selectors/type.xml" />
 </appendix>

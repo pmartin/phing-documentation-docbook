@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.containsregexp"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Containsregexp</refname>
+
+    <refpurpose>The <code>&lt;containsregexp&gt;</code> tag selects the files
+    whose contents contain a match to the regular expression specified by the
+    <parameter>expression</parameter> attribute.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="${src}" includes="*.txt">
+  <containsregexp expression="[4-6]\.[0-9]"/>
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.containsregexp.parameters">
+      <caption>Attributes for the <code>&lt;containsregexp&gt;</code>
+      selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>expression</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">Specifies the regular expression that must
+        match true in every file.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>casesensitive</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">Perform a case sensitive match.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
