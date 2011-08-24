@@ -28,4 +28,7 @@
   to use the <code>&lt;filterreader&gt;</code> tag.</para>
 
   <xi:include href="core-filters/phingfilterreader.xml" />
+    <xi:include href="core-filters/expandproperties.xml" />
+    <xi:include href="core-filters/headfilter.xml" />
+    <xi:include href="core-filters/iconvfilter.xml" />
 </appendix>

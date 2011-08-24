@@ -56,7 +56,7 @@ such as `parameters`, `example`, ...
                 <td class="required"></td>
             </tr>
             
-            </table>
+        </table>
     </refsect1>
 
 Entities that can / must be used *(especially for `default` and `required` columns)* :

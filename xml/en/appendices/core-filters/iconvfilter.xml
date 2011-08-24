@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.iconvfilter"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>IconvFilter</refname>
+
+    <refpurpose>The <code>IconvFilter</code> encodes file from
+    <parameter>in</parameter> encoding to <parameter>out</parameter>
+    encoding.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Usage example:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+    <iconvfilter inputencoding="UTF-8" outputencoding="CP1251" />
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.iconvfilter.parameters">
+      <caption>Attributes for the <code>&lt;iconvfilter&gt;</code>
+      tag</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>inputencoding</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Input encoding.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>outputencoding</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Output encoding.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

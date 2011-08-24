@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.expandproperties"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ExpandProperties</refname>
+
+    <refpurpose>The <classname>ExpandProperties</classname> simply replaces
+    property names with their property values.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>For example, if you have the following in your build file:</para>
+
+    <programlisting language="xml"><![CDATA[<property name="description.txt" value="This is a text file" />
+
+<copy todir="/tmp">
+  <filterchain>
+    <expandproperties />
+  </filterchain>
+
+  <fileset dir=".">
+    <include name="**" />
+  </fileset>
+</copy>]]></programlisting>
+
+    <para>And the string <code>${description.txt}</code> it will be replaced
+    by <code>This is a text file</code>.</para>
+  </refsect1>
+</refentry>

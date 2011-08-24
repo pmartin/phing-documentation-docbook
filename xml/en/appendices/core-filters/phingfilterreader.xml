@@ -1,16 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE refentry [
-    <!ENTITY % entities SYSTEM "../../entities.ent">
-    %entities;
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
 ]>
-<refentry
-        xml:id="phing.corefilters.phingfilterreader"
-        xmlns="http://docbook.org/ns/docbook">
+<refentry version="5.0" xml:id="phing.corefilters.phingfilterreader"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhingFilterReader</refname>
 
-    <refnamediv>
-        <refname>PhingFilterReader</refname>
-        <refpurpose>The PhingFilterReader is used when you want to use filters that are not directly available through their own tag.</refpurpose>
-    </refnamediv>
+    <refpurpose>The <classname>PhingFilterReader</classname> is used when you
+    want to use filters that are not directly available through their own
+    tag.</refpurpose>
+  </refnamediv>
 
+  <refsect1 role="example">
+    &ref.title.example;
 
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <filterreader classname="phing.filter.ReplaceTokens">
+    <-- other way to set attributes -->
+    <param name="begintoken" value="@@" />
+    <param name="endtoken" value="@@" />
+
+    <-- other way to set nested tags -->
+    <param type="token" key="bar" value="foo" />
+  </filterreader>
+</filterchain>
+]]></programlisting>
+
+    <para>In the <code>filterreader</code> tag you have to specify the path
+    the class is in. The <classname>FilterReader</classname> will then load
+    this class and pass the parameters to the loaded filter. There are two
+    types of parameters: First, you can pass "normal" parameters to the loaded
+    filter. That means, you can pass parameters as if they were attributes. If
+    you want to do this, you only specify the <parameter>name</parameter> and
+    <parameter>value</parameter> attributes in the <code>param</code> tag. You
+    can also pass nested elements to the filter. Then, you have to specify the
+    <parameter>type</parameter> attribute. This attribute specifies the name
+    of the nested tag.</para>
+
+    <para>The result of the example above is identical with the following
+    code:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <replacetokens begintoken="@@" endtoken="@@">
+    <token key="bar" value="foo" />
+  </replacetokens>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.phingfilterreader.parameters">
+      <caption>Attributes for <code>&lt;filterreader&gt;</code></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>classname</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of class to use (in dot-path
+        notation).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>classpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The classpath to use when including classes.
+        This is added to PHP's <varname>include_path</varname>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>classpathref</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Reference to classpath to use when including
+        classes. This is added to PHP's <varname>include_path</varname>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para>The <classname>PhingFilterReader</classname> supports nested
+        <code>&lt;classpath&gt;</code>. </para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>In order to support the <code>&lt;filterreader ... /&gt;</code>
+    sytax, your class must extend the
+    <classname>BaseParamFilterReader</classname> class. Most of the filters
+    that are bundled with Phing can be invoked using this syntax. The noteable
+    exception (at time of writing) is the <classname>ReplaceRegexp</classname>
+    filter, which expects
+    <parameter>find</parameter>/<parameter>replace</parameter> parameters that
+    do not fit the <parameter>name</parameter>/<parameter>value</parameter>
+    mold. For this reason, you must always use the shorthand
+    <code>&lt;replaceregexp .../&gt;</code> to invoke this filter.</para>
+  </refsect1>
 </refentry>

@@ -156,10 +156,10 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Core Filters ##
 
- - `PhingFilterReader` : `` - *2011-08-20*
- - `ExpandProperties` : `` - *2011-08-20*
- - `HeadFilter` : `` - *2011-08-20*
- - `IconvFilter` : `` - *2011-08-20*
+ - `PhingFilterReader` : `DONE` - *2011-08-24*
+ - `ExpandProperties` : `DONE` - *2011-08-24*
+ - `HeadFilter` : `DONE` - *2011-08-24*
+ - `IconvFilter` : `DONE` - *2011-08-24*
  - `LineContains` : `` - *2011-08-20*
  - `LineContainsRegexp` : `` - *2011-08-20*
  - `PrefixLines` : `` - *2011-08-20*
