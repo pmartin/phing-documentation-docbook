@@ -163,9 +163,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `LineContains` : `DONE` - *2011-08-24*
  - `LineContainsRegexp` : `DONE` - *2011-08-24*
  - `PrefixLines` : `DONE` - *2011-08-24*
- - `ReplaceTokens` : `` - *2011-08-20*
- - `ReplaceTokensWithFile` : `` - *2011-08-20*
- - `ReplaceRegexp` : `` - *2011-08-20*
+ - `ReplaceTokens` : `DONE` - *2011-08-24*
+ - `ReplaceTokensWithFile` : `DONE` - *2011-08-24*
+ - `ReplaceRegexp` : `DONE` - *2011-08-24*
  - `StripLineBreaks` : `` - *2011-08-20*
  - `StripLineComments` : `` - *2011-08-20*
  - `StripPhpComments` : `` - *2011-08-20*

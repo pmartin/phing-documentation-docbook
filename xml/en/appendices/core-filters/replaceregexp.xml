@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.replaceregexp"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ReplaceRegexp</refname>
+
+    <refpurpose>The <classname>ReplaceRegexp</classname> filter will perform a
+    regexp find/replace on the input stream.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>For example, if you want to replace <code>ANT</code> with
+    <code>Phing</code> (ignoring case) and you want to replace references to
+    <code>*.java</code> with <code>*.php</code>:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <replaceregexp>
+    <regexp pattern="ANT" replace="Phing" ignoreCase="true"/>
+    <regexp pattern="(\w+)\.java" replace="\1.php"/>
+  </replaceregexp>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <classname>ReplaceTokens</classname> filter must contain one or
+    more <code>&lt;regexp&gt;</code> tags. These must have
+    <parameter>pattern</parameter> and <parameter>replace</parameter>
+    attributes.</para>
+
+    <para>The full list of supported attributes is as following: </para>
+
+    <table xml:id="phing.corefilters.replaceregexp.regexp.parameters">
+      <caption>Attributes for the <code>&lt;regexp&gt;</code> tag</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>pattern</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Regular expression used as needle. Phing
+        relies on <link ns6:href="http://php.net/pcre">Perl-compatible</link>
+        regular expressions.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>replace</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Replacement string.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignoreCase</parameter></td>
+
+        <td class="type"><type>boolean</type></td>
+
+        <td class="description">Whether search is case-insensitive.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>multiline</parameter></td>
+
+        <td class="type"><type>boolean</type></td>
+
+        <td class="description">Whether regular expression is applied in
+        multi-line mode.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>modifiers</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Raw regular expression <link
+        ns6:href="http://php.net/manual/en/reference.pcre.pattern.modifiers.php">modifiers</link>.
+        You can pass several modifiers as single string, and use raw modifiers
+        with <parameter>ignoreCase</parameter> and
+        <parameter>multiline</parameter> attributes. In case of conflict,
+        value specified by dedicated attribute takes precedence.</td>
+
+        <td class="default"><code>''</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>The previous example (using <parameter>modifiers</parameter>
+    attribute this time):</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <replaceregexp>
+    <regexp pattern="ANT" replace="Phing" modifiers="i"/>
+    <regexp pattern="(\w+)\.java" replace="\1.php"/>
+  </replaceregexp>
+</filterchain>]]></programlisting>
+  </refsect1>
+</refentry>

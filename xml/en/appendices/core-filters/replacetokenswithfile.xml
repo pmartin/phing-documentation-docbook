@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.replacetokenswithfile"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ReplaceTokensWithFile</refname>
+
+    <refpurpose>The <classname>ReplaceTokensWithFile</classname> filter will
+    replace certain tokens with the contents of a file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>The name of the file to use as replacement is derived from the token
+    name itself. Tokens are strings enclosed in special characters which are
+    user selectable.</para>
+
+    <para>This filter could for example be used to insert code examples in
+    documentation where the example code are real executable files kept
+    outside the documentation.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>If you for example want to replace <code>#!example1##</code> with
+    the content of the file <filename>example1.php</filename> you could do the
+    following:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+    <replacetokenswithfile begintoken="#!" endtoken="##"
+          dir="exampledir/" postfix=".php" />
+</filterchain>]]></programlisting>
+
+    <para>The filer above will replace all tokens within the begin and end
+    token specified with the contents of the file whose base name is that of
+    the token with the added postfix <code>".php"</code>. Only the directory
+    specified in the <parameter>dir</parameter> attribute is searched. If the
+    file is not found the token is left untouched and an error message is
+    given. It is important to note that <emphasis role="bold">all</emphasis>
+    found tokens will be replaced with the corresponding file. So in the
+    example below even <code>#!example2##</code> will be replaced with the
+    content of the file <filename>example2.php</filename>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.replacetokenswithfile.parameters">
+      <caption>Attributes for the <code>&lt;replacetokenswithfile&gt;</code>
+      tag</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>begintoken</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The string that marks the beginning of a
+        token.</td>
+
+        <td class="default"><code>#@#</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>endtoken</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The string that marks the end of a token.</td>
+
+        <td class="default"><code>#@#</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>prefix</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">A string that will be added in front of the
+        token to construct the filename that will be used as source when
+        replacing the token.</td>
+
+        <td class="default"><code>''</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>postfix</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">A string that will be added to the end of the
+        token to construct the filename that will be used as source when
+        replacing the token.</td>
+
+        <td class="default"><code>''</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The directory where to look for the files to
+        use as replacements for the tokens.</td>
+
+        <td class="default"><code>'./'</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>translatehtml</parameter></td>
+
+        <td class="type"><type>boolean</type></td>
+
+        <td class="description">If true all html special characters (e.g.
+        <code>"&gt;"</code>) in the file to there corresponding html entities
+        (e.g. <code>"&amp;gt;"</code>) before the file is inserted.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>None.</para>
+  </refsect1>
+</refentry>

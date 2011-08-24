@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.replacetokens"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ReplaceTokens</refname>
+
+    <refpurpose>The <classname>ReplaceTokens</classname> filter will replace
+    certain tokens. Tokens are strings enclosed in special
+    characters.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>If you want to replace <code>##BCHOME##</code> by the path to the
+    directory set in the environment variable <envar>BCHOME</envar>, you could
+    do the following: </para>
+
+    <programlisting language="xml"><![CDATA[<property environment="env" />
+
+<filterchain>
+  <replacetokens begintoken="##" endtoken="##">
+    <token key="BCHOME" value="${env.BCHOME}" />
+  </replacetokens>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.replacetokens.parameters">
+      <caption>Attributes for the <code>&lt;replacetokens&gt;</code>
+      tag</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>begintoken</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The string that marks the beginning of a
+        token.</td>
+
+        <td class="default"><code>@</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>endtoken</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The string that marks the end of a token.</td>
+
+        <td class="default"><code>@</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <classname>ReplaceTokens</classname> filter must contain one or
+    more <code>&lt;token&gt;</code> tags. These must have a
+    <parameter>key</parameter> and a <parameter>value</parameter>
+    attribute.</para>
+  </refsect1>
+</refentry>

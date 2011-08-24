@@ -34,4 +34,7 @@
     <xi:include href="core-filters/linecontains.xml" />
     <xi:include href="core-filters/linecontainsregexp.xml" />
     <xi:include href="core-filters/prefixlines.xml" />
+    <xi:include href="core-filters/replacetokens.xml" />
+    <xi:include href="core-filters/replacetokenswithfile.xml" />
+    <xi:include href="core-filters/replaceregexp.xml" />
 </appendix>
