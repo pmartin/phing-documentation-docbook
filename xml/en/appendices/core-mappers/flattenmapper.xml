@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE refentry [
-    <!ENTITY % entities SYSTEM "../../entities.ent">
-    %entities;
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
 ]>
-<refentry
-        xml:id="phing.coremappers.flatten"
-        xmlns="http://docbook.org/ns/docbook">
+<refentry version="5.0" xml:id="phing.coremappers.flatten"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>FlattenMapper</refname>
 
-    <refnamediv>
-        <refname>FlattenMapper</refname>
-        <refpurpose>The FlattenMapper removes the directories from a filename and solely returns the filename.</refpurpose>
-    </refnamediv>
+    <refpurpose>The <classname>FlattenMapper</classname> removes the
+    directories from a filename and solely returns the filename.</refpurpose>
+  </refnamediv>
 
+  <refsect1 role="example">
+    &ref.title.example;
 
+    <programlisting language="xml"><![CDATA[<copy todir="/tmp">
+  <mapper type="flatten" />
+
+  <fileset refid="someid" />
+</copy>]]></programlisting>
+
+    <para>This code will copy all files in the fileset to
+    <filename>/tmp</filename>. All files will be in the target
+    directory.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<mapper type="flatten" />]]></programlisting>
+
+    <para>Applying the mapper, you will get the following results from the
+    following filenames:</para>
+
+    <table>
+      <caption><code>FlattenMapper</code> example</caption>
+
+      <tr>
+        <th>From</th>
+
+        <th>To</th>
+      </tr>
+
+      <tr>
+        <td><filename>test.txt</filename></td>
+
+        <td><filename>test.txt</filename></td>
+      </tr>
+
+      <tr>
+        <td><filename>./foo/bar/test.bak</filename></td>
+
+        <td><filename>test.bak</filename></td>
+      </tr>
+    </table>
+  </refsect1>
 </refentry>

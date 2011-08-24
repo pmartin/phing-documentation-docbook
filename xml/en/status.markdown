@@ -179,7 +179,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 # Core Mappers ##
 
- - `FlattenMapper` : `` - *2011-08-20*
+ - `FlattenMapper` : `DONE` - *2011-08-20*
  - `GlobMapper` : `` - *2011-08-20*
  - `IdentityMapper` : `` - *2011-08-20*
  - `MergeMapper` : `` - *2011-08-20*
