@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.filename"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Filename</refname>
+
+    <refpurpose>The <code>&lt;filename&gt;</code> tag acts like the
+    <code>&lt;include&gt;</code> and <code>&lt;exclude&gt;</code> tags within
+    a fileset.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>By using a selector instead, however, one can combine it with all
+    the other selectors using whatever selector container is desired.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="${src}" includes="**/*">
+  <filename name="**/*.php">
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.filename.parameters">
+      <caption>Attributes for the <code>&lt;filename&gt;</code>
+      selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The name of files to select. The
+        <code>name</code> parameter can contain the standard Ant wildcard
+        characters.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>casesensitive</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">Whether to pay attention to case when looking
+        at file names.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>negate</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">Whether to reverse the effects of this
+        filename selection, therefore emulating an <code>exclude</code> rather
+        than <code>include</code> tag.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

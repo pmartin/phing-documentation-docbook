@@ -129,4 +129,7 @@
   <xi:include href="selectors/contains.xml" />
   <xi:include href="selectors/date.xml" />
   <xi:include href="selectors/depend.xml" />
+  <xi:include href="selectors/depth.xml" />
+  <xi:include href="selectors/filename.xml" />
+    <xi:include href="selectors/present.xml" />
 </appendix>

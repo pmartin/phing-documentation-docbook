@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.selectors.depth"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>Depth</refname>
+
+    <refpurpose>The <code>&lt;depth&gt;</code> tag selects files based on how
+    many directory levels deep they are in relation to the base directory of
+    the fileset. </refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<fileset dir="phing/classes" includes="**/*.php">
+  <depth max="1"/>
+</fileset>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.selectors.depth.parameters">
+      <caption>Attributes for the <code>&lt;depth&gt;</code>
+      selector</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>min</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The minimum number of directory levels below
+        the base directory that a file must be in order to be selected.</td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required" rowspan="2">One of the two</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>max</parameter></td>
+
+        <td class="type"><type></type></td>
+
+        <td class="description">The maximum number of directory levels below
+        the base directory that a file can be and still be selected.</td>
+
+        <td class="default"><code>0</code></td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
