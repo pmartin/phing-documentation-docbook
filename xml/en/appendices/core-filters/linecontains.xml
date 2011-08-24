@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.linecontains"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>LineContains</refname>
+
+    <refpurpose>This filter is only "permeable" for lines that contain the
+    expression given as parameter.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>For example, the following filterchain would only let all the lines
+    pass that contain <code>class</code>:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <linecontains>
+    <contains value="class" />
+  </linecontains>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <code>&lt;linecontains&gt;</code> tag must contain one or more
+    <code>&lt;contains&gt;</code> tags.</para>
+
+    <para>Latter must have a <parameter>value</parameter> attribute that has
+    to be set to the string the line has to contain to be let through.</para>
+  </refsect1>
+</refentry>

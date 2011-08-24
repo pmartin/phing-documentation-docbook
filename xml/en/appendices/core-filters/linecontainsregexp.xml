@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.linecontainsregexp"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>LineContainsRegexp</refname>
+
+    <refpurpose>This filter is similar to <link
+    linkend="phing.corefilters.linecontains"><code>LineContains</code></link>
+    but you can specify regular expressions instead of simple
+    strings.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <linecontainsregexp>
+    <regexp pattern="foo(.*)bar" />
+  </linecontainsregexp>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <classname>LineContains</classname> filter has to contain at
+    least one <code>&lt;regexp&gt;</code> tag. This must have a
+    <parameter>pattern</parameter> attribute that is set to a regular
+    expression.</para>
+  </refsect1>
+</refentry>

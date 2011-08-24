@@ -31,4 +31,7 @@
     <xi:include href="core-filters/expandproperties.xml" />
     <xi:include href="core-filters/headfilter.xml" />
     <xi:include href="core-filters/iconvfilter.xml" />
+    <xi:include href="core-filters/linecontains.xml" />
+    <xi:include href="core-filters/linecontainsregexp.xml" />
+    <xi:include href="core-filters/prefixlines.xml" />
 </appendix>

@@ -160,9 +160,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `ExpandProperties` : `DONE` - *2011-08-24*
  - `HeadFilter` : `DONE` - *2011-08-24*
  - `IconvFilter` : `DONE` - *2011-08-24*
- - `LineContains` : `` - *2011-08-20*
- - `LineContainsRegexp` : `` - *2011-08-20*
- - `PrefixLines` : `` - *2011-08-20*
+ - `LineContains` : `DONE` - *2011-08-24*
+ - `LineContainsRegexp` : `DONE` - *2011-08-24*
+ - `PrefixLines` : `DONE` - *2011-08-24*
  - `ReplaceTokens` : `` - *2011-08-20*
  - `ReplaceTokensWithFile` : `` - *2011-08-20*
  - `ReplaceRegexp` : `` - *2011-08-20*
