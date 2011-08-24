@@ -179,11 +179,11 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 # Core Mappers ##
 
- - `FlattenMapper` : `DONE` - *2011-08-20*
- - `GlobMapper` : `` - *2011-08-20*
- - `IdentityMapper` : `` - *2011-08-20*
- - `MergeMapper` : `` - *2011-08-20*
- - `RegexpMapper` : `` - *2011-08-20*
+ - `FlattenMapper` : `DONE` - *2011-08-24*
+ - `GlobMapper` : `DONE` - *2011-08-24*
+ - `IdentityMapper` : `DONE` - *2011-08-24*
+ - `MergeMapper` : `DONE` - *2011-08-24*
+ - `RegexpMapper` : `DONE` - *2011-08-24*
 
 
 ## Selectors ##

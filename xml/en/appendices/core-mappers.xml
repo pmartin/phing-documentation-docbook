@@ -74,5 +74,9 @@
     </tr>
   </table>
 
-  <xi:include href="core-mappers/flattenmapper.xml" />
+    <xi:include href="core-mappers/flattenmapper.xml" />
+    <xi:include href="core-mappers/globmapper.xml" />
+    <xi:include href="core-mappers/identitymapper.xml" />
+    <xi:include href="core-mappers/mergemapper.xml" />
+    <xi:include href="core-mappers/regexpmapper.xml" />
 </appendix>

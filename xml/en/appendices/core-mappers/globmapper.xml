@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coremappers.globmapper"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GlobMapper</refname>
+
+    <refpurpose>The <classname>GlobMapper</classname> works like the
+    <command>copy</command> command in DOS</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<copy todir="/tmp">
+  <mapper type="glob" from="*.php" to="*.php.bak"/>
+
+  <fileset refid="someid" />
+</copy>]]></programlisting>
+
+    <para>This will change the extension of all files matching the pattern
+    <code>*.php</code> to <code>.php.bak</code>.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<mapper type="glob" from="*txt" to="*txt.bak"/>]]></programlisting>
+
+    <para>Applying the mapper, you will get the following results from the
+    following filenames:</para>
+
+    <table>
+      <caption><code>GlobMapper</code> example</caption>
+
+      <tr>
+        <th>From</th>
+
+        <th>To</th>
+      </tr>
+
+      <tr>
+        <td><filename>test.txt</filename></td>
+
+        <td><filename>test.txt.bak</filename></td>
+      </tr>
+
+      <tr>
+        <td><filename>./foo/bar/test.txt</filename></td>
+
+        <td><filename>./foo/bar/test.txt.bak</filename></td>
+      </tr>
+
+      <tr>
+        <td><filename>mytxt</filename></td>
+
+        <td><filename>mytxt.bak</filename></td>
+      </tr>
+
+      <tr>
+        <td><filename>SomeClass.php</filename></td>
+
+        <td><emphasis>ignored</emphasis>,
+        <filename>SomeClass.php</filename></td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

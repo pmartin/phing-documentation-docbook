@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coremappers.regexpmapper"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>RegexpMapper</refname>
+
+    <refpurpose>The <classname>RegexpMapper</classname> changes filenames
+    according to a pattern defined by a regular expression.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This is the most powerful mapper and you should be able to use it
+    for every possible application.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<mapper type="regexp" from="^(.*)\.conf\.xml" to="\1.php"/>]]></programlisting>
+
+    <para>The mapper as above will do the following mappings:</para>
+
+    <table>
+      <caption><code>RegexpMapper</code> example</caption>
+
+      <tr>
+        <th>From</th>
+
+        <th>To</th>
+      </tr>
+
+      <tr>
+        <td><filename>test.txt</filename></td>
+
+        <td><emphasis>ignore</emphasis>, <filename>test.txt</filename></td>
+      </tr>
+
+      <tr>
+        <td><filename>./foo/bar/test.conf.xml</filename></td>
+
+        <td><filename>./foo/bar/test.php</filename></td>
+      </tr>
+
+      <tr>
+        <td><filename>someconf.conf.xml</filename></td>
+
+        <td><filename>someconf.php</filename></td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
