@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.tidyfilters"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>TidyFilter</refname>
+
+    <refpurpose>The <classname>TidyFilter</classname> allows you to use the
+    <link ns6:href="http://php.net/tidy">PHP tidy extension</link> to clean up
+    and repair HTML documents.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Usage example:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <tidyfilter encoding="utf8">
+    <config name="indent" value="true" />
+    <config name="output-xhtml" value="true" />
+  </tidyfilter>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.tidyfilters.parameters">
+      <caption>Attributes for the <code>&lt;tidyfilter&gt;</code>
+      tag</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>encoding</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The expected input encoding of the file.</td>
+
+        <td class="default"><code>utf8</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <classname>TidyFilter</classname> supports nested
+    <code>&lt;config&gt;</code> tags to configure how Tidy should manipulate
+    the documents. For a complete list of configuration options see the
+    offical <link
+    ns6:href="http://tidy.sourceforge.net/docs/quickref.html">Quick
+    Reference</link>.</para>
+  </refsect1>
+</refentry>

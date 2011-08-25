@@ -41,4 +41,7 @@
     <xi:include href="core-filters/striplinecomments.xml" />
     <xi:include href="core-filters/stripphpcomments.xml" />
     <xi:include href="core-filters/stripwhitespace.xml" />
+    <xi:include href="core-filters/tabtospaces.xml" />
+    <xi:include href="core-filters/tailfilter.xml" />
+    <xi:include href="core-filters/tidyfilter.xml" />
 </appendix>

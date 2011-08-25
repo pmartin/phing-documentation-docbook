@@ -170,9 +170,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `StripLineComments` : `DONE` - *2011-08-25*
  - `StripPhpComments` : `DONE` - *2011-08-25*
  - `StripWhitespace` : `DONE` - *2011-08-25*
- - `TabToSpaces` : `` - *2011-08-20*
- - `TailFilter` : `` - *2011-08-20*
- - `TidyFilter` : `` - *2011-08-20*
+ - `TabToSpaces` : `DONE` - *2011-08-25*
+ - `TailFilter` : `DONE` - *2011-08-25*
+ - `TidyFilter` : `DONE` - *2011-08-25*
  - `XincludeFilter` : `` - *2011-08-20*
  - `XsltFilter` : `` - *2011-08-20*
 
