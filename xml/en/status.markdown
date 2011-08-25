@@ -173,8 +173,8 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `TabToSpaces` : `DONE` - *2011-08-25*
  - `TailFilter` : `DONE` - *2011-08-25*
  - `TidyFilter` : `DONE` - *2011-08-25*
- - `XincludeFilter` : `` - *2011-08-20*
- - `XsltFilter` : `` - *2011-08-20*
+ - `XincludeFilter` : `DONE` - *2011-08-25*
+ - `XsltFilter` : `DONE` - *2011-08-25*
 
 
 # Core Mappers ##

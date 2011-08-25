@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.xsltfilter"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>XsltFilter</refname>
+
+    <refpurpose>The <classname>XsltFilter</classname> applies a XSL template
+    to the stream.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Though you can use this filter directly, you should use <link
+    linkend="phing.coretasks.xslt"><classname>XsltTask</classname></link>
+    which is shortcut to the following lines:</para>
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <xsltfilter style="somexslt.xsl" />
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.xsltfilter.parameters">
+      <caption>Attributes for the <code>&lt;xsltfilter&gt;</code> tag
+      </caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>style</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The XSLT stylesheet to use for
+        transformation.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>html</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to parse the input as HTML (using
+        libxml2 <methodname>DOMDocument::loadHTML()</methodname>).</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>resolvedocumentexternals</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to resolve entities in the XML
+        document. (see <link
+        ns6:href="http://www.php.net/manual/en/class.domdocument.php#domdocument.props.resolveexternals">this
+        link</link> for details)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td
+        class="name"><parameter>resolvestylesheetexternals</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to resolve entities in the
+        stylesheet.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <classname>XsltFilter</classname> filter may contain one or more
+    <code>&lt;param&gt;</code> tags to pass any XSLT parameters to the
+    stylesheet. These <code>&lt;param&gt;</code> tags must have
+    <parameter>name</parameter> and <parameter>expression</parameter>
+    attributes.</para>
+  </refsect1>
+</refentry>

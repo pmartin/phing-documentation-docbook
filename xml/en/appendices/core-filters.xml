@@ -44,4 +44,6 @@
     <xi:include href="core-filters/tabtospaces.xml" />
     <xi:include href="core-filters/tailfilter.xml" />
     <xi:include href="core-filters/tidyfilter.xml" />
+    <xi:include href="core-filters/xinclude.xml" />
+    <xi:include href="core-filters/xsltfilter.xml" />
 </appendix>

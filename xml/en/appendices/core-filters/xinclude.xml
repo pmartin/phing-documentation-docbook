@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.xinclude"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>XincludeFilter</refname>
+
+    <refpurpose>The <classname>XincludeFilter</classname> processes a stream
+    for <code>Xinclude</code> tags, and processes the inclusions.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This is useful for processing modular XML files. DocBook book files
+    are one example of modular XML files.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Usage example:</para>
+
+    <programlisting language="xml"><![CDATA[<!--
+  Render a DocBook book file called manual.xml, which
+  contains Xinclude tags to include individual book sections.
+  -->
+<copy todir="${manual.dest.dir}">
+  <filterchain>
+    <xincludefilter basedir="${manual.src.dir}" />
+    <xsltfilter style="${manual.src.dir}/html.xsl">
+      <param name="base.dir" expression="${manual.dest.dir}/" />
+    </xsltfilter>
+  </filterchain>
+  <fileset dir="${manual.src.dir}">
+    <include name="manual.xml" />
+  </fileset>
+</copy>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.corefilters.xinclude.parameters">
+      <caption>Attributes for the <code>&lt;xincludefilter</code>&gt;
+      tag</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>basedir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The working directory from which to process
+        the Xincludes. Relative pathnames in the include tags are based on
+        this location.</td>
+
+        <td class="default">Project basedir</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>resolveexternals</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to resolve entities. (see <link
+        ns6:href="http://www.php.net/manual/en/class.domdocument.php#domdocument.props.resolveexternals">this
+        link</link> for details)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
