@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.available"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>AvailableTask</refname>
+
+    <refpurpose><classname>AvailableTask</classname> tests if a resource/file
+    is set and sets a certain property to a certain value if it
+    exists.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<available file="/tmp/test.txt" property="test_txt_exists" value="Yes"/>
+
+<available file="/home/foo" type="dir" property="properties.yetanother" />
+
+<available file="/home/foo/bar" property="foo.bar" value="Well, yes" />]]></programlisting>
+
+    <para>Here, <classname>AvailableTask</classname> first checks for the
+    existance of either file or directory named <filename>test.txt</filename>
+    in <filename>/tmp</filename>.</para>
+
+    <para>Then, it checks for the directory <filename>foo</filename> in
+    <filename>/home</filename> and then for the file or directory
+    <filename>bar</filename> in <filename>/home/foo</filename>.</para>
+
+    <para>If <filename>/tmp/test.txt</filename> is found, the property
+    <property>test_txt_exists</property> is set to <code>"Yes"</code>, if
+    <filename>/home/foo</filename> is found and a directory,
+    <property>properties.yetanother</property> is set to <code>"true"</code>
+    (default).</para>
+
+    <para>If <filename>/home/foo/bar</filename> exists,
+    <classname>AvailableTask</classname> will set <property>foo.bar</property>
+    to <code>"Well, yes"</code>.</para>
+  </refsect1>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>The <code>Available</code> task can also be used as a <link
+    linkend="phing.chapters.projectcomponents.conditions">condition</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.available.parameters">
+      <caption>Attributes for <classname>AvailableTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>property</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of the property that is to be set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>value</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The value the property is to be set to.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File/directory to check existence.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes; (or
+        <parameter>resource</parameter>)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>resource</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path of the resource to look for.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes; (or
+        <parameter>file</parameter>)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>type</parameter></td>
+
+        <td class="type"><type>String</type>
+        (<code>file</code>|<code>dir</code>)</td>
+
+        <td class="description">Determines if
+        <classname>AvailableTask</classname> should look for a file or a
+        directory at the position set by <parameter>file</parameter>. If
+        empty, it checks for either file or directory.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>filepath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The path to use when looking up file.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;filepath&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

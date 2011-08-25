@@ -19,6 +19,9 @@
   the reference of <classname>CopyTask</classname> .</para>
 
   <xi:include href="core-tasks/adhoctaskdef.xml" />
+    <xi:include href="core-tasks/adhoctypedef.xml" />
+    <xi:include href="core-tasks/append.xml" />
+    <xi:include href="core-tasks/available.xml" />
 
   <xi:include href="core-tasks/delete.xml" />
 </appendix>

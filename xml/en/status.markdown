@@ -35,10 +35,10 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Core Tasks ##
 
- - `AdhocTaskdefTask` : `TODO` - *2011-08-20*
- - `AdhocTypedefTask` : `TODO` - *2011-08-20*
- - `AppendTask` : `TODO` - *2011-08-20*
- - `AvailableTask` : `TODO` - *2011-08-20*
+ - `AdhocTaskdefTask` : `DONE` - *2011-08-25*
+ - `AdhocTypedefTask` : `DONE` - *2011-08-25*
+ - `AppendTask` : `DONE` - *2011-08-25*
+ - `AvailableTask` : `DONE` - *2011-08-25*
  - `ChmodTask` : `TODO` - *2011-08-20*
  - `ChownTask` : `TODO` - *2011-08-20*
  - `ConditionTask` : `TODO` - *2011-08-20*

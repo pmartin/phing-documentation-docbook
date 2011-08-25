@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.adhoctypedef"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>AdhocTypedefTask</refname>
+
+    <refpurpose>The <classname>AdhocTypedefTask</classname> allows you to
+    define a datatype within your build file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml">&lt;target name="main"
+        description="==&gt;test AdhocType"&gt;
+        
+        &lt;adhoc-type name="dsn"&gt;&lt;![CDATA[
+            class CreoleDSN extends DataType {
+                private $url;
+                
+                function setUrl($url) {
+                    $this-&gt;url = $url;
+                }
+                
+                function getUrl() {
+                  return $this-&gt;url;
+                }                
+            }
+        ]]&gt;&lt;/adhoc-type&gt;
+
+     &lt;!-- creole-sql task doesn't exist; just an example --&gt;
+     &lt;creole-sql file="test.sql"&gt;
+         &lt;dsn url="mysql://root@localhost/test"/&gt;
+      &lt;/creole-sql&gt;
+
+&lt;/target&gt;</programlisting>
+  </refsect1>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Note that you should use <code>&lt;![CDATA[ ... ]]&gt;</code> so
+    that you don't have to quote entities within your
+    <code>&lt;adhoc-type&gt;&lt;/adhoc-type&gt;</code> tags. </para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.adhoctypedef.parameters">
+      <caption>Attributes for
+      <classname>AdhocTypedefTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of XML tag that will represent this
+        datatype.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

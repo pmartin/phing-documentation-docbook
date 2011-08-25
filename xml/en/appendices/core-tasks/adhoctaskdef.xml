@@ -13,8 +13,8 @@
   <refnamediv>
     <refname>AdhocTaskdefTask</refname>
 
-    <refpurpose>The AdhocTaskdefTask allows you to define a task within your
-    build file.</refpurpose>
+    <refpurpose>The <classname>AdhocTaskdefTask</classname> allows you to
+    define a task within your build file.</refpurpose>
   </refnamediv>
 
   <refsect1 role="example">
@@ -41,31 +41,36 @@
 &lt;/target&gt;
 </programlisting>
 
-    <para>Note that you should use <code>&lt;![CDATA[ ... ]]&gt;</code> so
+
+  </refsect1>
+
+    <refsect1 role="note">
+        &ref.title.note;
+        <para>Note that you should use <code>&lt;![CDATA[ ... ]]&gt;</code> so
     that you don't have to quote entities within your
     <code>&lt;adhoc-task&gt;&lt;/adhoc-task&gt;</code> tags.</para>
-  </refsect1>
+    </refsect1>
 
   <refsect1 role="parameters">
     &ref.title.attributes;
 
     <table xml:id="phing.coretasks.adhoctaskdef.parameters">
+      <caption>Attributes for
+      <classname>AdhocTaskdefTask</classname></caption>
+
       &taskAttributes.table.titlesLine.all;
 
       <tr>
-        <td>
-          <parameter>name</parameter>
-        </td>
+        <td class="name"><parameter>name</parameter></td>
 
-        <td>
-          <type>String</type>
-        </td>
+        <td class="type"><type>String</type></td>
 
-        <td>Name of XML tag that will represent this task.</td>
+        <td class="description">Name of XML tag that will represent this
+        task.</td>
 
-        <td>&attributes.defaultValue.NA;</td>
+        <td class="default">&attributes.defaultValue.NA;</td>
 
-        <td>&attributes.required.yes;</td>
+        <td class="required">&attributes.required.yes;</td>
       </tr>
     </table>
   </refsect1>

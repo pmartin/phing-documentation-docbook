@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.append"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>AppendTask</refname>
+
+    <refpurpose>The <classname>AppendTask</classname> appends text or contents
+    of files to a specified file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<append destFile="${process.outputfile}">
+  <filterchain>
+    <xsltfilter style="${process.stylesheet}">
+      <param name="mode" expression="${process.xslt.mode}"/>
+    </xsltfilter>
+  </filterchain>
+  <filelist dir="book/" listfile="book/PhingGuide.book"/>
+</append>]]></programlisting>
+
+    <para>In the example above, <classname>AppendTask</classname> is reading a
+    filename from <filename>book/PhingGuide.book</filename>, processing the
+    file contents with XSLT, and then appending the result to the file located
+    at <code>${process.outputfile}</code>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.append.parameters">
+      <caption>Attributes for <classname>AppendTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>destFile</parameter></td>
+
+        <td class="type"><type>File</type></td>
+
+        <td class="description">Path of file to which text should be
+        appended.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>File</type></td>
+
+        <td class="description">Path to file that should be appended to
+        destFile.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>text</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Some literal text to append to file.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><link
+        linkend="phing.coretypes.filelist"><code>&lt;filelist&gt;</code></link></para>
+      </listitem>
+
+      <listitem>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
+      </listitem>
+
+      <listitem>
+        <para><link
+        linkend="phing.appendices.corefilters"><code>&lt;filterchain&gt;</code></link></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
