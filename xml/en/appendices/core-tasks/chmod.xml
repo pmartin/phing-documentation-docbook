@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.chmod"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ChmodTask</refname>
+
+    <refpurpose>Sets the mode of a file or directory.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<chmod file="test.txt" mode="0755" />
+<chmod file="/home/test" mode="0775" />
+<chmod file="/home/test/mine.txt" mode="0500" verbose="true" />]]></programlisting>
+
+    <para>For more informations, see <link
+    ns6:href="http://php.net/chmod"><code>chmod</code></link> in the PHP
+    Manual.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.chmod.parameters">
+      <caption>Attributes for <classname>ChmodTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the file or directory. You either
+        have to specify this attribute, or use a fileset.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>mode</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The new mode (octal) for the file. Specified
+        in octal, even if the first digit is not a <code>'0'</code>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Set quiet mode, which suppresses warnings if
+        <function>chmod()</function> fails</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>failonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">This flag means <emphasis>'note errors to the
+        output, but keep going'</emphasis></td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>verbose</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Give more information in error message in case
+        of a failure</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

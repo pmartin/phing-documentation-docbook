@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.chown"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ChownTask</refname>
+
+    <refpurpose>Changes the owner of a file or directory.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<chown file="my-file.txt" user="foo" />
+<chown file="my-file.txt" user="username.groupname" />
+<chown file="/home/test/my-directory" user="bar" />
+<chown file="/home/test/my-file.txt" user="foo" verbose="true" failonerror="false" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.chown.parameters">
+      <caption>Attributes for <classname>ChownTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the file or directory. You either
+        have to specify this attribute, or use a fileset.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>user</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The new owner of the file. Can contain a
+        username and a groupname, separated by a dot.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Set quiet mode, which suppresses warnings if
+        <function>chmod()</function> fails</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>failonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">This flag means <emphasis>'note errors to the
+        output, but keep going'</emphasis></td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>verbose</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Give more information in in error message in
+        case of a failure</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
