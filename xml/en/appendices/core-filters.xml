@@ -37,4 +37,8 @@
     <xi:include href="core-filters/replacetokens.xml" />
     <xi:include href="core-filters/replacetokenswithfile.xml" />
     <xi:include href="core-filters/replaceregexp.xml" />
+    <xi:include href="core-filters/striplinebreaks.xml" />
+    <xi:include href="core-filters/striplinecomments.xml" />
+    <xi:include href="core-filters/stripphpcomments.xml" />
+    <xi:include href="core-filters/stripwhitespace.xml" />
 </appendix>

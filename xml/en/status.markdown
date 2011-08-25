@@ -166,10 +166,10 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `ReplaceTokens` : `DONE` - *2011-08-24*
  - `ReplaceTokensWithFile` : `DONE` - *2011-08-24*
  - `ReplaceRegexp` : `DONE` - *2011-08-24*
- - `StripLineBreaks` : `` - *2011-08-20*
- - `StripLineComments` : `` - *2011-08-20*
- - `StripPhpComments` : `` - *2011-08-20*
- - `StripWhitespace` : `` - *2011-08-20*
+ - `StripLineBreaks` : `DONE` - *2011-08-25*
+ - `StripLineComments` : `DONE` - *2011-08-25*
+ - `StripPhpComments` : `DONE` - *2011-08-25*
+ - `StripWhitespace` : `DONE` - *2011-08-25*
  - `TabToSpaces` : `` - *2011-08-20*
  - `TailFilter` : `` - *2011-08-20*
  - `TidyFilter` : `` - *2011-08-20*

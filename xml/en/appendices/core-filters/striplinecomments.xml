@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.corefilters.striplinecomments"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>StripLineComments</refname>
+
+    <refpurpose>The <classname>StripLineComments</classname> filter removes
+    all line comments from the stream passed through the filter
+    chain.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<filterchain>
+  <striplinecomments>
+    <comment value="#" />
+    <comment value="--" />
+    <comment value="//" />
+  </striplinecomments>
+</filterchain>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <para>The <code>&lt;striplinecomments&gt;</code> tag must contain one or
+    more <code>&lt;comment&gt;</code> tags. These must have a
+    <parameter>value</parameter> attribute that specifies the character(s)
+    that start a line comment.</para>
+  </refsect1>
+</refentry>
