@@ -41,8 +41,8 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `AvailableTask` : `DONE` - *2011-08-25*
  - `ChmodTask` : `DONE` - *2011-08-25*
  - `ChownTask` : `DONE` - *2011-08-25*
- - `ConditionTask` : `TODO` - *2011-08-20*
- - `CopyTask` : `TODO` - *2011-08-20*
+ - `ConditionTask` : `DONE` - *2011-08-26*
+ - `CopyTask` : `DONE` - *2011-08-26*
  - `CvsTask` : `TODO` - *2011-08-20*
  - `CvsPassTask` : `TODO` - *2011-08-20*
  - `DeleteTask` : `TODO` - *2011-08-20*

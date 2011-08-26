@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.condition"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ConditionTask</refname>
+
+    <refpurpose>Sets a property if a certain condition holds true - this is a
+    generalization of <link
+    linkend="phing.coretasks.available"><code>Available</code></link> and
+    <link
+    linkend="phing.coretasks.uptodate"><code>UpToDate</code></link>.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>If the condition holds true, the property value is set to true by
+    default; otherwise, the property is not set. You can set the value to
+    something other than the default by specifying the value attribute.</para>
+
+    <para>Conditions are specified as nested elements, you must specify
+    exactly one condition - see the <link
+    linkend="phing.chapters.projectcomponents.conditions">documentation</link>
+    for a complete list of nested elements.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<condition property="isMacOrWindows">
+    <or>
+      <os family="mac"/>
+      <os family="windows"/>
+    </or>
+  </condition>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.condition.parameters">
+      <caption>Attributes for <classname>ConditionTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>property</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the property to set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>value</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The value to set the property to. Defaults to
+        <code>"true"</code>.</td>
+
+        <td class="default">true</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

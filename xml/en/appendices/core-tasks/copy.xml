@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.copy"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>CopyTask</refname>
+
+    <refpurpose>Copies files or directories.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Files are only copied if the source file is newer than the
+    destination file, or when the destination file does not exist.</para>
+
+    <para>It is possible to explictly overwrite existing files.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>On the one hand, <classname>CopyTask</classname> can be used to copy
+    file by file:</para>
+
+    <programlisting language="xml"><![CDATA[<copy file="somefile.txt" tofile="/tmp/anotherfile.bak" overwrite="true"/>]]></programlisting>
+
+    <para>Additionally, <classname>CopyTask</classname> supports Filesets,
+    i.e. you can easily include/exclude one or more files. For more
+    information, see <xref linkend="phing.coretypes.fileset" /> -- pay
+    particular attention to the <parameter>defaultexcludes</parameter>
+    attribute. <link linkend="phing.appendices.coremappers">Mappers</link> and
+    <link linkend="phing.appendices.corefilters">Filters</link> are also
+    supported by <classname>CopyTask</classname>, so you can do almost
+    everything that needs processing the content of the files or the filename.
+    </para>
+
+    <programlisting language="xml"><![CDATA[<copy todir="/tmp/backup" >
+  <fileset dir=".">
+    <include name="**/*.txt" />
+    <include name="**/*.doc" />
+    <include name="**/*.swx" />
+  </fileset>
+  <filelist dir="." files="test.html"/>
+</copy>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<copy todir="build" >
+  <fileset defaultexcludes="false" expandsymboliclinks="true" dir=".">
+    <include name="**/*.php" />
+  </fileset>
+</copy>]]></programlisting>
+
+    <warning>
+      <para><classname>CopyTask</classname> does not allow self copying, i.e.
+      copying a file to the same name for security reasons.</para>
+    </warning>
+  </refsect1>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>By default, <classname>CopyTask</classname> does not expand /
+    dereference symbolic links, and will simply copy the link itself.</para>
+
+    <para>To enable dereferencing, set
+    <parameter>expandsymboliclinks</parameter> to <code>true</code> in the
+    <code>&lt;fileset&gt;</code> tag.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.copy.parameters">
+      <caption>Attributes for <classname>CopyTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The source file.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tofile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The destination the file is to be written to.
+        <parameter>tofile</parameter> specifies a full filename. If you only
+        want to specify a directory to copy to, use
+        <parameter>todir</parameter>. Either this or the
+        <parameter>todir</parameter> attribute is required. </td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes; (or todir)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>todir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The directory the file is to be copied to. The
+        file will have the same name of the source file. If you want to
+        specify a different name, use <parameter>tofile</parameter>. The
+        directory must exist.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes; (or tofile)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>overwrite</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If set to <code>true</code>, the target file
+        will be overwritten.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tstamp</parameter> or
+        <parameter>preservelastmodified</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If set to <code>true</code>, the new file will
+        have the same mtime as the old one.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>includeemptydirs</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If set to <code>true</code>, also empty
+        directories are copied. </td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>mode</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Mode (octal) to create directories with.</td>
+
+        <td class="default">0755</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If set to <code>true</code>, halts the build
+        when errors are encountered.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;filelist&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;filterchain&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;mapper&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
