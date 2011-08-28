@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.input"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>InputTask</refname>
+
+    <refpurpose>The <classname>InputTask</classname> can be used to
+    interactively set property values based on input from the console (or
+    other Reader).</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<!-- Getting string input -->
+<echo>HTML pages installing to: ${documentRoot}</echo>
+<echo>PHP classes installing to: ${servletDirectory}</echo>
+
+<input propertyname="documentRoot">Web application document root</input>
+<input propertyname="servletDirectory"
+  defaultValue="/usr/servlets" promptChar="?">PHP classes install dir</input>
+
+<echo>HTML pages installed to ${documentRoot}</echo>
+<echo>PHP classes installed to ${servletDirectory}</echo>
+
+<!-- Having the user choose from a set of valid choices -->
+<echo>Choose a valid option:</echo>
+
+<input propertyname="optionsChoice" validargs="foo,bar,bob">
+  Which item would you like to use
+</input>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.input.parameters">
+      <caption>Attributes for <classname>InputTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>propertyName</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the property to set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>defaultValue</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The default value to be set if no new value is
+        provided.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>message</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Prompt text (same as CDATA).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>promptChar</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The prompt character to follow prompt
+        text.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>validArgs</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of valid choices the user
+        must supply. If used, one of these options must be chosen.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

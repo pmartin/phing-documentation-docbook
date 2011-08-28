@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.includepath"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>IncludePathTask</refname>
+
+    <refpurpose>Sets the PHP <varname>include_path</varname> configuration
+    option for the duration of this phing run.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<includepath classpath="new/path/here" />
+<includepath classpath="path1:path2" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.includepath.parameters">
+      <caption>Attributes for <classname>IncludePathTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>classpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">the new include path[s]</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

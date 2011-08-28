@@ -35,5 +35,8 @@
     <xi:include href="core-tasks/foreach.xml"/>
     <xi:include href="core-tasks/if.xml"/>
     <xi:include href="core-tasks/import.xml"/>
+    <xi:include href="core-tasks/includepath.xml"/>
+    <xi:include href="core-tasks/input.xml"/>
+    <xi:include href="core-tasks/loadfile.xml"/>
 
 </appendix>
