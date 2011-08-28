@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.phpeval"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhpEvalTask</refname>
+
+    <refpurpose>With the <classname>PhpEvalTask</classname>, you can set a
+    property to the results of evaluating a PHP expression or the result
+    returned by a function/method call.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<php function="crypt" returnProperty="enc_passwd">
+  <param value="${auth.root_passwd}"/>
+</php>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<php expression="3 + 4" returnProperty="sum"/>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<php expression="echo 'test';">]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.phpeval.parameters">
+      <caption>Attributes for <classname>PhpEvalTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>function</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the Property.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required" rowspan="2">One of these is required.</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expression</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The expression to evaluate.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>class</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The static class which contains function.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>returnProperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the property to set with result of
+        expression or function call. <emphasis role="bold">Note:</emphasis> if
+        this attribute is set, the expression must return a value.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;param&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

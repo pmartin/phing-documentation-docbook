@@ -41,5 +41,8 @@
     <xi:include href="core-tasks/mkdir.xml"/>
     <xi:include href="core-tasks/move.xml"/>
     <xi:include href="core-tasks/phing.xml"/>
+    <xi:include href="core-tasks/phingcall.xml"/>
+    <xi:include href="core-tasks/phpeval.xml"/>
+    <xi:include href="core-tasks/property.xml"/>
 
 </appendix>

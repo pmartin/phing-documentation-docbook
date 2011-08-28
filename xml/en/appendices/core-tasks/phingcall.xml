@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.phingcall"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhingCallTask</refname>
+
+    <refpurpose>The <classname>PhingCallTask</classname> calls a target from
+    the same Phing project.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>A <code>&lt;phingcall&gt;</code> tag may contain
+    <code>&lt;property&gt;</code> tags that define new properties.</para>
+
+    <para>However, this will only work if the properties are not yet set
+    outside the <code>&lt;phingcall&gt;</code> tag.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>In the following example, the properties
+    <property>property1</property> and <property>foo</property> are defined
+    and only accessible inside the called target.</para>
+
+    <programlisting language="xml"><![CDATA[<target name="foo">
+    <phingcall target="bar">
+        <property name="property1" value="aaaaa" />
+        <property name="foo" value="baz" />
+    </phingcall>
+</target>
+
+<target name="bar" depends="init">
+    <echo message="prop is ${property1} ${foo}" />
+</target>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.phingcall.parameters">
+      <caption>Attributes for <classname>PhingCallTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>target</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The name of the target in the same project
+        that is to be called.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
