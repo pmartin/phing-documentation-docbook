@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.propertyprompt"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PropertyPromptTask</refname>
+
+    <refpurpose><classname>PropertyPromptTask</classname> is a simple task to
+    read in user input into a property.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>If you need something more advanced, see the <link
+    linkend="phing.coretasks.input"><classname>InputTask</classname></link>.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<propertyprompt propertyName="someprop" defaultValue="/var/www"
+        promptText="Enter your web root" />
+<echo>${someprop}</echo>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.propertyprompt.parameters">
+      <caption>Attributes for
+      <classname>PropertyPromptTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>propertyName</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the Property to set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>promptText</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The text to use for the prompt.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>promptCharacter</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The character to use after the prompt.</td>
+
+        <td class="default">?</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>defaultValue</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A default value to use (if user just hits
+        enter).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>useExistingValue</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Whether existing property should be used if
+        available. (This will result in user only being prompted if the
+        <parameter>propertyName</parameter> property is not already set.)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

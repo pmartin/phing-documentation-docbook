@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.resolvepath"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ResolvePathTask</refname>
+
+    <refpurpose>The <classname>ResolvePathTask</classname> turns a relative
+    path into an absolute path, with respect to specified directory or the
+    project basedir (if no <parameter>dir</parameter> attribute
+    specified).</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This task is useful for turning a user-defined relative path into an
+    absolute path in cases where buildfiles will be called in different
+    directories.</para>
+
+    <para>Without this task, buildfiles lower in the directory tree would
+    mis-interpret the user-defined relative paths.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="relative_path" value="./dirname"/>
+
+<resolvepath propertyName="absolute_path" file="${relative_path}"/>
+
+<echo>Resolved [absolute] path: ${absolute_path}</echo>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.resolvepath.parameters">
+      <caption>Attributes for <classname>ResolvePathTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The file or directory path to resolve.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>File</type></td>
+
+        <td class="description">The base directory to use when resolving
+        "file".</td>
+
+        <td class="default"><property>project.basedir</property></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>propertyName</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the property to set with resolved
+        (absolute) path.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

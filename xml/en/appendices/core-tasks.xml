@@ -44,5 +44,10 @@
     <xi:include href="core-tasks/phingcall.xml"/>
     <xi:include href="core-tasks/phpeval.xml"/>
     <xi:include href="core-tasks/property.xml"/>
+    <xi:include href="core-tasks/propertyprompt.xml"/>
+    <xi:include href="core-tasks/reflexive.xml"/>
+    <xi:include href="core-tasks/resolvepath.xml"/>
+
+
 
 </appendix>
