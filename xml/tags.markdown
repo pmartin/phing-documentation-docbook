@@ -46,7 +46,7 @@ such as `parameters`, `example`, ...
     <refsect1 role="parameters">
         &ref.title.attributes;
         <table xml:id=".parameters">
-            <caption></caption>
+            <caption>Attributes for <classname></classname></caption>
             &taskAttributes.table.titlesLine.all;
             <tr>
                 <td class="name"><parameter></parameter></td>
@@ -72,9 +72,21 @@ Entities that can / must be used *(especially for `default` and `required` colum
     <refsect1 role="nested">
         &ref.title.supportedNestedTags;
         <itemizedlist>
-            <listitem>
-            <para><xref linkend="phing.coretypes.fileset" /></para>
-            </listitem>
+            <listitem><para><xref linkend="phing.coretypes.fileset" /></para></listitem>
+        </itemizedlist>
+    </refsect1>
+
+    <refsect1 role="nested">
+        &ref.title.supportedNestedTags;
+        <itemizedlist>
+            <listitem><para><link linkend=""><code>&lt;&gt;</code></link></para></listitem>
+        </itemizedlist>
+    </refsect1>
+
+    <refsect1 role="nested">
+        &ref.title.supportedNestedTags;
+        <itemizedlist>
+            <listitem><para><code>&lt;&gt;</code></para></listitem>
         </itemizedlist>
     </refsect1>
 
@@ -85,6 +97,12 @@ Entities that can / must be used *(especially for `default` and `required` colum
     <refsect1 role="example">
         &ref.title.example;
         <programlisting language="xml"><![CDATA[]]></programlisting>
+    </refsect1>
+
+    <refsect1 role="example">
+        &ref.title.example;
+        <programlisting language="xml"><![CDATA[]]></programlisting>
+        <para></para>
     </refsect1>
 
 

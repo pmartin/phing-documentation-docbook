@@ -29,6 +29,8 @@
     <xi:include href="core-tasks/cvs.xml"/>
     <xi:include href="core-tasks/cvspass.xml"/>
     <xi:include href="core-tasks/delete.xml"/>
-    
+    <xi:include href="core-tasks/echo.xml"/>
+    <xi:include href="core-tasks/exec.xml"/>
+    <xi:include href="core-tasks/exit.xml"/>
 
 </appendix>

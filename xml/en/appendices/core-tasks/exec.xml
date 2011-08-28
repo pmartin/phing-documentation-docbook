@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.exec"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ExecTask</refname>
+
+    <refpurpose>Executes a shell command.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>You can use this to quickly add a new command to Phing.</para>
+
+    <para>However, if you want to use this regularly, you should think about
+    writing a Task for it.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<-- List the contents of "/home". -->
+<exec command="ls -l" dir="/home" />
+
+<-- Start the make process in "/usr/src/php-4.0". -->
+<exec command="make" dir="/usr/src/php-4.0" />
+
+<-- List the contents of "/tmp" out to a file. -->
+<exec command="ls -l /tmp > foo.out" escape="false" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.exec.parameters">
+      <caption>Attributes for <classname>ExecTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>command</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The command that is to be executed.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required" rowspan="2">One of the two</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>executable</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The command to execute without any command
+        line arguments.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The directory the command is to be executed
+        in.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>output</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Where to direct <code>stdout</code>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>error</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Where to direct <code>stderr</code>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>os</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Only execute if the <link
+        linkend="phing.appendices.factsheet.builtinproperties"><property>os.name</property></link>
+        property contains specified text.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>escape</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">By default, we escape shell metacharacters
+        before executing. Setting this to <code>false</code> will disable this
+        precaution.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>passthru</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to use PHP's
+        <function>passthru()</function> function instead of
+        <function>exec().</function></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>logoutput</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to log returned output as
+        <code>MSG_INFO</code> instead of <code>MSG_VERBOSE</code>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>spawn</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to spawn unix programs to the
+        background, redirecting <code>stdout</code>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>returnProperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Property name to set return value to from
+        <function>exec()</function> call.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>outputProperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Property name to set output value to from
+        <function>exec()</function> call.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>checkreturn</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to check the return code of the
+        program, throws a <classname>BuildException</classname> when
+        returncode != 0.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>level</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Control the level at which status messages are
+        reported. One of <code>error</code>, <code>warning</code>,
+        <code>info</code>, <code>verbose</code>, <code>debug</code>.</td>
+
+        <td class="default"><code>verbose</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;arg&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+
+    <table xml:id="phing.coretasks.exec.nested.arg.parameters">
+      <caption>Attributes for <code>&lt;arg&gt;</code></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>value</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A single command-line argument; can contain
+        space characters.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required" rowspan="4">One of these</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of a file as a single command-line
+        argument; will be replaced with the absolute filename of the
+        file.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>path</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A string that will be treated as a path-like
+        string as a single command-line argument; you can use <code>;</code>
+        or <code>:</code> as path separators and Phing will convert it to the
+        platform's local conventions.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>line</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A space-delimited list of command-line
+        arguments.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.exit"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ExitTask</refname>
+
+    <refpurpose>Causes the current build script execution to fail and the
+    script to exit with an (optional) error message.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<-- Exit w/ message -->
+<fail message="Failed for some reason!" />
+
+<--  Exit if ${errorprop} is defined -->
+<fail if="errorprop" message="Detected error!" />
+
+<-- Exit unless ${dontfail} prop is defined. -->
+<fail unless="dontfail" message="Detected error!" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.exit.parameters">
+      <caption>Attributes for <classname>ExitTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>message</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The message to display (reason for script
+        abort).</td>
+
+        <td class="default"><code>"No Message"</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>if</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property that must be set for script
+        to exit.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>unless</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property that must
+        <emphasis>not</emphasis> be set in order for script to exit.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

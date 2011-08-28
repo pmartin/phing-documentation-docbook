@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.echo"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>EchoTask</refname>
+
+    <refpurpose>Echoes a message to the current loggers and listeners which
+    means standard out unless overridden.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>A level can be specified, which controls at what logging level the
+    message is filtered at.</para>
+
+    <para>The task can also echo to a file, in which case the option to append
+    rather than overwrite the file is available, and the level option is
+    ignored</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<echo msg="Phing rocks!" />
+
+<echo message="Binarycloud, too." />
+
+<echo>And don't forget Propel.</echo>
+
+<echo file="test.txt" append="false">This is a test message</echo>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.echo.parameters">
+      <caption>Attributes for <classname>EchoTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>msg</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The string that is to be send to the
+        output.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>message</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Alias for <parameter>msg</parameter>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The file to write the message to.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>append</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Append to an existing file?</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>level</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Control the level at which this message is
+        reported. One of <code>error</code>, <code>warning</code>,
+        <code>info</code>, <code>verbose</code>, <code>debug</code>.</td>
+
+        <td class="default"><code>info</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
