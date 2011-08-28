@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.uptodate"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>UpToDateTask</refname>
+
+    <refpurpose><classname>UpToDateTask</classname> tests if a resource/file
+    is set and sets a certain property to a certain value if it
+    exists.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<uptodate property="propelBuild.notRequired" targetfile="${deploy}/propelClasses.tgz" >
+  <fileset dir="${src}/propel">
+    <include="**/*.php"/>
+  </fileset>
+</uptodate>]]></programlisting>
+
+    <para>sets the property <property>propelBuild.notRequired</property> to
+    <code>true</code> if the <filename>${deploy}/propelClasses.tgz</filename>
+    file is more up-to-date than any of the PHP class files in the
+    <filename>${src}/propel</filename> directory.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.uptodate.parameters">
+      <caption>Attributes for <classname>UpToDateTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>property</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of the property that is to be set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>value</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The value the propert is to be set to.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>srcfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The file to check against target file(s).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes; (or nested
+        <code>&lt;fileset&gt;</code>)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>targetfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The file for which we want to determine the
+        status.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes; (or nested
+        <code>&lt;mapper&gt;</code>)</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;mapper&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

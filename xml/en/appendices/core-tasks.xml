@@ -50,7 +50,8 @@
     <xi:include href="core-tasks/taskdef.xml"/>
     <xi:include href="core-tasks/touch.xml"/>
     <xi:include href="core-tasks/tstamp.xml"/>
-
-
+    <xi:include href="core-tasks/typedef.xml"/>
+    <xi:include href="core-tasks/uptodate.xml"/>
+    <xi:include href="core-tasks/xslt.xml"/>
 
 </appendix>

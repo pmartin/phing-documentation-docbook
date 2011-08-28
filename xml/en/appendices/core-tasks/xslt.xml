@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.xslt"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>XsltTask</refname>
+
+    <refpurpose>With <classname>XsltTask</classname>, you can run a XSLT
+    tranformation on an XML file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Actually, <classname>XsltTask</classname> extends
+    <classname>CopyTask</classname>, so you can use all the elements allowed
+    there. </para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<!-- Transform docbook with an imaginary XSLT file -->
+<xslt todir="/srv/docs/phing" style="dbk2html.xslt" >
+  <fileset dir=".">
+    <include name="**/*.xml" />
+  </fileset>
+</xslt>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.xslt.parameters">
+      <caption>Attributes for <classname>XsltTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>style</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The path where the Xslt file is located</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>resolvedocumentexternals</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to resolve entities in the XML
+        document. (see <link
+        ns6:href="http://www.php.net/manual/en/class.domdocument.php#domdocument.props.resolveexternals">this
+        link</link> for details)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td
+        class="name"><parameter>resolvestylesheetexternals</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to resolve entities in the
+        stylesheet.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+
+    <note>
+      <para>You can also use all the attributes available for <link
+      linkend="phing.coretasks.copy"><classname>CopyTask</classname></link>.</para>
+    </note>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <note>
+      <para>You can use all the elements also available for <link
+      linkend="phing.coretasks.copy"><classname>CopyTask</classname></link>.</para>
+    </note>
+
+    <para>Additionally, you can use <code>&lt;param&gt;</code> tags with a
+    <parameter>name</parameter> and a <parameter>expression</parameter> (or
+    <parameter>value</parameter> alias) attribute. These parameters are then
+    available from within the xsl style sheet.</para>
+  </refsect1>
+</refentry>

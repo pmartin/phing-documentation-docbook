@@ -67,9 +67,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `TaskdefTask` : `DONE` - *2011-08-28*
  - `TouchTask` : `DONE` - *2011-08-28*
  - `TstampTask` : `DONE` - *2011-08-28*
- - `TypedefTask` : `TODO` - *2011-08-20*
- - `UpToDateTask` : `TODO` - *2011-08-20*
- - `XsltTask` : `TODO` - *2011-08-20*
+ - `TypedefTask` : `DONE` - *2011-08-28*
+ - `UpToDateTask` : `DONE` - *2011-08-28*
+ - `XsltTask` : `DONE` - *2011-08-28*
 
 
 ## Optional Tasks ##
