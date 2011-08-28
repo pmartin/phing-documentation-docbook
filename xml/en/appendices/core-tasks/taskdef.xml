@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.taskdef"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>TaskdefTask</refname>
+
+    <refpurpose>With the <classname>TaskdefTask</classname> you can import a
+    user task into your buildfile.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<!-- Includes the Task named "ValidateHTMLTask" and makes it available by
+     <validatehtml> -->
+<taskdef classname="user.tasks.ValidateHTMLTask" name="validatehtml" />
+
+<!-- Includes the Task "RebootTask" from "user/sometasks" somewhere inside
+     the $PHP_CLASSPATH -->
+<taskdef classname="user.sometasks.RebootTask" name="reboot" />
+
+<!-- Includes all tasks from the property file. Each line in the property
+file defines a task in the format: name=path.to.Task -->
+<taskdef file="/path/to/mytasks.properties" />]]></programlisting>
+
+    <para><emphasis role="bold">NB:</emphasis> <classname>Taskdef</classname>
+    now supports the PEAR-style naming convention to define and load
+    tasks:</para>
+
+    <programlisting language="xml"><![CDATA[<taskdef name="sampletask" classname="Dir_Subdir_SampleTask"/>]]></programlisting>
+
+    <para>will load class <classname>Dir_Subdir_SampleTask</classname> from
+    file <filename>Dir/Subdir/SampleTask.php</filename>. </para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.taskdef.parameters">
+      <caption>Attributes for <classname>TaskdefTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>classname</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The path to the class that defines the
+        <classname>TaskClass</classname>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;, unless the
+        <parameter>file</parameter> attribute has been specified.</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name the task is available as after
+        importing. If you specify <code>"validate"</code>, for example, you
+        can access the task imported here with
+        <code>&lt;validate&gt;</code>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;, unless the
+        <parameter>file</parameter> attribute has been specified.</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of the file to load definitions
+        from.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>classpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The classpath to use when including classes.
+        This is added to PHP's <varname>include_path</varname>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>classpathref</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Reference to classpath to use when including
+        classes. This is added to PHP's <varname>include_path</varname>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;classpath&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

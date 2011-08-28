@@ -64,9 +64,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `PropertyPromptTask` : `DONE` - *2011-08-28*
  - `ReflexiveTask` : `DONE` - *2011-08-28*
  - `ResolvePathTask` : `DONE` - *2011-08-28*
- - `TaskdefTask` : `TODO` - *2011-08-20*
- - `TouchTask` : `TODO` - *2011-08-20*
- - `TstampTask` : `TODO` - *2011-08-20*
+ - `TaskdefTask` : `DONE` - *2011-08-28*
+ - `TouchTask` : `DONE` - *2011-08-28*
+ - `TstampTask` : `DONE` - *2011-08-28*
  - `TypedefTask` : `TODO` - *2011-08-20*
  - `UpToDateTask` : `TODO` - *2011-08-20*
  - `XsltTask` : `TODO` - *2011-08-20*

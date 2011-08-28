@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.tstamp"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>TstampTask</refname>
+
+    <refpurpose>Sets the <property>DSTAMP</property>,
+    <property>TSTAMP</property>, and <property>TODAY</property> properties in
+    the current project.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>By default, the <property>DSTAMP</property> property is in the
+    format <code>"%Y%m%d"</code>, <property>TSTAMP</property> is in the format
+    <code>"%H%M"</code>, and <property>TODAY</property> is in the format
+    <code>"%B %d %Y"</code>. Use the nested <code>&lt;format&gt;</code>
+    element to specify a different format.</para>
+
+    <para>These properties can be used in the build-file, for instance, to
+    create time-stamped filenames, or used to replace placeholder tags inside
+    documents to indicate, for example, the release date. The best place for
+    this task is probably in an initialization target.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<tstamp/>]]></programlisting>
+
+    <para>sets the standard <property>DSTAMP</property>,
+    <property>TSTAMP</property>, and <property>TODAY</property> properties
+    according to the default formats.</para>
+
+    <programlisting language="xml"><![CDATA[<tstamp>
+  <format property="DATE" pattern="%c" locale="nl_NL"/>
+</tstamp>]]></programlisting>
+
+    <para>sets the standard properties as well as the property
+    <property>DATE</property> with the date/time pattern <code>"%c"</code>
+    using the Dutch locale.</para>
+
+    <programlisting language="xml"><![CDATA[<tstamp prefix="start"/>]]></programlisting>
+
+    <para>sets three properties with the standard formats, prefixed with
+    <code>"start."</code>: <property>start.DSTAMP</property>,
+    <property>start.TSTAMP</property>, and
+    <property>start.TODAY</property>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.tstamp.parameters">
+      <caption>Attributes for <classname>TstampTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>prefix</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Prefix used for all properties set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;format&gt;</code></para>
+
+        <para>The Tstamp task supports a <code>&lt;format&gt;</code> nested
+        element that allows a property to be set to the current date and time
+        in a given format. The date/time patterns are as defined in the PHP
+        <link
+        ns6:href="http://php.net/strftime"><function>strftime()</function></link>
+        function.</para>
+
+        <table xml:id="phing.coretasks.tstamp.format.parameters">
+          <caption>Attributes for <code>&lt;format&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>property</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The property to receive the date/time
+            string in the given pattern.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>classname</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The date/time pattern to be used. The
+            values are as defined by the PHP <link
+            ns6:href="http://php.net/strftime"><function>strftime()</function></link>
+            function.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>locale</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The locale used to create date/time
+            string. For more information see the PHP <link
+            ns6:href="http://php.net/setlocale"><function>setlocale()</function></link>
+            function.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
