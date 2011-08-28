@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.move"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>MoveTask</refname>
+
+    <refpurpose>Moves a file or directory to a new file or
+    directory.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>By default, the destination file is overwritten if it already
+    exists. When overwrite is turned off, then files are only moved if the
+    source file is newer than the destination file, or when the destination
+    file does not exist.</para>
+
+    <para>Source files and directories are only deleted if the file or
+    directory has been copied to the destination successfully.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<-- The following will move the file "somefile.txt" to "/tmp" and
+    change its filename to "anotherfile.bak". It will overwrite
+    an existing file. -->
+<move file="somefile.txt" tofile="/tmp/anotherfile.bak" overwrite="true"/>
+
+<-- This will move the "/tmp" directory to "/home/default/tmp",
+    preserving the directory name. So the final name is
+    "/home/default/tmp/tmp". Empty directories are also copied -->
+<move file="/tmp" todir="/home/default/tmp" includeemptydirs="true" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <para>For further documentation, see <link
+    linkend="phing.coretasks.copy"><classname>CopyTask</classname></link>,
+    since <classname>MoveTask</classname> only is a child of
+    <classname>CopyTask</classname> and inherits all attributes. </para>
+  </refsect1>
+</refentry>

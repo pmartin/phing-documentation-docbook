@@ -55,9 +55,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `IncludePathTask` : `DONE` - *2011-08-28*
  - `InputTask` : `DONE` - *2011-08-28*
  - `LoadFileTask` : `DONE` - *2011-08-28*
- - `MkdirTask` : `TODO` - *2011-08-20*
- - `MoveTask` : `TODO` - *2011-08-20*
- - `PhingTask` : `TODO` - *2011-08-20*
+ - `MkdirTask` : `DONE` - *2011-08-28*
+ - `MoveTask` : `DONE` - *2011-08-28*
+ - `PhingTask` : `DONE` - *2011-08-28*
  - `PhingCallTask` : `TODO` - *2011-08-20*
  - `PhpEvalTask` : `TODO` - *2011-08-20*
  - `PropertyTask` : `TODO` - *2011-08-20*

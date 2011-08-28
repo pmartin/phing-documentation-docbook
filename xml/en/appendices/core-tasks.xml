@@ -38,5 +38,8 @@
     <xi:include href="core-tasks/includepath.xml"/>
     <xi:include href="core-tasks/input.xml"/>
     <xi:include href="core-tasks/loadfile.xml"/>
+    <xi:include href="core-tasks/mkdir.xml"/>
+    <xi:include href="core-tasks/move.xml"/>
+    <xi:include href="core-tasks/phing.xml"/>
 
 </appendix>

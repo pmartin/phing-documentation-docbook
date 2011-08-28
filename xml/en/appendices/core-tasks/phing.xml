@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.phing"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhingTask</refname>
+
+    <refpurpose>This task calls another build file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>You may specify the target that is to be called within the build
+    file.</para>
+
+    <para>Additionally, the <code>&lt;phing&gt;</code> Tag may contain
+    <code>&lt;property&gt;</code> Tags (see <link
+    linkend="phing.coretasks.property"><classname>PropertyTask</classname></link>).</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<-- Call target "xslttest" from buildfile "alternativebuildfile.xml" -->
+ <phing phingfile="alternativebuild.xml" inheritRefs="true" target="xslttest" />
+
+<-- Do a more complex call -->
+<phing phingfile="somebuild.xml" target="sometarget">
+  <property name="foo" value="bar" />
+  <property name="anotherone" value="32" />
+</phing>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.phing.parameters">
+      <caption>Attributes for <classname>PhingTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>inheritAll</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If <code>true</code>, pass all properties to
+        the new phing project.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>inheritRefs</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If <code>true</code>, pass all references to
+        the new phing project.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The directory to use as a base directory for
+        the new phing project. Default is the current project's basedir,
+        unless <parameter>inheritAll</parameter> has been set to
+        <code>false</code>, in which case it doesn't have a default value.
+        This will override the basedir setting of the called project.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>phingFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The build file to use. Defaults to
+        <filename>build.xml</filename>. This file is expected to be a filename
+        relative to the dir attribute given.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>target</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The target of the new Phing project to
+        execute. Default is the new project's default target.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonfailure</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If <code>true</code>, fail the build process
+        when the called build fails</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="note">
+    <title>Base directory of the new project</title>
+
+    <para>The base directory of the new project is set dependant on the
+    <parameter>dir</parameter> and the <parameter>inheritAll</parameter>
+    attribute. This is important to keep in mind or else you might run into
+    bugs in your <filename>build.xml</filename>'s.</para>
+
+    <para>The following table shows when which value is used:</para>
+
+    <table>
+      <caption>Base directory of the new project</caption>
+
+      <tr>
+        <th><parameter>dir</parameter> attribute</th>
+
+        <th><parameter>inheritAll</parameter> attribute</th>
+
+        <th>new project's basedir</th>
+      </tr>
+
+      <tr>
+        <td>value provided</td>
+
+        <td><code>true</code></td>
+
+        <td>value of <parameter>dir</parameter> attribute</td>
+      </tr>
+
+      <tr>
+        <td>value provided</td>
+
+        <td><code>false</code></td>
+
+        <td>value of <parameter>dir</parameter> attribute</td>
+      </tr>
+
+      <tr>
+        <td>omitted</td>
+
+        <td><code>true</code></td>
+
+        <td>basedir of calling task (the build file containing the
+        <code>&lt;phing&gt;</code> call).</td>
+      </tr>
+
+      <tr>
+        <td>omitted</td>
+
+        <td><code>false</code></td>
+
+        <td>basedir attribute of the <code>&lt;project&gt;</code> element of
+        the new project</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
