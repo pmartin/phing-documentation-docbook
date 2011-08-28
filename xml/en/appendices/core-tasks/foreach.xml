@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.foreach"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ForeachTask</refname>
+
+    <refpurpose>The <classname>ForeachTask</classname> iterates over a list, a
+    list of filesets, or both.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>If both, list and filesets, are specified, the list will be
+    evaluated first.</para>
+
+    <para>Nested filesets are evaluated in the order they appear in the
+    task.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<!-- loop through languages, and call buildlang task with setted param -->
+<property name="languages" value="en,fr,de" />
+<foreach list="${languages}" param="lang" target="buildlang" />
+
+<!-- loop through files, and call subtask task with set param and absparam -->
+<foreach param="filename" absparam="absfilename" target="subtask">
+  <fileset dir=".">
+    <include name="*.php"/>
+  </fileset>
+</foreach>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.foreach.parameters">
+      <caption>Attributes for <classname>ForeachTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>list</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The list of values to process, with the
+        delimiter character, indicated by the <parameter>delimiter</parameter>
+        attribute, separating each value.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>target</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The target to call for each token, passing the
+        token as the parameter with the name indicated by the
+        <parameter>param</parameter> attribute.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>param</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The name of the parameter to pass the tokens
+        in as to the target.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>absparam</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The name of the absolute pathparameter to pass
+        the tokens in as to the target (used while processing nested
+        filesets).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delimiter</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The delimiter string that separates the values
+        in the <parameter>list</parameter> parameter. The default is
+        "<code>,</code>".</td>
+
+        <td class="default"><code>,</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

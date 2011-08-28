@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.if"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>IfTask</refname>
+
+    <refpurpose>Perform some tasks based on whether a given condition holds
+    true or not.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <para>This task doesn't have any attributes, the condition to test is
+    specified by a nested element - see the <link
+    linkend="phing.chapters.projectcomponents.conditions">documentation</link>
+    for a complete list of nested elements.</para>
+
+    <para>Just like the <code>&lt;condition&gt;</code> task, only a single
+    condition can be specified - you combine them using
+    <code>&lt;and&gt;</code> or <code>&lt;or&gt;</code> conditions.</para>
+
+    <para>In addition to the condition, you can specify three different child
+    elements, <code>&lt;elseif&gt;</code>, <code>&lt;then&gt;</code> and
+    <code>&lt;else&gt;</code>. All three subelements are optional. Both
+    <code>&lt;then&gt;</code> and <code>&lt;else&gt;</code> must not be used
+    more than once inside the if task. Both are containers for Phing
+    tasks.</para>
+
+    <para>The <code>&lt;elseif&gt;</code> behaves exactly like an
+    <code>&lt;if&gt;</code> except that it cannot contain the
+    <code>&lt;else&gt;</code> element inside of it. You may specify as may of
+    these as you like, and the order they are specified is the order they are
+    evaluated in. If the condition on the <code>&lt;if&gt;</code> is false,
+    then the first <code>&lt;elseif&gt;</code> who's conditional evaluates to
+    true will be executed. The <code>&lt;else&gt;</code> will be executed only
+    if the <code>&lt;if&gt;</code> and all <code>&lt;elseif&gt;</code>
+    conditions are false.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<if>
+ <equals arg1="${foo}" arg2="bar" />
+ <then>
+   <echo message="The value of property foo is bar" />
+ </then>
+ <else>
+   <echo message="The value of property foo is not bar" />
+ </else>
+</if>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<if>
+ <equals arg1="${foo}" arg2="bar" />
+ <then>
+   <echo message="The value of property foo is 'bar'" />
+ </then>
+
+ <elseif>
+  <equals arg1="${foo}" arg2="foo" />
+  <then>
+   <echo message="The value of property foo is 'foo'" />
+  </then>
+ </elseif>
+
+ <else>
+   <echo message="The value of property foo is not 'foo' or 'bar'" />
+ </else>
+</if>]]></programlisting>
+  </refsect1>
+</refentry>

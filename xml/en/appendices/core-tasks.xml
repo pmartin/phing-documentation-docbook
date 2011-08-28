@@ -32,5 +32,8 @@
     <xi:include href="core-tasks/echo.xml"/>
     <xi:include href="core-tasks/exec.xml"/>
     <xi:include href="core-tasks/exit.xml"/>
+    <xi:include href="core-tasks/foreach.xml"/>
+    <xi:include href="core-tasks/if.xml"/>
+    <xi:include href="core-tasks/import.xml"/>
 
 </appendix>

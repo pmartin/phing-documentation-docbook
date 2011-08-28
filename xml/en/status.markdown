@@ -49,9 +49,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `EchoTask` : `DONE` - *2011-08-28*
  - `ExecTask` : `DONE` - *2011-08-28*
  - `ExitTask` : `DONE` - *2011-08-28*
- - `ForeachTask` : `TODO` - *2011-08-20*
- - `IfTask` : `TODO` - *2011-08-20*
- - `ImportTask` : `TODO` - *2011-08-20*
+ - `ForeachTask` : `DONE` - *2011-08-28*
+ - `IfTask` : `DONE` - *2011-08-28*
+ - `ImportTask` : `DONE` - *2011-08-28*
  - `IncludePathTask` : `TODO` - *2011-08-20*
  - `InputTask` : `TODO` - *2011-08-20*
  - `LoadFileTask` : `TODO` - *2011-08-20*
