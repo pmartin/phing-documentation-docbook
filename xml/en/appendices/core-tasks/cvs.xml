@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.cvs"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>CvsTask</refname>
+
+    <refpurpose>Allows rudimentary interfacing with the CVS versioning
+    system.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>As you would expect, this lets you do pretty much anything with
+    CVS.</para>
+
+    <para>The <classname>CvsTask</classname> calls
+    <classname>ExecTask</classname> which actually does the command
+    execution.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<cvs cvsRoot=":pserver:guest@cvs.tigris.org:/cvs"
+       module="phing" dest="${ws.dir}"/>]]></programlisting>
+
+    <para>or, more complex:</para>
+
+    <programlisting language="xml"><![CDATA[<cvs output="patch">
+    <command>
+        <argument value="-q"/>
+        <argument value="diff"/>
+        <argument value="-u"/>
+        <argument value="-N"/>
+    </command>
+</cvs>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.cvs.parameters">
+      <caption>Attributes for <classname>CvsTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>cvsRoot</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The root directory on the CVS server</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>CvsRsh</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the rsh to execute</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>port</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Port on the server to use</td>
+
+        <td class="default">0</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>passfile</parameter></td>
+
+        <td class="type"><type>String</type>
+        <emphasis>filename</emphasis></td>
+
+        <td class="description">Name of file with CVS passwords</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dest</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The directory where checked out files should
+        be placed</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>modules</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The package/module to operate upon</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tag</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The tag of the package/module to operate
+        upon</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>date</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Use the most recent revision no later than the
+        given date</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Quiet run</td>
+
+        <td class="default">false</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>noexec</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If <code>true</code>, only report changes
+        don't actually do anything</td>
+
+        <td class="default">false</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>setfailonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if the command returns
+        any errors</td>
+
+        <td class="default">false</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>compression</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If <code>true</code>, turns on compression
+        using default (3) compression level</td>
+
+        <td class="default">false</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>compressionlevel</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Specifies compression level 1-9</td>
+
+        <td class="default">false</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>output</parameter></td>
+
+        <td class="type"><type>String</type>
+        <emphasis>filename</emphasis></td>
+
+        <td class="description">File to which output should be written</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>error</parameter></td>
+
+        <td class="type"><type>String</type>
+        <emphasis>filename</emphasis></td>
+
+        <td class="description">File to which error output should be
+        written</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;command&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.coretasks.cvspass"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>CvsPassTask</refname>
+
+    <refpurpose>This lets you create your own cvs password file -- i.e. this
+    is necessary if you want to provide a password in your build
+    file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>If no password file is specified the default location
+    <filename>.cvspass</filename> in user's home directory is used.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<!-- create a password file -->
+<cvspass cvsRoot=":pserver:guest@cvs.tigris.org:/cvs" passfile="cvspass" password="guest"/>
+
+<!-- use the just-created password file -->
+<cvs cvsRoot=":pserver:guest@cvs.tigris.org:/cvs" module="phing" passFile="cvspass" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.coretasks.cvspass.parameters">
+      <caption>Attributes for <classname>CvsPassTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>cvsRoot</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The root directory on the CVS server</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>passFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Password file to add password to</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>password</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Password to add to file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

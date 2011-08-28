@@ -18,14 +18,17 @@
   to the <code>&lt;copy&gt;</code> tag, for example, you will want to look at
   the reference of <classname>CopyTask</classname> .</para>
 
-  <xi:include href="core-tasks/adhoctaskdef.xml" />
-    <xi:include href="core-tasks/adhoctypedef.xml" />
-    <xi:include href="core-tasks/append.xml" />
-    <xi:include href="core-tasks/available.xml" />
-    <xi:include href="core-tasks/chmod.xml" />
-    <xi:include href="core-tasks/chown.xml" />
-    <xi:include href="core-tasks/condition.xml" />
-    <xi:include href="core-tasks/copy.xml" />
+    <xi:include href="core-tasks/adhoctaskdef.xml"/>
+    <xi:include href="core-tasks/adhoctypedef.xml"/>
+    <xi:include href="core-tasks/append.xml"/>
+    <xi:include href="core-tasks/available.xml"/>
+    <xi:include href="core-tasks/chmod.xml"/>
+    <xi:include href="core-tasks/chown.xml"/>
+    <xi:include href="core-tasks/condition.xml"/>
+    <xi:include href="core-tasks/copy.xml"/>
+    <xi:include href="core-tasks/cvs.xml"/>
+    <xi:include href="core-tasks/cvspass.xml"/>
+    <xi:include href="core-tasks/delete.xml"/>
+    
 
-  <xi:include href="core-tasks/delete.xml" />
 </appendix>

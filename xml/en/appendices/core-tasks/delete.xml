@@ -14,7 +14,8 @@
     <refname>DeleteTask</refname>
 
     <refpurpose>Deletes a file or directory, or set of files defined by a
-    fileset. See Appendix D for information on Filesets.</refpurpose>
+    fileset. See <xref linkend="phing.coretypes.fileset" /> for information on
+    Filesets.</refpurpose>
   </refnamediv>
 
   <refsect1 role="example">
@@ -40,16 +41,14 @@
     &ref.title.attributes;
 
     <table xml:id="phing.coretasks.delete.parameters">
+      <caption>Attributes for <classname>DeleteTask</classname></caption>
+
       &taskAttributes.table.titlesLine.all;
 
       <tr>
-        <td>
-          <parameter>file</parameter>
-        </td>
+        <td><parameter>file</parameter></td>
 
-        <td>
-          <type>String</type>
-        </td>
+        <td><type>String</type></td>
 
         <td>The file that is to be deleted. You either have to specify this
         attribute, dir, or use a fileset.</td>
@@ -60,13 +59,9 @@
       </tr>
 
       <tr>
-        <td>
-          <parameter>dir</parameter>
-        </td>
+        <td><parameter>dir</parameter></td>
 
-        <td>
-          <type>String</type>
-        </td>
+        <td><type>String</type></td>
 
         <td>The directory that is to be deleted. You either have to specify
         this attribute, file, or use a fileset.</td>
@@ -77,13 +72,9 @@
       </tr>
 
       <tr>
-        <td>
-          <parameter>verbose</parameter>
-        </td>
+        <td><parameter>verbose</parameter></td>
 
-        <td>
-          <type>Boolean</type>
-        </td>
+        <td><type>Boolean</type></td>
 
         <td>Used to force listing of all names of deleted files.</td>
 
@@ -93,23 +84,16 @@
       </tr>
 
       <tr>
-        <td>
-          <parameter>quiet</parameter>
-        </td>
+        <td><parameter>quiet</parameter></td>
 
-        <td>
-          <type>Boolean</type>
-        </td>
+        <td><type>Boolean</type></td>
 
-        <td>
-          <para>If the file does not exist, do not display a diagnostic
-          message or modify the exit status to reflect an error. This means
-          that if a file or directory cannot be deleted, then no error is
-          reported.</para>
-
-          <para>This setting emulates the -f option to the Unix rm command.
-          Default is false meaning things are verbose</para>
-        </td>
+        <td><para>If the file does not exist, do not display a diagnostic
+        message or modify the exit status to reflect an error. This means that
+        if a file or directory cannot be deleted, then no error is
+        reported.</para> <para>This setting emulates the -f option to the Unix
+        <command>rm</command> command. Default is <code>false</code> meaning
+        things are verbose</para></td>
 
         <td>&attributes.defaultValue.NA;</td>
 
@@ -117,34 +101,27 @@
       </tr>
 
       <tr>
-        <td>
-          <parameter>failonerror</parameter>
-        </td>
+        <td><parameter>failonerror</parameter></td>
 
-        <td>
-          <type>Boolean</type>
-        </td>
+        <td><type>Boolean</type></td>
 
-        <td>If this attribute is set to true, DeleteTask will verbose on
-        errors but the build process will not be stopped.</td>
+        <td>If this attribute is set to <code>true</code>,
+        <classname>DeleteTask</classname> will verbose on errors but the build
+        process will not be stopped.</td>
 
-        <td>true</td>
+        <td><code>true</code></td>
 
         <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
-        <td>
-          <parameter>includeemptydirs</parameter>
-        </td>
+        <td><parameter>includeemptydirs</parameter></td>
 
-        <td>
-          <type>Boolean</type>
-        </td>
+        <td><type>Boolean</type></td>
 
         <td>Determines if empty directories are also to be deleted.</td>
 
-        <td>false</td>
+        <td><code>false</code></td>
 
         <td>&attributes.required.no;</td>
       </tr>
