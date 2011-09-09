@@ -17,6 +17,73 @@
   classes that implement the tasks. So if you are searching for the reference
   to the <code>&lt;phplint&gt;</code> tag, for example, you will want to look
   at the reference of <classname>PhpLintTask</classname>.</para>
-
-  <xi:include href="optional-tasks/coveragemergertask.xml" />
+    
+     <xi:include href="optional-tasks/coveragemerger.xml" />
+     <xi:include href="optional-tasks/coveragereport.xml" />
+    <!-- <xi:include href="optional-tasks/coveragesetup.xml" /> -->
+    <!-- <xi:include href="optional-tasks/coveragethreshold.xml" /> -->
+    <!-- <xi:include href="optional-tasks/dbdeploy.xml" /> -->
+    <!-- <xi:include href="optional-tasks/docblox.xml" /> -->
+    <!-- <xi:include href="optional-tasks/exportproperties.xml" /> -->
+    <!-- <xi:include href="optional-tasks/filehash.xml" /> -->
+    <!-- <xi:include href="optional-tasks/filesize.xml" /> -->
+    <!-- <xi:include href="optional-tasks/ftpdeploy.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitbranch.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitcheckout.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitclone.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitfetch.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitgc.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitinit.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitlog.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitmerge.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitpull.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gitpush.xml" /> -->
+    <!-- <xi:include href="optional-tasks/gittag.xml" /> -->
+    <!-- <xi:include href="optional-tasks/httpget.xml" /> -->
+    <!-- <xi:include href="optional-tasks/httprequest.xml" /> -->
+    <!-- <xi:include href="optional-tasks/ioncubeencoder.xml" /> -->
+    <!-- <xi:include href="optional-tasks/ioncubelicense.xml" /> -->
+    <!-- <xi:include href="optional-tasks/jsllint.xml" /> -->
+    <!-- <xi:include href="optional-tasks/jsmin.xml" /> -->
+    <!-- <xi:include href="optional-tasks/mail.xml" /> -->
+    <!-- <xi:include href="optional-tasks/patch.xml" /> -->
+    <!-- <xi:include href="optional-tasks/pdosqlexec.xml" /> -->
+    <!-- <xi:include href="optional-tasks/pearpackage.xml" /> -->
+    <!-- <xi:include href="optional-tasks/pearpackage2.xml" /> -->
+    <!-- <xi:include href="optional-tasks/pharpackage.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phkpackage.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpcodesniffer.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpcpd.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpdepend.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpdocumentor.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpdocumentorexternal.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phplint.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpmd.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpunit.xml" /> -->
+    <!-- <xi:include href="optional-tasks/phpunitreport.xml" /> -->
+    <!-- <xi:include href="optional-tasks/rst.xml" /> -->
+    <!-- <xi:include href="optional-tasks/s3get.xml" /> -->
+    <!-- <xi:include href="optional-tasks/s3put.xml" /> -->
+    <!-- <xi:include href="optional-tasks/scp.xml" /> -->
+    <!-- <xi:include href="optional-tasks/simpletest.xml" /> -->
+    <!-- <xi:include href="optional-tasks/ssh.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svncheckout.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svncommit.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svncopy.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svnexport.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svnlastrevision.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svnlist.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svnlog.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svnswitch.xml" /> -->
+    <!-- <xi:include href="optional-tasks/svnupdate.xml" /> -->
+    <!-- <xi:include href="optional-tasks/symlink.xml" /> -->
+    <!-- <xi:include href="optional-tasks/tar.xml" /> -->
+    <!-- <xi:include href="optional-tasks/untar.xml" /> -->
+    <!-- <xi:include href="optional-tasks/unzip.xml" /> -->
+    <!-- <xi:include href="optional-tasks/version.xml" /> -->
+    <!-- <xi:include href="optional-tasks/xmllint.xml" /> -->
+    <!-- <xi:include href="optional-tasks/xmlproperty.xml" /> -->
+    <!-- <xi:include href="optional-tasks/zendcodeanalyzer.xml" /> -->
+    <!-- <xi:include href="optional-tasks/zendguardencode.xml" /> -->
+    <!-- <xi:include href="optional-tasks/zendguardlicense.xml" /> -->
 </appendix>

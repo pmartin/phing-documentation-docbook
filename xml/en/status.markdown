@@ -74,8 +74,8 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 ## Optional Tasks ##
 
- - `CoverageMergerTask` : `TODO` - *2011-08-20*
- - `CoverageReportTask` : `TODO` - *2011-08-20*
+ - `CoverageMergerTask` : `DONE` - *2011-09-09*
+ - `CoverageReportTask` : `DONE` - *2011-09-09*
  - `CoverageSetupTask` : `TODO` - *2011-08-20*
  - `CoverageThresholdTask` : `TODO` - *2011-08-20*
  - `DbDeployTask` : `TODO` - *2011-08-20*

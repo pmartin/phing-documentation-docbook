@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.coveragereport"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>CoverageReportTask</refname>
+
+    <refpurpose>The <classname>CoverageReportTask</classname> formats a
+    coverage database into a framed HTML report using XSLT.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.coveragereport.parameters">
+      <caption>Attributes for
+      <classname>CoverageReportTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>outfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The location for the intermediate XML
+        file.</td>
+
+        <td class="default"><filename>coverage.db</filename></td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>report</code></para>
+
+        <para> <table
+            xml:id="phing.optionaltasks.coveragereport.nested.report.parameters">
+            <caption>Attributes for
+            <code>&lt;report&gt;</code></caption>
+
+            &taskAttributes.table.titlesLine.all;
+
+            <tr>
+              <td class="name"><parameter>styledir</parameter></td>
+
+              <td class="type"><type>String</type></td>
+
+              <td class="description">The directory where the stylesheets are
+              located.</td>
+
+              <td class="default">&attributes.defaultValue.NA;</td>
+
+              <td class="required">&attributes.required.yes;</td>
+            </tr>
+
+            <tr>
+              <td class="name"><parameter>todir</parameter></td>
+
+              <td class="type"><type>String</type></td>
+
+              <td class="description">The directory where the files resulting
+              from the transformation should be written to.</td>
+
+              <td class="default"></td>
+
+              <td class="required">&attributes.required.yes;</td>
+            </tr>
+
+            <tr>
+              <td class="name"><parameter>title</parameter></td>
+
+              <td class="type"><type>String</type></td>
+
+              <td class="description">Title of the project (used in the
+              generated document(s))</td>
+
+              <td class="default"></td>
+
+              <td class="required">&attributes.required.no;</td>
+            </tr>
+
+            <tr>
+              <td class="name"><parameter>usesorttable</parameter></td>
+
+              <td class="type"><type>boolean</type></td>
+
+              <td class="description">Whether to use the sorttable JavaScript
+              library (see <link
+              ns6:href="http://www.kryogenix.org/code/browser/sorttable/">http://www.kryogenix.org/code/browser/sorttable/</link>)</td>
+
+              <td class="default"><code>false</code></td>
+
+              <td class="required">&attributes.required.no;</td>
+            </tr>
+          </table></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<coverage-report outfile="reports/coverage.xml">
+  <report todir="reports/coverage" styledir="/home/phing/etc"/>
+</coverage-report>]]></programlisting>
+  </refsect1>
+</refentry>
