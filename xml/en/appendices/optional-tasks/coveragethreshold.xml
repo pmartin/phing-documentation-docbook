@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.coveragethreshold"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>CoverageThresholdTask</refname>
+
+    <refpurpose>This task validates the code coverage database and will stop
+    the build cycle if any class or method or entire project's coverage is
+    lower than the specified threshold.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.coveragethreshold.parameters">
+      <caption>Attributes for
+      <classname>CoverageThresholdTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>database</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The location of the coverage database. (This
+        is optional if <classname>CoverageSetupTask</classname> has run
+        before)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>perProject</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The minimum code coverage for the entire
+        project.</td>
+
+        <td class="default"><code>25</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>perClass</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The minimum code coverage for any class.</td>
+
+        <td class="default"><code>25</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>perMethod</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The minimum code coverage for any method.</td>
+
+        <td class="default"><code>25</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>verbose</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to enable detailed logging or
+        not.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;classpath&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;excludes&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<coverage-threshold database="./reports/coverage.db"/>]]></programlisting>
+
+    <para>Validates an optional code coverage database against the default
+    thresholds.</para>
+
+    <programlisting language="xml"><![CDATA[<coverage-threshold
+    perProject="50"
+    perClass="60"
+    perMethod="70"/>]]></programlisting>
+
+    <para>Validates the code coverage database (from
+    <classname>CoverageSetupTask</classname>) against the specified
+    thresholds.</para>
+
+    <programlisting language="xml"><![CDATA[<coverage-threshold
+    perProject="50"
+    perClass="60"
+    perMethod="70"/>
+    <excludes>
+
+        <file>**/*Processor.php</file>
+        <class>Model_Filter_Windows</class>
+        <method>Model_System::execute()</method>
+    </excludes>]]></programlisting>
+
+    <para>Validates the code coverage database (from
+    <classname>CoverageSetupTask</classname>) against the specified thresholds
+    and excludes the given file, class and method from threshold validation.
+    The filename is relative to the project basedir. A Method can be named
+    either "<methodname>Model_System::execute()</methodname>" or
+    "<methodname>Model_System::execute</methodname>". The method name is
+    considered only for the given class
+    "<classname>Model_System</classname>".</para>
+  </refsect1>
+</refentry>
