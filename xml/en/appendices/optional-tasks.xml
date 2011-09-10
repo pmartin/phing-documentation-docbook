@@ -23,10 +23,10 @@
      <xi:include href="optional-tasks/coveragesetup.xml" />
      <xi:include href="optional-tasks/coveragethreshold.xml" />
      <xi:include href="optional-tasks/dbdeploy.xml" />
-    <!-- <xi:include href="optional-tasks/docblox.xml" /> -->
-    <!-- <xi:include href="optional-tasks/exportproperties.xml" /> -->
-    <!-- <xi:include href="optional-tasks/filehash.xml" /> -->
-    <!-- <xi:include href="optional-tasks/filesize.xml" /> -->
+     <xi:include href="optional-tasks/docblox.xml" />
+     <xi:include href="optional-tasks/exportproperties.xml" />
+     <xi:include href="optional-tasks/filehash.xml" />
+     <xi:include href="optional-tasks/filesize.xml" />
     <!-- <xi:include href="optional-tasks/ftpdeploy.xml" /> -->
     <!-- <xi:include href="optional-tasks/gitbranch.xml" /> -->
     <!-- <xi:include href="optional-tasks/gitcheckout.xml" /> -->

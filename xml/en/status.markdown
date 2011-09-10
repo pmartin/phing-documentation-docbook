@@ -79,10 +79,10 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `CoverageSetupTask` : `DONE` - *2011-09-09*
  - `CoverageThresholdTask` : `DONE` - *2011-09-09*
  - `DbDeployTask` : `DONE` - *2011-09-09*
- - `DocBloxTask` : `TODO` - *2011-08-20*
- - `ExportPropertiesTask` : `TODO` - *2011-08-20*
- - `FileHashTask` : `TODO` - *2011-08-20*
- - `FileSizeTask` : `TODO` - *2011-08-20*
+ - `DocBloxTask` : `DONE` - *2011-09-10*
+ - `ExportPropertiesTask` : `DONE` - *2011-09-10*
+ - `FileHashTask` : `DONE` - *2011-09-10*
+ - `FileSizeTask` : `DONE` - *2011-09-10*
  - `FtpDeployTask` : `TODO` - *2011-08-20*
  - `GitInitTask` : `TODO` - *2011-08-20*
  - `GitCloneTask` : `TODO` - *2011-08-20*

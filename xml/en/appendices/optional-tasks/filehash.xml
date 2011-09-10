@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.filehash"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>FileHashTask</refname>
+
+    <refpurpose>Calculates either MD5 or SHA1 hash value of a file and stores
+    the value as a hex string in a property.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<filehash file="${builddir}/${tarball}.tar.${compression}" />
+<echo "Hashvalue is; ${filehashvalue}" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.filehash.parameters">
+      <caption>Attributes for <classname>FileHashTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Filename</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>hashtype</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Specifies what hash algorithm to use.
+        <code>0</code>=MD5, <code>1</code>=SHA1</td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>propertyname</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property where the hash value is
+        stored</td>
+
+        <td class="default"><code>filehashvalue</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
