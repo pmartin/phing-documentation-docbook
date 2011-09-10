@@ -45,9 +45,9 @@
      <xi:include href="optional-tasks/ioncubelicense.xml" />
      <xi:include href="optional-tasks/jsllint.xml" />
      <xi:include href="optional-tasks/jsmin.xml" />
-    <!-- <xi:include href="optional-tasks/mail.xml" /> -->
-    <!-- <xi:include href="optional-tasks/patch.xml" /> -->
-    <!-- <xi:include href="optional-tasks/pdosqlexec.xml" /> -->
+     <xi:include href="optional-tasks/mail.xml" />
+     <xi:include href="optional-tasks/patch.xml" />
+     <xi:include href="optional-tasks/pdosqlexec.xml" />
     <!-- <xi:include href="optional-tasks/pearpackage.xml" /> -->
     <!-- <xi:include href="optional-tasks/pearpackage2.xml" /> -->
     <!-- <xi:include href="optional-tasks/pharpackage.xml" /> -->

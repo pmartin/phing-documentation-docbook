@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.patch"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PatchTask</refname>
+
+    <refpurpose>The <classname>PatchTask</classname> uses the <link
+    ns6:href="http://savannah.gnu.org/projects/patch">patch</link> program to
+    apply diff file to originals.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para><emphasis role="bold">NB:</emphasis> the <command>patch</command>
+    program must be in the system path!</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.patch.parameters">
+      <caption>Attributes for <classname>PatchTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>patchfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File that includes the diff output</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>originalfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File to patch. If not specified Task tries to
+        guess it from the diff file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>destfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File to send the output to instead of patching
+        the file in place</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>backups</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Keep backups of the unpatched files</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Work silently unless an error occurs</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>reverse</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Assume patch was created with old and new
+        files swapped</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignorewhitespace</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Ignore whitespace differences</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>strip</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Strip the smallest prefix containing specified
+        number of leading slashes from filenames</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The directory in which to run the patch
+        command</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonfailure</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if the patching process
+        encounters an error.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<patch
+  patchfile="/path/to/patches/file.ext.patch"
+  dir="/path/to/original"
+/>]]></programlisting>
+
+    <para>Apply "<filename>file.ext.path</filename>" to original file located
+    in "<filename>/path/to/original</filename>" folder.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.pdosqlexec"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PDOSQLExecTask</refname>
+
+    <refpurpose>The <classname>PDOSQLExecTask</classname> executes SQL
+    statements using PDO.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<pdosqlexec url="pgsql:host=localhost dbname=test">
+  <fileset dir="sqlfiles">
+      <include name="*.sql"/>
+      </fileset></pdosqlexec>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<pdosqlexec url="mysql:host=localhost;dbname=test" userid="username" password="password">
+  <transaction src="path/to/sqlfile.sql"/>
+  <formatter type="plain" outfile="path/to/output.txt"/>
+
+  </pdosqlexec>]]></programlisting>
+
+    <para><emphasis role="bold">Note:</emphasis> because of backwards
+    compatiblity, the <classname>PDOSQLExecTask</classname> can also be called
+    using the <code>'pdo'</code> statement.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.pdosqlexec.parameters">
+      <caption>Attributes for <classname>PDOSQLExecTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>url</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">PDO connection URL (DSN)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>userid</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Username for connection (if it cannot be
+        specified in URL)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>password</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The password to use for the connection (if it
+        cannot be specified in URL)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>src</parameter></td>
+
+        <td class="type"><type>File</type></td>
+
+        <td class="description">A single source file of SQL statements to
+        execute.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>onerror</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The action to perform on error
+        (<code>continue</code>, <code>stop</code>, or <code>abort</code>)</td>
+
+        <td class="default"><code>abort</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delimiter</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The delimeter to separate SQL statements (e.g.
+        "<code>GO</code>" in MSSQL)</td>
+
+        <td class="default"><code>;</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delimitertype</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The delimiter type ("<code>normal</code>" or
+        "<code>row</code>"). <code>normal</code> means that any occurence of
+        the delimiter terminate the SQL command whereas with <code>row</code>,
+        only a line containing just the delimiter is recognized as the end of
+        the command.</td>
+
+        <td class="default"><code>normal</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>autocommit</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to autocommit every single
+        statement.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;transaction</code>&gt; Wrapper for a single
+        transaction. Transactions allow several files or blocks of statements
+        to be executed using the same PDO connection and commit operation in
+        between.</para>
+
+        <table xml:id="phing.optionaltasks.pdosqlexec.nested.transactionparameters">
+          <caption>Attributes for <code>&lt;transaction&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>tsrcfile</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">File with statements to be run as one
+            transaction</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+        </table>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;fileset</code>&gt; Files containing SQL
+        statements.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;filelist&gt;</code> Files containing SQL
+        statements.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;formatter</code>&gt; The results of any queries that
+        are executed can be printed in different formats. Output will always
+        be sent to a file, unless you set the <parameter>usefile</parameter>
+        attribute to <code>false</code>. The path to the output file file can
+        be specified by the <parameter>outfile</parameter> attribute; there is
+        a default filename that will be returned by the formatter if no output
+        file is specified.</para>
+
+        <para>There are three predefined formatters - one prints the query
+        results in XML format, the other emits plain text. Custom formatters
+        that extend <classname>phing.tasks.pdo.PDOResultFormatter</classname>
+        can be specified.</para>
+
+        <table xml:id="phing.optionaltasks.pdosqlexec.nested.formater.parameters">
+          <caption>Attributes for <code>&lt;formatter&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Use a predefined formatter (either
+            <code>xml</code> or <code>plain</code>).</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">One of these attributes is required.</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>classname</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Name of a custom formatter class (must
+            extend
+            <classname>phing.tasks.ext.pdo.PDOResultFormatter</classname>).</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required"></td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>usefile</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">Boolean that determines whether output
+            should be sent to a file.</td>
+
+            <td class="default"><code>true</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>outfile</parameter></td>
+
+            <td class="type"><type>File</type></td>
+
+            <td class="description">Path to file in which to store
+            result.</td>
+
+            <td class="default">Depends on formatter</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>showheaders</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">(only applies to plain formatter) Whether
+            to show column headers.</td>
+
+            <td class="default"><code>false</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>coldelim</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">(only applies to plain formatter) The
+            column delimiter.</td>
+
+            <td class="default"><code>,</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>rowdelim</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">(only applies to plain formatter) The row
+            delimiter.</td>
+
+            <td class="default"><code>\n</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>encoding</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">(only applies to XML formatter) The xml
+            document encoding.</td>
+
+            <td class="default">(PHP default)</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>formatoutput</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">(only applies to XML formatter) Whether to
+            format XML output.</td>
+
+            <td class="default"><code>true</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+        </table>
+
+        <para><emphasis role="bold">Examples:</emphasis><programlisting
+        language="xml"><![CDATA[<pdo url="pgsql:host=localhost dbname=test">
+  <fileset dir="sqlfiles">
+    <include name="*.sql"/>
+  </fileset>
+
+  <!-- xml formatter -->
+  <formatter type="xml" output="output.xml"/>
+
+  <!-- custom formatter -->
+  <formatter classname="path.to.CustomFormatterClass">
+    <param name="someClassAttrib" value="some-value"/>
+  </formatter>
+
+  <!-- No output file + usefile=false means it goes to phing log -->
+  <formatter type="plain" usefile="false" />
+</pdo>]]></programlisting></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
