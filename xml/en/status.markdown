@@ -90,11 +90,11 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `GitBranchTask` : `DONE` - *2011-09-10*
  - `GitFetchTask` : `DONE` - *2011-09-10*
  - `GitCheckoutTask` : `DONE` - *2011-09-10*
- - `GitMergeTask` : `TODO` - *2011-08-20*
- - `GitPullTask` : `TODO` - *2011-08-20*
- - `GitPushTask` : `TODO` - *2011-08-20*
- - `GitTagTask` : `TODO` - *2011-08-20*
- - `GitLogTask` : `TODO` - *2011-08-20*
+ - `GitMergeTask` : `DONE` - *2011-09-10*
+ - `GitPullTask` : `DONE` - *2011-09-10*
+ - `GitPushTask` : `DONE` - *2011-09-10*
+ - `GitTagTask` : `DONE` - *2011-09-10*
+ - `GitLogTask` : `DONE` - *2011-09-10*
  - `HttpGetTask` : `TODO` - *2011-08-20*
  - `HttpRequestTask` : `TODO` - *2011-08-20*
  - `IoncubeEncoderTask` : `TODO` - *2011-08-20*

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gitlog"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitLogTask</refname>
+
+    <refpurpose>Show commit logs.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>See official <link
+    ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-log.html">documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gitlog.parameters">
+      <caption>Attributes for <classname>GitLogTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>paths</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description"><code>&lt;path&gt;</code> arguments to
+        git-log. Accepts one or more paths delimited by
+        <envar>PATH_SEPARATOR</envar></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>outputProperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Property name to set with output value from
+        git-log</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>format</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Commit format. See <code>--format</code> of
+        git-log. Can be one of <code>oneline</code>, <code>short</code>,
+        <code>medium</code>, <code>full</code>, <code>fuller</code>,
+        <code>email</code>, <code>raw</code> and
+        <code>format:&lt;string&gt;</code></td>
+
+        <td class="default"><code>medium</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>date</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Date format. See <code>--date</code> of
+        git-log.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>since</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description"><code>&lt;since&gt;</code> argument to
+        git-log.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>until</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description"><code>&lt;until&gt;</code> argument to
+        git-log.</td>
+
+        <td class="default"><code>HEAD</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>stat</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Generate a diffstat. See <code>--stat</code>
+        of git-log</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>nameStatus</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Names + status of changed files. See
+        <code>--name-status</code> of git-log.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>maxCount</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Number of commits to show. See
+        <code>-&lt;n&gt;</code>|<code>-n</code>|<code>--max-count</code> of
+        git-log.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>noMerges</parameter></td>
+
+        <td class="type"><type>boolean</type></td>
+
+        <td class="description">Don't show commits with more than one parent.
+        See <code>--no-merges</code> of git-log.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- clone repository -->
+<gitclone 
+    repository="git://github.com/path/to/repo/repo.git"
+    targetPath="${repo.dir.resolved}" />
+
+<gitlog 
+    paths="${repo.dir.resolved}"
+    format="oneline"
+    maxCount="2"
+    stat="true"
+    noMerges="false"
+    since="Sun Jan 23 23:55:42 2011 +0300"
+    until="Mon Jan 24 09:59:33 2011 +0300"
+    outputProperty="logs" 
+    repository="${repo.dir.resolved}" />]]></programlisting>
+  </refsect1>
+</refentry>

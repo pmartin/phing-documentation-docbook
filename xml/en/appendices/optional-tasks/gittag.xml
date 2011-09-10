@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gittag"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitTagTask</refname>
+
+    <refpurpose>Create, list, delete or verify a tag object signed with
+    GPG.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>See official <link
+    ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gittag.parameters">
+      <caption>Attributes for <classname>GitTagTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>message</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Use given tag message. See <code>-m</code> of
+        <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Tag name</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>commit</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description"><code>&lt;commit&gt;</code> argument to
+        git-tag</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>object</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description"><code>&lt;object&gt;</code> argument to
+        git-tag</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>pattern</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description"><code>&lt;pattern&gt;</code> argument to
+        git-tag</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>outputProperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Property name to set with output value from
+        git-tag</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Take tag message from given file. See
+        <code>-F</code> of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>annotate</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Make unsigned, annotated tag object. See -a of
+        <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>force</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Replace existing tag with given name. See
+        <code>-f</code> of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delete</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Delete existing tags with given names. See
+        <code>-d</code> of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>list</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">List tags with names matching given pattern.
+        See <code>-l</code> of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>num</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Specifies how many lines from the annotation,
+        if any, are printed when using <code>-l</code>. See -n of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>contains</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Only list tags containing specified commit.
+        See <code>--contains</code> of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>sign</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Make GPG-signed tag. See <code>-a</code> of
+        <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>keySign</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Make GPG-signed tag, using given key. See
+        <code>-u</code> of git-tag of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>verify</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Verify GPG signature of given tag names. See
+        <code>-v</code> of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</link></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- clone repository -->
+<gitclone 
+    repository="git://github.com/path/to/repo/repo.git"
+    targetPath="${repo.dir.resolved}" />
+
+<gittag repository="${repo.dir.resolved}" name="ver1.0" />
+
+<!-- Force duplicate tag creation -->
+<gittag 
+    repository="${repo.dir.resolved}" 
+    name="ver1.0" force="true"/>
+
+<!-- Create tag with annotation and message -->
+<gittag 
+    repository="${repo.dir.resolved}" 
+    name="ver1.0"
+    annotate="true" message="Version 1.0 tag"/>
+
+<!-- Delete tag -->
+<gittag 
+    repository="${repo.dir.resolved}"
+        name="ver2.0" delete="true" />
+
+<!-- List tags matching to pattern "marked" into "tags" variable -->
+<gittag repository="${repo.dir.resolved}" 
+    list="true"
+    outputProperty="tags" 
+    pattern="marked" />]]></programlisting>
+  </refsect1>
+</refentry>

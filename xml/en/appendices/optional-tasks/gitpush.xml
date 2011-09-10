@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gitpush"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitPushTask</refname>
+
+    <refpurpose>Update remote refs along with associated objects.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>See official <link
+    ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gitpush.parameters">
+      <caption>Attributes for <classname>GitPushTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>all</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Push all references</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>destination</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The "remote" repository that is destination of
+        a push operation. See <code>&lt;repository&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default"><code>origin</code></td>
+
+        <td class="required">Yes, if <parameter>allRemotes</parameter> set to
+        <code>false</code></td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>refspec</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">See <code>&lt;refspec&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>mirror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--mirror</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delete</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Delete "remote" reference. Same as prefixing
+        the refspec with colon. See <code>--delete</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tags</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Push all references under refs/tags. See
+        <code>--tags</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Quiet, suppress feedback messages. See
+        <code>--quiet</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>force</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Force update. See <code>--force</code> in
+        <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- clone repository -->
+<gitclone 
+    repository="git://github.com/path/to/repo/repo.git"
+    targetPath="${repo.dir.resolved}" />
+
+<!-- push branch "master" into "foobranch" on "origin" remote -->
+<gitpush
+    repository="${repo.dir.resolved}" 
+    refspec="master:foobranch" tags="true" />
+
+<!-- create new branch "newbranch" on "origin" remote -->
+<gitpush
+    repository="${repo.dir.resolved}" 
+    refspec="master:newbranch" quiet="true" />
+
+<!-- delete "newbranch" branch from "origin" remote -->
+<gitpush
+    repository="${repo.dir.resolved}" 
+    delete="true"
+    refspec="newbranch" quiet="true" />]]></programlisting>
+  </refsect1>
+</refentry>

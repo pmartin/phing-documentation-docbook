@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gitpull"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitPullTask</refname>
+
+    <refpurpose>Fetch from and merge with another repository or a local
+    branch.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>See official <link
+    ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gitpull.parameters">
+      <caption>Attributes for <classname>GitPullTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>all</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Fetch all remotes</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>source</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The "remote" repository that is the source of
+        a fetch or pull operation. See <code>&lt;repository&gt;</code> in
+        <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>origin</code></td>
+
+        <td class="required">Yes, if <parameter>allRemotes</parameter> set to
+        <code>false</code></td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>refspec</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">See <code>&lt;refspec&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>strategy</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Merge strategy. One of "<code>resolve</code>",
+        "<code>recursive</code>", "<code>octopus</code>", "<code>ours</code>",
+        or "<code>subtree</code>". See <code>&lt;strategy&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>strategyOption</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Pass merge strategy specific option through to
+        the merge strategy. See <code>&lt;strategy-option&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>rebase</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--rebase</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>norebase</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--no-rebase</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tags</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Enable tag references following. See
+        <code>--tags</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>notags</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Disable tag references following. See
+        <code>--no-tags</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>keepFiles</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--keep</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>append</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--append</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Quiet, suppress feedback messages. See
+        <code>--quiet</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>force</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Force update. See <code>--force</code> in
+        <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git-pull</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- clone repository -->
+<gitclone 
+    repository="git://github.com/path/to/repo/repo.git"
+    targetPath="${repo.dir.resolved}" />
+
+<!-- pull from all remotes -->
+<gitpull
+    repository="${repo.dir.resolved}" all="true" />
+
+<!-- pull remote origin/foobranch and rebase when merging -->
+<gitpull
+    repository="${repo.dir.resolved}" 
+    source="origin" refspec="foobranch" 
+    strategy="recursive" keep="true"
+    force="true" quiet="true" rebase="true" />]]></programlisting>
+  </refsect1>
+</refentry>

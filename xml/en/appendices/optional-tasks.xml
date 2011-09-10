@@ -34,11 +34,12 @@
      <xi:include href="optional-tasks/gitbranch.xml" />
     <xi:include href="optional-tasks/gitfetch.xml" />
      <xi:include href="optional-tasks/gitcheckout.xml" />
-    <!-- <xi:include href="optional-tasks/gitlog.xml" /> -->
-    <!-- <xi:include href="optional-tasks/gitmerge.xml" /> -->
-    <!-- <xi:include href="optional-tasks/gitpull.xml" /> -->
-    <!-- <xi:include href="optional-tasks/gitpush.xml" /> -->
-    <!-- <xi:include href="optional-tasks/gittag.xml" /> -->
+    <xi:include href="optional-tasks/gitmerge.xml" />
+    <xi:include href="optional-tasks/gitpull.xml" />
+    <xi:include href="optional-tasks/gitpush.xml" />
+    <xi:include href="optional-tasks/gittag.xml" />
+     <xi:include href="optional-tasks/gitlog.xml" />
+
     <!-- <xi:include href="optional-tasks/httpget.xml" /> -->
     <!-- <xi:include href="optional-tasks/httprequest.xml" /> -->
     <!-- <xi:include href="optional-tasks/ioncubeencoder.xml" /> -->
