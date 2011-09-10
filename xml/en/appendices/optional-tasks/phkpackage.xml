@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phkpackage"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhkPackageTask</refname>
+
+    <refpurpose>This task runs <filename>PHK_Creator.phk</filename> to build
+    PHK-package.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Learn more about build process in <link
+    ns6:href="http://phk.tekwire.net/joomla/support/doc/builders_guide.htm">PHK
+    Builder's Guide</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phkpackage.parameters">
+      <caption>Attributes for <classname>PhkPackageTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>phkcreatorpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to
+        <filename>PHK_Creator.phk</filename>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>inputdirectory</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to directory, that will be packed.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>outputfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Output PHK-file. Directory, where file will be
+        stored, must exist!</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>compress</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Compression type (<code>gzip</code>,
+        <code>bzip2</code>, <code>none</code>) to apply to the packed
+        files.</td>
+
+        <td class="default"><code>none</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>strip</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">When <code>true</code>, PHP source file(s) are
+        stripped (filtered through
+        <function>php_strip_whitespace()</function>) before being stored into
+        the archive.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The package's name (Information only).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>webrunscript</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The script to run in web direct access mode.
+        Subfile path.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>crccheck</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If <code>true</code>, a CRC check will be
+        forced every time the package is mounted.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>webaccess</code> Collection of path tags <emphasis>(see
+        example below)</emphasis>, that will be visible outside package in web
+        mode.</para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Sample build command:</para>
+
+    <programlisting language="xml"><![CDATA[<phkpackage
+    phkcreatorpath="/path/to/PHK_Creator.phk"
+    inputdirectory="src"
+    outputfile="build/sample-project.phk"
+    compress="gzip"
+    strip="true"
+    name="Sample Project"
+    webrunscript="index.php">
+    <webaccess>
+        <path>/</path>
+    </webaccess>
+</phkpackage>]]></programlisting>
+  </refsect1>
+</refentry>

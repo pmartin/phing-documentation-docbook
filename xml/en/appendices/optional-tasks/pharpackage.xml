@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.pharpackage"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PharPackageTask</refname>
+
+    <refpurpose><link
+    ns6:href="http://www.php.net/manual/en/book.phar.php">Phar</link> packages
+    generating with Phing.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This task <emphasis role="bold">require <link
+    ns6:href="http://pecl.php.net/package/phar">PECL's Phar</link> </emphasis>
+    extension to be installed on your system.</para>
+
+    <para>Phar is built-in in PHP from 5.3 version.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.pharpackage.parameters">
+      <caption>Attributes for <classname>PharPackageTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>basedir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Base directory, which will be deleted from
+        each included file (from path). Paths with deleted
+        <parameter>basedir</parameter> part are local paths in package.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>destfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Destination (output) file. Will be recreated,
+        if exists!</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>compression</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Compression type (<code>gzip</code>,
+        <code>bzip2</code>, <code>none</code>) to apply to the packed
+        files.</td>
+
+        <td class="default"><code>none</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>webstub</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Relative path within the phar package to run,
+        if accessed through a web browser.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>clistub</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Relative path within the phar package to run,
+        if accessed on the command line.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>stub</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A path to a php file that contains a custom
+        stub</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>alias</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">An alias to assign to the phar package</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>signature</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Signature algorithm (<code>md5</code>,
+        <code>sha1</code>, <code>sha256</code>, <code>sha512</code>), used for
+        this package.</td>
+
+        <td class="default">sha1</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;metadata&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Sample build command:</para>
+
+    <programlisting language="xml"><![CDATA[<pharpackage
+  destfile="./build/package.phar"
+  basedir="./">
+  <fileset dir="./classes">
+    <include name="**/**" />
+  </fileset>
+  <metadata>
+    <element name="version" value="1.0" />
+    <element name="authors">
+      <element name="John Doe">
+        <element name="e-mail" value="john@example.com" />
+      </element>
+    </element>
+  </metadata>
+</pharpackage>]]></programlisting>
+  </refsect1>
+</refentry>
