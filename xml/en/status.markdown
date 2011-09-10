@@ -99,8 +99,8 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `HttpRequestTask` : `DONE` - *2011-09-10*
  - `IoncubeEncoderTask` : `DONE` - *2011-09-10*
  - `IoncubeLicenseTask` : `DONE` - *2011-09-10*
- - `JslLintTask` : `TODO` - *2011-08-20*
- - `JsMinTask` : `TODO` - *2011-08-20*
+ - `JslLintTask` : `DONE` - *2011-09-10*
+ - `JsMinTask` : `DONE` - *2011-09-10*
  - `MailTask` : `TODO` - *2011-08-20*
  - `PatchTask` : `TODO` - *2011-08-20*
  - `PDOSQLExecTask` : `TODO` - *2011-08-20*

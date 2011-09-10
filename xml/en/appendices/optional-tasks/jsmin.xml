@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.jsmin"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>JsMinTask</refname>
+
+    <refpurpose>The <classname>JsMinTask</classname> minifies JavaScript files
+    using <link
+    ns6:href="http://code.google.com/p/jsmin-php/">JsMin</link>.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>JsMin is bundled with Phing and does not need to be installed
+    separately.</para>
+
+    <para>For more information on minifying JavaScript files see <link
+    ns6:href="http://www.crockford.com/javascript/jsmin.html">Douglas
+    Crockford's introduction to minifying JavaScript files</link>.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<jsMin targetDir="docroot/script/minified" failOnError="false">
+  <fileset dir="docroot/script">
+    <include name="**/*.js"/>
+  </fileset>
+</jsMin>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.jsmin.parameters">
+      <caption>Attributes for <classname>JsMinTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>targetDir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path where to store minified JavaScript
+        files</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>suffix</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Suffix to append to the filenames.</td>
+
+        <td class="default"><code>-min</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>failonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether an error while minifying a JavaScript
+        file should stop the build or not</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset</code>&gt; JavaScript files to be
+        minified.</para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
