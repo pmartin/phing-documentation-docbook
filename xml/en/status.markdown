@@ -97,8 +97,8 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `GitLogTask` : `DONE` - *2011-09-10*
  - `HttpGetTask` : `DONE` - *2011-09-10*
  - `HttpRequestTask` : `DONE` - *2011-09-10*
- - `IoncubeEncoderTask` : `TODO` - *2011-08-20*
- - `IoncubeLicenseTask` : `TODO` - *2011-08-20*
+ - `IoncubeEncoderTask` : `DONE` - *2011-09-10*
+ - `IoncubeLicenseTask` : `DONE` - *2011-09-10*
  - `JslLintTask` : `TODO` - *2011-08-20*
  - `JsMinTask` : `TODO` - *2011-08-20*
  - `MailTask` : `TODO` - *2011-08-20*

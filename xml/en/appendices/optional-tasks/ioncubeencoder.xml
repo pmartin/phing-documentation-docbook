@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.ioncubeencoder"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>IoncubeEncoderTask</refname>
+
+    <refpurpose>The <classname>IoncubeEncoderTask</classname> executes the
+    <link ns6:href="http://www.ioncube.com">ionCube</link> encoder (for either
+    PHP4 or PHP5 projects).</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>For more information on the meaning of the various options please
+    consult the ionCube <link
+    ns6:href="http://www.ioncube.com/USER-GUIDE.pdf">user guide</link>.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<ioncubeencoder
+   binary="true"
+   copy="*.ini config/*"
+   encode="*.inc licenses/license.key"
+   encrypt="*.tpl *.xml"
+   fromdir="files"
+   ignore="*.bak RCS/ *~ docs/"
+   ioncubepath="/usr/local/ioncube"
+   keep="docs/README"
+   licensepath="mylicense.txt"
+   optimize="max"
+   passphrase="mypassphrase"
+   phpversion="4"
+   noshortopentags="false"
+   targetoption="replace"
+   todir="encoded"
+   withoutruntimeloadersupport="true"
+   callbackfile="errhandler.php"
+   obfuscationexlusionsfile="obfex.txt">
+  <comment>A project encoded with the ionCube encoder.</comment>
+</ioncubeencoder>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.ioncubeencoder.parameters">
+      <caption>Attributes for
+      <classname>IoncubeEncoderTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>allowedserver</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Restricts the encoded files to particular
+        servers and/or domains. Consult the IonCude documentation for more
+        information.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>binary</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to save encoded files in binary format
+        (default is ASCII format)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>copy</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Specifies files or directories to exclude from
+        being encoded or encrypted and copy them to the target directory
+        (separated by space).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>encode</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Specifies additional file patterns, files or
+        directories to encode, or to reverse the effect of
+        <code>copy</code></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>encrypt</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Specify files or directories (space separated
+        list) that are to be encrypted.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expirein</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Sets a period in seconds (<code>s</code>),
+        minutes (<code>m</code>), hours (<code>h</code>) or days
+        (<code>d</code>) after which the files expire. Accepts:
+        <code>500s</code> or <code>55m</code> or <code>24h</code> or
+        <code>7d</code></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expireon</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Sets a <code>YYYY-MM-DD</code> date to expire
+        the files.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>fromdir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path containing source files</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignore</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Set files and directories to ignore entirely
+        and exclude from the target directory (separated by space).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ioncubepath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the ionCube binaries</td>
+
+        <td class="default"><code>/usr/local/ioncube</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>keep</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Set files and directories not to be ignored
+        (separated by space).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>licensepath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the license file that will be used by
+        the encoded files</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>nodoccomments</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Omits documents comments ( <code>/** ...
+        */</code> ) from the encoded files.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>obfuscation-key</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The obfuscation key must be supplied when
+        using the obfuscate option</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>obfuscate</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The Encoder can obfuscate the names of global
+        functions, the names of local variables in global functions, and line
+        numbers. Use either <code>all</code> or any of <code>functions</code>,
+        <code>locals</code> or <code>linenos</code> separated by a space.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>optimize</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Controls the optimization of the encoded
+        files, accepts either <code>more</code> or <code>max</code></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>passphrase</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The passphrase to use when encoding with a
+        license file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>phpversion</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The PHP version to use</td>
+
+        <td class="default"><code>5</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>targetoption</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Option to use when target directory exists,
+        accepts <code>replace</code>, <code>merge</code>, <code>update</code>
+        and <code>rename</code></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>todir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to save encoded files to</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td
+        class="name"><parameter>withoutruntimeloadersupport</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to disable support for runtime
+        initialization of the ionCube Loader</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>noshortopentags</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to disable support for short PHP
+        tags</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>callbackfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to callback file
+        (<filename>.php</filename>)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>obfuscationexclusionsfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to obfuscation exclusions file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignoredeprecatedwarnings</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to ignore deprecated warnings</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignorestrictwarnings</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to ignore strict warnings</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>allowencodingintosource</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to allow encoding into the source
+        tree</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>messageifnoloader</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A valid PHP expression to customize the "no
+        loader installed" message</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>actionifnoloader</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A valid PHP expression to replace the "no
+        loader installed" action</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>showcommandline</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">whether to show command line before it is
+        executed</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;comment&gt;</code> Custom text that is added to the
+        start of each encoded file.</para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

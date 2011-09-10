@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.ioncubelicense"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>IoncubeLicenseTask</refname>
+
+    <refpurpose>The <classname>IoncubeLicenseTask</classname> executes the
+    <link ns6:href="http://www.ioncube.com">ionCube</link>
+    <command>make_license</command> program.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>For more information on the meaning of the various options please
+    consult the ionCube <link
+    ns6:href="http://www.ioncube.com/USER-GUIDE.pdf">user guide</link>.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<ioncubelicense
+   ioncubepath="/usr/local/ioncube"
+   licensepath="mylicense.txt"
+   passphrase="mypassphrase"
+   allowedserver="00:06:4F:01:8F:2C"
+   expireon="2010-09-01"
+   expirein="7d">
+  <comment>A license file made with the ionCube encoder.</comment>
+</ioncubelicense>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.ioncubelicense.parameters">
+      <caption>Attributes for
+      <classname>IoncubeLicenseTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>ioncubepath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the ionCube binaries</td>
+
+        <td class="default"><code>/usr/local/ioncube</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>licensepath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the license file that will be
+        generated</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>passphrase</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The passphrase to use when generating the
+        license file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>allowedserver</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Restricts the license to particular servers
+        and/or domains. Consult the IonCude documentation for more
+        information.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expirein</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Sets a period in seconds (<code>s</code>),
+        minutes (<code>m</code>), hours (<code>h</code>) or days
+        (<code>d</code>) after which the license expires. Accepts:
+        <code>500s</code> or <code>55m</code> or <code>24h</code> or
+        <code>7d</code>.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expireon</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Sets a <code>YYYY-MM-DD</code> date to expire
+        the license.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;comment&gt;</code> Custom text that is added to the
+        start of each encoded file.</para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
