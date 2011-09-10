@@ -31,12 +31,9 @@
      <xi:include href="optional-tasks/gitinit.xml" />
     <xi:include href="optional-tasks/gitclone.xml" />
     <xi:include href="optional-tasks/gitgc.xml" />
-    <!-- <xi:include href="optional-tasks/gitbranch.xml" /> -->
-    <!-- <xi:include href="optional-tasks/gitcheckout.xml" /> -->
-
-    <!-- <xi:include href="optional-tasks/gitfetch.xml" /> -->
-
-
+     <xi:include href="optional-tasks/gitbranch.xml" />
+    <xi:include href="optional-tasks/gitfetch.xml" />
+     <xi:include href="optional-tasks/gitcheckout.xml" />
     <!-- <xi:include href="optional-tasks/gitlog.xml" /> -->
     <!-- <xi:include href="optional-tasks/gitmerge.xml" /> -->
     <!-- <xi:include href="optional-tasks/gitpull.xml" /> -->

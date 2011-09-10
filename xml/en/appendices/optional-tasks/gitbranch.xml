@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gitbranch"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitBranchTask</refname>
+
+    <refpurpose>Create, move or delete repository branches.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>See official <link
+    ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-branch.html">documentation</link>
+    (branch listing functionality is omitted in current
+    implementation).</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gitbranch.parameters">
+      <caption>Attributes for <classname>GitBranchTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>branchname</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the branch to create or
+        delete.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>newbranch</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The new name for an existing branch.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes, if branch move invoked</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>startpoint</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The new branch head will point to this commit.
+        It may be given as a branch name, a commit-id, or a tag. If this
+        option is omitted, the current <code>HEAD</code> will be used instead.
+        See <code>&lt;start-point&gt;</code> argument of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-branch.html">git-branch</link>.</td>
+
+        <td class="default"></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>setupstream</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">If specified branch does not exist yet or if
+        <code>--force</code> has been given, acts exactly like
+        <code>--track</code>. Otherwise sets up configuration like
+        <code>--track</code> would when creating the branch, except that where
+        branch points to is not changed. See <code>--set-upstream</code>
+        option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-branch.html">git-branch</link>.</td>
+
+        <td class="default"></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>track</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--track</code> option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-branch.html">git-branch</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>notrack</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--no-track</code> option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-branch.html">git-branch</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>force</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Reset <code>&lt;branchname&gt;</code> to
+        <code>&lt;startpoint&gt; </code>if <code>&lt;branchname&gt;</code>
+        exists already. Without <code>-f</code> git branch refuses to change
+        an existing branch.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>move</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Move/rename a branch and the corresponding
+        reflog.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>forcemove</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Move/rename a branch even if the new branch
+        name already exists.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delete</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Delete a branch. The branch must be fully
+        merged in its upstream branch, or in <code>HEAD</code> if no upstream
+        was set with <code>--track</code> or <code>--set-upstream</code>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>forcedelete</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Delete a branch irrespective of its merged
+        status.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- Initialize normal repository -->
+<gitinit repository="${repo.dir.resolved}" />
+
+<!-- Create branch "sample-branch" tracking current HEAD -->
+<gitbranch
+    repository="${repo.dir.resolved}" 
+    branchname="sample-branch" />
+
+<!-- 
+Create branch "sample-branch" tracking origin/master 
+Note that you can omit both startpoint and track attributes in this case
+-->
+<gitbranch
+    repository="${repo.dir.resolved}" 
+    branchname="sample-branch"
+    startpoint="origin/master"
+    track="true" />
+
+<!-- Delete fully merged branch "sample-branch" -->
+<gitbranch 
+    repository="${repo.dir.resolved}" 
+    branchname="sample-branch" 
+    delete="true" />
+
+<!-- Force delete even unmerged branch "sample-branch" -->
+<gitbranch 
+    repository="${repo.dir.resolved}" 
+    branchname="sample-branch" 
+    forcedelete="true" />
+
+<!-- Renabe "branch1" to "branch2" -->
+<gitbranch 
+    repository="${repo.dir.resolved}" 
+    branchname="branch1" 
+    newbranch="branch2"
+    move="true" />]]></programlisting>
+  </refsect1>
+</refentry>

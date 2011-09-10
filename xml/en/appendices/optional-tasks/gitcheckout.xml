@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gitcheckout"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitCheckoutTask</refname>
+
+    <refpurpose>Checkout a branch or paths to the working tree.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>See official <link
+    ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gitcheckout.parameters">
+      <caption>Attributes for <classname>GitCheckoutTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>branchname</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Branch to checkout. See
+        <code>&lt;branch&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"><code>origin</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>startpoint</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of a commit at which to start the new
+        branch; Defaults to <code>HEAD</code>. See
+        <code>&lt;start_point&gt;</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>create</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Create a new branch named
+        <code>&lt;branchname&gt;</code> and start it at
+        <code>&lt;startpoint&gt;</code></td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>forcecreate</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Creates the branch
+        <code>&lt;branchname&gt;</code> and start it at
+        <code>&lt;startpoint&gt;</code>; if it already exists, then reset it
+        to <code>&lt;startpoint&gt;</code>. This is equivalent to running
+        "<command>git branch</command>" with "<code>-f</code>".</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>merge</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--merge</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>track</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--track</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>notrack</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">See <code>--no-track</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>quiet</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Quiet, suppress feedback messages. See
+        <code>--quiet</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>force</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">When switching branches, proceed even if the
+        index or the working tree differs from <code>HEAD</code>. This is used
+        to throw away local changes. See <code>--force</code> in <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-checkout.html">git-checkout</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- clone repository -->
+<gitclone 
+    repository="git://github.com/path/to/repo/repo.git"
+    targetPath="${repo.dir.resolved}" />
+
+<!-- create and switch to "mybranch" branch -->
+<gitcheckout
+    repository="${repo.dir.resolved}" 
+    branchname="mybranch" quiet="true" create="true" />
+
+<!-- get back to "master" branch -->
+<gitcheckout
+    repository="${repo.dir.resolved}" 
+    branchname="master" quiet="true" />
+
+<!-- create (force) already created branch -->
+<gitcheckout
+    repository="${repo.dir.resolved}" 
+    branchname="mybranch" quiet="true" 
+    forceCreate="true" />]]></programlisting>
+  </refsect1>
+</refentry>
