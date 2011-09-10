@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.gitgc"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>GitGcTask</refname>
+
+    <refpurpose>Cleanup unnecessary files and optimize the local
+    repository.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.gitgc.parameters">
+      <caption>Attributes for <classname>GitGcTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>gitPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Git binary</td>
+
+        <td class="default"><code>/usr/bin/git</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repository</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The repository to cleanup.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>aggressive</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">This option will cause git gc to more
+        aggressively optimize the repository at the expense of taking much
+        more time. See <code>--aggressive</code> option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-gc.html">git-gc</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>auto</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">With this option, git gc checks whether any
+        housekeeping is required; if not, it exits without performing any
+        work. See <code>--auto</code> option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-gc.html">git-gc</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>noprune</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Do not prune any loose objects. See
+        <code>--no-prune</code> option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-gc.html">git-gc</link>.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>prune</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Prune loose objects older than date. See
+        <code>--prune</code> option of <link
+        ns6:href="http://www.kernel.org/pub/software/scm/git/docs/git-gc.html">git-gc</link>.</td>
+
+        <td class="default"><code>2.weeks.ago</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<property name="repo.dir" value="./relative/path/to/repo" />
+<resolvepath propertyName="repo.dir.resolved" file="${repo.dir}" />
+
+<!-- Clone repository -->
+<gitclone 
+    repository="git://github.com/path/to/repo/repo.git"
+    targetPath="${repo.dir.resolved}" />
+
+<!-- Cleanup repository-->
+<gitgc 
+    repository="${repo.dir.resolved}" 
+    aggressive="true"
+    prune="1.week.ago" />]]></programlisting>
+  </refsect1>
+</refentry>

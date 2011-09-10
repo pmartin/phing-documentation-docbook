@@ -83,10 +83,10 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `ExportPropertiesTask` : `DONE` - *2011-09-10*
  - `FileHashTask` : `DONE` - *2011-09-10*
  - `FileSizeTask` : `DONE` - *2011-09-10*
- - `FtpDeployTask` : `TODO` - *2011-08-20*
- - `GitInitTask` : `TODO` - *2011-08-20*
- - `GitCloneTask` : `TODO` - *2011-08-20*
- - `GitGcTask` : `TODO` - *2011-08-20*
+ - `FtpDeployTask` : `DONE` - *2011-09-10*
+ - `GitInitTask` : `DONE` - *2011-09-10*
+ - `GitCloneTask` : `DONE` - *2011-09-10*
+ - `GitGcTask` : `DONE` - *2011-09-10*
  - `GitBranchTask` : `TODO` - *2011-08-20*
  - `GitFetchTask` : `TODO` - *2011-08-20*
  - `GitCheckoutTask` : `TODO` - *2011-08-20*

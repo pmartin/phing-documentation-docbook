@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.ftpdeploy"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>FtpDeployTask</refname>
+
+    <refpurpose>Deploys a set of files to a remote FTP server.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<ftpdeploy 
+  host="${ftp.host}" 
+  port="${ftp.port}" 
+  username="${ftp.username}" 
+  password="${ftp.password}"
+  dir="${ftp.dir}" 
+  passive="false"
+  mode="${ftp.mode}">
+  <fileset dir=".">
+    <include name="**"/>
+    <exclude name="phing"/>
+    <exclude name="build.xml"/>
+    <exclude name="images/**.png"/>
+    <exclude name="images/**.gif"/>
+    <exclude name="images/**.jpg"/>
+  </fileset>
+</ftpdeploy>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.ftpdeploy.parameters">
+      <caption>Attributes for <classname>FtpDeployTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>host</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The hostname of the remote server.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>port</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">The port of the remote server.</td>
+
+        <td class="default"><code>21</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>username</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The username to use when logging in to the
+        remote server.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>password</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The password to use when logging in to the
+        remote server</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Directory on the remote server.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>mode</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The transfer mode to use, either
+        <code>ascii</code> or <code>binary</code>.</td>
+
+        <td class="default"><code>binary</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>clearfirst</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Delete all files in the remote directory
+        before uploading</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>passive</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Open connection in passive mode</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>level</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Control the level at which the task reports
+        status messages. One of <code>error</code>, <code>warning</code>,
+        <code>info</code>, <code>verbose</code>, <code>debug</code>.</td>
+
+        <td class="default"><code>verbose</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code> The files to deploy</para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
