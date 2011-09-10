@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.httprequest"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>HttpRequestTask</refname>
+
+    <refpurpose>This task will make an HTTP request to the provided URL and
+    match the response against the provided regular expression.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>If an regular expression is provided and doesn't match the build
+    will fail.</para>
+
+    <para>You need an installed version of
+    <classname>HTTP_Request2</classname> to use this task.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.httprequest.parameters">
+      <caption>Attributes for <classname>HttpRequestTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>url</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The request URL</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>responseRegex</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The regular expression for matching the
+        response</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>authUser</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The authentication user name</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>authPassword</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The authentication password</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>authScheme</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The authentication scheme</td>
+
+        <td class="default">basic</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>verbose</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to enable detailed logging</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>observerEvents</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of events to log when
+        <code>verbose</code> is set to <code>true</code></td>
+
+        <td class="default"><code>connect, sentHeaders, sentBodyPart,
+        receivedHeaders, receivedBody, disconnect</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;config&gt;</code> Holds additional config data. See
+        <classname>HTTP_Request2</classname> for supported values.</para>
+
+        <table xml:id="phing.optionaltasks.httprequest.nested.configparameters">
+          <caption>Attributes for <code>&lt;config&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>name</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Config parameter name</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>value</parameter></td>
+
+            <td class="type"><type>Mixed</type></td>
+
+            <td class="description">Config value</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;header&gt;</code> Holds additional header
+        <code>name</code> and <code>value</code>.</para>
+
+        <table xml:id="phing.optionaltasks.httprequest.nested.header.parameters">
+          <caption>Attributes for <code>&lt;header&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>name</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Header name</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>value</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Header value</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<http-request url="http://my-production.example.com/check-deployment.php"/>]]></programlisting>
+
+    <para>Just perform a HTTP request to the given URL.</para>
+
+    <programlisting language="xml"><![CDATA[<http-request
+   url="http://my-production.example.com/check-deployment.php"
+   responseRegex="/Heartbeat/"
+   verbose"true"
+   observerEvents="connect, disconnect"/>]]></programlisting>
+
+    <para>Perform a HTTP request to the given URL and matching the response
+    against the given regex pattern. Enable detailed logging and log only the
+    specified events.</para>
+
+    <programlisting language="xml"><![CDATA[<http-request url="http://my-production.example.com/check-deployment.php">
+   <config name="adapter" value="HTTP_Request2_Adapter_Curl"/>
+
+   <header name="user-agent" value="Phing HttpRequestTask"/>
+ </http-request>]]></programlisting>
+
+    <para>Perform a HTTP request to the given URL. Setting request adapter to
+    curl instead of socket. Setting an additional header.</para>
+  </refsect1>
+</refentry>
