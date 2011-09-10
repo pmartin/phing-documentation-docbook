@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.pearpackage"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PearPackageTask</refname>
+
+    <refpurpose>With the <classname>PearPackageTask</classname>, you can
+    create a <filename>package.xml</filename> which can be installed using the
+    PEAR installer.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Use this in conjunction with the <link
+    ns6:href="#Tasks.TarTask">TarTask</link> to completely script the building
+    of a PEAR package.</para>
+
+    <para><emphasis role="bold">Note that this task creates a
+    <emphasis>version 1</emphasis> package.xml file.</emphasis></para>
+
+    <para>This task uses the <classname>PEAR_PackageFileManager</classname>
+    class. In order to be maximally flexible, the majority of options are set
+    generically (using <code>&lt;option&gt;</code> tag) and are set using
+    <methodname>PEAR_PackageFileManager::setOptions()</methodname> . Use the
+    <code>&lt;mapping&gt;</code> tag to represent complex values (which are
+    turned into associative arrays and also set using
+    <methodname>setOptions()</methodname> method).</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<pearpkg name="phing" dir="${build.src.dir}" destFile="${build.base.dir}/package.xml">
+<fileset dir=".">
+  <include name="**"/>
+</fileset>
+<option name="notes">Sample release notes here.</option>
+<option name="description">Package description</option>
+<option name="summary">Short description</option>
+<option name="version" value="2.0.0b1"/>
+<option name="state" value="beta"/>
+ <mapping name="maintainers">
+  <element>
+   <element key="handle" value="hlellelid"/>
+   <element key="name" value="Hans"/>
+   <element key="email" value="hans@xmpl.org"/>
+   <element key="role" value="lead"/>
+  </element>
+</mapping>
+</pearpkg>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.pearpackage.parameters">
+      <caption>Attributes for <classname>PearPackageTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the PEAR package.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The base directory of files to add to
+        package.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>destFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The file to create.</td>
+
+        <td class="default"><filename>package.xml</filename> in base
+        directory</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;option&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;mapping&gt;</code> The <code>&lt;mapping&gt;</code>
+        tag represents a complex data type.</para>
+
+        <para>You can use nested <code>&lt;mapping&gt;</code> (and nested
+        <code>&lt;element&gt;</code> with <code>&lt;element&gt;</code> tags)
+        to represent the full complexity of the structure. Bear in mind that
+        what you are creating will be mapped to an associative array that will
+        be passed in via
+        <methodname>PEAR_PackageFileMaintainer::setOptions()</methodname>.</para>
+
+        <programlisting language="xml"><![CDATA[<mapping name="option_name">
+    <element key="key_name" value="key_val"/>
+    <element key="key_name" value="key_val"/>
+</mapping>]]></programlisting>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;role&gt;</code> See <link
+        ns6:href="http://pear.php.net/manual/en/package.pear.pear-packagefilemanager.pear-packagefilemanager.addrole.php"><methodname>PEAR_PackageFileManager::addRole</methodname></link>
+        for more information.</para>
+
+        <para>Available options:</para>
+
+        <table xml:id="phing.optionaltasks.pearpackage.nested.role.parameters">
+          <caption>Attributes for <code>&lt;role&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>extension</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The file extension</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>role</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The file extension</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

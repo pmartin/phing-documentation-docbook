@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.pearpackage2"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PearPackage2Task</refname>
+
+    <refpurpose>With the <classname>PearPackage2Task</classname>, you can
+    create a <emphasis>version 2</emphasis> <filename>package.xml</filename>
+    which can be installed using the PEAR installer.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Use this in conjunction with the <link
+    ns6:href="#Tasks.TarTask">TarTask</link> to completely script the building
+    of a PEAR package.</para>
+
+    <para>This task uses the <classname>PEAR_PackageFileManager2</classname>
+    class. In order to be maximally flexible, the majority of options are set
+    generically (using <code>&lt;option&gt;</code> tag) and are set using
+    <methodname>PEAR_PackageFileManager::setOptions()</methodname>. Use the
+    <code>&lt;mapping&gt;</code> tag to represent complex values.</para>
+
+    <para>Note that Travis Swicegood has created a more complete
+    implementation of this functionality which can be found here: <link
+    ns6:href="http://pear.domain51.com/">pear.domain51.com</link>.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<pearpkg2 name="phing" dir="${build.src.dir}">
+   <option name="outputdirectory" value="./build"/>
+   <option name="packagefile" value="package2.xml"/>
+   <option name="packagedirectory" value="./${build.dist.dir}"/>
+   <option name="baseinstalldir" value="${pkg.prefix}"/>
+   <option name="channel" value="my.pear-channel.com"/>
+   <option name="summary" value="${pkg.summary}"/>
+   <option name="description" value="${pkg.description}"/>
+   <option name="apiversion" value="${pkg.version}"/>
+   <option name="apistability" value="beta"/>
+   <option name="releaseversion" value="${pkg.version}"/>
+   <option name="releasestability" value="beta"/>
+   <option name="license" value="none"/>
+   <option name="phpdep" value="5.0.0"/>
+   <option name="pearinstallerdep" value="1.4.6"/>
+   <option name="packagetype" value="php"/>
+   <option name="notes" value="${pkg.relnotes}"/>
+   <mapping name="maintainers">
+    <element>
+     <element key="handle" value="hlellelid"/>
+     <element key="name" value="Hans"/>
+     <element key="email" value="hans@xmpl.org"/>
+     <element key="role" value="lead"/>
+    </element>
+   </mapping>
+</pearpkg2>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.pearpackage2.parameters">
+      <caption>Attributes for
+      <classname>PearPackage2Task</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>name</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the PEAR package.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>dir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The base directory of files to add to
+        package.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;option&gt;</code></para>
+
+        <para>Available options:</para>
+
+        <table xml:id="phing.optionaltasks.pearpackage2.nested.option.parameters">
+          <caption>Attributes for <code>&lt;option&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>summary</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>description</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>license</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>channel</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Channel name (not alias!). Must be
+            registered ( <command>pear channel-discover channel</command> ) on
+            the machine, where the build will be.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>apiversion</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>releaseversion</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>releasestability</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">One from: <code>snapshot</code>,
+            <code>devel</code>, <code>alpha</code>, <code>beta</code> or
+            <code>stable</code>.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>apistability</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">One from: <code>devel</code>,
+            <code>alpha</code>, <code>beta</code> or <code>stable</code>.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>note</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>packagetype</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>phpdep</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>pearinstallerdep</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description"></td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;mapping&gt;</code> The <code>&lt;mapping&gt;</code>
+        tag represents a complex data type.</para>
+
+        <para>You can use nested <code>&lt;mapping&gt;</code> (and nested
+        <code>&lt;element&gt;</code> with <code>&lt;element&gt;</code> tags)
+        to represent the full complexity of the structure. Bear in mind that
+        what you are creating will be mapped to an associative array that will
+        be passed in via
+        <methodname>PEAR_PackageFileMaintainer::setOptions()</methodname>.</para>
+
+        <programlisting language="xml"><![CDATA[<mapping name="option_name">
+    <element key="key_name" value="key_val"/>
+    <element key="key_name" value="key_val"/>
+</mapping>]]></programlisting>
+
+        <para>Available mappings and they structures:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><code>deps</code> <emphasis>(optional)</emphasis> see <link
+            ns6:href="http://pear.php.net/manual/en/package.pear.pear-packagefilemanager.pear-packagefilemanager.adddependency.php"><methodname>PEAR_PackageFileManager::addDependency()</methodname></link>
+            for more info</para>
+
+            <table xml:id="phing.optionaltasks.pearpackage2.nested.mapping.deps.parameters">
+              <caption>Attributes for <code>deps</code></caption>
+
+              &taskAttributes.table.titlesLine.all;
+
+              <tr>
+                <td class="name"><parameter>channel</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Channel name, from package is.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>name</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Package name in channel.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>version</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Minimal version.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>max</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Maximum version.</td>
+
+                <td class="default">Same as
+                <parameter>version</parameter>.</td>
+
+                <td class="required">&attributes.required.no;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>recommended</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Recommended version.</td>
+
+                <td class="default">Same as
+                <parameter>version</parameter>.</td>
+
+                <td class="required">&attributes.required.no;</td>
+              </tr>
+            </table>
+          </listitem>
+
+          <listitem>
+            <para><code>extdeps</code> <emphasis>(optional)</emphasis> see
+            <link
+            ns6:href="http://pear.php.net/manual/en/package.pear.pear-packagefilemanager.pear-packagefilemanager.adddependency.php"><methodname>PEAR_PackageFileManager::addDependency()</methodname></link>
+            for more info</para>
+
+            <table xml:id="phing.optionaltasks.pearpackage2.nested.mapping.extdeps.parameters">
+              <caption>Attributes for <code>extdeps</code></caption>
+
+              &taskAttributes.table.titlesLine.all;
+
+              <tr>
+                <td class="name"><parameter>name</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Package name.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>version</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Minimal version.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>max</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Maximum version.</td>
+
+                <td class="default">Same as
+                <parameter>version</parameter>.</td>
+
+                <td class="required">&attributes.required.no;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>recommended</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Recommended version.</td>
+
+                <td class="default">Same as
+                <parameter>version</parameter>.</td>
+
+                <td class="required">&attributes.required.no;</td>
+              </tr>
+            </table>
+          </listitem>
+
+          <listitem>
+            <para><code>maintainers</code> <emphasis>(required at least
+            one)</emphasis> see <link
+            ns6:href="http://pear.php.net/manual/en/package.pear.pear-packagefilemanager.pear-packagefilemanager.addmaintainer.php"><methodname>PEAR_PackageFileManager::addMaintainer()</methodname></link>
+            for more info</para>
+
+            <table xml:id="phing.optionaltasks.pearpackage2.nested.mapping.maintainers.parameters">
+              <caption>Attributes for <code>maintainers</code></caption>
+
+              &taskAttributes.table.titlesLine.all;
+
+              <tr>
+                <td class="name"><parameter>handle</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">User identifier in channel.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>name</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Real name.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>email</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description"></td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>role</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">One from: <code>lead</code>,
+                <code>developer</code>, <code>contributor</code> or
+                <code>helper</code>.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+            </table>
+          </listitem>
+
+          <listitem>
+            <para><code>replacements</code> <emphasis>(optional)</emphasis>
+            see <link
+            ns6:href="http://pear.php.net/manual/en/package.pear.pear-packagefilemanager.pear-packagefilemanager.addreplacement.php"><methodname>PEAR_PackageFileManager::addReplacement()</methodname></link>
+            for more info</para>
+
+            <table xml:id="phing.optionaltasks.pearpackage2.nested.mapping.replacements.parameters">
+              <caption>Attributes for <code>replacements</code></caption>
+
+              &taskAttributes.table.titlesLine.all;
+
+              <tr>
+                <td class="name"><parameter>path</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Relative path of file.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>type</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Variable type, either
+                <code>php-const</code>, <code>pear-config</code> or
+                <code>package-info</code>.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>from</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Text to replace in the source
+                file.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+
+              <tr>
+                <td class="name"><parameter>to</parameter></td>
+
+                <td class="type"><type>String</type></td>
+
+                <td class="description">Variable name to use for
+                replacement.</td>
+
+                <td class="default">&attributes.defaultValue.NA;</td>
+
+                <td class="required">&attributes.required.yes;</td>
+              </tr>
+            </table>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;role&gt;</code> See <link
+        ns6:href="http://pear.php.net/manual/en/package.pear.pear-packagefilemanager.pear-packagefilemanager.addrole.php"><methodname>PEAR_PackageFileManager::addRole()</methodname></link>
+        for more information.</para>
+
+        <para>Available options:</para>
+
+        <table xml:id="phing.optionaltasks.pearpackage2.nested.role.parameters">
+          <caption>Attributes for <code>&lt;role&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>extension</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The file extension</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>role</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The file extension</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

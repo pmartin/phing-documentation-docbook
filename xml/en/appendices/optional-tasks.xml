@@ -48,8 +48,8 @@
      <xi:include href="optional-tasks/mail.xml" />
      <xi:include href="optional-tasks/patch.xml" />
      <xi:include href="optional-tasks/pdosqlexec.xml" />
-    <!-- <xi:include href="optional-tasks/pearpackage.xml" /> -->
-    <!-- <xi:include href="optional-tasks/pearpackage2.xml" /> -->
+     <xi:include href="optional-tasks/pearpackage.xml" />
+     <xi:include href="optional-tasks/pearpackage2.xml" />
     <!-- <xi:include href="optional-tasks/pharpackage.xml" /> -->
     <!-- <xi:include href="optional-tasks/phkpackage.xml" /> -->
     <!-- <xi:include href="optional-tasks/phpcodesniffer.xml" /> -->
