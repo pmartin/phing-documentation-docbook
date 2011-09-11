@@ -122,7 +122,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `S3GetTask` : `DONE` - *2011-09-11*
  - `ScpTask` : `DONE` - *2011-09-11*
  - `SshTask` : `DONE` - *2011-09-11*
- - `SimpleTestTask` : `TODO` - *2011-08-20*
+ - `SimpleTestTask` : `DONE` - *2011-09-11*
  - `SvnCheckoutTask` : `TODO` - *2011-08-20*
  - `SvnCommitTask` : `TODO` - *2011-08-20*
  - `SvnCopyTask` : `TODO` - *2011-08-20*

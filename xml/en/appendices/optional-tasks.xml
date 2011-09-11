@@ -66,7 +66,7 @@
      <xi:include href="optional-tasks/s3get.xml" />
      <xi:include href="optional-tasks/scp.xml" />
     <xi:include href="optional-tasks/ssh.xml" />
-    <!-- <xi:include href="optional-tasks/simpletest.xml" /> -->
+     <xi:include href="optional-tasks/simpletest.xml" />
     <!-- <xi:include href="optional-tasks/svncheckout.xml" /> -->
     <!-- <xi:include href="optional-tasks/svncommit.xml" /> -->
     <!-- <xi:include href="optional-tasks/svncopy.xml" /> -->
