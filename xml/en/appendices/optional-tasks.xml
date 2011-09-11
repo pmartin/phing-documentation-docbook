@@ -73,9 +73,9 @@
      <xi:include href="optional-tasks/svnexport.xml" />
      <xi:include href="optional-tasks/svnlastrevision.xml" />
      <xi:include href="optional-tasks/svnlist.xml" />
-    <!-- <xi:include href="optional-tasks/svnlog.xml" /> -->
-    <!-- <xi:include href="optional-tasks/svnswitch.xml" /> -->
-    <!-- <xi:include href="optional-tasks/svnupdate.xml" /> -->
+     <xi:include href="optional-tasks/svnlog.xml" />
+    <xi:include href="optional-tasks/svnupdate.xml" />
+     <xi:include href="optional-tasks/svnswitch.xml" /> 
     <!-- <xi:include href="optional-tasks/symlink.xml" /> -->
     <!-- <xi:include href="optional-tasks/tar.xml" /> -->
     <!-- <xi:include href="optional-tasks/untar.xml" /> -->
