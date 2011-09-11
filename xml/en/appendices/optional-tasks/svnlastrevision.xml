@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.svnlastrevision"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>SvnLastRevisionTask</refname>
+
+    <refpurpose>The <classname>SvnLastRevisionTask</classname> stores the
+    number of the last revision of a Subversion workingcopy in a
+    property.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<svnlastrevision
+   svnpath="/usr/bin/svn"
+   workingcopy="/home/user/svnwc"
+   propertyname="svn.lastrevision"/>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<svnlastrevision
+   svnpath="C:/Subversion/bin/svn.exe"
+   workingcopy="C:/projects/svnwc"
+   propertyname="svn.lastrevision"/>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<svnlastrevision
+   svnpath="C:/Subversion/bin/svn.exe"
+   repositoryurl="http://svn.phing.info/"
+   propertyname="svn.lastrevision"/>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.svnlastrevision.parameters">
+      <caption>Attributes for
+      <classname>SvnLastRevisionTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>svnpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Subversion binary</td>
+
+        <td class="default"><code>/usr/bin/svn</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>workingcopy</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Working copy directory</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes, or <parameter>repositoryurl</parameter></td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repositoryurl</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">URL of remote repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes, or <parameter>workingcopy</parameter></td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>propertyname</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property to use</td>
+
+        <td class="default"><property>svn.lastrevision</property></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>lastChanged</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Sets whether to store actual last changed
+        revision of the directory/file mentioned</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>forceCompatible</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Sets whether to force compatibility with older
+        SVN versions (&lt; 1.2)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

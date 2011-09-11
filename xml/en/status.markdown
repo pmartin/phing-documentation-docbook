@@ -126,9 +126,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `SvnCheckoutTask` : `DONE` - *2011-09-11*
  - `SvnCommitTask` : `DONE` - *2011-09-11*
  - `SvnCopyTask` : `DONE` - *2011-09-11*
- - `SvnExportTask` : `TODO` - *2011-08-20*
- - `SvnLastRevisionTask` : `TODO` - *2011-08-20*
- - `SvnListTask` : `TODO` - *2011-08-20*
+ - `SvnExportTask` : `DONE` - *2011-09-11*
+ - `SvnLastRevisionTask` : `DONE` - *2011-09-11*
+ - `SvnListTask` : `DONE` - *2011-09-11*
  - `SvnLogTask` : `TODO` - *2011-08-20*
  - `SvnUpdateTask` : `TODO` - *2011-08-20*
  - `SvnSwitchTask` : `TODO` - *2011-08-20*
