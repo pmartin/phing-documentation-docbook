@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.zendguardlicense"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ZendGuardLicenseTask</refname>
+
+    <refpurpose>The <classname>ZendGuardLicenseTask</classname> is a wrapper
+    for ZendGuard zendenc_sign executable.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+    
+        <para>It generates ZendGuard license
+    either from a license template file or from the defined
+    properties.</para>
+
+    <para>For more information about ZendGuard sign parameters see the <link
+    ns6:href="http://static.zend.com/topics/Zend-Guard-User-Guidev5x.pdf">ZendGuard
+    documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.zendguardlicense.parameters">
+      <caption>Attributes for
+      <classname>ZendGuardLicenseTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>zendsignPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to  zendenc_sign binary.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>privateKeyPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the company private key. </td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>outputFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path where should the license be
+        generated.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>licenseTemplate</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to a license template file. If  defined
+        all other licensing properties will be ignored (even if they are
+        otherwise required).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>productName</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of the product. This has to match the
+        product name that was used to encode the files (see
+        ZendGuardEncodeTask).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>registeredTo</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name to which the product will be registered
+        to.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expires</parameter></td>
+
+        <td class="type"><type>Mixed</type></td>
+
+        <td class="description">This allows to define when the license will
+        expire.  The license can be issued so it either never expires or
+        expires at a specified data. Use: '<code>Never</code>', <code>0</code>
+        or <code>false</code> to set expiry data to Never; Date in
+        <code>yyyy-mm-dd</code> format to set the expiry date to a specific
+        date; Relative format supported by <function>strtotime</function>
+        function (e.g. '<code>+6 months</code>' to generate a license that
+        will expire in half a year). </td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ipRange</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Limits the use of the license to IP addresses
+        that fall within specification. Supports wildcards for any of the IP
+        place holders, as well as the two types of the net masks (e.g.
+        <code>10.1.0.0/16</code> or <code>10.1.0.0./255.255.0.0</code>).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>hardwareLocked</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Option that indicates if the license will be
+        locked to a specific machine using the Zend Host ID code(s). If set to
+        <code>true</code> the <parameter>hostID</parameter> property is
+        required.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>hostID</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Coded string (Zend Host ID) used to lock the
+        license to a specific hardware. The Zend Host Id obtained from the
+        machine where the encoded files and license are to be installed. Can
+        be obtained by using the zendid utility. This is REQUIRED if the
+        <parameter>hardwareLocked</parameter> property is set to
+        <code>true</code>. You can define multiple Host IDs separated by
+        semicolon.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>userDefinedValues</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Optional user defined values in format
+        <code>key=value</code>. Multiple key-value pairs can be defined and
+        separated by semicolon. These values then will be part of the license
+        and can be obtained using the zend guard api (provided by Zend
+        Optimizer). These values CANNOT be modified after the license is
+        generated. Their modification would invalidate the license. Example:
+        <code>Drink=Tea;Material=Wood</code></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>xUserDefinedValues</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Optional user defined values in format
+        <code>key=value</code>. Multiple key-value pairs can be defined and
+        separated by semicolon. These values then will be part of the license
+        and can be obtained using the zend guard api (provided by Zend
+        Optimizer). These values CAN be modified after the license is
+        generated. Their modification won't invalidate the license. Example:
+        <code>Drink=Tea;Material=Wood</code></td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+    </refsect1>
+
+<refsect1 role="example">
+        &ref.title.example;
+    <programlisting language="xml"><![CDATA[<zendguardlicense
+            privateKeyPath="/var/data/phing.key"
+            zendsignPath="/usr/local/Zend/ZendGuard-5_0_1/bin/zendenc_sign"
+            outputFile="./data/license/license.zl"
+            productName="Phing"
+            registeredTo="YourCustomerName"
+            hardwareLocked="true"
+            expires="+6 months"
+            HostID="H:MFM43-Q9CXC-B9EDX-GWYSU;H:MFM43-Q9CXC-B9EDX-GWYTY"
+            ipRange="10.1.*.*"
+            userDefinedValues="Drink=Tea;Material=Wood"
+            xUserDefinedValues="Drink=Tea;Material=Wood"
+/>]]></programlisting>
+
+    <para>Creates a license using the given properties.</para>
+
+    <programlisting language="xml"><![CDATA[<zendguardlicense
+            privateKeyPath="/var/data/phing.key"
+            zendsignPath="/usr/local/Zend/ZendGuard-5_0_1/bin/zendenc_sign"
+            outputFile="./data/license/license.zl"
+            licenseTemplate="./data/license/license.template.zl"
+/>]]></programlisting>
+
+    <para>Creates a license using a license template file.</para>
+  </refsect1>
+</refentry>

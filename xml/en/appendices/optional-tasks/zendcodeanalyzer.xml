@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.zendcodeanalyzer"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ZendCodeAnalyzerTask</refname>
+
+    <refpurpose>The <classname>ZendCodeAnalyzerTask</classname> analyze PHP
+    source files using the Zend Code Analyzer tool that ships with all
+    versions of Zend Studio.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.zendcodeanalyzer.parameters">
+      <caption>Attributes for
+      <classname>ZendCodeAnalyzerTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>analyzerPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Zend Code Analyzer binary</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to PHP source file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>disable</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Disable warnings seperated by comma</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>enable</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Enable warnings separated by comma</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonwarning</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if warnings occurred
+        during the run.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<zendcodeanalyzer analyzerPath="/usr/local/Zend/ZendStudioClient-5.1.0/bin/ZendCodeAnalyzer" file="SomeClass.php"/>]]></programlisting>
+
+    <para>Analyze one PHP source file with all default warnings
+    enabled.</para>
+
+    <programlisting language="xml"><![CDATA[<zendcodeanalyzer analyzerPath="/usr/local/Zend/ZendStudioClient-5.1.0/bin/ZendCodeAnalyzer" disable="var-ref-notmodified,if-if-else">
+  <fileset dir=".">
+    <include name="**/*.php"/>
+  </fileset>
+</zendcodeanalyzer>]]></programlisting>
+
+    <para>Analyze a set of PHP source files and disable a few warnings.</para>
+
+    <para><emphasis role="bold">NOTE:</emphasis> the
+    <code>&lt;analyze&gt;</code> tag has been deprecated as of Phing
+    2.4.</para>
+  </refsect1>
+</refentry>

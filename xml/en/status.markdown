@@ -139,9 +139,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `VersionTask` : `DONE` - *2011-09-11*
  - `XmlLintTask` : `DONE` - *2011-09-11*
  - `XmlPropertyTask` : `DONE` - *2011-09-11*
- - `ZendCodeAnalyzerTask` : `TODO` - *2011-08-20*
- - `ZendGuardEncodeTask` : `TODO` - *2011-08-20*
- - `ZendGuardLicenseTask` : `TODO` - *2011-08-20*
+ - `ZendCodeAnalyzerTask` : `DONE` - *2011-09-11*
+ - `ZendGuardEncodeTask` : `DONE` - *2011-09-11*
+ - `ZendGuardLicenseTask` : `DONE` - *2011-09-11*
  - `ZipTask` : `TODO` - *2011-08-20*
 
 

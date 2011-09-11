@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.zendguardencode"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ZendGuardEncodeTask</refname>
+
+    <refpurpose>The <classname>ZendGuardEncodeTask</classname> is a wrapper
+    for ZendGuard <command>zendenc</command> executable.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>It pre-compiles the PHP code which improves speed and can prevent
+    unauthorized code modification.</para>
+
+    <para>Additionally it allows signing or licensing the code so it can only
+    be used with a valid license.</para>
+
+    <para>For more information about ZendGuard encode parameters see the <link
+    ns6:href="http://static.zend.com/topics/Zend-Guard-User-Guidev5x.pdf">ZendGuard
+    documentation</link>.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.zendguardencode.parameters">
+      <caption>Attributes for
+      <classname>ZendGuardEncodeTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>zendEncoderPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to  zendenc or zendenc5 binary.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>deleteSource</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to delete the original file and
+        replace with encoded.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>renameSourceExt</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">If defined the original file will be copied to
+        <property>originalfile.renameSourceExt</property> before encoding.
+        This property overrides the <property>deleteSource</property>
+        property.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>shortTags</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Turns on/off support for PHP short tags
+        (<code>&lt;?</code>). <code>true</code> to enable support.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>aspTags</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Turns on/off support for ASP tags
+        (<code>&lt;%</code>). <code>true</code> to enable support.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>noHeader</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Disables the PHP-compatible header that is
+        added to the top of every encoded file by default and is displayed if
+        the Zend Optimizer is not properly installed.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>useCrypto</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Enables cryptography support.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>encodedOnly</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If enabled the encoded files will only work
+        with other encoded files ( I.e. encoded and not-encoded files cannot
+        be used together).</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>forceEncode</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Allow encoding previously encoded files. Not
+        recommended.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>expires</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Make an encoded file to expire on the given
+        data. Date is in <code>yyyy-mm-dd</code> format.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>obfuscationLevel</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Level of obfuscation. Defaults to
+        <code>0</code> (no obfuscation). </td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>optMask</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Optimization mask. Integer representing a bit
+        mask.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>privateKeyPath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the company private key. This is
+        required when either <parameter>signProduct</parameter> or
+        <parameter>licenseProduct</parameter> is enabled.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>licenseProduct</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Enabled product licensing. The encoded files
+        won't work without a valid license. If enabled
+        <parameter>privateKeyPath</parameter> property also needs to be
+        defined.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>signProduct</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Enabled product signing. If signing is enabled
+        the files will be encoded with license support. However valid license
+        won't be required for the files to work. If enabled
+        <parameter>privatKeyPath</parameter> property also needs to be
+        defined.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>productName</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of the product. This must match the
+        product name in the license and is required when either
+        <parameter>licenseProduct</parameter> or
+        <parameter>signProduct</parameter> is enabled.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>prologFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to a file containing a text that will be
+        prepended to each encoded file and displayed in case the Zend
+        Optimizer is not installed.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<zendguardencode
+  shortTags="false"
+  productName="Phing"
+  privateKeyPath="/var/data/phing.key"
+  licenseProduct="true"
+  zendEncoderPath="/usr/local/Zend/ZendGuard-5_0_1/bin/zendenc5"
+ >
+
+  <fileset dir="src">
+    <include name="**/*.php" />
+    <exclude name="cache/**" />
+    <exclude name="plugins/**" />
+  </fileset>
+ 
+  <fileset dir="src">
+    <include name="plugins/cs*/**/*.php" />
+    <include name="plugins/cs*/*.php" />
+  </fileset>
+</zendguardencode>]]></programlisting>
+
+    <para>Encode all php files in the current directory and
+    subdirectories.</para>
+
+    <para>Exclude everything in <filename>cache/</filename> and
+    <filename>plugins/</filename> but include everything in
+    <filename>plugins</filename> that starts with
+    <filename>cs</filename>.</para>
+  </refsect1>
+</refentry>
