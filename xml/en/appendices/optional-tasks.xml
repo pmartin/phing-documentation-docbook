@@ -58,9 +58,8 @@
      <xi:include href="optional-tasks/phpdepend.xml" />
      <xi:include href="optional-tasks/phpdocumentor.xml" />
      <xi:include href="optional-tasks/phpdocumentorexternal.xml" />
-    <!-- <xi:include href="optional-tasks/phplint.xml" /> -->
-
-    <!-- <xi:include href="optional-tasks/phpunit.xml" /> -->
+     <xi:include href="optional-tasks/phplint.xml" />
+     <xi:include href="optional-tasks/phpunit.xml" />
     <!-- <xi:include href="optional-tasks/phpunitreport.xml" /> -->
     <!-- <xi:include href="optional-tasks/rst.xml" /> -->
     <!-- <xi:include href="optional-tasks/s3get.xml" /> -->

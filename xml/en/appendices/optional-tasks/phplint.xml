@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phplint"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhpLintTask</refname>
+
+    <refpurpose>The <classname>PhpLintTask</classname> checks syntax (lint) on
+    one or more PHP source code files.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phplint.parameters">
+      <caption>Attributes for <classname>PhpLintTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to source file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonfailure</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if the linting process
+        encounters an error.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>errorproperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of a property that will be set to
+        contain the error string (if any).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>interpreter</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">Path to alternative PHP interpreter</td>
+
+        <td class="default">Defaults to the
+        <property>${php.command}</property> property which is the interpreter
+        used to execute phing itself.</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>cachefile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">If set, enables writing of last-modified times
+        to <parameter>cachefile</parameter>, to speed up processing of files
+        that rarely change</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>level</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Control the level at which phplint reports
+        status messages. One of <code>error</code>, <code>warning</code>,
+        <code>info</code>, <code>verbose</code>, <code>debug</code>.</td>
+
+        <td class="default"><code>info</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tofile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File to write list of 'bad files' to.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>deprecatedAsError</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to treat deprecated warnings
+        (introduced in PHP 5.3) as errors.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">false</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phplint file="path/to/source.php"/>]]></programlisting>
+
+    <para>Checking syntax of one particular source file.</para>
+
+    <programlisting language="xml"><![CDATA[<phplint>
+  <fileset dir="src">
+    <include name="**/*.php"/>
+  </fileset>
+</phplint>]]></programlisting>
+
+    <para>Check syntax of a fileset of source files.</para>
+  </refsect1>
+</refentry>

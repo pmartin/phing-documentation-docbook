@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpunit"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PHPUnitTask</refname>
+
+    <refpurpose>This task runs testcases using the <link
+    ns6:href="http://www.phpunit.de/">PHPUnit</link> framework.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>It is a functional port of the Ant <link
+    ns6:href="http://ant.apache.org/manual/OptionalTasks/junit.html">JUnit</link>
+    task.</para>
+
+    <para><emphasis role="bold">NB:</emphasis> the identifiers
+    <code>phpunit2</code> (<classname>PHPUnit2Task</classname>) and
+    <code>phpunit3</code> (<classname>PHPUnit3Task</classname>) have been
+    deprecated!</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phpunit.parameters">
+      <caption>Attributes for <classname>PHPUnitTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>printsummary</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Print one-line statistics for each
+        testcase.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>bootstrap</parameter></td>
+
+        <td class="type"><type>string</type></td>
+
+        <td class="description">The name of a bootstrap file that is run
+        before executing the tests.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>codecoverage</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Gather code coverage information while running
+        tests (requires Xdebug).</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if an error occurs
+        during the test run.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonfailure</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if a test fails (errors
+        are considered failures as well).</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonincomplete</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if any incomplete tests
+        are encountered.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonskipped</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if any skipped tests
+        are encountered.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>failureproperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property to set (to <code>true</code>)
+        on failure.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>errorproperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property to set (to <code>true</code>)
+        on error.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>incompleteproperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property to set (to <code>true</code>)
+        on incomplete tests.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>skippedproperty</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Name of property to set (to <code>true</code>)
+        on skipped tests.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>usecustomerrorhandler</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Use a custom Phing/PHPUnit error handler to
+        process PHP errors.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>processisolation</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Enable process isolation when executing
+        tests.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;formatter&gt;</code> The results of the tests can be
+        printed in different formats. Output will always be sent to a file,
+        unless you set the <parameter>usefile</parameter> attribute to
+        <code>false</code>.</para>
+
+        <para>The name of the file is predetermined by the formatter and can
+        be changed by the <parameter>outfile</parameter> attribute.</para>
+
+        <para>There are four predefined formatters - <code>xml</code> and
+        <code>clover</code> print the test results in the JUnit and Clover XML
+        formats, the other two emit plain text. The <code>brief</code>
+        formatter will only print detailed information for testcases that
+        failed, while <code>plain</code> emits a short statistics line for all
+        test cases. Custom formatters that implement
+        <classname>phing.tasks.ext.phpunit.formatter.PHPUnitResultFormatter</classname>
+        can be specified.</para>
+
+        <table xml:id="phing.optionaltasks.phpunit.nested.formatter.parameters">
+          <caption>Attributes for <code>&lt;formatter&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Use a predefined formatter (either
+            <code>xml</code>, <code>plain</code>, <code>clover</code>, or
+            <code>brief</code>).</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required" rowspan="2">One of these is required.</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>classname</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Name of a custom formatter class.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>usefile</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">Boolean that determines whether output
+            should be sent to a file.</td>
+
+            <td class="default"><code>true</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>todir</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Directory to write the file to.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>outfile</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Filename of the result.</td>
+
+            <td class="default">Depends on formatter</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+        </table>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;batchtest&gt;</code> Define a number of tests based on
+        pattern matching.</para>
+
+        <para><code>&lt;batchtest&gt;</code> collects the included files from
+        any number of nested <code>&lt;fileset&gt;</code>s. It then generates
+        a lists of classes that are (in)directly defined by each PHP
+        file.</para>
+
+        <table xml:id="phing.optionaltasks.phpunit.nested.batchtest.parameters">
+          <caption>Attributes for <code>&lt;batchtest&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>exclude</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">A list of classes to exclude from the
+            pattern matching. For example, when you have two baseclasses
+            <classname>BaseWebTest</classname> and
+            <classname>BaseMathTest</classname>, which are included a number
+            of testcases (and thus added to the list of testclasses), you can
+            exclude those classes from the list by typing
+            <code>exclude="BaseWebTest BaseMathTest"</code>.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>classpath</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Used to define more paths on which -
+            besides the PHP <varname>include_path</varname> - to look for the
+            test files.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>name</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The name that is used to create a
+            testsuite from this batchtest.</td>
+
+            <td class="default"><code>Phing Batchtest</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+        </table>
+
+        <para><emphasis role="bold">Supported Nested Tags:</emphasis></para>
+
+        <itemizedlist>
+          <listitem>
+            <para><code>&lt;fileset&gt;</code></para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phpunit>
+  <formatter todir="reports" type="xml"/>
+  <batchtest>
+    <fileset dir="tests">
+      <include name="**/*Test*.php"/>
+      <exclude name="**/Abstract*.php"/>
+    </fileset>
+  </batchtest>
+</phpunit>]]></programlisting>
+
+    <para>Runs all matching testcases in the directory tests, writing XML
+    results to the directory reports.</para>
+
+    <programlisting language="xml"><![CDATA[<phpunit codecoverage="true" haltonfailure="true" haltonerror="true">
+  <formatter type="plain" usefile="false"/>
+  <batchtest>
+    <fileset dir="tests">
+      <include name="**/*Test*.php"/>
+    </fileset>
+  </batchtest>
+</phpunit>]]></programlisting>
+
+    <para>Runs all matching testcases in the directory tests, gathers code
+    coverage information, writing plain text results to the console. The build
+    process is aborted if a test fails.</para>
+
+    <programlisting language="xml"><![CDATA[<phpunit bootstrap="src/autoload.php">
+  <formatter type="plain" usefile="false"/>
+  <batchtest>
+    <fileset dir="tests">
+      <include name="**/*Test*.php"/>
+    </fileset>
+  </batchtest>
+</phpunit>]]></programlisting>
+
+    <para>Runs all matching testcases in the directory tests, writing plain
+    text results to the console. Additionally, before executing the tests, the
+    bootstrap file <filename>src/autoload.php</filename> is loaded.</para>
+
+    <para><emphasis role="bold">Important note:</emphasis> Using a mechanism
+    such as an "<filename>AllTests.php</filename>" file to execute testcases
+    will bypass the Phing hooks used for reporting and counting, and could
+    possibly lead to strange results. Instead, use one of more fileset's to
+    provide a list of testcases to execute.</para>
+  </refsect1>
+</refentry>
