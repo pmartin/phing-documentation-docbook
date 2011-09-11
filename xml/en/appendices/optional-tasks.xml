@@ -54,11 +54,12 @@
      <xi:include href="optional-tasks/phkpackage.xml" />
      <xi:include href="optional-tasks/phpcodesniffer.xml" />
      <xi:include href="optional-tasks/phpcpd.xml" />
-    <!-- <xi:include href="optional-tasks/phpdepend.xml" /> -->
+    <xi:include href="optional-tasks/phpmd.xml" />
+     <xi:include href="optional-tasks/phpdepend.xml" />
     <!-- <xi:include href="optional-tasks/phpdocumentor.xml" /> -->
     <!-- <xi:include href="optional-tasks/phpdocumentorexternal.xml" /> -->
     <!-- <xi:include href="optional-tasks/phplint.xml" /> -->
-    <!-- <xi:include href="optional-tasks/phpmd.xml" /> -->
+
     <!-- <xi:include href="optional-tasks/phpunit.xml" /> -->
     <!-- <xi:include href="optional-tasks/phpunitreport.xml" /> -->
     <!-- <xi:include href="optional-tasks/rst.xml" /> -->

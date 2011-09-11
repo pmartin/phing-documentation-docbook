@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpmd"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PHPMDTask</refname>
+
+    <refpurpose>This task runs <link ns6:href="http://phpmd.org">phpmd</link>,
+    a Project Mess Detector (PMD) for PHP Code.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>You need an installed version of this software to use this
+    task.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phpmd.parameters">
+      <caption>Attributes for <classname>PHPMDTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to source file or path</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>rulesets</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Sets the rulesets used for analyzing the
+        source code</td>
+
+        <td class="default"><code>codesize,unusedcode</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>minimumPriority</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The minimum priority for rules to load.</td>
+
+        <td class="default"><code>5</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>allowedFileExtensions</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of valid file extensions
+        (without dot) for analyzed files.</td>
+
+        <td class="default"><filename>php</filename></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignorePatterns</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of directory patterns to
+        ignore.</td>
+
+        <td class="default"><filename>.git,.svn,CVS,.bzr,.hg</filename></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>format</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The format for the report when no nested
+        formatter is used.</td>
+
+        <td class="default"><code>text</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset</code>&gt; This nested tag is required when
+        the <parameter>file</parameter> attribute is not set.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;formatter&gt;</code> The results of the analysis can
+        be printed in different formats.</para>
+
+        <para>Output will always be sent to <envar>STDOUT</envar>, unless you
+        set the <parameter>usefile</parameter> attribute to <code>true</code>
+        and set an filename in the <parameter>outfile</parameter>
+        attribute.</para>
+
+        <table xml:id="phing.optionaltasks.phpmd.nested.formatter.parameters">
+          <caption>Attributes for <code>&lt;formatter&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The output format. Accepts the the same
+            values as the <parameter>format</parameter> attribute
+            (<code>xml</code>, <code>html</code>, <code>text</code>).</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>usefile</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">Boolean that determines whether output
+            should be sent to a file.</td>
+
+            <td class="default"><code>true</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>outfile</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Path to write output file to.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phpmd file="path/to/source.php"/>]]></programlisting>
+
+    <para>Checking syntax of one particular source file. Sending Text-Report
+    to <envar>STDOUT</envar>.</para>
+
+    <programlisting language="xml"><![CDATA[<phpmd file="path/to/source">
+   <formatter type="html" outfile="reports/pmd.html"/>
+ </phpmd>]]></programlisting>
+
+    <para>Checking syntax of source files in the given path.</para>
+
+    <programlisting language="xml"><![CDATA[<phpmd>
+   <fileset dir="${builddir}">
+     <include name="apps/**/*.php" />
+     <include name="lib/de/**/*.php" />
+   </fileset>
+   <formatter type="xml" outfile="reports/pmd.xml"/>
+ </phpmd>]]></programlisting>
+
+    <para>Checking syntax of source files in the fileset pathes.</para>
+  </refsect1>
+</refentry>

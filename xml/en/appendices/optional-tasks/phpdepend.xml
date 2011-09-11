@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpdepend"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhpDependTask</refname>
+
+    <refpurpose>This task runs <link
+    ns6:href="http://pdepend.org">PHP_Depend</link>, a software analyzer and
+    metric tool for PHP Code.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>You need an installed version of this software to use this
+    task.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phpdepend.parameters">
+      <caption>Attributes for <classname>PhpDependTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to source file or path</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>configFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to PHP_Depend configuration file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>allowedFileExtensions</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of valid file extensions
+        (without dot) for analyzed files.</td>
+
+        <td class="default"><code>php,php5</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>excludeDirectories</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of directory patterns to
+        ignore.</td>
+
+        <td class="default"><code>.git,.svn,CVS</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>excludePackages</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Comma-separated list of packages to
+        ignore.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>withoutAnnotations</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Should the parse ignore doc comment
+        annotations?</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>supportBadDocumentation</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Should PHP_Depend treat <emphasis
+        role="bold">+global</emphasis> as a regular project package?</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>debug</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Enable debug output?</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if errors occurred
+        during the run.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset</code>&gt; This nested tag is required when
+        the <parameter>file</parameter> attribute is not set.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;logger&gt;</code> The results of the analysis can be
+        parsed by differed loggers.</para>
+
+        <para>At least one logger is required. Output will always be sent to a
+        file.</para>
+
+        <table xml:id="phing.optionaltasks.phpdepend.nested.logger.parameters">
+          <caption>Attributes for <code>&lt;logger&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The name of the logger. Valid loggers are:
+            <code>jdepend-chart</code>, <code>jdepend-xml</code>,
+            <code>overview-pyramid</code>, <code>phpunit-xml</code> and
+            <code>summary-xml</code>.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>outfile</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Path to write output file to.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;analyzer&gt;</code> Some additional analyzers can be
+        added to the runner.</para>
+
+        <table xml:id="phing.optionaltasks.phpdepend.nested.analyser.parameters">
+          <caption>Attributes for <code>&lt;analyser&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The name of the analyzer. Valid analyzers
+            are: <code>coderank-mode</code>.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>value</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The value for the analyzer.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phpdepend file="path/to/source">
+   <logger type="phpunit-xml" outfile="reports/metrics.xml"/>
+ </phpdepend>]]></programlisting>
+
+    <para>Running code analysis for source files in the given path.</para>
+
+    <programlisting language="xml"><![CDATA[<phpdepend>
+   <fileset dir="${builddir}">
+     <include name="apps/**/*.php" />
+     <include name="lib/de/**/*.php" />
+   </fileset>
+   <logger type="jdepend-xml" outfile="reports/jdepend.xml"/>
+   <analyzer type="coderank-mode" value="method"/>
+ </phpdepend>]]></programlisting>
+
+    <para>Running code analysis for source files in the fileset pathes with
+    CodeRank strategy <code>method</code>.</para>
+  </refsect1>
+</refentry>
