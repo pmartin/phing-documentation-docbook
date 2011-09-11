@@ -151,7 +151,7 @@
         <delete file="${dist.directory}/${lang}/manual.xml" />
 
         <syntaxhighlighthtml>
-            <fileset dir="${dist.directory}/${lang}">
+            <fileset dir="${dist.directory}/${lang}" defaultexcludes="false">
                 <include name="*.html"/>
             </fileset>
         </syntaxhighlighthtml>
@@ -206,7 +206,7 @@
         </copy>
 
         <syntaxhighlighthtml>
-            <fileset dir="${dist.directory}/${lang}/htmlhelp">
+            <fileset dir="${dist.directory}/${lang}/htmlhelp" defaultexcludes="false">
                 <include name="*.html"/>
             </fileset>
         </syntaxhighlighthtml>
