@@ -142,7 +142,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `ZendCodeAnalyzerTask` : `DONE` - *2011-09-11*
  - `ZendGuardEncodeTask` : `DONE` - *2011-09-11*
  - `ZendGuardLicenseTask` : `DONE` - *2011-09-11*
- - `ZipTask` : `TODO` - *2011-08-20*
+ - `ZipTask` : `DONE` - *2011-09-11*
 
 
 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.zip"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ZipTask</refname>
+
+    <refpurpose>The <classname>ZipTask</classname> creates a
+    <filename>.zip</filename> archive from a fileset or
+    directory.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<zip destfile="phing.zip">
+ <fileset dir=".">
+     <include name="**/**" />
+ </fileset>
+</zip>]]></programlisting>
+
+    <para>The above example uses a fileset to determine which files to include
+    in the archive.</para>
+
+    <programlisting language="xml"><![CDATA[<zip destfile="phing.zip" basedir="."/>]]></programlisting>
+
+    <para>The second example uses the <parameter>basedir</parameter> attribute
+    to include the contents of that directory (including subdirectories) in
+    the archive.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.zip.parameters">
+      <caption>Attributes for <classname>ZipTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>destfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">.ZIP filename</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>basedir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Base directory to zip (if no fileset
+        specified, entire directory contents will be included in the
+        archive)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>prefix</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File path prefix to use when adding files to
+        zip</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>includeemptydirs</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If set to <code>true</code>, also empty
+        directories are copied.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+
+    <para><emphasis role="bold">Important note:</emphasis> using
+    <parameter>basedir</parameter> and <code>&lt;fileset&gt;</code>
+    simultaneously can result in strange contents in the archive.</para>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
