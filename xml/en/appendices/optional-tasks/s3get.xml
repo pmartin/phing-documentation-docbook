@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.s3get"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>S3GetTask</refname>
+
+    <refpurpose>Downloads an object from Amazon S3.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This task requires the PEAR package <link
+    ns6:href="http://pear.php.net/package/Services_Amazon_S3">Services_Amazon_S3</link></para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Downloading an object</para>
+
+    <programlisting language="xml"><![CDATA[<s3get object="file.txt" target="${project.basedir}" bucket="mybucket" key="AmazonKey" secret="AmazonSecret" />]]></programlisting>
+
+    <para>You can also define "bucket, key, secret" outside of the task
+    call:</para>
+
+    <programlisting language="xml"><![CDATA[<property name="amazon.key" value="my_key" />
+<property name="amazon.secret" value="my_secret" />
+<property name="amazon.bucket" value="mybucket" />
+
+<s3get object="file.txt" target="${project.basedir}" />]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.s3get.parameters">
+      <caption>Attributes for <classname>S3GetTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>key</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Amazon S3 key</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes (or defined before task call as:
+        <property>amazon.key</property>)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>secret</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Amazon S3 secret</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes (or defined before task call as:
+        <property>amazon.secret</property>)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>bucket</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Bucket containing the object</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes (or defined before task call as:
+        <property>amazon.bucket</property>)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>object</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Object name</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>target</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Where to store the object after download</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>

@@ -61,9 +61,10 @@
      <xi:include href="optional-tasks/phplint.xml" />
      <xi:include href="optional-tasks/phpunit.xml" />
      <xi:include href="optional-tasks/phpunitreport.xml" />
-    <!-- <xi:include href="optional-tasks/rst.xml" /> -->
-    <!-- <xi:include href="optional-tasks/s3get.xml" /> -->
-    <!-- <xi:include href="optional-tasks/s3put.xml" /> -->
+     <xi:include href="optional-tasks/rst.xml" />
+    <xi:include href="optional-tasks/s3put.xml" />
+     <xi:include href="optional-tasks/s3get.xml" />
+
     <!-- <xi:include href="optional-tasks/scp.xml" /> -->
     <!-- <xi:include href="optional-tasks/simpletest.xml" /> -->
     <!-- <xi:include href="optional-tasks/ssh.xml" /> -->

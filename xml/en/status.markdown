@@ -117,9 +117,9 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `PhpLintTask` : `DONE` - *2011-09-11*
  - `PHPUnitTask` : `DONE` - *2011-09-11*
  - `PHPUnitReport` : `DONE` - *2011-09-11*
- - `rSTTask` : `TODO` - *2011-08-20*
- - `S3PutTask` : `TODO` - *2011-08-20*
- - `S3GetTask` : `TODO` - *2011-08-20*
+ - `rSTTask` : `DONE` - *2011-09-11*
+ - `S3PutTask` : `DONE` - *2011-09-11*
+ - `S3GetTask` : `DONE` - *2011-09-11*
  - `ScpTask` : `TODO` - *2011-08-20*
  - `SshTask` : `TODO` - *2011-08-20*
  - `SimpleTestTask` : `TODO` - *2011-08-20*

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.rst"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>rSTTask</refname>
+
+    <refpurpose>Renders rST (reStructuredText) files into different output
+    formats.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This task requires the <code>python docutils</code> installed. They
+    contain <command>rst2html</command>, <command>rst2latex</command>,
+    <command>rst2man</command>, <command>rst2odt</command>,
+    <command>rst2s5</command>, <command>rst2xml</command>.</para>
+
+    <para>Homepage: <link
+    ns6:href="https://gitorious.org/phing/rsttask">https://gitorious.org/phing/rsttask</link></para>
+
+    <para>Features:<itemizedlist>
+        <listitem>
+          <para>renders single files</para>
+        </listitem>
+
+        <listitem>
+          <para>render nested filesets</para>
+        </listitem>
+
+        <listitem>
+          <para>mappers to generate output file names based on the rst
+          ones</para>
+        </listitem>
+
+        <listitem>
+          <para>multiple output formats</para>
+        </listitem>
+
+        <listitem>
+          <para>filter chains to e.g. replace variables after rendering</para>
+        </listitem>
+
+        <listitem>
+          <para>custom parameters to the rst2* tool</para>
+        </listitem>
+
+        <listitem>
+          <para>configurable rst tool path</para>
+        </listitem>
+
+        <listitem>
+          <para>uptodate check</para>
+        </listitem>
+
+        <listitem>
+          <para>automatically overwrites old files</para>
+        </listitem>
+
+        <listitem>
+          <para>automatically creates target directories</para>
+        </listitem>
+      </itemizedlist></para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.rst.parameters">
+      <caption>Attributes for <classname>rSTTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">rST input file to render</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes (or fileset)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>format</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Output format: <code>html</code>,
+        <code>latex</code>, <code>man</code>, <code>odt</code>,
+        <code>s5</code>, <code>xml</code></td>
+
+        <td class="default"><code>html</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>destination</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to store the rendered file to. Used as
+        directory if it ends with a <code>/</code>.</td>
+
+        <td class="default">magically determined from input file</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>uptodate</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Only render if the input file is newer than
+        the target file</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>toolpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the <command>rst2*</command> tool</td>
+
+        <td class="default">determined from <parameter>format</parameter></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>toolparam</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Additional commandline parameters to the
+        <command>rst2*</command> tool</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;mapper&gt;</code></para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;filterchain&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <refsect2>
+      <title>Render a single rST file to HTML</title>
+
+      <para>By default, HTML is generated. If no target file is specified, the
+      input file name is taken, and its extension replaced with the correct
+      one for the output format.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="single">
+  <target name="single" description="render a single rST file to HTML">
+
+    <rST file="path/to/file.rst" />
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Render a single rST file to any supported format</title>
+
+      <para>The <parameter>format</parameter> attribute determines the output
+      format:</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="single">
+  <target name="single" description="render a single rST file to S5 HTML">
+
+    <rST file="path/to/file.rst" format="s5" />
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Specifying the output file name</title>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="single">
+  <target name="single" description="render a single rST file">
+
+    <rST file="path/to/file.rst" destination="path/to/output/file.html" />
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Rendering multiple files</title>
+
+      <para>A nested <code>&lt;fileset&gt;</code> tag may be used to specify
+      multiple files.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="multiple">
+  <target name="multiple" description="renders several rST files">
+
+    <rST>
+     <fileset dir=".">
+       <include name="README.rst" />
+       <include name="docs/\*.rst" />
+     </fileset>
+    </rST>
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Rendering multiple files to another directory</title>
+
+      <para>A nested <code>&lt;mapper&gt;</code> may be used to determine the
+      output file names.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="multiple">
+  <target name="multiple" description="renders several rST files">
+
+    <rST>
+     <fileset dir=".">
+       <include name="README.rst" />
+       <include name="docs/\*.rst" />
+     </fileset>
+     <mapper type="glob" from="\*.rst" to="path/to/my/\*.xhtml"/>
+    </rST>
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Modifying files after rendering</title>
+
+      <para>You may have variables in your rST code that can be replaced after
+      rendering, i.e. the version of your software.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="filterchain">
+  <target name="filterchain" description="renders several rST files">
+
+    <rST>
+     <fileset dir=".">
+       <include name="README.rst" />
+       <include name="docs/\*.rst" />
+     </fileset>
+     <filterchain>
+       <replacetokens begintoken="##" endtoken="##">
+         <token key="VERSION" value="1.23.0" />
+       </replacetokens>
+     </filterchain>
+    </rST>
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Rendering changed files only</title>
+
+      <para>The <parameter>uptodate</parameter> attribute determines if only
+      those files should be rendered that are newer than their output
+      file.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="multiple">
+  <target name="multiple" description="renders several rST files">
+
+    <rST uptodate="true">
+     <fileset dir=".">
+       <include name="docs/\*.rst" />
+     </fileset>
+    </rST>
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+
+    <refsect2>
+      <title>Specify a custom CSS file</title>
+
+      <para>You may pass any additional parameters to the rst conversion tools
+      with the <parameter>toolparam</parameter> attribute.</para>
+
+      <programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<project name="example" basedir="." default="single">
+  <target name="single" description="render a single rST file to S5 HTML">
+
+    <rST file="path/to/file.rst" toolparam="--stylesheet-path=custom.css" />
+
+  </target>
+</project>]]></programlisting>
+    </refsect2>
+  </refsect1>
+</refentry>
