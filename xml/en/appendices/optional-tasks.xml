@@ -79,8 +79,8 @@
      <xi:include href="optional-tasks/symlink.xml" />
      <xi:include href="optional-tasks/tar.xml" />
      <xi:include href="optional-tasks/untar.xml" />
-    <!-- <xi:include href="optional-tasks/unzip.xml" /> -->
-    <!-- <xi:include href="optional-tasks/version.xml" /> -->
+     <xi:include href="optional-tasks/unzip.xml" />
+     <xi:include href="optional-tasks/version.xml" />
     <!-- <xi:include href="optional-tasks/xmllint.xml" /> -->
     <!-- <xi:include href="optional-tasks/xmlproperty.xml" /> -->
     <!-- <xi:include href="optional-tasks/zendcodeanalyzer.xml" /> -->
