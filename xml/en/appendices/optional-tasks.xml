@@ -52,8 +52,8 @@
      <xi:include href="optional-tasks/pearpackage2.xml" />
      <xi:include href="optional-tasks/pharpackage.xml" />
      <xi:include href="optional-tasks/phkpackage.xml" />
-    <!-- <xi:include href="optional-tasks/phpcodesniffer.xml" /> -->
-    <!-- <xi:include href="optional-tasks/phpcpd.xml" /> -->
+     <xi:include href="optional-tasks/phpcodesniffer.xml" />
+     <xi:include href="optional-tasks/phpcpd.xml" />
     <!-- <xi:include href="optional-tasks/phpdepend.xml" /> -->
     <!-- <xi:include href="optional-tasks/phpdocumentor.xml" /> -->
     <!-- <xi:include href="optional-tasks/phpdocumentorexternal.xml" /> -->

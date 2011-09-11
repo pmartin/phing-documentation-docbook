@@ -108,8 +108,8 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
  - `PearPackage2Task` : `DONE` - *2011-09-10*
  - `PharPackageTask` : `DONE` - *2011-09-10*
  - `PhkPackageTask` : `DONE` - *2011-09-10*
- - `PhpCodeSnifferTask` : `TODO` - *2011-08-20*
- - `PHPCPDTask` : `TODO` - *2011-08-20*
+ - `PhpCodeSnifferTask` : `DONE` - *2011-09-11*
+ - `PHPCPDTask` : `DONE` - *2011-09-11*
  - `PHPMDTask` : `TODO` - *2011-08-20*
  - `PhpDependTask` : `TODO` - *2011-08-20*
  - `PhpDocumentorTask` : `TODO` - *2011-08-20*

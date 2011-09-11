@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpcpd"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PHPCPDTask</refname>
+
+    <refpurpose>This task runs <link
+    ns6:href="http://github.com/sebastianbergmann/phpcpd/">phpcpd</link>, a
+    Copy/Paste Detector (CPD) for PHP Code.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>You need an installed version of this software to use this
+    task.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phpcpd.parameters">
+      <caption>Attributes for <classname>PHPCPDTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to source file or path</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>minTokens</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Sets the minimum number of identical tokens
+        (default: 70)</td>
+
+        <td class="default"><code>70</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>minLines</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Sets the minimum number of identical lines
+        (default: 5)</td>
+
+        <td class="default"><code>5</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>format</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The format for the report when no nested
+        formatter is used.</td>
+
+        <td class="default"><code>default</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code> This nested tag is required when
+        the <parameter>file</parameter> attribute is not set.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;formatter&gt;</code> The results of the copy/paste
+        scan can be printed in different formats.</para>
+
+        <para>Output will always be sent to a file, unless you set the
+        <parameter>usefile</parameter> attribute to <code>false</code>.</para>
+
+        <table xml:id="phing.optionaltasks.phpcpd.nested.formatter.parameters">
+          <caption>Attributes for <code>&lt;formatter&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The output format. Accepts the the same
+            values as the <parameter>format</parameter> attribute
+            (<code>default</code>, <code>pmd</code>).</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>useFile</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">Flag that determines whether output should
+            be sent to a file or not.</td>
+
+            <td class="default"><code>true</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>outfile</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Path to write output file to.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phpcpd file="path/to/source.php"/>]]></programlisting>
+
+    <para>Checking for copy/paste code in one particular source file. Sending
+    Default-Report to <envar>STDOUT</envar>.</para>
+
+    <programlisting language="xml"><![CDATA[<phpcpd file="path/to/source">
+   <formatter type="pmd" outfile="reports/pmd-cpd.xml"/>
+
+ </phpcpd>]]></programlisting>
+
+    <para>Checking for copy/paste code in files of the given path.</para>
+
+    <programlisting language="xml"><![CDATA[<phpcpd>
+   <fileset dir="${builddir}" id="filestocpd">
+     <include name="apps/**/*.php" />
+     <include name="lib/de/**/*.php" />
+     <include name="lib/task/**/*.php" />
+     <include name="lib/services/**/*.php" />
+     <include name="lib/form/**/*.php" />
+     <include name="lib/model/**/*.php" />
+   </fileset>
+   <formatter type="pmd" outfile="reports/pmd-cpd.xml"/>
+ </phpcpd>]]></programlisting>
+  </refsect1>
+</refentry>

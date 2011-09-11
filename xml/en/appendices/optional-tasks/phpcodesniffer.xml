@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpcodesniffer"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhpCodeSnifferTask</refname>
+
+    <refpurpose>This task runs <link
+    ns6:href="http://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</link>
+    to detect violations of a defined set of coding standards.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phpcodesniffer.parameters">
+      <caption>Attributes for
+      <classname>PhpCodeSnifferTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>standard</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the standard to check for.</td>
+
+        <td class="default"><code>Generic</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>format</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The output format. The <code>default</code>
+        format is specified in the task itself. Additionally all report
+        formats of PHP_CodeSniffer can be choosen (ex.
+        <code>checkstyle</code>, <code>full</code>, <code>summary</code>,
+        ...).</td>
+
+        <td class="default"><code>default</code></td>
+
+        <td class="required">No. Ignored if nested formatter elements are
+        supplied.</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>showSniffs</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Print the list of used sniffs.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>showWarnings</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Print warnings.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>showSources</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Flag that determines whether to show sources
+        or not.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>docGenerator</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the doc generator
+        (<code>HTML</code>, <code>Text</code>).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>docFile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to write output file to. If not set
+        documentation will be written to <envar>STDOUT</envar> when
+        <parameter>docGenerator</parameter> is set.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The file or folder to check (usually the
+        nested tag <code>&lt;fileset&gt;</code> is used instead).</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">Either this attribute or the nested tag
+        <code>&lt;fileset&gt;</code> is required.</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>sniffs</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The list of allowed sniffs (separated by
+        space, comma or semicolon). The sniffs must be part of the choosen
+        standard.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>verbosity</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The verbosity level of CodeSniffer where level
+        <code>1</code> prints progress information and level <code>2</code>
+        prints developer debug information.</td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>tabWidth</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Replaces tabs with the given number of spaces.
+        If zero no replacing is done.</td>
+
+        <td class="default"><code>0</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>reportWidth</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">The max. width for the report.</td>
+
+        <td class="default"><code>80</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>allowedFileExtensions</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The allowed file extensions (separated by
+        space, comma or semicolon) when a directory is specified in the
+        <parameter>file</parameter> attribute.</td>
+
+        <td class="default"><filename>php</filename></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignorePatterns</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The patterns to ignore files and folders
+        (separated by space, comma or semicolon) when a directory is specified
+        in the <parameter>file</parameter> attribute.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>noSubdirectories</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Do not recurse into subdirectories when a
+        directory is specified in the <parameter>file</parameter>
+        attribute.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonerror</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if errors occurred
+        during during the run.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonwarning</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stop the build process if warnings occurred
+        during the run.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>skipversioncheck</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Skips the version check when the task
+        starts.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code> Either this nested tag or the
+        attribute <parameter>file</parameter> is required.</para>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;config</code>&gt; The configuration parameters which
+        are usually loaded from the <filename>CodeSniffer.conf</filename> can
+        be set.</para>
+
+        <table xml:id="phing.optionaltasks.phpcodesniffer.nested.config.parameters">
+          <caption>Attributes for <code>&lt;config&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>name</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Name of the configuration parameter.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>value</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Value of the configuration parameter.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+        </table>
+      </listitem>
+
+      <listitem>
+        <para><code>&lt;formatter&gt;</code> The results of the tests can be
+        printed in different formats. Output will always be sent to a file,
+        unless you set the <parameter>usefile</parameter> attribute to
+        <code>false</code>.</para>
+
+        <table xml:id="phing.optionaltasks.phpcodesniffer.nested.formatter.parameters">
+          <caption>Attributes for <code>&lt;formatter&gt;</code></caption>
+
+          &taskAttributes.table.titlesLine.all;
+
+          <tr>
+            <td class="name"><parameter>type</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">The output format. Accepts the the same
+            values as the <parameter>format</parameter> attribute
+            (<code>default</code>, <code>xml</code>, <code>checkstyle</code>,
+            <code>csv</code>, <code>report</code>, <code>summary</code> &amp;
+            <code>doc</code>).</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">&attributes.required.yes;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>usefile</parameter></td>
+
+            <td class="type"><type>Boolean</type></td>
+
+            <td class="description">Boolean that determines whether output
+            should be sent to a file.</td>
+
+            <td class="default"><code>true</code></td>
+
+            <td class="required">&attributes.required.no;</td>
+          </tr>
+
+          <tr>
+            <td class="name"><parameter>outfile</parameter></td>
+
+            <td class="type"><type>String</type></td>
+
+            <td class="description">Path to write output file to.</td>
+
+            <td class="default">&attributes.defaultValue.NA;</td>
+
+            <td class="required">Yes, if usefile is true.</td>
+          </tr>
+        </table>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Checks all files in the directory <parameter>file</parameter>
+    matching the allowed file extension with the <code>PEAR</code> standard
+    and prints the <code>summary</code> report without warnings.</para>
+
+    <programlisting language="xml"><![CDATA[<phpcodesniffer
+  standard="PEAR"
+  format="summary"
+  file="/path/to/source-files"
+  allowedFileExtensions="php php5 inc"/>]]></programlisting>
+
+    <para>Checks all matching files in the <code>&lt;fileset&gt;</code> with
+    the <code>Zend</code> standard, sets the <code>zend_ca_path</code>
+    configuration which may be required by one of the sniffs, prints a list of
+    used sniffs and prints the <code>default</code> report with warnings and
+    the <code>checkstyle</code> report to
+    <filename>/path/to/checkstyle.xml</filename>.</para>
+
+    <programlisting language="xml"><![CDATA[<phpcodesniffer
+  standard="Zend"
+  showSniffs="true"
+  showWarnings="true">
+  <fileset dir="/path/to/source-files">
+    <include name="**/*.php"/>
+  </fileset>
+  <config name="zend_ca_path" value="/path/to/ZendStudio/bin/ZendCodeAnalyzer"/>
+  <formatter type="default" usefile="false"/>
+  <formatter type="checkstyle" outfile="/path/to/checkstyle.xml"/>
+</phpcodesniffer>]]></programlisting>
+
+    <para>Checks all files in the directory <parameter>file</parameter> with
+    the <code>PEAR</code> standard and prints the <code>checkstyle</code>
+    report without warnings. It also generates the documentation for the
+    selected coding standard and writes it to the given file.</para>
+
+    <programlisting language="xml"><![CDATA[<phpcodesniffer
+  standard="PEAR"
+  file="/path/to/source-files"
+  docGenerator="HTML"
+  docFile="/path/to/doc.html">
+  <formatter type="checkstyle" outfile="/path/to/checkstyle.xml"/>
+</phpcodesniffer>]]></programlisting>
+  </refsect1>
+</refentry>
