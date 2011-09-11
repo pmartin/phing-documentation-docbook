@@ -56,8 +56,8 @@
      <xi:include href="optional-tasks/phpcpd.xml" />
     <xi:include href="optional-tasks/phpmd.xml" />
      <xi:include href="optional-tasks/phpdepend.xml" />
-    <!-- <xi:include href="optional-tasks/phpdocumentor.xml" /> -->
-    <!-- <xi:include href="optional-tasks/phpdocumentorexternal.xml" /> -->
+     <xi:include href="optional-tasks/phpdocumentor.xml" />
+     <xi:include href="optional-tasks/phpdocumentorexternal.xml" />
     <!-- <xi:include href="optional-tasks/phplint.xml" /> -->
 
     <!-- <xi:include href="optional-tasks/phpunit.xml" /> -->

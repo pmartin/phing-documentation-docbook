@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpdocumentorexternal"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PhpDocumentorExternalTask</refname>
+
+    <refpurpose>This is the same as the <link
+    linkend="phing.optionaltasks.phpdocumentor"><classname>PhpDocumentorTask</classname></link>
+    but uses the command line application.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>Use this as a fallback in case you're running into troubles when
+    using the phpDocumentor-library with the
+    <classname>PhpDocumentorTask</classname> directly, e.g. when you're using
+    Smarty and have Smarty in your library path too.</para>
+
+    <para>This task supports everything the PhpDocumentorTask supports,
+    differences are documented below.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    <title>Additional attributes</title>
+
+    <table xml:id="phing.optionaltasks.phpdocumentorexternal.parameters">
+      <caption>Additional attributes</caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>programpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to the <command>phpdoc</command>
+        executable (relative or absolute).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>sourcepath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A directory to scan for parsable files.
+        Supports multiple directories separated with a comma.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes, if no <code>&lt;fileset&gt;</code> is
+        given</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    <title>Unsupported attributes</title>
+
+    <table xml:id="phing.optionaltasks.phpdocumentorexternal.unsupported.parameters">
+      <caption>Unsupported attributes</caption>
+
+      <tr>
+        <th class="name">Name</th>
+
+        <th class="description">Description</th>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>configdir</parameter></td>
+
+        <td class="description">Currently not supported. The attribute will be
+        ignored and a warning messag will be generated. The build continues
+        (to ease when changing an existing phpdoc task) however this may have
+        unexpected side effects.</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phpdocext title="API Documentation"
+  programpath="/usr/bin/phpdoc"
+  destdir="apidocs"
+  sourcecode="false"
+  output="HTML:Smarty:PHP">
+   <fileset dir="./classes">
+      <include name="**/*.php" />
+   </fileset>
+   <projdocfileset dir=".">
+      <include name="README" />
+      <include name="INSTALL" />
+      <include name="CHANGELOG" />
+   </projdocfileset>
+</phpdocext>]]></programlisting>
+  </refsect1>
+</refentry>
