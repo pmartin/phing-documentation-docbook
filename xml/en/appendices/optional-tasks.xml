@@ -67,9 +67,9 @@
      <xi:include href="optional-tasks/scp.xml" />
     <xi:include href="optional-tasks/ssh.xml" />
      <xi:include href="optional-tasks/simpletest.xml" />
-    <!-- <xi:include href="optional-tasks/svncheckout.xml" /> -->
-    <!-- <xi:include href="optional-tasks/svncommit.xml" /> -->
-    <!-- <xi:include href="optional-tasks/svncopy.xml" /> -->
+     <xi:include href="optional-tasks/svncheckout.xml" />
+     <xi:include href="optional-tasks/svncommit.xml" />
+     <xi:include href="optional-tasks/svncopy.xml" />
     <!-- <xi:include href="optional-tasks/svnexport.xml" /> -->
     <!-- <xi:include href="optional-tasks/svnlastrevision.xml" /> -->
     <!-- <xi:include href="optional-tasks/svnlist.xml" /> -->

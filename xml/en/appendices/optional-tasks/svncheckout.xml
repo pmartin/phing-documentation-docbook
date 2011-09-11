@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.svncheckout"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>SvnCheckoutTask</refname>
+
+    <refpurpose>The <classname>SvnCheckoutTask</classname> checks out a
+    Subversion repository to a local directory.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<svncheckout
+   svnpath="/usr/bin/svn"
+   username="anony"
+   password="anony"
+   nocache="true"
+   repositoryurl="svn://localhost/project/trunk/"
+   todir="/home/user/svnwc"/>]]></programlisting>
+
+    <programlisting language="xml"><![CDATA[<svncheckout
+   svnpath="C:/Subversion/bin/svn.exe"
+   repositoryurl="svn://localhost/project/trunk/"
+   todir="C:/projects/svnwc"/>]]></programlisting>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.svncheckout.parameters">
+      <caption>Attributes for <classname>SvnCheckoutTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>svnpath</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to Subversion binary</td>
+
+        <td class="default"><code>/usr/bin/svn</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>repositoryurl</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">URL of SVN repository</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>username</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A username used to connect to the SVN
+        server</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>password</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">A password used to connect to the SVN
+        server</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>nocache</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Connection credentials will not be cached</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>todir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to export to</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>recursive</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Recursive behavior</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>ignoreexternals</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Ignore externals definitions</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
