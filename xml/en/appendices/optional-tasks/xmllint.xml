@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.xmllint"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>XmlLintTask</refname>
+
+    <refpurpose>The <classname>XmlLintTask</classname> checks syntax (lint)
+    one or more XML files against an XML Schema Definition.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.xmllint.parameters">
+      <caption>Attributes for <classname>XmlLintTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>schema</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to XSD file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Path to XML file</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>haltonfailure</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Stops the build when validation fails</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<xmllint schema="schema.xsd" file="config.xml"/>]]></programlisting>
+
+    <para>Validate one XML file against one XSD file.</para>
+
+    <programlisting language="xml"><![CDATA[<xmllint schema="schema.xsd">
+  <fileset dir=".">
+    <include name="**/config.xml"/>
+  </fileset>
+</xmllint>]]></programlisting>
+
+    <para>Validate more XML files against one XSD file.</para>
+  </refsect1>
+</refentry>

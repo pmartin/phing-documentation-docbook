@@ -81,8 +81,8 @@
      <xi:include href="optional-tasks/untar.xml" />
      <xi:include href="optional-tasks/unzip.xml" />
      <xi:include href="optional-tasks/version.xml" />
-    <!-- <xi:include href="optional-tasks/xmllint.xml" /> -->
-    <!-- <xi:include href="optional-tasks/xmlproperty.xml" /> -->
+     <xi:include href="optional-tasks/xmllint.xml" />
+     <xi:include href="optional-tasks/xmlproperty.xml" />
     <!-- <xi:include href="optional-tasks/zendcodeanalyzer.xml" /> -->
     <!-- <xi:include href="optional-tasks/zendguardencode.xml" /> -->
     <!-- <xi:include href="optional-tasks/zendguardlicense.xml" /> -->

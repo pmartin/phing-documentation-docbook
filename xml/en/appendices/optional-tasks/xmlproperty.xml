@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.xmlproperty"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>XmlPropertyTask</refname>
+
+    <refpurpose>Loads property values from a well-formed xml
+    file.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>There are no other restrictions than "well-formed".</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.xmlproperty.parameters">
+      <caption>Attributes for <classname>XmlPropertyTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The XML file to parse.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>prefix</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The prefix to prepend to each property</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>keepRoot</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Keep the xml root tag as the first value in
+        the property name.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>collapseAttributes</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Treat attributes as nested elements.</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>delimiter</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Delimiter for splitting multiple values.</td>
+
+        <td class="default"><code>,</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Consider the following XML file:</para>
+
+    <programlisting language="xml"><![CDATA[<root-tag myattr="true">
+    <inner-tag someattr="val">Text</inner-tag>
+    <a2><a3><a4>false</a4></a3></a2>
+</root-tag>]]></programlisting>
+
+    <para>Used with the the following entry (<code>default</code>):</para>
+
+    <programlisting language="xml"><![CDATA[<xmlproperty file="somefile.xml"/>]]></programlisting>
+
+    <para>results in the following properties:</para>
+
+    <programlisting><![CDATA[root-tag(myattr)=true
+root-tag.inner-tag=Text
+root-tag.inner-tag(someattr)=val
+root-tag.a2.a3.a4=false]]></programlisting>
+
+    <para>Used with the the following entry
+    (<code>collapseAttributes=true</code>):</para>
+
+    <programlisting language="xml"><![CDATA[<xmlproperty file="somefile.xml" collapseAttributes="true"/>]]></programlisting>
+
+    <para>results in the following properties:</para>
+
+    <programlisting><![CDATA[root-tag.myattr=true
+root-tag.inner-tag=Text
+root-tag.inner-tag.someatt=val
+root-tag.a2.a3.a4=false]]></programlisting>
+
+    <para>Used with the the following entry
+    (<code>keepRoot=false</code>):</para>
+
+    <programlisting language="xml"><![CDATA[<xmlproperty file="somefile.xml" keepRoot="false"/>]]></programlisting>
+
+    <para>results in the following properties:</para>
+
+    <programlisting><![CDATA[inner-tag=Text
+inner-tag(someattr)=val
+a2.a3.a4=false]]></programlisting>
+  </refsect1>
+</refentry>
