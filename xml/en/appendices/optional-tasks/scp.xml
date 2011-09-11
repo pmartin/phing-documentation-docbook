@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.scp"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>ScpTask</refname>
+
+    <refpurpose>The <classname>ScpTask</classname> copies files to and from a
+    remote host using scp.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This task requires the <link
+    ns6:href="http://pecl.php.net/package/ssh2">PHP SSH2 extension</link> to
+    function.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<scp username="john" password="smith"
+  host="webserver" fetch="true"
+  todir="/home/john/backup"
+  file="/www/htdocs/test.html" />]]></programlisting>
+
+    <para>Fetches a single file from the remote server.</para>
+
+    <programlisting language="xml"><![CDATA[<scp username="john" password="smith"
+  host="webserver"
+  todir="/www/htdocs/"
+  file="/home/john/dev/test.html" />]]></programlisting>
+
+    <para>Copies a single file to the remote server.</para>
+
+    <programlisting language="xml"><![CDATA[<scp username="john" password="smith"
+  host="webserver" todir="/www/htdocs/project/">
+    <fileset dir="test">
+        <include name="*.html" />
+    </fileset>
+</scp>]]></programlisting>
+
+    <para>Copies multiple files to the remote server.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.scp.parameters">
+      <caption>Attributes for <classname>ScpTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>host</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Remote host</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>port</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Remote port</td>
+
+        <td class="default"><code>22</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>username</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Username to use for the connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>password</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Password to use for the connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>pubkeyfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Public key file to use for the connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>privkeyfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Private key file to use for the
+        connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>privkeyfilepassphrase</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Private key file passphrase to use for the
+        connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>autocreate</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to autocreate remote directories</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>todir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Directory to put file(s) in</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>file</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Filename to use</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>fetch</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to fetch (instead of copy to) the
+        file</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>level</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Control the level at which the task reports
+        status messages. One of <code>error</code>, <code>warning</code>,
+        <code>info</code>, <code>verbose</code>, <code>debug</code>.</td>
+
+        <td class="default"><code>verbose</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

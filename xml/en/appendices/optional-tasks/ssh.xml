@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.ssh"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>SshTask</refname>
+
+    <refpurpose>The <classname>ScpTask</classname> executes commands on a
+    remote host using ssh.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para>This task requires the <link
+    ns6:href="http://pecl.php.net/package/ssh2">PHP SSH2 extension</link> to
+    function.</para>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<ssh username="john" password="smith"
+  host="webserver" command="ls" />]]></programlisting>
+
+    <para>Executes a single command on the remote server.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.ssh.parameters">
+      <caption>Attributes for <classname>SshTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>host</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Remote host</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>port</parameter></td>
+
+        <td class="type"><type>Integer</type></td>
+
+        <td class="description">Remote port</td>
+
+        <td class="default"><code>22</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>username</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Username to use for the connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>password</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Password to use for the connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>pubkeyfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Public key file to use for the connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>privkeyfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Private key file to use for the
+        connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>privkeyfilepassphrase</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Private key file passphrase to use for the
+        connection</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>command</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Command to execute on the remote server</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>property</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The name of the property to capture (any)
+        output of the command</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>display</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to display the output of the
+        command</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+</refentry>
