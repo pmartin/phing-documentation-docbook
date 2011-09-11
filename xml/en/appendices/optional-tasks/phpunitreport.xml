@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.phpunitreport"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>PHPUnitReport</refname>
+
+    <refpurpose>This task transforms PHPUnit xml reports to HTML using
+    XSLT.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="note">
+    &ref.title.note;
+
+    <para><emphasis role="bold">NB:</emphasis> the identifiers
+    <code>phpunit2report</code> (<classname>PHPUnit2Report</classname>) and
+    <code>phpunit3report</code> (<classname>PHPUnit3Report</classname>)have
+    been deprecated!</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.phpunitreport.parameters">
+      <caption>Attributes for <classname>PHPUnitReport</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>infile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The filename of the XML results file to
+        use.</td>
+
+        <td class="default"><filename>testsuites.xm</filename>l</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>format</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The format of the generated report. Must be
+        <code>noframes</code> or <code>frames</code>.</td>
+
+        <td class="default"><code>noframes</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>styledir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The directory where the stylesheets are
+        located. They must conform to the following conventions: <emphasis
+        role="bold">frames format:</emphasis> the stylesheet must be named
+        <filename>phpunit-frames.xsl</filename>; <emphasis
+        role="bold">noframes format:</emphasis> the stylesheet must be named
+        <filename>phpunit-noframes.xsl</filename>. If unspecified, the task
+        will look for the stylesheet(s) in the following directories: the PHP
+        include path, the Phing home directory and the PEAR data directory (if
+        applicable).</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>todir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">An existing directory where the files
+        resulting from the transformation should be written to.</td>
+
+        <td class="default"></td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>usesorttable</parameter></td>
+
+        <td class="type"><type>boolean</type></td>
+
+        <td class="description">Whether to use the sorttable JavaScript
+        library (see <link
+        ns6:href="http://www.kryogenix.org/code/browser/sorttable/">http://www.kryogenix.org/code/browser/sorttable/</link>)</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<phpunitreport infile="reports/testsuites.xml" 
+    format="frames" 
+    todir="reports/tests" 
+    styledir="/home/phing/etc"/>]]></programlisting>
+
+    <para>Generates a framed report in the directory
+    <filename>reports/tests</filename> using the file
+    <filename>reports/testsuites.xml</filename> as input.</para>
+
+    <para><emphasis role="bold">Important note:</emphasis> testclasses that
+    are not explicitly placed in a package (by using a '<code>@package</code>'
+    tag in the class-level DocBlock) are listed under the
+    "<code>default</code>" package.</para>
+  </refsect1>
+</refentry>
