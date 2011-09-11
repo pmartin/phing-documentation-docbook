@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.tar"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>TarTask</refname>
+
+    <refpurpose>The <classname>TarTask</classname> creates a tarball from a
+    fileset or directory.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <programlisting language="xml"><![CDATA[<tar destfile="phing.tar" compression="gzip">
+ <fileset dir=".">
+     <include name="**/**" />
+ </fileset>
+</tar>]]></programlisting>
+
+    <para>The above example uses a fileset to determine which files to include
+    in the archive.</para>
+
+    <programlisting language="xml"><![CDATA[<tar destfile="phing.tar" basedir="." compression="gzip"/>]]></programlisting>
+
+    <para>The second example uses the <parameter>basedir</parameter> attribute
+    to include the contents of that directory (including subdirectories) in
+    the archive.</para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.tar.parameters">
+      <caption>Attributes for <classname>TarTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>destfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Tarball filename</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>basedir</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Base directory to tar (if no fileset
+        specified, entire directory contents will be included in tar)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>compression</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Type of compression to use (<code>gzip</code>,
+        <code>bzip2</code>, <code>none</code>)</td>
+
+        <td class="default"><code>none</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>includeemptydirs</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">If set to <code>true</code>, also empty
+        directories are copied.</td>
+
+        <td class="default"><code>true</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>longfile</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">How to handle long files, those with a path
+        &gt; 100 chars. Allowable values are: <emphasis
+        role="bold"><code>truncate</code></emphasis> - paths are truncated to
+        the maximum length; <emphasis role="bold"><code>fail</code></emphasis>
+        - paths greater than the maximim cause a build exception; <emphasis
+        role="bold"><code>warn</code></emphasis> - paths greater than the
+        maximum cause a warning and GNU is used; <emphasis
+        role="bold"><code>gnu</code></emphasis> - GNU extensions are used for
+        any paths greater than the maximum; <emphasis
+        role="bold"><code>omit</code></emphasis> - paths greater than the
+        maximum are omitted from the archive </td>
+
+        <td class="default"><code>warn</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>prefix</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">File path prefix to use when adding files to
+        archive</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+    </table>
+
+    <para><emphasis role="bold">Important note #1:</emphasis> files are not
+    replaced if they are already present in the archive.</para>
+
+    <para><emphasis role="bold">Important note #2:</emphasis> using
+    <parameter>basedir</parameter> and <code>fileset</code> simultaneously can
+    result in strange contents in the archive.</para>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>

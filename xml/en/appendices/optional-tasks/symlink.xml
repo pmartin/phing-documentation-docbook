@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry [
+<!ENTITY % entities SYSTEM "../../entities.ent">
+%entities;
+]>
+<refentry version="5.0" xml:id="phing.optionaltasks.symlink"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:ns6="http://www.w3.org/1999/xlink"
+          xmlns:ns5="http://www.w3.org/1998/Math/MathML"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:ns3="http://www.w3.org/2000/svg"
+          xmlns:ns="http://docbook.org/ns/docbook">
+  <refnamediv>
+    <refname>SymlinkTask</refname>
+
+    <refpurpose>Creates symlink(s) to a specified file / directory or a
+    collection of files / directories.</refpurpose>
+  </refnamediv>
+
+  <refsect1 role="example">
+    &ref.title.example;
+
+    <para>Single symlink</para>
+
+    <programlisting language="xml"><![CDATA[<symlink target="/path/to/original/file" link="/where/to/symlink" />]]></programlisting>
+
+    <para>Using filesets</para>
+
+    <programlisting language="xml"><![CDATA[<symlink link="/where/to/symlink">
+    <fileset dir="/some/directory">
+        <include name="*" />
+    </fileset>
+</symlink>]]></programlisting>
+
+    <para>In the fileset example, assuming the contents of
+    "<filename>/some/directory</filename>" were:</para>
+
+    <para><itemizedlist>
+        <listitem>
+          <para><filename>Somedir</filename></para>
+        </listitem>
+
+        <listitem>
+          <para><filename>somefile</filename></para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para>Then the contents of "<filename>/where/to/symlink</filename>" would
+    be:</para>
+
+    <para><itemizedlist>
+        <listitem>
+          <para><filename>Somedir</filename> <code>-&gt;</code>
+          <filename>/some/directory/Somedir</filename></para>
+        </listitem>
+
+        <listitem>
+          <para><filename>somefile</filename> <code>-&gt;</code>
+          <filename>/some/directory/somefile</filename></para>
+        </listitem>
+      </itemizedlist></para>
+  </refsect1>
+
+  <refsect1 role="parameters">
+    &ref.title.attributes;
+
+    <table xml:id="phing.optionaltasks.symlink.parameters">
+      <caption>Attributes for <classname>SymlinkTask</classname></caption>
+
+      &taskAttributes.table.titlesLine.all;
+
+      <tr>
+        <td class="name"><parameter>target</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">What you're trying to symlink from</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">Yes (or nested FileSet)</td>
+      </tr>
+
+      <tr>
+        <td class="name"><parameter>link</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">Where you'd like the symlink(s)</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.yes;</td>
+      </tr>
+    </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><code>&lt;fileset&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+</refentry>
