@@ -14,7 +14,7 @@
     <refname>LoadFileTask</refname>
 
     <refpurpose>The <classname>LoadFileTask</classname> loads the contents of
-    a (text) file into a single property. </refpurpose>
+    a (text) file into a single property.</refpurpose>
   </refnamediv>
 
   <refsect1 role="example">
@@ -63,7 +63,8 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;filterchain&gt;</code></para>
+        <para><link
+        linkend="phing.appendices.corefilters"><code>&lt;filterchain&gt;</code></link></para>
       </listitem>
     </itemizedlist>
   </refsect1>

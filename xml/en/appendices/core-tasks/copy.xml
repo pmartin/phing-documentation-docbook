@@ -40,8 +40,8 @@
     attribute. <link linkend="phing.appendices.coremappers">Mappers</link> and
     <link linkend="phing.appendices.corefilters">Filters</link> are also
     supported by <classname>CopyTask</classname>, so you can do almost
-    everything that needs processing the content of the files or the filename.
-    </para>
+    everything that needs processing the content of the files or the
+    filename.</para>
 
     <programlisting language="xml"><![CDATA[<copy todir="/tmp/backup" >
   <fileset dir=".">
@@ -104,7 +104,7 @@
         <parameter>tofile</parameter> specifies a full filename. If you only
         want to specify a directory to copy to, use
         <parameter>todir</parameter>. Either this or the
-        <parameter>todir</parameter> attribute is required. </td>
+        <parameter>todir</parameter> attribute is required.</td>
 
         <td class="default">&attributes.defaultValue.NA;</td>
 
@@ -159,7 +159,7 @@
         <td class="type"><type>Boolean</type></td>
 
         <td class="description">If set to <code>true</code>, also empty
-        directories are copied. </td>
+        directories are copied.</td>
 
         <td class="default"><code>true</code></td>
 
@@ -198,19 +198,23 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
       </listitem>
 
       <listitem>
-        <para><code>&lt;filelist&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.filelist"><code>&lt;filelist&gt;</code></link></para>
       </listitem>
 
       <listitem>
-        <para><code>&lt;filterchain&gt;</code></para>
+        <para><link
+        linkend="phing.appendices.corefilters"><code>&lt;filterchain&gt;</code></link></para>
       </listitem>
 
       <listitem>
-        <para><code>&lt;mapper&gt;</code></para>
+        <para><link
+        linkend="phing.appendices.coremappers"><code>&lt;mapper&gt;</code></link></para>
       </listitem>
     </itemizedlist>
   </refsect1>

@@ -39,7 +39,7 @@ file defines a task in the format: name=path.to.Task -->
     <programlisting language="xml"><![CDATA[<taskdef name="sampletask" classname="Dir_Subdir_SampleTask"/>]]></programlisting>
 
     <para>will load class <classname>Dir_Subdir_SampleTask</classname> from
-    file <filename>Dir/Subdir/SampleTask.php</filename>. </para>
+    file <filename>Dir/Subdir/SampleTask.php</filename>.</para>
   </refsect1>
 
   <refsect1 role="parameters">
@@ -126,7 +126,8 @@ file defines a task in the format: name=path.to.Task -->
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;classpath&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.pathclasspath"><code>&lt;classpath&gt;</code></link></para>
       </listitem>
     </itemizedlist>
   </refsect1>
