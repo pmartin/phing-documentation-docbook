@@ -242,7 +242,7 @@
     <rST>
      <fileset dir=".">
        <include name="README.rst" />
-       <include name="docs/\*.rst" />
+       <include name="docs/*.rst" />
      </fileset>
     </rST>
 
@@ -263,9 +263,9 @@
     <rST>
      <fileset dir=".">
        <include name="README.rst" />
-       <include name="docs/\*.rst" />
+       <include name="docs/*.rst" />
      </fileset>
-     <mapper type="glob" from="\*.rst" to="path/to/my/\*.xhtml"/>
+     <mapper type="glob" from="*.rst" to="path/to/my/*.xhtml"/>
     </rST>
 
   </target>
@@ -285,7 +285,7 @@
     <rST>
      <fileset dir=".">
        <include name="README.rst" />
-       <include name="docs/\*.rst" />
+       <include name="docs/*.rst" />
      </fileset>
      <filterchain>
        <replacetokens begintoken="##" endtoken="##">
@@ -311,7 +311,7 @@
 
     <rST uptodate="true">
      <fileset dir=".">
-       <include name="docs/\*.rst" />
+       <include name="docs/*.rst" />
      </fileset>
     </rST>
 
