@@ -48,13 +48,17 @@
       </listitem>
 
       <listitem>
-        <para>Exactly one root element called
-        <code>&lt;project&gt;</code>.</para>
+        <para>Exactly one root element called <link
+        linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>.</para>
       </listitem>
 
       <listitem>
-        <para>Several Phing type elements (i.e. <code>&lt;property&gt;</code>,
-        <code>&lt;fileset&gt;</code>, <code>&lt;patternset&gt;</code>
+        <para>Several Phing type elements (i.e. <link
+        linkend="phing.coretasks.property"><code>&lt;property&gt;</code></link>,
+        <link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link>,
+        <link
+        linkend="phing.coretypes.patternset"><code>&lt;patternset&gt;</code></link>
         etc.)</para>
       </listitem>
 
@@ -142,9 +146,10 @@
       <title>Project Element</title>
 
       <para>The first element after the document prolog is the root element
-      named <code>&lt;project&gt;</code> on line 3. This element is a
-      container for all other elements and can/must have the following
-      attributes:</para>
+      named <link
+      linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>
+      on line 3. This element is a container for all other elements and
+      can/must have the following attributes:</para>
 
       <table xml:id="phing.chapters.gettingstarted.project.attributes">
         <caption><code>&lt;project&gt;</code> Attributes</caption>
@@ -194,10 +199,10 @@
 
       <para>A target can <emphasis>depend</emphasis> on other targets. You
       might have a target for installing the files in the build tree, for
-      example, and a target for creating a distributable tar.gz archive. You
-      can only build a distributable when you have installed the files first,
-      so the distribute target depends on the install target. Phing resolves
-      these dependencies.</para>
+      example, and a target for creating a distributable
+      <filename>tar.gz</filename> archive. You can only build a distributable
+      when you have installed the files first, so the distribute target
+      depends on the install target. Phing resolves these dependencies.</para>
 
       <para>It should be noted, however, that Phing's depends attribute only
       specifies the order in which targets should be executed - it does not
@@ -336,10 +341,12 @@
       <title>Built-in Properties</title>
 
       <para>Phing provides access to system properties as if they had been
-      defined using a <code>&lt;property&gt;</code> task. For example,
-      <code>${os.name}</code> expands to the name of the operating system. See
-      <xref linkend="phing.appendices.factsheet.builtinproperties" /> for a
-      complete list.</para>
+      defined using a <link
+      linkend="phing.coretasks.property"><code>&lt;property&gt;</code></link>
+      task. For example, <code>${os.name}</code> expands to the name of the
+      operating system. See <xref
+      linkend="phing.appendices.factsheet.builtinproperties" /> for a complete
+      list.</para>
     </section>
   </section>
 
@@ -378,10 +385,11 @@
     </target>
 </project>]]></programlisting>
 
-    <para>This build file first defines some properties with the
-    <code>&lt;property&gt;</code> task call to
-    <classname>PropertyTask</classname>. Then, it defines a fileset and two
-    targets. Let us have a quick rundown of this build file.</para>
+    <para>This build file first defines some properties with the <link
+    linkend="phing.coretasks.property"><code>&lt;property&gt;</code></link>
+    task call to <classname>PropertyTask</classname>. Then, it defines a
+    fileset and two targets. Let us have a quick rundown of this build
+    file.</para>
 
     <para>The first five four within the <code>project</code> tag define
     properties. They appear in the two ways this tag can occur:</para>
@@ -486,11 +494,11 @@
     <para>For example, to use <acronym>MSV</acronym> to validate a Phing build
     file the following command line could be used:</para>
 
-    <screen><![CDATA[$ java -jar msv.jar phing-grammar.rng build.xml
+    <screen>$ java -jar msv.jar phing-grammar.rng build.xml
 start parsing a grammar.
 validating /home/joe/build.xml
 the document is valid.
 $
-]]></screen>
+</screen>
   </section>
 </chapter>
