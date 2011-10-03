@@ -410,14 +410,14 @@
       </listitem>
     </itemizedlist>
 
-    <para>The next noticeable thing in the build file is the
-    <code>&lt;fileset&gt;</code> tag. It defines a fileset, i.e. a set of
-    multiple files. You can include and exclude files with the
-    <code>include</code> and <code>exclude</code> tags within the
-    <code>fileset</code> tag. For more information concerning Filesets (i.e.
-    Patterns) see <xref linkend="phing.coretypes.fileset" />. The fileset is
-    given an <code>id</code> attribute, so it can be referenced later
-    on.</para>
+    <para>The next noticeable thing in the build file is the <link
+    linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link> tag.
+    It defines a fileset, i.e. a set of multiple files. You can include and
+    exclude files with the <code>include</code> and <code>exclude</code> tags
+    within the <code>fileset</code> tag. For more information concerning
+    Filesets (i.e. Patterns) see <xref linkend="phing.coretypes.fileset" />.
+    The fileset is given an <code>id</code> attribute, so it can be referenced
+    later on.</para>
 
     <para>One thing is worth noting here though and that is the use of double
     star expression, i.e. "<code>**</code>". This special regexp refers to all
@@ -428,7 +428,8 @@
     below the current directory.</para>
 
     <para>The first task only contains a call to
-    <classname>CopyTask</classname> via <code>&lt;copy&gt;</code>. The
+    <classname>CopyTask</classname> via <link
+    linkend="phing.coretasks.copy"><code>&lt;copy&gt;</code></link>. The
     interesting thing is within the <code>copy</code> tag. Here, a
     <code>fileset</code> task is not written out with nested
     <code>include</code> or <code>exclude</code> elements, but via the
@@ -437,7 +438,8 @@
     files.</para>
 
     <para>The only noticeable thing in the second target is the call to
-    <classname>PhingTask</classname> with the <code>&lt;phingcall&gt;</code>
+    <classname>PhingTask</classname> with the <link
+    linkend="phing.coretasks.phingcall"><code>&lt;phingcall&gt;</code></link>
     tag (see <xref linkend="phing.coretasks.phingcall" /> for more
     information). The task executes a specified target within the same build
     file. So, the second target removes the build directory and calls

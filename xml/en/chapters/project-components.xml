@@ -27,9 +27,11 @@
     <title>Projects</title>
 
     <para>In the structure of a Phing buildfile, there must be exactly one
-    Project defined; the <code>&lt;project&gt;</code> tag is the root element
-    of the buildfile, meaning that everything else in the buildfile is
-    contained within the <code>&lt;project&gt;</code> element.</para>
+    Project defined; the <link
+    linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>
+    tag is the root element of the buildfile, meaning that everything else in
+    the buildfile is contained within the <code>&lt;project&gt;</code>
+    element.</para>
 
     <programlisting language="xml"><![CDATA[<?xml version="1.0"?>
 
@@ -37,8 +39,9 @@
   <!-- Everything else here -->
 <project>]]></programlisting>
 
-    <para>The listing above shows a sample <code>&lt;project&gt;</code> tag
-    that has all attributes available for Projects. The
+    <para>The listing above shows a sample <link
+    linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>
+    tag that has all attributes available for Projects. The
     <parameter>name</parameter> and <parameter>description</parameter>
     attributes are fairly self-explanatory; the <parameter>default</parameter>
     attribute specifies the default <emphasis>Target</emphasis> to execute if
@@ -50,10 +53,11 @@
     <title>Version</title>
 
     <para>Since Phing 2.4.2 it is possible to include a
-    <parameter>phingVersion</parameter> attribute in the
-    <code>&lt;project&gt;</code> tag. This attribute allows you to define the
-    minimum Phing version required to execute a build file, in order to
-    prevent compatibility issues.</para>
+    <parameter>phingVersion</parameter> attribute in the <link
+    linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>
+    tag. This attribute allows you to define the minimum Phing version
+    required to execute a build file, in order to prevent compatibility
+    issues.</para>
 
     <programlisting language="xml"><![CDATA[<?xml version="1.0"?>
 
@@ -76,11 +80,13 @@
     the project component, and because the nested tags are handled by the
     project component class the same nested tag may have different meanings
     (and different attributes) depending on the context. So, for example, the
-    nested tag <code>&lt;param.../&gt;</code> within the
-    <code>&lt;phingcall&gt;</code> tag is handled very differently from the
-    <code>&lt;param.../&gt;</code> tag within the
-    <code>&lt;xsltfilter&gt;</code> tag -- in the first case setting project
-    properties, in the second case setting XSLT parameters.</para>
+    nested tag <code>&lt;param.../&gt;</code> within the <link
+    linkend="phing.coretasks.phingcall"><code>&lt;phingcall&gt;</code></link>
+    tag is handled very differently from the <code>&lt;param.../&gt;</code>
+    tag within the <link
+    linkend="phing.corefilters.xsltfilter"><code>&lt;xsltfilter&gt;</code></link>
+    tag -- in the first case setting project properties, in the second case
+    setting XSLT parameters.</para>
   </section>
 
   <section xml:id="phing.chapters.projectcomponents.targets">
@@ -121,7 +127,8 @@
     <para>Tasks are responsible for doing the work in Phing. Basically, tasks
     are the individual actions that your buildfile can perform. For example,
     tasks exist to copy a file, create a directory, TAR files in a directory.
-    Tasks may also be more complex such as <classname>XsltTask</classname>
+    Tasks may also be more complex such as <link
+    linkend="phing.coretasks.xslt"><classname>XsltTask</classname></link>
     which copies a file and transforms the file using XSLT,
     <classname>SmartyTask</classname> which does something similar using
     Smarty templates, or <classname>CreoleTask</classname> which executes SQL
@@ -281,7 +288,9 @@
       order</emphasis>. Files in FileSets are ordered based on the OS-level
       directory listing functions, in some cases you may want to specify a
       list of files to be processed in a certain order -- e.g. when
-      concatenating files using the <code>&lt;append&gt;</code> task.</para>
+      concatenating files using the <link
+      linkend="phing.coretasks.append"><code>&lt;append&gt;</code></link>
+      task.</para>
 
       <programlisting language="xml"><![CDATA[<filelist dir="base/" files="file1.txt,file2.txt,file3.txt"/>
 
@@ -299,7 +308,7 @@
       <filename>foo</filename> to a file called <filename>bar</filename>, you
       could do:</para>
 
-      <screen><![CDATA[cat foo | head -n10 | grep blee > bar]]></screen>
+      <screen>cat foo | head -n10 | grep blee &gt; bar</screen>
 
       <para>Something like this is not possible with the tasks and types that
       we have learned about thus far, and this is where the incredible
@@ -353,7 +362,7 @@
       but powerful. To get a better understanding of different filters and how
       they can be used, take a look at any of the many uses of FilterChains in
       the build files for the binarycloud <xref linkend="bibliography.bc" />
-      project. </para>
+      project.</para>
     </section>
 
     <section xml:id="phing.chapters.projectcomponents.basictypes.filemappers">
@@ -368,7 +377,7 @@
       transformed. The simplest form is basically no different from the DOS
       <command>copy</command> command:</para>
 
-      <screen><![CDATA[copy *.bat *.txt]]></screen>
+      <screen>copy *.bat *.txt</screen>
 
       <para>In Phing this is the <code>glob</code> Mapper:</para>
 

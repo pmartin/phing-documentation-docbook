@@ -87,7 +87,7 @@
       extracted the source distribution or checked it out from CVS you should
       see the following directory structure:</para>
 
-      <screen><![CDATA[$PHING_HOME
+      <screen>$PHING_HOME
   |-- bin
   |-- classes
   |    `-- phing
@@ -105,7 +105,7 @@
   |    `-- phing_guide
   `-- test
        |-- classes
-           `-- etc]]></screen>
+           `-- etc</screen>
 
       <para>The following table briefly describes the contents of the major
       directories:</para>
@@ -254,7 +254,7 @@
       of use. Imagine you have to type every time you want to build your
       project:</para>
 
-      <screen><![CDATA[php -qC /path/to/phing/bin/phing.php -verbose all distro snapshot]]></screen>
+      <screen>php -qC /path/to/phing/bin/phing.php -verbose all distro snapshot</screen>
 
       <para>Indeed that is not very elegant. Furthermore if you are lax in
       setting your environment variables these script can guess the proper
@@ -266,7 +266,7 @@
       everywhere in your system with this command-line (referring to the above
       example):</para>
 
-      <screen><![CDATA[phing -v2 all distro]]></screen>
+      <screen>phing -v2 all distro</screen>
     </section>
 
     <section xml:id="phing.chapters.extendingphing.systeminitialization.themainapplication">
@@ -361,7 +361,8 @@
 
         <listitem>
           <para><classname>RootHandler</classname> expects to find exactly one
-          element: <code>&lt;project&gt;</code>.
+          element: <link
+          linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>.
           <classname>RootHandler</classname> invokes the
           <classname>ProjectHandler</classname> with the attributes from the
           <code>&lt;project&gt;</code> tag or throws an exception if no
@@ -376,9 +377,13 @@
           <classname>TargetHandler</classname>.
           <classname>ProjectHandler</classname> also has exceptions for
           handling certain tasks that can be performed at the top-level:
-          <code>&lt;resolve&gt;</code>, <code>&lt;taskdef&gt;</code>,
-          <code>&lt;typedef&gt;</code>, and <code>&lt;property&gt;</code>; for
-          these <classname>ProjectHandler</classname> invokes the
+          <code>&lt;resolve&gt;</code>, <link
+          linkend="phing.coretasks.taskdef"><code>&lt;taskdef&gt;</code></link>,
+          <link
+          linkend="phing.coretasks.typedef"><code>&lt;typedef&gt;</code></link>,
+          and <link
+          linkend="phing.coretasks.property"><code>&lt;property&gt;</code></link>;
+          for these <classname>ProjectHandler</classname> invokes the
           <classname>TaskHandler</classname> class. If a tag is presented that
           doesn't match any expected tags, then
           <classname>ProjectHandler</classname> assumes it is a datatype and
