@@ -110,7 +110,7 @@
         role="bold"><code>gnu</code></emphasis> - GNU extensions are used for
         any paths greater than the maximum; <emphasis
         role="bold"><code>omit</code></emphasis> - paths greater than the
-        maximum are omitted from the archive </td>
+        maximum are omitted from the archive</td>
 
         <td class="default"><code>warn</code></td>
 
@@ -144,7 +144,8 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
       </listitem>
     </itemizedlist>
   </refsect1>

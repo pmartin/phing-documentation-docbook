@@ -98,7 +98,8 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;classpath&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.pathclasspath"><code>&lt;classpath&gt;</code></link></para>
       </listitem>
 
       <listitem>
@@ -129,7 +130,6 @@
     perClass="60"
     perMethod="70"/>
     <excludes>
-
         <file>**/*Processor.php</file>
         <class>Model_Filter_Windows</class>
         <method>Model_System::execute()</method>

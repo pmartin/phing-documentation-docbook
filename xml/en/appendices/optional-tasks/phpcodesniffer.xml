@@ -275,8 +275,10 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset&gt;</code> Either this nested tag or the
-        attribute <parameter>file</parameter> is required.</para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link>
+        Either this nested tag or the attribute <parameter>file</parameter> is
+        required.</para>
       </listitem>
 
       <listitem>

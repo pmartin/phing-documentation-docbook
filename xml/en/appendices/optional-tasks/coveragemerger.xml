@@ -33,7 +33,8 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
       </listitem>
     </itemizedlist>
   </refsect1>

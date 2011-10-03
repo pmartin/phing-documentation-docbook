@@ -85,8 +85,10 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset</code>&gt; Files to be attached <emphasis>(not
-        implemented at this time)</emphasis>.</para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset</code></link>&gt;
+        Files to be attached <emphasis>(not implemented at this
+        time)</emphasis>.</para>
       </listitem>
     </itemizedlist>
   </refsect1>

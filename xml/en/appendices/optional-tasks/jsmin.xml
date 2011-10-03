@@ -92,8 +92,9 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset</code>&gt; JavaScript files to be
-        minified.</para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset</code></link>&gt;
+        JavaScript files to be minified.</para>
       </listitem>
     </itemizedlist>
   </refsect1>

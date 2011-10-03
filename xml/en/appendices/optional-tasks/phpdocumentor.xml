@@ -265,8 +265,9 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;fileset&gt;</code> - Files that should be included for
-        parsing</para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link>
+        - Files that should be included for parsing</para>
       </listitem>
 
       <listitem>

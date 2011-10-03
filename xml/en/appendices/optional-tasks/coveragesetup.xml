@@ -46,15 +46,18 @@
 
     <itemizedlist>
       <listitem>
-        <para><code>&lt;classpath&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.pathclasspath"><code>&lt;classpath&gt;</code></link></para>
       </listitem>
 
       <listitem>
-        <para><code>&lt;fileset&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
       </listitem>
 
       <listitem>
-        <para><code>&lt;filelist&gt;</code></para>
+        <para><link
+        linkend="phing.coretypes.filelist"><code>&lt;filelist&gt;</code></link></para>
       </listitem>
     </itemizedlist>
   </refsect1>

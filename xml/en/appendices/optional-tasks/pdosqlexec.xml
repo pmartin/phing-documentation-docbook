@@ -183,13 +183,15 @@
       </listitem>
 
       <listitem>
-        <para><code>&lt;fileset</code>&gt; Files containing SQL
-        statements.</para>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset</code></link>&gt;
+        Files containing SQL statements.</para>
       </listitem>
 
       <listitem>
-        <para><code>&lt;filelist&gt;</code> Files containing SQL
-        statements.</para>
+        <para><link
+        linkend="phing.coretypes.filelist"><code>&lt;filelist&gt;</code></link>
+        Files containing SQL statements.</para>
       </listitem>
 
       <listitem>
