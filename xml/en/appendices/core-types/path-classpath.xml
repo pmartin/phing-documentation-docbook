@@ -61,7 +61,7 @@
         <td><type>String</type></td>
 
         <td>A path (which contains multiple locations separated by
-        path.separator) to add.</td>
+        <property>path.separator</property>) to add.</td>
 
         <td>&attributes.defaultValue.NA;</td>
 
@@ -73,7 +73,8 @@
   <refsect1 role="nested">
     &ref.title.supportedNestedTags;
 
-    <para>The <code>&lt;path&gt;</code> tag supports nested
-    <code>&lt;fileset&gt;</code> and <code>&lt;dirset&gt;</code> tags.</para>
+    <para>The <code>&lt;path&gt;</code> tag supports nested <link
+    linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link> and
+    <code>&lt;dirset&gt;</code> tags.</para>
   </refsect1>
 </refentry>

@@ -485,9 +485,10 @@ class MyEchoTask extends Task {
 
       <para>Besides the XML document prolog and the shell elements that are
       required to properly execute the task (project, target) you'll find the
-      <code>&lt;taskdef&gt;</code> element (line 4) that properly registers
-      your custom task to Phing. For a detailed synopsis of the
-      <code>taskdef</code> element see <xref
+      <link
+      linkend="phing.coretasks.taskdef"><code>&lt;taskdef&gt;</code></link>
+      element (line 4) that properly registers your custom task to Phing. For
+      a detailed synopsis of the <code>taskdef</code> element see <xref
       linkend="phing.coretasks.taskdef" />.</para>
 
       <para>Now, as we have registered the task by assigning a name and the

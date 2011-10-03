@@ -21,7 +21,9 @@
     &ref.title.note;
 
     <para>It is the only selector which can be used outside of any target, as
-    an element of the <code>&lt;project&gt;</code> tag. It can contain only
-    one other selector, but of course that selector can be a container</para>
+    an element of the <link
+    linkend="phing.projectcomponents.projects"><code>&lt;project&gt;</code></link>
+    tag. It can contain only one other selector, but of course that selector
+    can be a container</para>
   </refsect1>
 </refentry>

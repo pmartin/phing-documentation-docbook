@@ -195,9 +195,10 @@
     &ref.title.supportedNestedTags;
 
     <para>The tags that are supported by Fileset are
-    <code>&lt;include&gt;</code>, <code>&lt;exclude&gt;</code> and
-    <code>&lt;patternset&gt;</code>. The <code>&lt;include&gt;</code> and the
-    <code>&lt;exclude&gt;</code> tags tags must have a name attribute that
-    contains the pattern to include/exclude.</para>
+    <code>&lt;include&gt;</code>, <code>&lt;exclude&gt;</code> and <link
+    linkend="phing.coretypes.patternset"><code>&lt;patternset&gt;</code></link>.
+    The <code>&lt;include&gt;</code> and the <code>&lt;exclude&gt;</code> tags
+    tags must have a name attribute that contains the pattern to
+    include/exclude.</para>
   </refsect1>
 </refentry>

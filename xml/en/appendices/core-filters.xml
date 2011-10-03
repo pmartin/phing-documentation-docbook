@@ -22,28 +22,51 @@
 </filterchain>]]></programlisting>
 
   <para>There are two ways to use a filter: System filters (the ones shipped
-  with Phing) can be used with their own tag name, such as
-  <code>&lt;xsltfilter&gt;</code>, <code>&lt;expandpropertyfilter&gt;</code>
-  or <code>&lt;tabtospaces&gt;</code>. User-defined filters can use the way is
-  to use the <code>&lt;filterreader&gt;</code> tag.</para>
+  with Phing) can be used with their own tag name, such as <link
+  linkend="phing.corefilters.xsltfilter"><code>&lt;xsltfilter&gt;</code></link>,
+  <link
+  linkend="phing.corefilters.expandproperties"><code>&lt;expandpropertiesfilter&gt;</code></link>
+  or <link
+  linkend="phing.corefilters.tabtospaces"><code>&lt;tabtospaces&gt;</code></link>.
+  User-defined filters can use the way is to use the <link
+  linkend="phing.corefilters.phingfilterreader"><code>&lt;filterreader&gt;</code></link>
+  tag.</para>
 
   <xi:include href="core-filters/phingfilterreader.xml" />
-    <xi:include href="core-filters/expandproperties.xml" />
-    <xi:include href="core-filters/headfilter.xml" />
-    <xi:include href="core-filters/iconvfilter.xml" />
-    <xi:include href="core-filters/linecontains.xml" />
-    <xi:include href="core-filters/linecontainsregexp.xml" />
-    <xi:include href="core-filters/prefixlines.xml" />
-    <xi:include href="core-filters/replacetokens.xml" />
-    <xi:include href="core-filters/replacetokenswithfile.xml" />
-    <xi:include href="core-filters/replaceregexp.xml" />
-    <xi:include href="core-filters/striplinebreaks.xml" />
-    <xi:include href="core-filters/striplinecomments.xml" />
-    <xi:include href="core-filters/stripphpcomments.xml" />
-    <xi:include href="core-filters/stripwhitespace.xml" />
-    <xi:include href="core-filters/tabtospaces.xml" />
-    <xi:include href="core-filters/tailfilter.xml" />
-    <xi:include href="core-filters/tidyfilter.xml" />
-    <xi:include href="core-filters/xinclude.xml" />
-    <xi:include href="core-filters/xsltfilter.xml" />
+
+  <xi:include href="core-filters/expandproperties.xml" />
+
+  <xi:include href="core-filters/headfilter.xml" />
+
+  <xi:include href="core-filters/iconvfilter.xml" />
+
+  <xi:include href="core-filters/linecontains.xml" />
+
+  <xi:include href="core-filters/linecontainsregexp.xml" />
+
+  <xi:include href="core-filters/prefixlines.xml" />
+
+  <xi:include href="core-filters/replacetokens.xml" />
+
+  <xi:include href="core-filters/replacetokenswithfile.xml" />
+
+  <xi:include href="core-filters/replaceregexp.xml" />
+
+  <xi:include href="core-filters/striplinebreaks.xml" />
+
+  <xi:include href="core-filters/striplinecomments.xml" />
+
+  <xi:include href="core-filters/stripphpcomments.xml" />
+
+  <xi:include href="core-filters/stripwhitespace.xml" />
+
+  <xi:include href="core-filters/tabtospaces.xml" />
+
+  <xi:include href="core-filters/tailfilter.xml" />
+
+  <xi:include href="core-filters/tidyfilter.xml" />
+
+  <xi:include href="core-filters/xinclude.xml" />
+
+  <xi:include href="core-filters/xsltfilter.xml" />
 </appendix>
