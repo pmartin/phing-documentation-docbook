@@ -48,10 +48,22 @@ class WebsiteExtractMenuTask extends Task
                     $as = $child->getElementsByTagName('a');
                     if ($as->length > 0) {
                         foreach ($as as $a) {
-                            $current['text'] = $this->clean($a->nodeValue);
-                            $current['href'] = $a->getAttribute('href');
-                            $current['depth'] = $depth;
-                            $result[md5($current['href'])] = $current;
+                            if (strpos($a->getAttribute('href'), 'phing.') === 0) {
+                                // All URL that point to this documentation have href that begins with 'phing.'
+                                // (other <a> tags are external ones, and should not be displayed in the menu)
+                                
+                                $current['text'] = $this->clean($a->nodeValue);
+                                $current['href'] = $a->getAttribute('href');
+                                
+                                $parts = parse_url($current['href']);
+                                $current['file'] = $parts['path'];
+                                if (isset($parts['fragment'])) {
+                                    $current['anchor'] = $parts['fragment'];
+                                }
+                                
+                                $current['depth'] = $depth;
+                                $result[md5($current['href'])] = $current;
+                            }
                         }
                     }
                 }
