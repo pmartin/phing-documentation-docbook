@@ -85,6 +85,30 @@
         
         <websiteextractmenu htmlIndexFile="${dist.directory}/${lang}/index.html" dataOutputFile="${dist.directory}/website/${lang}/menu.data.txt" />
         
+        
+        <mkdir dir="${dist.directory}/website/${lang}/images" />
+        <mkdir dir="${dist.directory}/website/${lang}/images/docbook" />
+        
+        <copy file="${dist.directory}/${lang}/docbook.html.css" todir="${dist.directory}/website/${lang}" />
+        <copy todir="${dist.directory}/website/${lang}">
+            <fileset defaultexcludes="false" expandsymboliclinks="true" dir="${dist.directory}/${lang}">
+                <include name="**/*.png"/>
+            </fileset>
+        </copy>
+        
+        
+        <copy todir="${dist.directory}/website/${lang}">
+            <filterchain>
+                <filterreader classname="tasks.WebsiteHtmlPageBuilder">
+                    <param name="menuDataFile" value="${dist.directory}/website/${lang}/menu.data.txt" />
+                </filterreader>
+            </filterchain>
+            <fileset dir="${dist.directory}/${lang}">
+                <!-- <include name="phing.selectors.date.html"/> -->
+                <include name="*.html"/>
+            </fileset>
+        </copy>
+        
     </target>
     
     
