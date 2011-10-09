@@ -70,8 +70,24 @@
         </scp>
 
     </target>
-
-
+    
+    
+    
+    <target name="html2website">
+        <echo msg="Copying HTML output to website-compatible" />
+        <foreach list="${languages}" param="lang" target="html2website.lang" />
+    </target>
+    
+    <target name="html2website.lang">
+        <echo msg="Copying HTML output to website-compatible : '${lang}'" />
+        
+        <mkdir dir="${dist.directory}/website/${lang}" />
+        
+        <websiteextractmenu htmlIndexFile="${dist.directory}/${lang}/index.html" dataOutputFile="${dist.directory}/website/${lang}/menu.data.txt" />
+        
+    </target>
+    
+    
 
     <target name="prepare">
         <mkdir dir="${dist.directory}" />
@@ -298,5 +314,7 @@
 
     <taskdef classname="tasks.SyntaxHighlightHtmlTask" name="syntaxhighlighthtml" />
     <taskdef classname="tasks.SyntaxHighlightFoTask" name="syntaxhighlightfo" />
+    
+    <taskdef classname="tasks.WebsiteExtractMenuTask" name="websiteextractmenu" />
     
 </project>
