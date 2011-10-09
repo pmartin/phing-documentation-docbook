@@ -3,6 +3,19 @@ body {
     font-size: 12px;
 }
 
+
+div.menu {
+    width: 20%;
+    float: left;
+    background-color: #E0E0E0;
+}
+
+div.content {
+    width: 80%;
+    float: left;
+}
+
+
 h1, h2, h3 {
 	font-family: arial,sans-serif;
 }
