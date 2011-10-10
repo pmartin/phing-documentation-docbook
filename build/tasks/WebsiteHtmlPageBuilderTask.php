@@ -1,29 +1,45 @@
 <?php
+require_once 'phing/Task.php';
 
-class WebsiteHtmlPageBuilder extends BaseParamFilterReader
+class WebsiteHtmlPageBuilderTask extends Task
 {
-    function read($len = null) {
-
-        if ( !$this->getInitialized() ) {
-            $this->_initialize();
-            $this->setInitialized(true);
-        }
-        $buffer = $this->in->read($len);
-        if($buffer === -1) {
-            return -1;
-        }
-        
+    protected $filesets      = array(); // all fileset objects assigned to this task
+    
+    protected $_menuDataFile;
+    
+    public function setMenuDataFile($a) {
+        $this->_menuDataFile = $a;
+    }
+    
+    function main() {
         if (!file_exists($this->_menuDataFile)) {
             throw new Exception("Invalid parameter 'menuDataFile'");
         }
         
-        $this->_menuData = unserialize(file_get_contents($this->_menuDataFile));
+        $project = $this->getProject();
+
+        foreach($this->filesets as $fs) {
+            $ds = $fs->getDirectoryScanner($project);
+            $files = $ds->getIncludedFiles();
+            $dir =  $fs->getDir($this->project)->getPath();
+
+            foreach ($files as $fileName) {
+                $this->buildFile($dir . '/' . $fileName);
+            }
+        }
         
-        $htmlFullpath = $this->in->getResource();
+        
+    }
+    
+    
+    protected function buildFile($htmlFullpath) {
         $htmlFileName = basename($htmlFullpath);
         
-        $this->localizeEntryInMenuData($htmlFileName);
+        $this->log("Processing {$htmlFileName}", Project::MSG_VERBOSE);
         
+        $this->_menuData = unserialize(file_get_contents($this->_menuDataFile));
+        
+        $this->localizeEntryInMenuData($htmlFileName);
         
         
         $htmlInput = file_get_contents($htmlFullpath);
@@ -123,28 +139,12 @@ class WebsiteHtmlPageBuilder extends BaseParamFilterReader
         
         
         
-        return $domOutput->saveHTML();
+        file_put_contents($htmlFullpath, $domOutput->saveHTML());
     }
     
-    
-    /**
-     * Parses the parameters to set the tab length.
-     */
-    private function _initialize() {
-        $params = $this->getParameters();
-        if ( $params !== null ) {
-            for($i = 0 ; $i<count($params) ; $i++) {
-                if ($params[$i]->getName() == 'menuDataFile') {
-                    $this->_menuDataFile = $params[$i]->getValue();
-                }
-            }
-        }
-    }
     
     
     protected $_menuData;
-    
-    protected $_menuDataFile;
     
     protected function addSubmenuItems(array $level, DOMDocument $dom, DOMElement $parentUl) {
         $liLevel = $dom->createElement('li');
@@ -198,6 +198,18 @@ class WebsiteHtmlPageBuilder extends BaseParamFilterReader
         }
         $level['isBelow'] = $isBelow;
         return $isBelow;
+    }
+    
+    
+    /**
+     * Nested creator, creates a FileSet for this task
+     *
+     * @access  public
+     * @return  object  The created fileset object
+     */
+    public function createFileSet() {
+        $num = array_push($this->filesets, new FileSet());
+        return $this->filesets[$num-1];
     }
     
 }

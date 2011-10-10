@@ -4,6 +4,7 @@
     <property name="source.directory" value="${project.basedir}/../xml" />
     <property name="dist.directory" value="${project.basedir}/dist" />
     <property name="stage.directory" value="${project.basedir}/stage" />
+    <property name="website.directory" value="${project.basedir}/../website" />
 
     <!-- Default values -->
     <property name="lang" value="fr" />
@@ -81,33 +82,35 @@
     <target name="html2website.lang">
         <echo msg="Copying HTML output to website-compatible : '${lang}'" />
         
+        <!-- Extracting the menu's data from index.html -->
         <mkdir dir="${dist.directory}/website/${lang}" />
-        
         <websiteextractmenu htmlIndexFile="${dist.directory}/${lang}/index.html" dataOutputFile="${dist.directory}/website/${lang}/menu.data.txt" />
         
+        <!-- Copying the HTML (and images/css) files generated as docbook output to the website's directory -->
+        <delete dir="${website.directory}/www/${lang}" />
         
-        <mkdir dir="${dist.directory}/website/${lang}/images" />
-        <mkdir dir="${dist.directory}/website/${lang}/images/docbook" />
+        <mkdir dir="${website.directory}/www/${lang}" />
+        <mkdir dir="${website.directory}/www/${lang}/images" />
+        <mkdir dir="${website.directory}/www/${lang}/images/docbook" />
         
-        <copy file="${dist.directory}/${lang}/docbook.html.css" todir="${dist.directory}/website/${lang}" />
-        <copy todir="${dist.directory}/website/${lang}">
+        <copy todir="${website.directory}/www/${lang}">
             <fileset defaultexcludes="false" expandsymboliclinks="true" dir="${dist.directory}/${lang}">
                 <include name="**/*.png"/>
             </fileset>
-        </copy>
-        
-        
-        <copy todir="${dist.directory}/website/${lang}">
-            <filterchain>
-                <filterreader classname="tasks.WebsiteHtmlPageBuilder">
-                    <param name="menuDataFile" value="${dist.directory}/website/${lang}/menu.data.txt" />
-                </filterreader>
-            </filterchain>
             <fileset dir="${dist.directory}/${lang}">
-                <!-- <include name="phing.selectors.date.html"/> -->
+                <include name="*.css"/>
+            </fileset>
+            <fileset dir="${dist.directory}/${lang}">
                 <include name="*.html"/>
             </fileset>
         </copy>
+        
+        <!-- And modifying those HTML files, to include the menu, remove some useless parts, ... -->
+        <websitehtmlpagebuilder menuDataFile="${dist.directory}/website/${lang}/menu.data.txt">
+            <fileset dir="${website.directory}/www/${lang}" defaultexcludes="false">
+                <include name="*.html"/>
+            </fileset>
+        </websitehtmlpagebuilder>
         
     </target>
     
@@ -340,5 +343,6 @@
     <taskdef classname="tasks.SyntaxHighlightFoTask" name="syntaxhighlightfo" />
     
     <taskdef classname="tasks.WebsiteExtractMenuTask" name="websiteextractmenu" />
+    <taskdef classname="tasks.WebsiteHtmlPageBuilderTask" name="websitehtmlpagebuilder" />
     
 </project>
