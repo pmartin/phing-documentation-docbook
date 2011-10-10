@@ -111,7 +111,11 @@ class WebsiteHtmlPageBuilderTask extends Task
         //$divContent->setAttribute('style', 'background-color: red;');
         $divContainer->appendChild($divContent);
         
-        if (!in_array($htmlFileName, array('phing.appendices.coretasks.html', 'phing.appendices.optionaltasks.html'))) {
+        if (!in_array($htmlFileName, array('phing.appendices.coretasks.html', 
+                                           'phing.appendices.optionaltasks.html', 
+                                           'phing.appendices.coretypes.html', 
+                                           'phing.appendices.corefilters.html', 
+                                           'phing.appendices.coremappers.html'))) {
             // If the input document contains a TOC, we remove it
             // (as we already have to full-menu)
             $listToc = $xpathInput->query('//div[@class="toc"]');
