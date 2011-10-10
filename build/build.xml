@@ -98,9 +98,6 @@
                 <include name="**/*.png"/>
             </fileset>
             <fileset dir="${dist.directory}/${lang}">
-                <include name="*.css"/>
-            </fileset>
-            <fileset dir="${dist.directory}/${lang}">
                 <include name="*.html"/>
             </fileset>
         </copy>
