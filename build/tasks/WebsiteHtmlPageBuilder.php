@@ -30,6 +30,7 @@ class WebsiteHtmlPageBuilder extends BaseParamFilterReader
         
         $domInput = new DOMDocument();
         $domInput->loadHTML($htmlInput);
+        $xpathInput = new DOMXPath($domInput);
         $bodyInput = $domInput->getElementsByTagName('body')->item(0);
         
         
@@ -93,9 +94,33 @@ class WebsiteHtmlPageBuilder extends BaseParamFilterReader
         $divContent->setAttribute('class', 'content');
         //$divContent->setAttribute('style', 'background-color: red;');
         $divContainer->appendChild($divContent);
+        
+        if (!in_array($htmlFileName, array('phing.appendices.coretasks.html', 'phing.appendices.optionaltasks.html'))) {
+            // If the input document contains a TOC, we remove it
+            // (as we already have to full-menu)
+            $listToc = $xpathInput->query('//div[@class="toc"]');
+            if ($listToc->length > 0) {
+                for ($i=$listToc->length-1 ; $i>=0 ; $i--) {
+                    $listToc->item($i)->parentNode->removeChild($listToc->item($i));
+                }
+            }
+        }
+        
+        // The titles have a clear:both style ; that needs to be removed
+        $listTitles = $xpathInput->query('//*[@class="title"]');
+        if ($listTitles->length > 0) {
+            foreach ($listTitles as $title) {
+                if ($title->hasAttribute('style') && preg_match('#clear:\s*both;?#', $title->getAttribute('style'))) {
+                    $title->removeAttribute('style');
+                }
+            }
+        }
+        
+        
         foreach ($bodyInput->childNodes as $child) {
             $divContent->appendChild($domOutput->importNode($child, true));
         }
+        
         
         
         return $domOutput->saveHTML();
