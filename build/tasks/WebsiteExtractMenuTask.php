@@ -54,6 +54,7 @@ class WebsiteExtractMenuTask extends Task
                             
                             $current['text'] = $this->clean($a->nodeValue);
                             $current['href'] = $a->getAttribute('href');
+                            $current['children'] = array();
                             
                             $parts = parse_url($current['href']);
                             $current['file'] = $parts['path'];
