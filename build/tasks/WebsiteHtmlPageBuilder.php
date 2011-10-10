@@ -51,29 +51,48 @@ class WebsiteHtmlPageBuilder extends BaseParamFilterReader
         $titleOutput = $domOutput->importNode($domInput->getElementsByTagName('title')->item(0), true);
         $headOutput->appendChild($titleOutput);
         
+        $linkCssBootstrapOutput = $domOutput->createElement('link');
+        $linkCssBootstrapOutput->setAttribute('rel', 'stylesheet');
+        $linkCssBootstrapOutput->setAttribute('type', 'text/css');
+        $linkCssBootstrapOutput->setAttribute('href', '../css/bootstrap.min.css');
+        $headOutput->appendChild($linkCssBootstrapOutput);
+        
         $linkCssOutput = $domOutput->createElement('link');
         $linkCssOutput->setAttribute('rel', 'stylesheet');
         $linkCssOutput->setAttribute('type', 'text/css');
-        $linkCssOutput->setAttribute('href', 'docbook.html.css');
+        $linkCssOutput->setAttribute('href', '../css/docbook.html.css');
         $headOutput->appendChild($linkCssOutput);
+        
+        $linkCssWebsiteOutput = $domOutput->createElement('link');
+        $linkCssWebsiteOutput->setAttribute('rel', 'stylesheet');
+        $linkCssWebsiteOutput->setAttribute('type', 'text/css');
+        $linkCssWebsiteOutput->setAttribute('href', '../css/phingdoc-website.css');
+        $headOutput->appendChild($linkCssWebsiteOutput);
         
         
         $bodyOutput = $domOutput->createElement('body');
         $htmlOutput->appendChild($bodyOutput);
         
-        $divMenu = $domOutput->createElement('div');
-        $divMenu->setAttribute('class', 'menu');
-        $bodyOutput->appendChild($divMenu);
+        $divContainer = $domOutput->createElement('div');
+        $divContainer->setAttribute('class', 'container-fluid');
+        $bodyOutput->appendChild($divContainer);
+        
+        
+        $divSidebar = $domOutput->createElement('div');
+        $divSidebar->setAttribute('class', 'sidebar');
+        //$divSidebar->setAttribute('style', 'background-color: blue;');
+        $divContainer->appendChild($divSidebar);
         
         $ulRoot = $domOutput->createElement('ul');
-        $divMenu->appendChild($ulRoot);
+        $divSidebar->appendChild($ulRoot);
         foreach ($this->_menuData as $level) {
             $this->addSubmenuItems($level, $domOutput, $ulRoot);
         }
         
         $divContent = $domOutput->createElement('div');
         $divContent->setAttribute('class', 'content');
-        $bodyOutput->appendChild($divContent);
+        //$divContent->setAttribute('style', 'background-color: red;');
+        $divContainer->appendChild($divContent);
         foreach ($bodyInput->childNodes as $child) {
             $divContent->appendChild($domOutput->importNode($child, true));
         }
