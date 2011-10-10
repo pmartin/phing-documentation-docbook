@@ -332,6 +332,11 @@
         <delete dir="${dist.directory}" />
         <delete dir="${stage.directory}" />
         <delete file="HTML.manifest" />
+        <foreach list="${languages}" param="lang" target="clean.lang" />
+    </target>
+    
+    <target name="clean.lang">
+        <delete dir="${website.directory}/www/${lang}" />
     </target>
 
 
