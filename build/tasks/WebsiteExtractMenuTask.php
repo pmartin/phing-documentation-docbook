@@ -22,7 +22,13 @@ class WebsiteExtractMenuTask extends Task
         $dom->loadHTMLFile($this->_htmlIndexFile);
         $xpath = new DOMXPath($dom);
         
-        $result = array();
+        $result = array(
+            md5('index.html') => array(
+                'text' => "Index", 
+                'href' => 'index.html', 
+                'children' => array(),
+            )
+        );
         
         $listToc = $xpath->query('//div[@class="toc"]');
         if ($listToc->length > 0) {
