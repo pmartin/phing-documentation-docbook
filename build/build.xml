@@ -52,20 +52,13 @@
 
 
     <target name="publish">
-        <echo msg="Publishing documentation to ${publish.server.host}" />
-
-        <foreach list="${languages}" param="lang" target="publish.lang" />
-
-    </target>
-
-    <target name="publish.lang">
-        <echo msg="Publishing documentation to ${publish.server.host} : '${lang}'" />
+        <echo msg="Publishing documentation (website) to ${publish.server.host}" />
 
         <scp host="${publish.server.host}"
             username="${publish.server.username}"
             password="${publish.server.password}"
-            todir="${publish.server.root}/${lang}/" >
-            <fileset dir="${dist.directory}/${lang}">
+            todir="${publish.server.root}/" >
+            <fileset dir="${website.directory}/">
                 <include name="**/*"/>
             </fileset>
         </scp>
