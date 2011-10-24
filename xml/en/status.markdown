@@ -1,5 +1,10 @@
 This file keeps track of the "Import from HTML to Docbook" status, for each section of the manual.
 
+# Merge from SVN #
+
+Last revision merged from SVN: `1333`
+
+
 # Possible statuses #
 
  - `TODO` : The section has not been imported to docbook, or nothing more than a skeleton *(mostly empty file)* is done
