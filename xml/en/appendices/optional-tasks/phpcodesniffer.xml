@@ -163,6 +163,18 @@
       </tr>
 
       <tr>
+        <td class="name"><parameter>encoding</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The encoding of the files to check.</td>
+
+        <td class="default"><code>iso-8859-1</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
         <td class="name"><parameter>tabWidth</parameter></td>
 
         <td class="type"><type>Integer</type></td>
