@@ -107,6 +107,11 @@
         <para><link
         linkend="phing.appendices.coremappers"><code>&lt;mapper&gt;</code></link></para>
       </listitem>
+
+      <listitem>
+        <para><link
+        linkend="phing.coretypes.filelist"><code>&lt;filelist&gt;</code></link></para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 </refentry>
