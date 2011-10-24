@@ -595,12 +595,12 @@ class MyEchoTask extends Task {
       <emphasis>declare</emphasis> the following ones by your own:</para>
 
       <itemizedlist>
-        <listitem>
+        <!-- <listitem>
           <para>Taskname. Always hard code the <emphasis>taskname</emphasis>
           property that equals the name of the XML element that your task
           claims. Currently this information is not used - but it will be in
           the future.</para>
-        </listitem>
+        </listitem> -->
 
         <listitem>
           <para>Your arbitrary properties that reflect the XML
