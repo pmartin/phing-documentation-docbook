@@ -61,7 +61,7 @@
 
         <td>&attributes.defaultValue.NA;</td>
 
-        <td>&attributes.required.yes;</td>
+        <td>&attributes.required.no;</td>
       </tr>
 
       <tr>
@@ -78,7 +78,7 @@
 
         <td>all</td>
 
-        <td>&attributes.required.no;</td>
+        <td>&attributes.required.yes;</td>
       </tr>
 
       <tr>
@@ -112,6 +112,27 @@
 
         <td>&attributes.required.yes;</td>
       </tr>
+
+
+        <tr>
+        <td>
+          <parameter>phingVersion</parameter>
+        </td>
+
+        <td>
+          <type>String</type>
+        </td>
+
+        <td>The minimum Phing version required
+				to execute the build file, in order to
+				prevent compatibility issues.</td>
+
+        <td>&attributes.defaultValue.NA;</td>
+
+        <td>&attributes.required.no;</td>
+      </tr>
+
+
     </table>
   </refsect1>
 </refentry>
