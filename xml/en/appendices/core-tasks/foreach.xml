@@ -129,6 +129,11 @@
         <para><link
         linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
       </listitem>
+
+      <listitem>
+        <para><link
+        linkend="phing.appendices.coremappers"><code>&lt;mapper&gt;</code></link></para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 </refentry>
