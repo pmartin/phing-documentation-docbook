@@ -26,6 +26,9 @@
     <para>The task can also echo to a file, in which case the option to append
     rather than overwrite the file is available, and the level option is
     ignored</para>
+
+    <para>Additionally, the task can echo the contents of a nested fileset
+    element.</para>
   </refsect1>
 
   <refsect1 role="example">
@@ -111,5 +114,16 @@
         <td class="required">&attributes.required.no;</td>
       </tr>
     </table>
+  </refsect1>
+
+  <refsect1 role="nested">
+    &ref.title.supportedNestedTags;
+
+    <itemizedlist>
+      <listitem>
+        <para><link
+        linkend="phing.coretypes.fileset"><code>&lt;fileset&gt;</code></link></para>
+      </listitem>
+    </itemizedlist>
   </refsect1>
 </refentry>
