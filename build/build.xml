@@ -63,6 +63,36 @@
             </fileset>
         </scp>
 
+        <foreach list="${languages}" param="lang" target="publish.lang" />
+    </target>
+
+    <target name="publish.lang">
+        <echo msg="Publishing ${lang} documentation (PDF/CHM) to ${publish.server.host}" />
+
+        <if>
+            <equals arg1="${build.do.htmlhelp}" arg2="1" />
+            <then>
+                <scp host="${publish.server.host}"
+                    username="${publish.server.username}"
+                    password="${publish.server.password}"
+                    todir="${publish.server.root}/www/${lang}/"
+                    file="${dist.directory}/${lang}/phing-documentation-${lang}.chm"
+                />
+            </then>
+        </if>
+
+        <if>
+            <equals arg1="${build.do.pdf}" arg2="1" />
+            <then>
+                <scp host="${publish.server.host}"
+                    username="${publish.server.username}"
+                    password="${publish.server.password}"
+                    todir="${publish.server.root}/www/${lang}/"
+                    file="${dist.directory}/${lang}/phing-documentation-${lang}.pdf"
+                />
+            </then>
+        </if>
+
     </target>
     
     
