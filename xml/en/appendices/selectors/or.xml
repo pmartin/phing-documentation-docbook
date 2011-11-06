@@ -28,12 +28,12 @@
     &ref.title.example;
 
     <programlisting language="xml"><![CDATA[<fileset dir="${src}">
-  <and>
+  <or>
     <depth max="0"/>
     <filename name="*.png"/>
     <filename name="*.gif"/>
     <filename name="*.jpg"/>
-  </and>
+  </or>
 </fileset>]]></programlisting>
   </refsect1>
 </refentry>
