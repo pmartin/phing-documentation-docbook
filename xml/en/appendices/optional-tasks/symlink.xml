@@ -92,6 +92,19 @@
 
         <td class="required">&attributes.required.yes;</td>
       </tr>
+
+      <tr>
+        <td class="name"><parameter>overwrite</parameter></td>
+
+        <td class="type"><type>Boolean</type></td>
+
+        <td class="description">Whether to override the symlink if it exists
+        but points to a different location</td>
+
+        <td class="default"><code>false</code></td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
     </table>
   </refsect1>
 

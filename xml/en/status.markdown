@@ -2,7 +2,7 @@ This file keeps track of the "Import from HTML to Docbook" status, for each sect
 
 # Merge from SVN #
 
-Last revision merged from SVN: `1338`
+Last revision merged from SVN: `1367`
 
 
 # Possible statuses #
