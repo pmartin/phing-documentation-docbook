@@ -60,6 +60,18 @@
       </tr>
 
       <tr>
+        <td class="name"><parameter>group</parameter></td>
+
+        <td class="type"><type>String</type></td>
+
+        <td class="description">The new group owner of the file.</td>
+
+        <td class="default">&attributes.defaultValue.NA;</td>
+
+        <td class="required">&attributes.required.no;</td>
+      </tr>
+
+      <tr>
         <td class="name"><parameter>quiet</parameter></td>
 
         <td class="type"><type>Boolean</type></td>
